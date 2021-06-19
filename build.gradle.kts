@@ -1,8 +1,13 @@
-
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+//pluginManagement {
+//    repositories {
+//        google()
+//        gradlePluginPortal()
+//        mavenCentral()
+//    }
+//}
 
 plugins {
-    kotlin("jvm") version "1.5.20"
+    kotlin("multiplatform") version "1.5.20"
     kotlin("plugin.serialization") version "1.5.0"
     id("org.jetbrains.dokka") version "1.4.32"
     `maven-publish`
@@ -17,16 +22,9 @@ group = "com.dennisschroeder"
 version = "0.1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-    google()
-    maven { url = uri("https://kotlin.bintray.com/ktor") }
-    maven { url = uri("https://kotlin.bintray.com/kotlinx") }
-}
-
 val ktorVersion: String by project
 val koinVersion: String by project
+val kotlinLoggingVersion: String by project
 val mockkVersion: String by project
 val jupiterVersion: String by project
 val assertVersion: String by project
@@ -81,58 +79,200 @@ tasks {
 
 defaultTasks("dokkaHtml")
 
-val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets["main"].allSource)
+repositories {
+    mavenCentral()
+
+//    mavenLocal()
+//    mavenCentral()
+//    google()
+//    maven { url = uri("https://kotlin.bintray.com/ktor") }
+//    maven { url = uri("https://kotlin.bintray.com/kotlinx") }
 }
 
-publishing {
-    publications {
-        register("mavenJava", MavenPublication::class.java) {
-            from(components["java"])
-            artifact(sourcesJar.get())
+kotlin {
+    jvm {
+        compilations.all {
+            kotlinOptions.jvmTarget = "1.8"
+        }
+        testRuns["test"].executionTask.configure {
+            useJUnit()
         }
     }
-}
-
-tasks.withType<Test> {
-    environment["HOST"] = "home-assistant.local"
-    environment["PORT"] = 8321
-    environment["ACCESS_TOKEN"] = "dsq7zht54899dhz43kbv4dgr56a8we234h>!sg?x"
-    environment["SECURE"] = true
-    environment["START_STATE_STREAM"] = false
-    useJUnitPlatform()
-}
-
-tasks {
-    check {
-        dependsOn(test)
-        finalizedBy(jacocoTestReport, jacocoTestCoverageVerification, printCoverage, generateJacocoBadge)
+    val hostOs = System.getProperty("os.name")
+    val nativeTarget = when {
+        hostOs == "Mac OS X" -> macosX64("native")
+        hostOs == "Linux" -> linuxX64("native")
+        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
-    jacocoTestReport {
-        reports {
-            xml.required.set(true)
-            csv.required.set(false)
-            html.required.set(true)
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(kotlin("stdlib-jdk8"))
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-cio:$ktorVersion")
+                implementation("io.insert-koin:koin-core:$koinVersion")
+                implementation("org.slf4j:slf4j-simple:1.7.30")
+                implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
+                implementation(kotlin("stdlib-common"))
+                api("co.touchlab:kermit:0.1.9")
+            }
         }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
+//        val iosMain by getting
+        val jvmMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-client-gson:$ktorVersion")
+                implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
+//                testImplementation("io.insert-koin:koin-test:$koinVersion") {
+//                    exclude(group = "org.mockito")
+//                    exclude(group = "junit")
+//                }
+//                testImplementation("io.mockk:mockk:$mockkVersion")
+//
+//                testImplementation("com.willowtreeapps.assertk:assertk-jvm:$assertVersion")
+//                testImplementation("org.skyscreamer:jsonassert:$jsonAssertVersion")
+//
+//                testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
+            }
+        }
+        val nativeMain by getting
+        val nativeTest by getting
     }
 }
 
-detekt {
-    input = files("$projectDir/src/main/kotlin")
-    config = files("$projectDir/config/detekt-config.yml")
-}
 
-ktlint {
-    version.set("0.41.0")
-    ignoreFailures.set(false)
-}
+//plugins {
+//    kotlin("multiplatform") version "1.5.10"
+////    kotlin("jvm") version "1.4.30"
+//    id("org.jetbrains.dokka") version "0.10.1"
+//    `maven-publish`
+//    id("io.gitlab.arturbosch.detekt") version "1.9.1"
+//    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
+//    id("de.jansauer.printcoverage") version "2.0.0"
+//    jacoco
+//    id("com.github.dawnwords.jacoco.badge") version "0.2.0"
+//}
+//
 
-jacoco {
-    toolVersion = "0.8.7"
-}
+//
+////repositories {
+////    mavenLocal()
+////    mavenCentral()
+////    google()
+////    maven { url = uri("https://kotlin.bintray.com/ktor") }
+////    maven { url = uri("https://kotlin.bintray.com/kotlinx") }
+////}
+//
+//
+//kotlin {
+//    jvm()
+//    sourceSets {
+//        val commonMain by getting {
+//            dependencies {
+//                implementation(kotlin("stdlib-jdk8"))
+//                implementation("io.ktor:ktor-client-core:$ktorVersion")
+//                implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
+//                implementation("io.ktor:ktor-client-cio:$ktorVersion")
+//                implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
+//                implementation("io.ktor:ktor-client-gson:$ktorVersion")
+//                implementation("io.insert-koin:koin-core:$koinVersion")
+//                implementation("org.slf4j:slf4j-simple:1.7.30")
+//                implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
+//                testImplementation("io.insert-koin:koin-test:$koinVersion") {
+//                    exclude(group = "org.mockito")
+//                    exclude(group = "junit")
+//                }
+//                testImplementation("io.mockk:mockk:$mockkVersion")
+//                implementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
+//                testImplementation("com.willowtreeapps.assertk:assertk-jvm:$assertVersion")
+//                testImplementation("org.skyscreamer:jsonassert:$jsonAssertVersion")
+//
+//                testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
+//            }
+//        }
+//    }
+//}
 
-printcoverage {
-    coverageType.set("LINE")
-}
+
+//tasks.withType<KotlinCompile> {
+//    kotlinOptions {
+//        freeCompilerArgs = listOf("-Xjsr305=strict")
+//        jvmTarget = "1.8"
+//    }
+//}
+//
+//tasks {
+//    dokka {
+//        outputFormat = "html"
+//        outputDirectory = "$rootDir/docs"
+//    }
+//}
+//
+//defaultTasks("dokka")
+//
+//val sourcesJar by tasks.registering(Jar::class) {
+//    archiveClassifier.set("sources")
+//    from(sourceSets["main"].allSource)
+//}
+//
+//publishing {
+//    publications {
+//        register("mavenJava", MavenPublication::class.java) {
+//            from(components["java"])
+//            artifact(sourcesJar.get())
+//        }
+//    }
+//}
+//
+//tasks.withType<Test> {
+//    environment["HOST"] = "home-assistant.local"
+//    environment["PORT"] = 8321
+//    environment["ACCESS_TOKEN"] = "dsq7zht54899dhz43kbv4dgr56a8we234h>!sg?x"
+//    environment["SECURE"] = true
+//    environment["START_STATE_STREAM"] = false
+//    useJUnitPlatform()
+//}
+//
+//tasks {
+//    check {
+//        dependsOn(test)
+//        finalizedBy(jacocoTestReport, jacocoTestCoverageVerification, printCoverage, generateJacocoBadge)
+//    }
+//
+//    jacocoTestReport {
+//        reports {
+//            xml.required.set(true)
+//            csv.required.set(false)
+//            html.required.set(true)
+//        }
+//    }
+//}
+//
+//detekt {
+//    input = files("$projectDir/src/main/kotlin")
+//    config = files("$projectDir/config/detekt-config.yml")
+//}
+//
+//ktlint {
+//    version.set("0.41.0")
+//    ignoreFailures.set(false)
+//}
+//
+//jacoco {
+//    toolVersion = "0.8.7"
+//}
+//
+//printcoverage {
+//    coverageType.set("LINE")
+//}
