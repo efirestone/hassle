@@ -43,7 +43,7 @@ fun main() {
     KHOME.runBlocking()
 }
 ```
-See more about Sensors in the [source code](../src/main/kotlin/khome/entities/devices/Sensor.kt) or [kdocs](https://dennisschroeder.github.io/khome/khome/khome.entities.devices/-sensor/index.html).
+See more about Sensors in the [source code](../src/commonMain/kotlin/khome/entities/devices/Sensor.kt) or [kdocs](https://dennisschroeder.github.io/khome/khome/khome.entities.devices/-sensor/index.html).
 
 ## Actuator
 An Actuator in Khome consists of the **state**, the **attributes**, an **observable** property and a service command resolver.
@@ -140,13 +140,13 @@ fun main() {
 }
 ```
 
-See more about Actuators in the [source code](../src/main/kotlin/khome/entities/devices/Actuator.kt) or [kdocs](https://dennisschroeder.github.io/khome/khome/khome.entities.devices/-actuator/index.html).
+See more about Actuators in the [source code](../src/commonMain/kotlin/khome/entities/devices/Actuator.kt) or [kdocs](https://dennisschroeder.github.io/khome/khome/khome.entities.devices/-actuator/index.html).
 
 
 ### Service command resolver
 Since home assistant is awaiting a [service call](https://developers.home-assistant.io/docs/api/websocket/#calling-a-service), and we only want to think in states, somebody needs to
-translate between those different concepts. It's the responsibility of the service command resolver. Basically it is a just a [factory function](../src/main/kotlin/khome/communicating/ServiceCommandResolver.kt), that you pass an lambda
-which has access to the desired state and returns a [ResolvedServiceCommand](../src/main/kotlin/khome/communicating/ServiceCommandResolver.kt) instance.
+translate between those different concepts. It's the responsibility of the service command resolver. Basically it is a just a [factory function](../src/commonMain/kotlin/khome/communicating/ServiceCommandResolver.kt), that you pass an lambda
+which has access to the desired state and returns a [ResolvedServiceCommand](../src/commonMain/kotlin/khome/communicating/ServiceCommandResolver.kt) instance.
 
 Let's take a look at a simple example from the InputBoolean entity:
 
@@ -169,7 +169,7 @@ Ok, let's have a deeper look at all the elements involved:
 
 #### desiredState
 The desired state is the same type then the actual state in an actuator.
-In this case, it's type is [SwitchableState](../src/main/kotlin/khome/extending/DeviceStates.kt) and the state value is an enum [SwitchableValue](../src/main/kotlin/khome/extending/StateValueTypes.kt)
+In this case, it's type is [SwitchableState](../src/commonMain/kotlin/khome/extending/DeviceStates.kt) and the state value is an enum [SwitchableValue](../src/commonMain/kotlin/khome/extending/StateValueTypes.kt)
 which has two options: ON and OFF .
 ```kotlin
 data class SwitchableState(
@@ -178,7 +178,7 @@ data class SwitchableState(
 ```
 
 #### DefaultResolvedServiceCommand
-Last, but not least, the output of our `ServiceCommandResolver` is a [`DefaultResolvedServiceCommand`](../src/main/kotlin/khome/communicating/ServiceCommandResolver.kt).
+Last, but not least, the output of our `ServiceCommandResolver` is a [`DefaultResolvedServiceCommand`](../src/commonMain/kotlin/khome/communicating/ServiceCommandResolver.kt).
 ```kotlin
 data class DefaultResolvedServiceCommand(
     override val service: Service,
@@ -194,7 +194,7 @@ In our example, we need two different services `TURN_ON` and `TURN_OFF` and as a
 This can be achieved using `EntityIdOnlyServiceData`, which is part of Khomes toolbox and should be used when no other parameters have to be sent to home assistant.
 Khome will attach the entity id to the service data for you. When you want to build your own serviceData class, make sure to use the `abstract DesiredServiceData` class.
 
-A more advanced example from the [DimmableLight](../src/main/kotlin/khome/extending/actuators/Light.kt) entity might also help to better understand the purpose of the
+A more advanced example from the [DimmableLight](../src/commonMain/kotlin/khome/extending/actuators/Light.kt) entity might also help to better understand the purpose of the
 `ServiceCommandResolver`:
 
 ```kotlin

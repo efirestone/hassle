@@ -81,6 +81,10 @@ tasks {
 
 defaultTasks("dokkaHtml")
 
+sourceSets {
+    this["main"].java.srcDirs("src/commonMain/kotlin")
+}
+
 val sourcesJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
     from(sourceSets["main"].allSource)

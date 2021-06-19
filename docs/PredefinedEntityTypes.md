@@ -11,10 +11,10 @@ used within conditions of automation. See [home assistant documentation](https:/
 
 | Element    | Name | Sourcecode | KDocs |
 |------------|------|------------|-------|
-| Factory    | KhomeApplication::InputBoolean   |  [Link](../src/main/kotlin/khome/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending.actuators/-input-boolean.html)      |
-| State      | SwitchableState     |  [Link](../src/main/kotlin/khome/extending/entities/SwitchableEntityComponents.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-switchable-state/index.html)      |
-| StateValue | SwitchableStateValue | [Link](../src/main/kotlin/khome/extending/entities/SwitchableEntityComponents.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-switchable-value/index.html)      |
-| Attributes | InputBooleanAttributes    |  [Link](../src/main/kotlin/khome/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-input-boolean-attributes/index.html)      |
+| Factory    | KhomeApplication::InputBoolean   |  [Link](../src/commonMain/kotlin/khome/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending.actuators/-input-boolean.html)      |
+| State      | SwitchableState     |  [Link](../src/commonMain/kotlin/khome/extending/entities/SwitchableEntityComponents.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-switchable-state/index.html)      |
+| StateValue | SwitchableStateValue | [Link](../src/commonMain/kotlin/khome/extending/entities/SwitchableEntityComponents.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-switchable-value/index.html)      |
+| Attributes | InputBooleanAttributes    |  [Link](../src/commonMain/kotlin/khome/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-input-boolean-attributes/index.html)      |
 
 Example:
 ```kotlin
@@ -85,10 +85,10 @@ These state events can be utilized as automation triggers as well. See [home ass
 
 | Element    | Name | Sourcecode | KDocs |
 |------------|------|------------|-------|
-| Factory    | KhomeApplication::InputNumber   |  [Link](../src/main/kotlin/khome/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending.actuators/-input-number.html)      |
-| State      | InputNumberState     |  [Link](../src/main/kotlin/khome/extending/entities/SwitchableEntityComponents.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-input-number-state/index.html)      |
+| Factory    | KhomeApplication::InputNumber   |  [Link](../src/commonMain/kotlin/khome/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending.actuators/-input-number.html)      |
+| State      | InputNumberState     |  [Link](../src/commonMain/kotlin/khome/extending/entities/SwitchableEntityComponents.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-input-number-state/index.html)      |
 | StateValue | Double | - | -      |
-| Attributes | InputNumberAttributes    |  [Link](../src/main/kotlin/khome/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-input-number-attributes/index.html)      |
+| Attributes | InputNumberAttributes    |  [Link](../src/commonMain/kotlin/khome/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://dennisschroeder.github.io/khome/khome/khome.extending/-input-number-attributes/index.html)      |
 
 Example:
 ```kotlin
