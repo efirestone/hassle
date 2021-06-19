@@ -75,7 +75,7 @@ internal class HassApiClientImpl(
     private val restApiClient: RestApiClient
 ) : HassApiClient {
     private val logger = Kermit()
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
+    private val coroutineScope = CoroutineScope(Dispatchers.Default)
 
     override fun sendCommand(command: HassApiCommand) =
         coroutineScope.launch(KhomeDispatchers.CommandDispatcher) {

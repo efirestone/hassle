@@ -1,7 +1,5 @@
 package khome.core.boot.servicestore
 
-import java.util.concurrent.ConcurrentHashMap
-
 interface ServiceStoreInterface {
     val list: MutableMap<String, List<String>>
 
@@ -24,8 +22,10 @@ internal class ServiceStore :
 }
 
 /**
- * Creates a ConcurrentHashMap. This method should be made multiplatform compatible.
+ * Creates a ConcurrentHashMap on JVM and regular HashMap on other platforms.
+ * To make actual use of cache in Kotlin/Native, mark a top-level object with this map
+ * as a @[ThreadLocal].
+ *
+ * Copied from https://github.com/Kotlin/kotlinx.serialization/blob/fc9343f06c5184d51df9ad1006d26c60c3230c2a/formats/json/commonMain/src/kotlinx/serialization/json/internal/SchemaCache.kt
  */
-internal fun <K, V> createMapForServiceStore(initialCapacity: Int): MutableMap<K, V> =
-    ConcurrentHashMap(initialCapacity)
-
+internal expect fun <K, V> createMapForServiceStore(initialCapacity: Int): MutableMap<K, V>

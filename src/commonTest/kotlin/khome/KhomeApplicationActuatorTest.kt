@@ -43,6 +43,5 @@ internal class KhomeApplicationActuatorTest {
 
             assert(actuator is ActuatorImpl)
         }
-
     }
 }

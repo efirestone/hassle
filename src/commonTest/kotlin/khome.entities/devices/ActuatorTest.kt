@@ -61,28 +61,28 @@ internal class ActuatorTest {
 
     @Test
     fun `actuator state response mapping is correct`() {
+        withApplication {
+            val sut = ActuatorImpl<ActuatorTestState, ActuatorTestAttributes>(
+                app = KhomeApplicationImpl(),
+                mapper = mapper,
+                resolver = ServiceCommandResolver {
+                    DefaultResolvedServiceCommand(
+                        null,
+                        "turn_on".service,
+                        EntityIdOnlyServiceData()
+                    )
+                },
+                stateType = ActuatorTestState::class,
+                attributesType = ActuatorTestAttributes::class
+            )
 
-        val sut = ActuatorImpl<ActuatorTestState, ActuatorTestAttributes>(
-            app = KhomeApplicationImpl(),
-            mapper = mapper,
-            resolver = ServiceCommandResolver {
-                DefaultResolvedServiceCommand(
-                    null,
-                    "turn_on".service,
-                    EntityIdOnlyServiceData()
-                )
-            },
-            stateType = ActuatorTestState::class,
-            attributesType = ActuatorTestAttributes::class
-        )
+            assertFailsWith<IllegalStateException> {
+                sut.actualState
+            }
 
-        assertFailsWith<IllegalStateException> {
-            sut.actualState
-        }
-
-        val testStateJson =
-            //language=json
-            """
+            val testStateJson =
+                //language=json
+                """
                 {
                     "entity_id":"test.object_id",
                     "last_changed":"2016-11-26T01:37:24.265390+00:00",
@@ -97,21 +97,22 @@ internal class ActuatorTest {
                     "last_updated":"2016-11-26T01:37:24.265390+00:00",
                     "context": { "user_id": null }
                  }
-            """.trimIndent()
+                """.trimIndent()
 
-        val stateAsJsonObject = mapper.fromJson<JsonObject>(testStateJson)
+            val stateAsJsonObject = mapper.fromJson<JsonObject>(testStateJson)
 
-        sut.trySetAttributesFromAny(flattenStateAttributes(stateAsJsonObject))
-        sut.trySetActualStateFromAny(flattenStateAttributes(stateAsJsonObject))
+            sut.trySetAttributesFromAny(flattenStateAttributes(stateAsJsonObject))
+            sut.trySetActualStateFromAny(flattenStateAttributes(stateAsJsonObject))
 
-        assertEquals("on", sut.actualState.value)
-        assertEquals(true, sut.actualState.boolean_attribute)
-        assertEquals(73, sut.actualState.int_attribute)
-        assertEquals(listOf(1, 2, 3, 4, 5), sut.attributes.arrayAttribute)
-        assertEquals(30.0, sut.attributes.doubleAttribute)
-        assertEquals(FriendlyName("Test Entity"), sut.attributes.friendlyName)
-        assertEquals(Instant.parse("2016-11-26T01:37:24.265390+00:00"), sut.attributes.lastChanged)
-        assertEquals(Instant.parse("2016-11-26T01:37:24.265390+00:00"), sut.attributes.lastUpdated)
+            assertEquals("on", sut.actualState.value)
+            assertEquals(true, sut.actualState.boolean_attribute)
+            assertEquals(73, sut.actualState.int_attribute)
+            assertEquals(listOf(1, 2, 3, 4, 5), sut.attributes.arrayAttribute)
+            assertEquals(30.0, sut.attributes.doubleAttribute)
+            assertEquals(FriendlyName("Test Entity"), sut.attributes.friendlyName)
+            assertEquals(Instant.parse("2016-11-26T01:37:24.265390+00:00"), sut.attributes.lastChanged)
+            assertEquals(Instant.parse("2016-11-26T01:37:24.265390+00:00"), sut.attributes.lastUpdated)
+        }
     }
 
     @Test

@@ -13,6 +13,7 @@ import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
+import kotlinx.coroutines.Job
 import kotlin.reflect.KClass
 
 /**
@@ -25,7 +26,7 @@ interface KhomeApplication {
      * Start a single Khome application.
      * This method blocks the current thread.
      */
-    fun runBlocking()
+    fun launch(): Job
 
     fun runTesting(block: KhomeTestApplication.() -> Unit)
 
