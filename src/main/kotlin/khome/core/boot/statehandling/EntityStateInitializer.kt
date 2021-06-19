@@ -1,5 +1,6 @@
 package khome.core.boot.statehandling
 
+import co.touchlab.kermit.Kermit
 import com.google.gson.JsonObject
 import io.ktor.util.KtorExperimentalAPI
 import khome.KhomeSession
@@ -10,7 +11,6 @@ import khome.entities.EntityRegistrationValidation
 import khome.entities.SensorStateUpdater
 import khome.values.EntityId
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import mu.KotlinLogging
 
 interface EntityStateInitializer {
     suspend fun initialize()
@@ -24,7 +24,7 @@ internal class EntityStateInitializerImpl(
     private val entityRegistrationValidation: EntityRegistrationValidation
 ) : EntityStateInitializer, KhomeComponent {
 
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
     private val id
         get() = CALLER_ID.incrementAndGet()
 
@@ -33,7 +33,7 @@ internal class EntityStateInitializerImpl(
     @ExperimentalStdlibApi
     override suspend fun initialize() {
         sendStatesRequest()
-        logger.info { "Requested initial entity states" }
+        logger.i { "Requested initial entity states" }
         setInitialEntityState(consumeStatesResponse())
     }
 

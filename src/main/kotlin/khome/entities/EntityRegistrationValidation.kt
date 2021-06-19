@@ -1,15 +1,15 @@
 package khome.entities
 
+import co.touchlab.kermit.Kermit
 import khome.ActuatorsByApiName
 import khome.SensorsByApiName
 import khome.values.EntityId
-import mu.KotlinLogging
 
 internal class EntityRegistrationValidation(
     private val actuatorsByApiName: ActuatorsByApiName,
     private val sensorsByApiName: SensorsByApiName
 ) {
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
 
     private val failedIds = mutableListOf<EntityId>()
 
@@ -38,11 +38,11 @@ internal class EntityRegistrationValidation(
     }
 
     private fun runSuccessProtocol() {
-        logger.info { "Entity registration validation succeeded" }
+        logger.i { "Entity registration validation succeeded" }
     }
 
     private fun runFailureProtocol() {
-        logger.error {
+        logger.e {
             """
             
             

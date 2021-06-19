@@ -1,5 +1,6 @@
 package khome.testing
 
+import co.touchlab.kermit.Kermit
 import com.google.gson.JsonObject
 import io.ktor.util.KtorExperimentalAPI
 import khome.ActuatorsByApiName
@@ -16,7 +17,6 @@ import khome.entities.SensorStateUpdater
 import khome.entities.devices.Actuator
 import khome.values.EntityId
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import mu.KotlinLogging
 import org.koin.dsl.module
 
 @ExperimentalStdlibApi
@@ -28,7 +28,7 @@ internal class KhomeTestApplicationImpl(
     private val hassAPiCommandHistory: HassAPiCommandHistory
 ) : KhomeTestApplication {
 
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
 
     init {
         val testClient = module(override = true) {
@@ -48,12 +48,12 @@ internal class KhomeTestApplicationImpl(
 
         actuatorsByApiName[entityId]?.also {
             ActuatorStateUpdater(actuatorsByApiName).invoke(flattenStateAttributes(stateJson), entityId)
-            logger.info { "Set actuator state for $entityId" }
+            logger.i { "Set actuator state for $entityId" }
         }
 
         sensorsByApiName[entityId]?.also {
             SensorStateUpdater(sensorsByApiName).invoke(flattenStateAttributes(stateJson), entityId)
-            logger.info { "Set sensor state for $entityId" }
+            logger.i { "Set sensor state for $entityId" }
         }
     }
 

@@ -1,16 +1,16 @@
 package khome.core.mapping
 
+import co.touchlab.kermit.Kermit
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
-import mu.KotlinLogging
 import kotlin.reflect.KClass
 
 internal class GsonTypeAdapterBridge<T, P : Any>(
     private val adapter: KhomeTypeAdapter<T>,
     private val primitiveType: KClass<P>
 ) : TypeAdapter<T>() {
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
 
     override fun write(outgoing: JsonWriter, value: T) {
         when (val result = adapter.to<P>(value)) {
@@ -44,7 +44,7 @@ internal class GsonTypeAdapterBridge<T, P : Any>(
                 result.forEach { outgoing.value(it) }
                 outgoing.endArray()
             }
-            else -> logger.error { "Could not write value in Gson. Value is ${value!!::class}" }
+            else -> logger.e { "Could not write value in Gson. Value is ${value!!::class}" }
         }
     }
 

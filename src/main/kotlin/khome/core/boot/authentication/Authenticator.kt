@@ -1,8 +1,8 @@
 package khome.core.boot.authentication
 
+import co.touchlab.kermit.Kermit
 import khome.KhomeSession
 import khome.core.Configuration
-import mu.KotlinLogging
 
 internal class AuthenticatorImpl(
     private val khomeSession: KhomeSession,
@@ -14,21 +14,21 @@ internal class AuthenticatorImpl(
             .let { initialResponse ->
                 when (initialResponse.type) {
                     "auth_required" -> {
-                        logger.info("Authentication required!")
+                        logger.i { "Authentication required!" }
                         sendAuthenticationMessage()
                         consumeAuthenticationResponse()
                             .let { authResponse ->
                                 when (authResponse.type) {
-                                    "auth_ok" -> logger.info { "Authenticated successfully to homeassistant version ${authResponse.haVersion}" }
-                                    "auth_invalid" -> logger.error { "Authentication failed. Server send: ${authResponse.message}" }
+                                    "auth_ok" -> logger.i { "Authenticated successfully to homeassistant version ${authResponse.haVersion}" }
+                                    "auth_invalid" -> logger.e { "Authentication failed. Server send: ${authResponse.message}" }
                                 }
                             }
                     }
-                    "auth_ok" -> logger.info { "Authenticated successfully (no authentication needed)." }
+                    "auth_ok" -> logger.i { "Authenticated successfully (no authentication needed)." }
                 }
             }
 
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
     private val authRequest =
         AuthRequest(accessToken = configuration.accessToken)
 
@@ -40,9 +40,9 @@ internal class AuthenticatorImpl(
 
     private suspend fun sendAuthenticationMessage() =
         try {
-            khomeSession.callWebSocketApi(authRequest).also { logger.info("Sending authentication message.") }
+            khomeSession.callWebSocketApi(authRequest).also { logger.i { "Sending authentication message." } }
         } catch (e: Exception) {
-            logger.error(e) { "Could not send authentication message" }
+            logger.e(e) { "Could not send authentication message" }
         }
 }
 
