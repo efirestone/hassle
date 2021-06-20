@@ -1,15 +1,15 @@
-name: On new merge into master
+name: On new merge into main
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   release:
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout master
+      - name: Checkout main
         uses: actions/checkout@v1
 
       - name: Run tests and lint the code
