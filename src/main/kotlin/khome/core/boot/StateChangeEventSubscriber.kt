@@ -1,15 +1,15 @@
 package khome.core.boot
 
+import co.touchlab.kermit.Kermit
 import khome.KhomeSession
 import khome.communicating.CALLER_ID
 import khome.core.ResultResponse
-import mu.KotlinLogging
 
 internal class StateChangeEventSubscriberImpl(
     val khomeSession: KhomeSession
 ) : StateChangeEventSubscriber {
 
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
     private val id
         get() = CALLER_ID.incrementAndGet()
 
@@ -17,8 +17,8 @@ internal class StateChangeEventSubscriberImpl(
         sendEventListenerRequest()
         consumeResultResponse().let { resultResponse ->
             when (resultResponse.success) {
-                false -> logger.error { "Could not subscribe to state change events" }
-                true -> logger.info { "Successfully started listening to state changes" }
+                false -> logger.e { "Could not subscribe to state change events" }
+                true -> logger.i { "Successfully started listening to state changes" }
             }
         }
     }

@@ -1,5 +1,6 @@
 package khome.communicating
 
+import co.touchlab.kermit.Kermit
 import com.google.gson.annotations.SerializedName
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.utils.EmptyContent
@@ -21,7 +22,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import mu.KotlinLogging
 import java.util.concurrent.atomic.AtomicInteger
 
 internal val CALLER_ID = AtomicInteger(0)
@@ -77,7 +77,7 @@ internal class HassApiClientImpl(
     private val objectMapper: ObjectMapperInterface,
     private val restApiClient: RestApiClient
 ) : HassApiClient {
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     override fun sendCommand(command: HassApiCommand) =
@@ -85,7 +85,7 @@ internal class HassApiClientImpl(
             command.id = CALLER_ID.incrementAndGet() // has to be called within single thread to prevent race conditions
             objectMapper.toJson(command).let { serializedCommand ->
                 khomeSession.callWebSocketApi(serializedCommand)
-                    .also { logger.info { "Called hass api with message: $serializedCommand" } }
+                    .also { logger.i { "Called hass api with message: $serializedCommand" } }
             }
         }
 

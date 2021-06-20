@@ -30,7 +30,7 @@ val mockkVersion: String by project
 val jupiterVersion: String by project
 val assertVersion: String by project
 val jsonAssertVersion: String by project
-val kotlinLoggingVersion: String by project
+val kermitVersion: String by project
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -41,7 +41,8 @@ dependencies {
     implementation("io.ktor:ktor-client-gson:$ktorVersion")
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation("org.slf4j:slf4j-simple:1.7.30")
-    implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
+    implementation(kotlin("stdlib-common"))
+    api("co.touchlab:kermit:$kermitVersion")
     testImplementation("io.insert-koin:koin-test:$koinVersion") {
         exclude(group = "org.mockito")
         exclude(group = "junit")

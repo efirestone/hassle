@@ -1,12 +1,12 @@
 package khome
 
+import co.touchlab.kermit.Kermit
 import io.ktor.http.HttpMethod
 import io.ktor.util.KtorExperimentalAPI
 import khome.core.Configuration
 import khome.core.clients.WebSocketClient
 import khome.core.mapping.ObjectMapperInterface
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import mu.KotlinLogging
 import java.net.ConnectException
 
 @ObsoleteCoroutinesApi
@@ -16,7 +16,7 @@ internal class HassClientImpl(
     private val httpClient: WebSocketClient,
     private val objectMapper: ObjectMapperInterface
 ) : HassClient {
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
 
     private val method = HttpMethod.Get
     private val path = "/api/websocket"
@@ -45,9 +45,9 @@ internal class HassClientImpl(
                 )
             }
         } catch (exception: ConnectException) {
-            logger.error(exception) { "Could not establish a connection to your homeassistant instance." }
+            logger.e(exception) { "Could not establish a connection to your homeassistant instance." }
         } catch (exception: RuntimeException) {
-            logger.error(exception) { "Could not start khome due to: ${exception.message}" }
+            logger.e(exception) { "Could not start khome due to: ${exception.message}" }
         }
 }
 

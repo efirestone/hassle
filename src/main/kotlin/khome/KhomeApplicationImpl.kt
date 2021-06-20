@@ -1,5 +1,6 @@
 package khome
 
+import co.touchlab.kermit.Kermit
 import io.ktor.util.KtorExperimentalAPI
 import khome.communicating.CommandDataWithEntityId
 import khome.communicating.HassApiClient
@@ -36,7 +37,6 @@ import khome.values.Service
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import mu.KotlinLogging
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 import kotlin.collections.set
@@ -57,7 +57,7 @@ internal typealias ApplicationReadyCallbacks = MutableList<KhomeApplication.() -
 )
 internal class KhomeApplicationImpl : KhomeApplication {
 
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
     private val hassClient: HassClient by KoinContainer.inject()
     private val hassApi: HassApiClient by KoinContainer.inject()
     private val mapper: ObjectMapperInterface by KoinContainer.inject()
@@ -72,15 +72,15 @@ internal class KhomeApplicationImpl : KhomeApplication {
     private val applicationReadyCallbacks: ApplicationReadyCallbacks = mutableListOf()
 
     var observerExceptionHandlerFunction: (Throwable) -> Unit = { exception ->
-        logger.error(exception) { "Caught exception in observer" }
+        logger.e(exception) { "Caught exception in observer" }
     }
 
     var eventHandlerExceptionHandlerFunction: (Throwable) -> Unit = { exception ->
-        logger.error(exception) { "Caught exception in event handler" }
+        logger.e(exception) { "Caught exception in event handler" }
     }
 
     var errorResponseHandlerFunction: (ErrorResponseData) -> Unit = { errorResponseData ->
-        logger.error { "CommandId: ${errorResponseData.commandId} - errorCode: ${errorResponseData.errorResponse.code} | message: ${errorResponseData.errorResponse.message}" }
+        logger.e { "CommandId: ${errorResponseData.commandId} - errorCode: ${errorResponseData.errorResponse.code} | message: ${errorResponseData.errorResponse.message}" }
     }
 
     override fun <S : State<*>, A : Attributes> Sensor(
@@ -142,14 +142,14 @@ internal class KhomeApplicationImpl : KhomeApplication {
     private fun registerSensor(entityId: EntityId, sensor: SensorImpl<*, *>) {
         check(!sensorsByApiName.containsKey(entityId)) { "Sensor with id: $entityId already exists." }
         sensorsByApiName[entityId] = sensor
-        logger.info { "Registered Sensor with id: $entityId" }
+        logger.i { "Registered Sensor with id: $entityId" }
     }
 
     private fun registerActuator(entityId: EntityId, actuator: ActuatorImpl<*, *>) {
         check(!actuatorsByApiName.containsKey(entityId)) { "Actuator with id: $entityId already exists." }
         actuatorsByApiName[entityId] = actuator
         actuatorsByEntity[actuator] = entityId
-        logger.info { "Registered Actuator with id: $entityId" }
+        logger.i { "Registered Actuator with id: $entityId" }
     }
 
     private fun <ED> registerEventSubscription(eventType: EventType, eventDataType: KClass<*>) =

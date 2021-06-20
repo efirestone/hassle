@@ -2,7 +2,7 @@
 
 package khome.core.koin
 
-import mu.KotlinLogging
+import co.touchlab.kermit.Kermit
 import org.koin.core.KoinApplication
 import org.koin.core.module.Module
 import org.koin.dsl.koinApplication
@@ -17,7 +17,7 @@ import org.koin.fileProperties
 internal object KhomeKoinContext {
 
     var application: KoinApplication? = null
-    private val logger = KotlinLogging.logger {}
+    private val logger = Kermit()
 
     fun startKoinApplication() {
         application = koinApplication {
@@ -25,7 +25,7 @@ internal object KhomeKoinContext {
             runCatching {
                 fileProperties("/khome.properties")
             }.onFailure {
-                logger.warn { "No khome.properties file found" }
+                logger.w { "No khome.properties file found" }
             }
         }
     }

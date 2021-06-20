@@ -1,5 +1,6 @@
 package khome.core.boot
 
+import co.touchlab.kermit.Kermit
 import com.google.gson.JsonElement
 import com.google.gson.JsonNull
 import io.ktor.http.cio.websocket.Frame
@@ -25,7 +26,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.coroutineScope
-import mu.KotlinLogging
 
 interface EventResponseConsumer {
     suspend fun consumeBlocking()
@@ -42,7 +42,7 @@ internal class EventResponseConsumerImpl(
     private val eventHandlerByEventType: EventHandlerByEventType,
     private val errorResponseHandler: (ErrorResponseData) -> Unit
 ) : EventResponseConsumer {
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
 
     @ExperimentalStdlibApi
     override suspend fun consumeBlocking() = coroutineScope {
@@ -74,7 +74,7 @@ internal class EventResponseConsumerImpl(
         mapFrameTextToResponse<StateChangedResponse>(frameText)
             .takeIf { it.event.eventType == "state_changed" }
             ?.let { stateChangedResponse ->
-                logger.debug { "State change response: $stateChangedResponse" }
+                logger.d { "State change response: $stateChangedResponse" }
                 stateChangedResponse.event.data.newState.getOrNull()?.let { newState ->
                     sensorStateUpdater(
                         flattenStateAttributes(newState.asJsonObject),
@@ -91,10 +91,10 @@ internal class EventResponseConsumerImpl(
         mapFrameTextToResponse<EventResponse>(frameText)
             .takeIf { EventType.from(it.event.eventType) in eventHandlerByEventType }
             ?.let { eventResponse ->
-                logger.debug { "Event response: $eventResponse" }
+                logger.d { "Event response: $eventResponse" }
                 eventHandlerByEventType[EventType.from(eventResponse.event.eventType)]
                     ?.invokeEventHandler(eventResponse.event.data)
-                    ?: logger.warn { "No event found for event type: ${eventResponse.event.eventType}" }
+                    ?: logger.w { "No event found for event type: ${eventResponse.event.eventType}" }
             }
     }
 
@@ -116,7 +116,7 @@ internal class EventResponseConsumerImpl(
             }
 
     private fun logSuccessResult(resultResponse: ResultResponse) =
-        logger.info { "Result-Id: ${resultResponse.id} | Success: ${resultResponse.success}" }
+        logger.i { "Result-Id: ${resultResponse.id} | Success: ${resultResponse.success}" }
 }
 
 private fun JsonElement.getOrNull(): JsonElement? = if (this is JsonNull) null else this

@@ -1,20 +1,20 @@
 package khome.core.boot.servicestore
 
+import co.touchlab.kermit.Kermit
 import khome.KhomeSession
 import khome.communicating.CALLER_ID
-import mu.KotlinLogging
 
 internal class ServiceStoreInitializerImpl(
     private val khomeSession: KhomeSession,
     private val serviceStore: ServiceStoreInterface
 ) : ServiceStoreInitializer {
-    private val logger = KotlinLogging.logger { }
+    private val logger = Kermit()
     private val servicesRequest =
         ServicesRequest(CALLER_ID.incrementAndGet())
 
     override suspend fun initialize() {
         sendServicesRequest()
-        logger.info { "Requested registered homeassistant services" }
+        logger.i { "Requested registered homeassistant services" }
         storeServices(consumeServicesResponse())
     }
 
@@ -27,19 +27,19 @@ internal class ServiceStoreInitializerImpl(
     private fun storeServices(servicesResponse: ServicesResponse) =
         servicesResponse.let { response ->
             when (response.success) {
-                false -> logger.error { "Could not fetch services from homeassistant" }
+                false -> logger.e { "Could not fetch services from homeassistant" }
                 true -> {
                     response.result.forEach { (domain, services) ->
                         val serviceList = mutableListOf<String>()
                         services.forEach { (name, _) ->
                             serviceList += name
-                            logger.debug { "Fetched service: $name in domain: $domain from homeassistant" }
+                            logger.d { "Fetched service: $name in domain: $domain from homeassistant" }
                         }
                         serviceStore[domain] = serviceList
                     }
                 }
             }
-            logger.info { "Stored homeassistant services in local service store" }
+            logger.i { "Stored homeassistant services in local service store" }
         }
 }
 
