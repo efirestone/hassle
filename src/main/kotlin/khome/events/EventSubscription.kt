@@ -1,10 +1,10 @@
 package khome.events
 
-import com.google.gson.JsonElement
 import khome.KhomeApplicationImpl
 import khome.core.mapping.ObjectMapperInterface
 import khome.errorHandling.EventHandlerExceptionHandler
 import khome.observability.Switchable
+import kotlinx.serialization.json.JsonElement
 import kotlin.reflect.KClass
 
 internal class EventSubscription<ED>(
@@ -22,7 +22,7 @@ internal class EventSubscription<ED>(
 
     @Suppress("UNCHECKED_CAST")
     fun invokeEventHandler(eventData: JsonElement) {
-        val mappedEventData: ED = mapper.fromJson(eventData, eventDataType.java) as ED
+        val mappedEventData: ED = mapper.fromJson(eventData, eventDataType) as ED
         eventHandler.forEach { handler -> handler.handle(mappedEventData) }
     }
 }

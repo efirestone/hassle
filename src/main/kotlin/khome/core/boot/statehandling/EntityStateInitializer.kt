@@ -1,7 +1,6 @@
 package khome.core.boot.statehandling
 
 import co.touchlab.kermit.Kermit
-import com.google.gson.JsonObject
 import khome.KhomeSession
 import khome.communicating.CALLER_ID
 import khome.core.koin.KhomeComponent
@@ -9,6 +8,8 @@ import khome.entities.ActuatorStateUpdater
 import khome.entities.EntityRegistrationValidation
 import khome.entities.SensorStateUpdater
 import khome.values.EntityId
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonObject
 
 interface EntityStateInitializer {
     suspend fun initialize()
@@ -42,7 +43,7 @@ internal class EntityStateInitializerImpl(
     private fun setInitialEntityState(stateResponse: StatesResponse) {
         if (stateResponse.success) {
             val statesByEntityId = stateResponse.result.associateBy { state ->
-                khomeSession.objectMapper.fromJson(state["entity_id"], EntityId::class.java)
+                khomeSession.objectMapper.fromJson(state["entity_id"]!!, EntityId::class)
             }
             entityRegistrationValidation.validate(statesByEntityId.map { it.key })
             for (state in statesByEntityId) {
@@ -54,16 +55,13 @@ internal class EntityStateInitializerImpl(
 }
 
 internal fun flattenStateAttributes(stateResponse: JsonObject): JsonObject {
-    val attributesAsJsonObject: JsonObject = stateResponse.getAsJsonObject("attributes")
-    val tempStateAsJsonObject = JsonObject()
-
-    tempStateAsJsonObject.add("value", stateResponse["state"])
-    tempStateAsJsonObject.add("last_updated", stateResponse["last_updated"])
-    tempStateAsJsonObject.add("last_changed", stateResponse["last_changed"])
-    tempStateAsJsonObject.add("user_id", stateResponse["context"].asJsonObject["user_id"])
-    for (attribute: String in attributesAsJsonObject.keySet()) {
-        tempStateAsJsonObject.add(attribute, attributesAsJsonObject[attribute])
-    }
-
-    return tempStateAsJsonObject
+    val attributesAsJsonObject: JsonObject = stateResponse["attributes"]!!.jsonObject
+    return JsonObject(
+        mapOf(
+            "value" to stateResponse["state"]!!,
+            "last_updated" to stateResponse["last_updated"]!!,
+            "last_changed" to stateResponse["last_changed"]!!,
+            "user_id" to stateResponse["context"]!!.jsonObject["user_id"]!!
+        ).plus(attributesAsJsonObject.toMap())
+    )
 }

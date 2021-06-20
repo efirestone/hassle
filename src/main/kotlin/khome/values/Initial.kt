@@ -2,19 +2,22 @@
 
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
+@Serializable(Initial.Companion::class)
 data class Initial private constructor(val value: Double) {
     override fun toString(): String = value.toString()
 
-    companion object : KhomeTypeAdapter<Initial> {
-        override fun <P> from(value: P): Initial {
-            return Initial((value as Double))
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: Initial): P {
-            return value.value as P
-        }
+    companion object : KSerializer<Initial> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("Initial", PrimitiveKind.DOUBLE)
+        override fun deserialize(decoder: Decoder) = Initial(decoder.decodeDouble())
+        override fun serialize(encoder: Encoder, value: Initial) = encoder.encodeDouble(value.value)
     }
 }

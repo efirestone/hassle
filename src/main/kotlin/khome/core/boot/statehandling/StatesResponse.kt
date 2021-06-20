@@ -1,7 +1,7 @@
 package khome.core.boot.statehandling
 
-import com.google.gson.JsonObject
 import khome.core.MessageInterface
+import kotlinx.serialization.json.JsonObject
 
 class StatesResponse(
     val id: Int,

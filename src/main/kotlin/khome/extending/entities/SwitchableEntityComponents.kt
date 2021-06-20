@@ -1,6 +1,5 @@
 package khome.extending.entities
 
-import com.google.gson.annotations.SerializedName
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.EntityIdOnlyServiceData
 import khome.entities.Attributes
@@ -9,24 +8,33 @@ import khome.values.FriendlyName
 import khome.values.UserId
 import khome.values.service
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SwitchableState(override val value: SwitchableValue) : State<SwitchableValue>
 
+@Serializable
 enum class SwitchableValue {
-    @SerializedName("on")
+    @SerialName("on")
     ON,
 
-    @SerializedName("off")
+    @SerialName("off")
     OFF,
 
-    @SerializedName("unavailable")
+    @SerialName("unavailable")
     UNAVAILABLE
 }
 
+@Serializable
 data class DefaultAttributes(
+    @SerialName("user_id")
     override val userId: UserId?,
+    @SerialName("friendly_name")
     override val friendlyName: FriendlyName,
+    @SerialName("last_changed")
     override val lastChanged: Instant,
+    @SerialName("last_updated")
     override val lastUpdated: Instant
 ) : Attributes
 

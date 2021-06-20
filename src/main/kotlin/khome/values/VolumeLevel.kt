@@ -1,29 +1,34 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class VolumeLevel private constructor(val value: Double) {
+@Serializable
+data class VolumeLevel(val value: Double) {
     override fun toString(): String = value.toString()
 
-    companion object : KhomeTypeAdapter<VolumeLevel> {
-        override fun <P> from(value: P): VolumeLevel {
-            val volume = value as Double
+    companion object : KSerializer<VolumeLevel> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("VolumeLevel", PrimitiveKind.DOUBLE)
+        override fun deserialize(decoder: Decoder): VolumeLevel {
+            val volume = decoder.decodeDouble()
             check(volume >= 0) { "Volume can not be a negative value" }
             check(volume <= 100) { "Volume can not be greater than 100(percent)" }
             return VolumeLevel(volume)
         }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: VolumeLevel): P {
-            return (value.value / 100) as P
+        override fun serialize(encoder: Encoder, value: VolumeLevel) {
+            return encoder.encodeDouble(value.value / 100)
         }
     }
 }
 
 val Double.pctVolume
-    get() = VolumeLevel.from(this)
+    get() = VolumeLevel(this)
 
 val Int.pctVolume
-    get() = VolumeLevel.from(this.toDouble())
+    get() = VolumeLevel(this.toDouble())

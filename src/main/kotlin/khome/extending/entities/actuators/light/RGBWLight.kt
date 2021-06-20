@@ -117,15 +117,15 @@ fun RGBWLight.setBrightness(level: Brightness) {
 }
 
 fun RGBWLight.setRGB(red: Int, green: Int, blue: Int) {
-    desiredState = RGBWLightState(SwitchableValue.ON, rgbColor = RGBColor.from(red, green, blue))
+    desiredState = RGBWLightState(SwitchableValue.ON, rgbColor = RGBColor(red, green, blue))
 }
 
 fun RGBWLight.setHS(hue: Double, saturation: Double) {
-    desiredState = RGBWLightState(SwitchableValue.ON, hsColor = HSColor.from(hue, saturation))
+    desiredState = RGBWLightState(SwitchableValue.ON, hsColor = HSColor(hue, saturation))
 }
 
 fun RGBWLight.setXY(x: Double, y: Double) {
-    desiredState = RGBWLightState(SwitchableValue.ON, xyColor = XYColor.from(x, y))
+    desiredState = RGBWLightState(SwitchableValue.ON, xyColor = XYColor(x, y))
 }
 
 fun RGBWLight.setColorTemperature(temperature: ColorTemperature) {

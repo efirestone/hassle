@@ -1,23 +1,24 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class Mode private constructor(val value: String) {
+@Serializable(Mode.Companion::class)
+data class Mode(val value: String) {
     override fun toString(): String = value
 
-    companion object : KhomeTypeAdapter<Mode> {
-        override fun <P> from(value: P): Mode {
-            return Mode(value as String)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: Mode): P {
-            return value.value as P
-        }
+    companion object : KSerializer<Mode> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("Mode", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = Mode(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: Mode) = encoder.encodeString(value.value)
     }
 }
 
 val String.mode
-    get() = Mode.from(this)
+    get() = Mode(this)

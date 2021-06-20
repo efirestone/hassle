@@ -1,23 +1,48 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.encoding.decodeStructure
+import kotlinx.serialization.encoding.encodeStructure
 
-data class RGBColor private constructor(val red: Int, val green: Int, val blue: Int) {
-    companion object : KhomeTypeAdapter<RGBColor> {
-        fun from(red: Int, green: Int, blue: Int) =
-            from(listOf(red, green, blue))
+@Serializable(RGBColor.Companion::class)
+data class RGBColor(val red: Int, val green: Int, val blue: Int) {
+    companion object : KSerializer<RGBColor> {
+        private val redDescriptor: SerialDescriptor = PrimitiveSerialDescriptor("red", PrimitiveKind.INT)
+        private val greenDescriptor: SerialDescriptor = PrimitiveSerialDescriptor("green", PrimitiveKind.INT)
+        private val blueDescriptor: SerialDescriptor = PrimitiveSerialDescriptor("blue", PrimitiveKind.INT)
 
-        override fun <P> from(value: P): RGBColor {
-            val integers = value as List<Int>
-            check(integers.size == 3) { "To many values for RGB creation. List has size ${integers.size}. Allowed are exactly 3 values." }
-            return RGBColor(red = integers[0], green = integers[1], blue = integers[2])
+        @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
+        override val descriptor: SerialDescriptor = buildSerialDescriptor(
+            "RGBColor",
+            StructureKind.LIST,
+            redDescriptor,
+            greenDescriptor,
+            blueDescriptor
+        )
+
+        override fun deserialize(decoder: Decoder): RGBColor {
+            decoder.decodeStructure(ListSerializer(Int.serializer()).descriptor) {
+                val red = decodeIntElement(redDescriptor, 0)
+                val green = decodeIntElement(greenDescriptor, 1)
+                val blue = decodeIntElement(blueDescriptor, 2)
+                return RGBColor(red, green, blue)
+            }
         }
 
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: RGBColor): P {
-            return intArrayOf(value.red, value.green, value.blue) as P
+        override fun serialize(encoder: Encoder, value: RGBColor) {
+            encoder.encodeStructure(ListSerializer(Int.serializer()).descriptor) {
+                encodeIntElement(redDescriptor, 0, value.red)
+                encodeIntElement(greenDescriptor, 1, value.green)
+                encodeIntElement(blueDescriptor, 2, value.blue)
+            }
         }
     }
 }

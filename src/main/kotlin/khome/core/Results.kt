@@ -1,9 +1,10 @@
 package khome.core
 
-import com.google.gson.JsonElement
-import com.google.gson.annotations.SerializedName
 import khome.values.EntityId
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 internal data class ResolverResponse(val id: Int, val type: ResponseType) : MessageInterface
 internal data class StateChangedResponse(val id: Int, val type: ResponseType, val event: StateChangedEventData) :
@@ -49,10 +50,11 @@ internal data class ResultResponse(
     val result: Any?
 ) : MessageInterface
 
+@Serializable
 internal enum class ResponseType {
-    @SerializedName("event")
+    @SerialName("event")
     EVENT,
 
-    @SerializedName("result")
+    @SerialName("result")
     RESULT
 }

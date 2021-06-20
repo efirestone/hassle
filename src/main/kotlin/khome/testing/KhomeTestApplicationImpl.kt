@@ -1,7 +1,6 @@
 package khome.testing
 
 import co.touchlab.kermit.Kermit
-import com.google.gson.JsonObject
 import khome.ActuatorsByApiName
 import khome.ActuatorsByEntity
 import khome.HassAPiCommandHistory
@@ -15,6 +14,8 @@ import khome.entities.ActuatorStateUpdater
 import khome.entities.SensorStateUpdater
 import khome.entities.devices.Actuator
 import khome.values.EntityId
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import org.koin.dsl.module
 
 internal class KhomeTestApplicationImpl(
@@ -38,7 +39,7 @@ internal class KhomeTestApplicationImpl(
     override fun setStateAndAttributes(json: String) {
         val stateJson = mapper.fromJson<JsonObject>(json)
         val entityIdFromState = checkNotNull(stateJson["entity_id"])
-        val entityId = EntityId.from(entityIdFromState.asString)
+        val entityId = EntityId.fromString(entityIdFromState.jsonPrimitive.content)
 
         actuatorsByApiName[entityId]?.also {
             ActuatorStateUpdater(actuatorsByApiName).invoke(flattenStateAttributes(stateJson), entityId)

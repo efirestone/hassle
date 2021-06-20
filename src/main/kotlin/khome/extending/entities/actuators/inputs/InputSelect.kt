@@ -16,6 +16,8 @@ import khome.values.UserId
 import khome.values.domain
 import khome.values.service
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 typealias InputSelect = Actuator<InputSelectState, InputSelectAttributes>
 
@@ -33,15 +35,21 @@ fun KhomeApplication.InputSelect(objectId: ObjectId): InputSelect =
         }
     )
 
+@Serializable
 data class InputSelectAttributes(
     val options: List<Option>,
     val editable: Boolean,
+    @SerialName("user_id")
     override val userId: UserId?,
-    override val friendlyName: FriendlyName?,
+    @SerialName("friendly_name")
+    override val friendlyName: FriendlyName? = null,
+    @SerialName("last_changed")
     override val lastChanged: Instant,
+    @SerialName("last_updated")
     override val lastUpdated: Instant
 ) : Attributes
 
 data class InputSelectServiceData(val option: Option) : DesiredServiceData()
 
+@Serializable
 data class InputSelectState(override val value: Option) : State<Option>

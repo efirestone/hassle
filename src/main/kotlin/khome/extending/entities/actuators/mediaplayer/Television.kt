@@ -21,6 +21,8 @@ import khome.values.UserId
 import khome.values.VolumeLevel
 import khome.values.service
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 typealias Television = MediaPlayer<TelevisionState, TelevisionAttributes>
 
@@ -70,20 +72,31 @@ fun KhomeApplication.Television(objectId: ObjectId): Television =
         }
     )
 
+@Serializable
 data class TelevisionState(
     override val value: SwitchableValue,
+    @SerialName("volume_level")
     val volumeLevel: VolumeLevel? = null,
+    @SerialName("is_volume_muted")
     val isVolumeMuted: Mute? = null,
     val source: MediaSource? = null
 ) : State<SwitchableValue>
 
+@Serializable
 data class TelevisionAttributes(
+    @SerialName("media_content_id")
     val mediaContentId: MediaContentId,
+    @SerialName("media_title")
     val mediaTitle: MediaTitle,
+    @SerialName("media_content_type")
     val mediaContentType: MediaContentType,
+    @SerialName("user_id")
     override val userId: UserId?,
+    @SerialName("friendly_name")
     override val friendlyName: FriendlyName,
+    @SerialName("last_changed")
     override val lastChanged: Instant,
+    @SerialName("last_updated")
     override val lastUpdated: Instant
 ) : Attributes
 

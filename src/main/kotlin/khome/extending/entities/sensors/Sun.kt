@@ -1,6 +1,5 @@
 package khome.extending.entities.sensors
 
-import com.google.gson.annotations.SerializedName
 import khome.KhomeApplication
 import khome.entities.Attributes
 import khome.entities.State
@@ -16,6 +15,8 @@ import khome.values.UserId
 import khome.values.domain
 import khome.values.objectId
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 typealias Sun = Sensor<SunState, SunAttributes>
 
@@ -23,29 +24,42 @@ typealias Sun = Sensor<SunState, SunAttributes>
 fun KhomeApplication.Sun(): Sun =
     Sensor(EntityId.fromPair("sun".domain to "sun".objectId))
 
+@Serializable
 data class SunState(override val value: SunValue) : State<SunValue>
 
+@Serializable
 enum class SunValue {
-    @SerializedName("above_horizon")
+    @SerialName("above_horizon")
     ABOVE_HORIZON,
 
-    @SerializedName("below_horizon")
+    @SerialName("below_horizon")
     BELOW_HORIZON
 }
 
+@Serializable
 data class SunAttributes(
-    val next_dawn: Instant,
-    val next_dusk: Instant,
-    val next_midnight: Instant,
-    val next_noon: Instant,
-    val next_rising: Instant,
-    val next_setting: Instant,
+    @SerialName("next_dawn")
+    val nextDawn: Instant,
+    @SerialName("next_dusk")
+    val nextDusk: Instant,
+    @SerialName("next_midnight")
+    val nextMidnight: Instant,
+    @SerialName("next_noon")
+    val nextNoon: Instant,
+    @SerialName("next_rising")
+    val nextRising: Instant,
+    @SerialName("next_setting")
+    val nextSetting: Instant,
     val elevation: Elevation,
     val azimuth: Azimuth,
     val rising: Rising,
+    @SerialName("user_id")
     override val userId: UserId?,
+    @SerialName("last_changed")
     override val lastChanged: Instant,
+    @SerialName("last_updated")
     override val lastUpdated: Instant,
+    @SerialName("friendly_name")
     override val friendlyName: FriendlyName
 ) : Attributes
 

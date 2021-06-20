@@ -1,26 +1,28 @@
 package khome.values
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class MediaContentType {
-    @SerializedName("music")
+    @SerialName("music")
     MUSIC,
 
-    @SerializedName("tvshow")
+    @SerialName("tvshow")
     TVSHOW,
 
-    @SerializedName("movie")
+    @SerialName("movie")
     MOVIE,
 
-    @SerializedName("video")
+    @SerialName("video")
     VIDEO,
 
-    @SerializedName("episode")
+    @SerialName("episode")
     EPISODE,
 
-    @SerializedName("channel")
+    @SerialName("channel")
     CHANNEL,
 
-    @SerializedName("playlist")
+    @SerialName("playlist")
     PLAYLIST
 }

@@ -1,26 +1,27 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class EventType private constructor(val value: String) {
+@Serializable(EventType.Companion::class)
+data class EventType(val value: String) {
     override fun toString(): String = value
 
-    companion object : KhomeTypeAdapter<EventType> {
-        override fun <P> from(value: P): EventType {
-            return EventType(value as String)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: EventType): P {
-            return value.value as P
-        }
+    companion object : KSerializer<EventType> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("EventType", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = EventType(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: EventType) = encoder.encodeString(value.value)
     }
 }
 
 val String.eventType
-    get() = EventType.from(this)
+    get() = EventType(this)
 
 val Enum<*>.eventType
-    get() = EventType.from(this.name)
+    get() = EventType(this.name)

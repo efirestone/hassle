@@ -1,7 +1,6 @@
 package khome.communicating
 
 import co.touchlab.kermit.Kermit
-import com.google.gson.annotations.SerializedName
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.utils.EmptyContent
 import khome.KhomeSession
@@ -20,21 +19,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import java.util.concurrent.atomic.AtomicInteger
 
 internal val CALLER_ID = AtomicInteger(0)
 
+@Serializable
 internal enum class CommandType {
-    @SerializedName("call_service")
+    @SerialName("call_service")
     CALL_SERVICE,
 
-    @SerializedName("subscribe_events")
+    @SerialName("subscribe_events")
     SUBSCRIBE_EVENTS,
 
-    @SerializedName("get_services")
+    @SerialName("get_services")
     GET_SERVICES,
 
-    @SerializedName("get_states")
+    @SerialName("get_states")
     GET_STATES
 }
 
@@ -47,6 +49,7 @@ internal interface HassApiCommand {
     var id: Int?
 }
 
+@Serializable
 internal class SubscribeEventCommand(private val eventType: EventType) : HassApiCommand {
     override val type: CommandType = SUBSCRIBE_EVENTS
     override var id: Int? = null

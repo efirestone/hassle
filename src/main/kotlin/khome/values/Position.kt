@@ -1,23 +1,24 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class Position private constructor(val value: Int) {
+@Serializable(Position.Companion::class)
+data class Position(val value: Int) {
     override fun toString(): String = value.toString()
 
-    companion object : KhomeTypeAdapter<Position> {
-        override fun <P> from(value: P): Position {
-            return Position((value as Int))
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: Position): P {
-            return value.value as P
-        }
+    companion object : KSerializer<Position> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("Position", PrimitiveKind.INT)
+        override fun deserialize(decoder: Decoder) = Position(decoder.decodeInt())
+        override fun serialize(encoder: Encoder, value: Position) = encoder.encodeInt(value.value)
     }
 }
 
 val Int.pctPosition
-    get() = Position.from(this)
+    get() = Position(this)
