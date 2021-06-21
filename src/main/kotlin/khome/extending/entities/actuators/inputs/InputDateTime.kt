@@ -15,7 +15,7 @@ import khome.values.UserId
 import khome.values.domain
 import khome.values.service
 import kotlinx.datetime.Instant
-import java.time.LocalDateTime
+import kotlinx.datetime.LocalDateTime
 
 typealias InputDateTime = Actuator<InputDateTimeState, InputDateTimeAttributes>
 
