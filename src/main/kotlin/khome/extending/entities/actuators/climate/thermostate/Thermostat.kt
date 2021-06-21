@@ -21,7 +21,7 @@ import khome.values.UserId
 import khome.values.hvacMode
 import khome.values.presetMode
 import khome.values.service
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias Thermostat = Actuator<ThermostatState, ThermostatAttributes>
 

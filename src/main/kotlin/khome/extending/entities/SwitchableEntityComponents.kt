@@ -8,7 +8,7 @@ import khome.entities.State
 import khome.values.FriendlyName
 import khome.values.UserId
 import khome.values.service
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 data class SwitchableState(override val value: SwitchableValue) : State<SwitchableValue>
 

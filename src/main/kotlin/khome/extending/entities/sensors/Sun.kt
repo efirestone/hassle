@@ -15,7 +15,7 @@ import khome.values.Rising
 import khome.values.UserId
 import khome.values.domain
 import khome.values.objectId
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias Sun = Sensor<SunState, SunAttributes>
 

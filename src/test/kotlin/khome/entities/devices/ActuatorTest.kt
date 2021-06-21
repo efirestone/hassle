@@ -18,14 +18,13 @@ import khome.khomeApplication
 import khome.values.FriendlyName
 import khome.values.UserId
 import khome.values.service
+import kotlinx.datetime.Instant
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertThrows
 import org.koin.core.component.get
-import java.time.Instant
-import java.time.OffsetDateTime
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class ActuatorTest {
@@ -102,10 +101,10 @@ internal class ActuatorTest {
         assertThat(sut.attributes.doubleAttribute).isEqualTo(30.0)
         assertThat(sut.attributes.friendlyName).isEqualTo(FriendlyName.from("Test Entity"))
         assertThat(sut.attributes.lastChanged).isEqualTo(
-            OffsetDateTime.parse("2016-11-26T01:37:24.265390+00:00").toInstant()
+            Instant.parse("2016-11-26T01:37:24.265390+00:00")
         )
         assertThat(sut.attributes.lastUpdated).isEqualTo(
-            OffsetDateTime.parse("2016-11-26T01:37:24.265390+00:00").toInstant()
+            Instant.parse("2016-11-26T01:37:24.265390+00:00")
         )
     }
 

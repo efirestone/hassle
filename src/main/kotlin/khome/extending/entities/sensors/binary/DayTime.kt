@@ -7,7 +7,7 @@ import khome.extending.entities.SwitchableState
 import khome.values.FriendlyName
 import khome.values.ObjectId
 import khome.values.UserId
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias DayTime = Sensor<SwitchableState, DayTimeAttributes>
 

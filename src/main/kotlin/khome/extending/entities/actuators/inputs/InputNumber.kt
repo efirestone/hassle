@@ -18,7 +18,7 @@ import khome.values.Step
 import khome.values.UserId
 import khome.values.domain
 import khome.values.service
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias InputNumber = Actuator<InputNumberState, InputNumberAttributes>
 
