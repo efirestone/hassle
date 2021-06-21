@@ -94,10 +94,10 @@ import khome.values.XYColor
 import khome.values.Zone
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.datetime.Instant
 import org.koin.core.component.inject
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime

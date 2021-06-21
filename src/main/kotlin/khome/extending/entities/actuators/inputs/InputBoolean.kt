@@ -13,7 +13,7 @@ import khome.values.Icon
 import khome.values.ObjectId
 import khome.values.UserId
 import khome.values.domain
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias InputBoolean = Actuator<SwitchableState, InputBooleanAttributes>
 

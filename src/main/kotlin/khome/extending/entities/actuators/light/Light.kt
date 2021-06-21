@@ -14,7 +14,7 @@ import khome.values.FriendlyName
 import khome.values.ObjectId
 import khome.values.UserId
 import khome.values.domain
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 @Suppress("FunctionName")
 inline fun <reified S : State<*>, reified A : Attributes> KhomeApplication.Light(

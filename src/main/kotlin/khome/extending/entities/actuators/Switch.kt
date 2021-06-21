@@ -13,7 +13,7 @@ import khome.values.ObjectId
 import khome.values.PowerConsumption
 import khome.values.UserId
 import khome.values.domain
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias Switch<reified A> = Actuator<SwitchableState, A>
 typealias PowerSwitch = Switch<PowerSwitchAttributes>

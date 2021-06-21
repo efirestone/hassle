@@ -33,7 +33,7 @@ import khome.values.ObjectId
 import khome.values.UserId
 import khome.values.VolumeLevel
 import khome.values.service
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias MediaReceiver = MediaPlayer<MediaReceiverState, MediaReceiverAttributes>
 

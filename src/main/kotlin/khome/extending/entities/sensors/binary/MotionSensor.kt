@@ -10,7 +10,7 @@ import khome.observability.Switchable
 import khome.values.FriendlyName
 import khome.values.ObjectId
 import khome.values.UserId
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias MotionSensor = Sensor<SwitchableState, MotionSensorAttributes>
 

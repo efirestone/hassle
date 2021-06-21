@@ -8,7 +8,7 @@ import khome.values.FriendlyName
 import khome.values.ObjectId
 import khome.values.UnitOfMeasurement
 import khome.values.UserId
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias LuminanceSensor = Sensor<LuminanceState, LuminanceAttributes>
 

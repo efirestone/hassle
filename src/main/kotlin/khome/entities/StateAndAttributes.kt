@@ -2,7 +2,7 @@ package khome.entities
 
 import khome.values.FriendlyName
 import khome.values.UserId
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 /**
  * The State interface

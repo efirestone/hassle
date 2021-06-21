@@ -16,11 +16,11 @@ import khome.values.UserId
 import khome.values.domain
 import khome.values.objectId
 import khome.values.service
+import kotlinx.datetime.Instant
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import java.time.Instant
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class KhomeApplicationTest {

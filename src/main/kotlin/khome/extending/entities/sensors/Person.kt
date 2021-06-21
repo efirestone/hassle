@@ -14,7 +14,7 @@ import khome.values.UserId
 import khome.values.Zone
 import khome.values.domain
 import khome.values.zone
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 typealias Person = Sensor<PersonState, PersonAttributes>
 
