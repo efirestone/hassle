@@ -1,193 +1,274 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>Attributes - khome</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">khome</a>&nbsp;/&nbsp;<a href="../index.html">khome.entities</a>&nbsp;/&nbsp;<a href="./index.html">Attributes</a><br/>
-<br/>
-<h1>Attributes</h1>
-<code><span class="keyword">interface </span><span class="identifier">Attributes</span></code>
-<p>The Attributes interface</p>
-<p>Defines the minimum structure of a valid attributes object.</p>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="friendly-name.html">friendlyName</a></h4>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">friendlyName</span><span class="symbol">: </span><a href="../../khome.values/-friendly-name/index.html"><span class="identifier">FriendlyName</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="last-changed.html">lastChanged</a></h4>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">lastChanged</span><span class="symbol">: </span><span class="identifier">Instant</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="last-updated.html">lastUpdated</a></h4>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">lastUpdated</span><span class="symbol">: </span><span class="identifier">Instant</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="user-id.html">userId</a></h4>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">userId</span><span class="symbol">: </span><a href="../../khome.values/-user-id/index.html"><span class="identifier">UserId</span></a><span class="symbol">?</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Inheritors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors.binary/-contact-attributes/index.html">ContactAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">ContactAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors.binary/-day-time-attributes/index.html">DayTimeAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">DayTimeAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities/-default-attributes/index.html">DefaultAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">DefaultAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-boolean-attributes/index.html">InputBooleanAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InputBooleanAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-date-attributes/index.html">InputDateAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InputDateAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-date-time-attributes/index.html">InputDateTimeAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InputDateTimeAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-number-attributes/index.html">InputNumberAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InputNumberAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-select-attributes/index.html">InputSelectAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InputSelectAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-text-attributes/index.html">InputTextAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InputTextAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-time-attributes/index.html">InputTimeAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InputTimeAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.light/-light-attributes/index.html">LightAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">LightAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors/-luminance-attributes/index.html">LuminanceAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">LuminanceAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.mediaplayer/-media-receiver-attributes/index.html">MediaReceiverAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MediaReceiverAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors.binary/-motion-sensor-attributes/index.html">MotionSensorAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MotionSensorAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors/-person-attributes/index.html">PersonAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PersonAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators/-positionable-cover-attributes/index.html">PositionableCoverAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PositionableCoverAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators/-power-switch-attributes/index.html">PowerSwitchAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PowerSwitchAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors/-sun-attributes/index.html">SunAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SunAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.mediaplayer/-television-attributes/index.html">TelevisionAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">TelevisionAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.climate.thermostate/-thermostat-attributes/index.html">ThermostatAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">ThermostatAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Attributes</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="khome::khome.entities/Attributes///PointingToDeclaration//769193423">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">khome</a>/<a href="../index.html">khome.entities</a>/<a href="index.html">Attributes</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Attributes</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">interface <a href="index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The Attributes interface</p><p class="paragraph">Defines the minimum structure of a valid attributes object.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-610531463%2FProperties%2F769193423" anchor-label="friendlyName" id="-610531463%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="friendly-name.html">friendlyName</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-610531463%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-610531463%2FProperties%2F769193423" anchor-label="friendlyName" id="-610531463%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">abstract val <a href="friendly-name.html">friendlyName</a>: <a href="../../khome.values/-friendly-name/index.html">FriendlyName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="939261741%2FProperties%2F769193423" anchor-label="lastChanged" id="939261741%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="last-changed.html">lastChanged</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="939261741%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="939261741%2FProperties%2F769193423" anchor-label="lastChanged" id="939261741%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">abstract val <a href="last-changed.html">lastChanged</a>: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1774483706%2FProperties%2F769193423" anchor-label="lastUpdated" id="-1774483706%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="last-updated.html">lastUpdated</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1774483706%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-1774483706%2FProperties%2F769193423" anchor-label="lastUpdated" id="-1774483706%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">abstract val <a href="last-updated.html">lastUpdated</a>: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1657259657%2FProperties%2F769193423" anchor-label="userId" id="1657259657%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="user-id.html">userId</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1657259657%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1657259657%2FProperties%2F769193423" anchor-label="userId" id="1657259657%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">abstract val <a href="user-id.html">userId</a>: <a href="../../khome.values/-user-id/index.html">UserId</a>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Inheritors</h2>
+              <div class="table" data-togglable="Inheritors"><a data-name="1309642333%2FInheritors%2F769193423" anchor-label="DefaultAttributes" id="1309642333%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities/-default-attributes/index.html">DefaultAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1309642333%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-1836450978%2FInheritors%2F769193423" anchor-label="PositionableCoverAttributes" id="-1836450978%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators/-positionable-cover-attributes/index.html">PositionableCoverAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1836450978%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1109201433%2FInheritors%2F769193423" anchor-label="PowerSwitchAttributes" id="1109201433%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators/-power-switch-attributes/index.html">PowerSwitchAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1109201433%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1668096802%2FInheritors%2F769193423" anchor-label="ThermostatAttributes" id="1668096802%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.climate.thermostate/-thermostat-attributes/index.html">ThermostatAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1668096802%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-801590803%2FInheritors%2F769193423" anchor-label="InputBooleanAttributes" id="-801590803%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-boolean-attributes/index.html">InputBooleanAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-801590803%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-1440225903%2FInheritors%2F769193423" anchor-label="InputDateAttributes" id="-1440225903%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-date-attributes/index.html">InputDateAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1440225903%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-638436348%2FInheritors%2F769193423" anchor-label="InputDateTimeAttributes" id="-638436348%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-date-time-attributes/index.html">InputDateTimeAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-638436348%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-294717738%2FInheritors%2F769193423" anchor-label="InputNumberAttributes" id="-294717738%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-number-attributes/index.html">InputNumberAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-294717738%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1473669187%2FInheritors%2F769193423" anchor-label="InputSelectAttributes" id="1473669187%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-select-attributes/index.html">InputSelectAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1473669187%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-573216846%2FInheritors%2F769193423" anchor-label="InputTextAttributes" id="-573216846%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-text-attributes/index.html">InputTextAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-573216846%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-1154124270%2FInheritors%2F769193423" anchor-label="InputTimeAttributes" id="-1154124270%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-time-attributes/index.html">InputTimeAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1154124270%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-2127017196%2FInheritors%2F769193423" anchor-label="LightAttributes" id="-2127017196%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.light/-light-attributes/index.html">LightAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2127017196%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1971788040%2FInheritors%2F769193423" anchor-label="MediaReceiverAttributes" id="1971788040%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.mediaplayer/-media-receiver-attributes/index.html">MediaReceiverAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1971788040%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1377585063%2FInheritors%2F769193423" anchor-label="TelevisionAttributes" id="1377585063%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.mediaplayer/-television-attributes/index.html">TelevisionAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1377585063%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-1776283621%2FInheritors%2F769193423" anchor-label="LuminanceAttributes" id="-1776283621%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors/-luminance-attributes/index.html">LuminanceAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1776283621%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-1525774260%2FInheritors%2F769193423" anchor-label="PersonAttributes" id="-1525774260%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors/-person-attributes/index.html">PersonAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1525774260%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1542767879%2FInheritors%2F769193423" anchor-label="SunAttributes" id="1542767879%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors/-sun-attributes/index.html">SunAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1542767879%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1937950096%2FInheritors%2F769193423" anchor-label="ContactAttributes" id="1937950096%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors.binary/-contact-attributes/index.html">ContactAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1937950096%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1740565639%2FInheritors%2F769193423" anchor-label="DayTimeAttributes" id="1740565639%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors.binary/-day-time-attributes/index.html">DayTimeAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1740565639%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="509562932%2FInheritors%2F769193423" anchor-label="MotionSensorAttributes" id="509562932%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors.binary/-motion-sensor-attributes/index.html">MotionSensorAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="509562932%2FInheritors%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

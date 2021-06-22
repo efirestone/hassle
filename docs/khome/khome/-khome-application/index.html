@@ -1,383 +1,881 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>KhomeApplication - khome</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">khome</a>&nbsp;/&nbsp;<a href="../index.html">khome</a>&nbsp;/&nbsp;<a href="./index.html">KhomeApplication</a><br/>
-<br/>
-<h1>KhomeApplication</h1>
-<code><span class="keyword">interface </span><span class="identifier">KhomeApplication</span></code>
-<p>The Khome Application</p>
-<p><strong>Author</strong><br/>
-Dennis Schröder</p>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-actuator.html">Actuator</a></h4>
-</td>
-<td>
-<p><a href="../../khome.entities.devices/-actuator/index.html">Actuator</a> factory function</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <span class="identifier">Actuator</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$Actuator(khome.values.EntityId, kotlin.reflect.KClass((kotlin.Any)), kotlin.reflect.KClass((kotlin.Any)), khome.communicating.ServiceCommandResolver((khome.KhomeApplication.Actuator.S)))/id">id</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-entity-id/index.html"><span class="identifier">EntityId</span></a><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$Actuator(khome.values.EntityId, kotlin.reflect.KClass((kotlin.Any)), kotlin.reflect.KClass((kotlin.Any)), khome.communicating.ServiceCommandResolver((khome.KhomeApplication.Actuator.S)))/stateType">stateType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$Actuator(khome.values.EntityId, kotlin.reflect.KClass((kotlin.Any)), kotlin.reflect.KClass((kotlin.Any)), khome.communicating.ServiceCommandResolver((khome.KhomeApplication.Actuator.S)))/attributesType">attributesType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$Actuator(khome.values.EntityId, kotlin.reflect.KClass((kotlin.Any)), kotlin.reflect.KClass((kotlin.Any)), khome.communicating.ServiceCommandResolver((khome.KhomeApplication.Actuator.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="attach-event-handler.html">attachEventHandler</a></h4>
-</td>
-<td>
-<p>Attaches an <a href="../../khome.events/-event-handler-function.html">EventHandlerFunction</a> to Khome and starts the home assistant event subscription.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ED</span><span class="symbol">&gt;</span> <span class="identifier">attachEventHandler</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$attachEventHandler(khome.values.EventType, kotlin.reflect.KClass((kotlin.Any)), kotlin.Function2((khome.KhomeApplication.attachEventHandler.ED, khome.observability.Switchable, kotlin.Unit)))/eventType">eventType</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-event-type/index.html"><span class="identifier">EventType</span></a><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$attachEventHandler(khome.values.EventType, kotlin.reflect.KClass((kotlin.Any)), kotlin.Function2((khome.KhomeApplication.attachEventHandler.ED, khome.observability.Switchable, kotlin.Unit)))/eventDataType">eventDataType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$attachEventHandler(khome.values.EventType, kotlin.reflect.KClass((kotlin.Any)), kotlin.Function2((khome.KhomeApplication.attachEventHandler.ED, khome.observability.Switchable, kotlin.Unit)))/eventHandler">eventHandler</span><span class="symbol">:</span>&nbsp;<a href="../../khome.events/-event-handler-function.html"><span class="identifier">EventHandlerFunction</span></a><span class="symbol">&lt;</span><span class="identifier">ED</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="call-service.html">callService</a></h4>
-</td>
-<td>
-<p>Sends a service command to home assistant.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">PB</span><span class="symbol">&gt;</span> <span class="identifier">callService</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$callService(khome.values.Domain, khome.values.Service, khome.KhomeApplication.callService.PB)/domain">domain</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-domain/index.html"><span class="identifier">Domain</span></a><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$callService(khome.values.Domain, khome.values.Service, khome.KhomeApplication.callService.PB)/service">service</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-service/index.html"><span class="identifier">Service</span></a><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$callService(khome.values.Domain, khome.values.Service, khome.KhomeApplication.callService.PB)/parameterBag">parameterBag</span><span class="symbol">:</span>&nbsp;<span class="identifier">PB</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="emit-event.html">emitEvent</a></h4>
-</td>
-<td>
-<p>Emits a home assistant event with optional event data.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">emitEvent</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$emitEvent(kotlin.String, kotlin.Any)/eventType">eventType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$emitEvent(kotlin.String, kotlin.Any)/eventData">eventData</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="run-blocking.html">runBlocking</a></h4>
-</td>
-<td>
-<p>Start a single Khome application.
-This method blocks the current thread.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">runBlocking</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="run-testing.html">runTesting</a></h4>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">runTesting</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$runTesting(kotlin.Function1((khome.testing.KhomeTestApplication, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../../khome.testing/-khome-test-application/index.html"><span class="identifier">KhomeTestApplication</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-sensor.html">Sensor</a></h4>
-</td>
-<td>
-<p><a href="../../khome.entities.devices/-sensor/index.html">Sensor</a> factory function</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <span class="identifier">Sensor</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$Sensor(khome.values.EntityId, kotlin.reflect.KClass((kotlin.Any)), kotlin.reflect.KClass((kotlin.Any)))/id">id</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-entity-id/index.html"><span class="identifier">EntityId</span></a><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$Sensor(khome.values.EntityId, kotlin.reflect.KClass((kotlin.Any)), kotlin.reflect.KClass((kotlin.Any)))/stateType">stateType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="khome.KhomeApplication$Sensor(khome.values.EntityId, kotlin.reflect.KClass((kotlin.Any)), kotlin.reflect.KClass((kotlin.Any)))/attributesType">attributesType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-sensor/index.html"><span class="identifier">Sensor</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-error-response-handler.html">setErrorResponseHandler</a></h4>
-</td>
-<td>
-<p>Attaches an error response handler to Khome.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setErrorResponseHandler</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$setErrorResponseHandler(kotlin.Function1((khome.errorHandling.ErrorResponseData, kotlin.Unit)))/errorResponseHandler">errorResponseHandler</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../../khome.error-handling/-error-response-data/index.html"><span class="identifier">ErrorResponseData</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-event-handler-exception-handler.html">setEventHandlerExceptionHandler</a></h4>
-</td>
-<td>
-<p>Overwrites the default event handler exception handler action.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setEventHandlerExceptionHandler</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$setEventHandlerExceptionHandler(kotlin.Function1((kotlin.Throwable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-observer-exception-handler.html">setObserverExceptionHandler</a></h4>
-</td>
-<td>
-<p>Overwrites the default observer exception handler action.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setObserverExceptionHandler</span><span class="symbol">(</span><span class="identifier" id="khome.KhomeApplication$setObserverExceptionHandler(kotlin.Function1((kotlin.Throwable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Extension Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities/-actuator.html">Actuator</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Actuator</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities$Actuator(khome.KhomeApplication, khome.values.EntityId, khome.communicating.ServiceCommandResolver((khome.extending.entities.Actuator.S)))/id">id</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-entity-id/index.html"><span class="identifier">EntityId</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities$Actuator(khome.KhomeApplication, khome.values.EntityId, khome.communicating.ServiceCommandResolver((khome.extending.entities.Actuator.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.events/attach-event-handler.html">attachEventHandler</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ED</span><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">attachEventHandler</span><span class="symbol">(</span><span class="identifier" id="khome.extending.events$attachEventHandler(khome.KhomeApplication, khome.values.EventType, kotlin.Function2((khome.extending.events.attachEventHandler.ED, khome.observability.Switchable, kotlin.Unit)))/eventType">eventType</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-event-type/index.html"><span class="identifier">EventType</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.events$attachEventHandler(khome.KhomeApplication, khome.values.EventType, kotlin.Function2((khome.extending.events.attachEventHandler.ED, khome.observability.Switchable, kotlin.Unit)))/eventHandler">eventHandler</span><span class="symbol">:</span>&nbsp;<a href="../../khome.events/-event-handler-function.html"><span class="identifier">EventHandlerFunction</span></a><span class="symbol">&lt;</span><span class="identifier">ED</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.events/attach-ios-action-handler.html">attachIosActionHandler</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">attachIosActionHandler</span><span class="symbol">(</span><span class="identifier" id="khome.extending.events$attachIosActionHandler(khome.KhomeApplication, kotlin.Function2((khome.extending.events.IosActionEventData, khome.observability.Switchable, kotlin.Unit)))/eventHandler">eventHandler</span><span class="symbol">:</span>&nbsp;<a href="../../khome.events/-event-handler-function.html"><span class="identifier">EventHandlerFunction</span></a><span class="symbol">&lt;</span><a href="../../khome.extending.events/-ios-action-event-data/index.html"><span class="identifier">IosActionEventData</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.events/attach-ios-notification-action-handler.html">attachIosNotificationActionHandler</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">AD</span><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">attachIosNotificationActionHandler</span><span class="symbol">(</span><span class="identifier" id="khome.extending.events$attachIosNotificationActionHandler(khome.KhomeApplication, kotlin.Function2((khome.extending.events.IosNotificationActionEventData((khome.extending.events.attachIosNotificationActionHandler.AD)), khome.observability.Switchable, kotlin.Unit)))/eventHandler">eventHandler</span><span class="symbol">:</span>&nbsp;<a href="../../khome.events/-event-handler-function.html"><span class="identifier">EventHandlerFunction</span></a><span class="symbol">&lt;</span><a href="../../khome.extending.events/-ios-notification-action-event-data/index.html"><span class="identifier">IosNotificationActionEventData</span></a><span class="symbol">&lt;</span><span class="identifier">AD</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors.binary/-binary-sensor.html">BinarySensor</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">BinarySensor</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.sensors.binary$BinarySensor(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-sensor/index.html"><span class="identifier">Sensor</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.climate/-climate-control.html">ClimateControl</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">ClimateControl</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.climate$ClimateControl(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.climate.ClimateControl.S)))/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.climate$ClimateControl(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.climate.ClimateControl.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors.binary/-contact-sensor.html">ContactSensor</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">ContactSensor</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.sensors.binary$ContactSensor(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.sensors.binary/-contact-sensor.html"><span class="identifier">ContactSensor</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators/-cover.html">Cover</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Cover</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$Cover(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.Cover.S)))/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators$Cover(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.Cover.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.service-calls.notifications/create-persistent-notification.html">createPersistentNotification</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">createPersistentNotification</span><span class="symbol">(</span><span class="identifier" id="khome.extending.serviceCalls.notifications$createPersistentNotification(khome.KhomeApplication, kotlin.String, kotlin.String, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.serviceCalls.notifications$createPersistentNotification(khome.KhomeApplication, kotlin.String, kotlin.String, kotlin.String)/title">title</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="khome.extending.serviceCalls.notifications$createPersistentNotification(khome.KhomeApplication, kotlin.String, kotlin.String, kotlin.String)/notificationId">notificationId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors.binary/-day-time.html">DayTime</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">DayTime</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.sensors.binary$DayTime(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.sensors.binary/-day-time.html"><span class="identifier">DayTime</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.light/-dimmable-light.html">DimmableLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">DimmableLight</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$DimmableLight(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.light/-dimmable-light.html"><span class="identifier">DimmableLight</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.service-calls.notifications/dismiss-persistent-notification.html">dismissPersistentNotification</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">dismissPersistentNotification</span><span class="symbol">(</span><span class="identifier" id="khome.extending.serviceCalls.notifications$dismissPersistentNotification(khome.KhomeApplication, kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-boolean.html">InputBoolean</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">InputBoolean</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.inputs$InputBoolean(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.inputs/-input-boolean.html"><span class="identifier">InputBoolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-date.html">InputDate</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">InputDate</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.inputs$InputDate(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.inputs/-input-date.html"><span class="identifier">InputDate</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-date-time.html">InputDateTime</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">InputDateTime</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.inputs$InputDateTime(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.inputs/-input-date-time.html"><span class="identifier">InputDateTime</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-number.html">InputNumber</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">InputNumber</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.inputs$InputNumber(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.inputs/-input-number.html"><span class="identifier">InputNumber</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-select.html">InputSelect</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">InputSelect</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.inputs$InputSelect(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.inputs/-input-select.html"><span class="identifier">InputSelect</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-text.html">InputText</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">InputText</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.inputs$InputText(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.inputs/-input-text.html"><span class="identifier">InputText</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.inputs/-input-time.html">InputTime</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">InputTime</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.inputs$InputTime(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.inputs/-input-time.html"><span class="identifier">InputTime</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.light/-light.html">Light</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Light</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$Light(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.light.Light.S)))/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$Light(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.light.Light.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors/-luminance-sensor.html">LuminanceSensor</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">LuminanceSensor</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.sensors$LuminanceSensor(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.sensors/-luminance-sensor.html"><span class="identifier">LuminanceSensor</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.service-calls.notifications/mark-persistent-notification-as-read.html">markPersistentNotificationAsRead</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">markPersistentNotificationAsRead</span><span class="symbol">(</span><span class="identifier" id="khome.extending.serviceCalls.notifications$markPersistentNotificationAsRead(khome.KhomeApplication, kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html">MediaPlayer</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">MediaPlayer</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$MediaPlayer(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.mediaplayer.MediaPlayer.S)))/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$MediaPlayer(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.mediaplayer.MediaPlayer.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html"><span class="identifier">MediaPlayer</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.mediaplayer/-media-receiver.html">MediaReceiver</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">MediaReceiver</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$MediaReceiver(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.mediaplayer/-media-receiver.html"><span class="identifier">MediaReceiver</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors.binary/-motion-sensor.html">MotionSensor</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">MotionSensor</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.sensors.binary$MotionSensor(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.sensors.binary/-motion-sensor.html"><span class="identifier">MotionSensor</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.service-calls.notifications/notify-mobile-app.html">notifyMobileApp</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">notifyMobileApp</span><span class="symbol">(</span><span class="identifier" id="khome.extending.serviceCalls.notifications$notifyMobileApp(khome.KhomeApplication, khome.values.Device, kotlin.String, kotlin.String)/device">device</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-device/index.html"><span class="identifier">Device</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.serviceCalls.notifications$notifyMobileApp(khome.KhomeApplication, khome.values.Device, kotlin.String, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.serviceCalls.notifications$notifyMobileApp(khome.KhomeApplication, khome.values.Device, kotlin.String, kotlin.String)/title">title</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">notifyMobileApp</span><span class="symbol">(</span><span class="identifier" id="khome.extending.serviceCalls.notifications$notifyMobileApp(khome.KhomeApplication, khome.values.Device, kotlin.Function1((khome.extending.serviceCalls.notifications.NotificationWithDataMessage, kotlin.Unit)))/device">device</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-device/index.html"><span class="identifier">Device</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.serviceCalls.notifications$notifyMobileApp(khome.KhomeApplication, khome.values.Device, kotlin.Function1((khome.extending.serviceCalls.notifications.NotificationWithDataMessage, kotlin.Unit)))/messageBuilder">messageBuilder</span><span class="symbol">:</span>&nbsp;<a href="../../khome.extending.service-calls.notifications/-notification-with-data-message/index.html"><span class="identifier">NotificationWithDataMessage</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">notifyMobileApp</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="khome.extending.serviceCalls.notifications$notifyMobileApp(khome.KhomeApplication, kotlin.Array((khome.values.Device)), kotlin.String, kotlin.String)/devices">devices</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-device/index.html"><span class="identifier">Device</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.serviceCalls.notifications$notifyMobileApp(khome.KhomeApplication, kotlin.Array((khome.values.Device)), kotlin.String, kotlin.String)/title">title</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.serviceCalls.notifications$notifyMobileApp(khome.KhomeApplication, kotlin.Array((khome.values.Device)), kotlin.String, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors/-person.html">Person</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Person</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.sensors$Person(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.sensors/-person.html"><span class="identifier">Person</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators/-positionable-cover.html">PositionableCover</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">PositionableCover</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$PositionableCover(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators/-positionable-cover.html"><span class="identifier">PositionableCover</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators/-power-measuring-switch.html">PowerMeasuringSwitch</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">PowerMeasuringSwitch</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$PowerMeasuringSwitch(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators/-power-switch.html"><span class="identifier">PowerSwitch</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.service-calls.notifications/request-location-update.html">requestLocationUpdate</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">requestLocationUpdate</span><span class="symbol">(</span><span class="identifier" id="khome.extending.serviceCalls.notifications$requestLocationUpdate(khome.KhomeApplication, khome.values.Device)/device">device</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-device/index.html"><span class="identifier">Device</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">requestLocationUpdate</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="khome.extending.serviceCalls.notifications$requestLocationUpdate(khome.KhomeApplication, kotlin.Array((khome.values.Device)))/devices">devices</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-device/index.html"><span class="identifier">Device</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.light/-r-g-b-light.html">RGBLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">RGBLight</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$RGBLight(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.light/-r-g-b-light.html"><span class="identifier">RGBLight</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.light/-r-g-b-w-light.html">RGBWLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">RGBWLight</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$RGBWLight(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.light/-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities/-sensor.html">Sensor</a></h4>
-</td>
-<td>
-<p>Base factories</p>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Sensor</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities$Sensor(khome.KhomeApplication, khome.values.EntityId)/id">id</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-entity-id/index.html"><span class="identifier">EntityId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-sensor/index.html"><span class="identifier">Sensor</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors/-sensor.html">Sensor</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Sensor</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.sensors$Sensor(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.entities.devices/-sensor/index.html"><span class="identifier">Sensor</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.sensors/-sun.html">Sun</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Sun</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.sensors/-sun.html"><span class="identifier">Sun</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators/-switch.html">Switch</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Switch</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$Switch(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators/-switch.html"><span class="identifier">Switch</span></a><span class="symbol">&lt;</span><span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.light/-switchable-light.html">SwitchableLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">SwitchableLight</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$SwitchableLight(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.light/-switchable-light.html"><span class="identifier">SwitchableLight</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.mediaplayer/-television.html">Television</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Television</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$Television(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.mediaplayer/-television.html"><span class="identifier">Television</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../khome.extending.entities.actuators.climate.thermostate/-thermostat.html">Thermostat</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Thermostat</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.climate.thermostate$Thermostat(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../khome.extending.entities.actuators.climate.thermostate/-thermostat.html"><span class="identifier">Thermostat</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>KhomeApplication</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="khome::khome/KhomeApplication///PointingToDeclaration//769193423">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">khome</a>/<a href="../index.html">khome</a>/<a href="index.html">KhomeApplication</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Khome</span><wbr></wbr><span>Application</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">interface <a href="index.html">KhomeApplication</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The Khome Application</p><h4 class="">Author</h4><p class="paragraph">Dennis Schröder</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Extensions">Extensions</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="1816863055%2FFunctions%2F769193423" anchor-label="Actuator" id="1816863055%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-actuator.html">Actuator</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1816863055%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun &lt;<a href="-actuator.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="-actuator.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="-actuator.html">Actuator</a>(id: <a href="../../khome.values/-entity-id/index.html">EntityId</a>, stateType: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;, attributesType: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;, serviceCommandResolver: <a href="../../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="-actuator.html">S</a>&gt;): <a href="../../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="-actuator.html">S</a>, <a href="-actuator.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="1816863055%2FFunctions%2F769193423" anchor-label="Actuator" id="1816863055%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="1816863055%2FFunctions%2F769193423" anchor-label="Actuator" id="1816863055%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><a href="../../khome.entities.devices/-actuator/index.html">Actuator</a> factory functionCreates a fresh instance of a actuator entity.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1594649528%2FFunctions%2F769193423" anchor-label="attachEventHandler" id="1594649528%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="attach-event-handler.html">attachEventHandler</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1594649528%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun &lt;<a href="attach-event-handler.html">ED</a>&gt; <a href="attach-event-handler.html">attachEventHandler</a>(eventType: <a href="../../khome.values/-event-type/index.html">EventType</a>, eventDataType: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;, eventHandler: <a href="../../khome.events/index.html#1911638263%2FClasslikes%2F769193423">EventHandlerFunction</a>&lt;<a href="attach-event-handler.html">ED</a>&gt;): <a href="../../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="1594649528%2FFunctions%2F769193423" anchor-label="attachEventHandler" id="1594649528%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="1594649528%2FFunctions%2F769193423" anchor-label="attachEventHandler" id="1594649528%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Attaches an <a href="../../khome.events/index.html#1911638263%2FClasslikes%2F769193423">EventHandlerFunction</a> to Khome and starts the home assistant event subscription.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-705294491%2FFunctions%2F769193423" anchor-label="callService" id="-705294491%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="call-service.html">callService</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-705294491%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun &lt;<a href="call-service.html">PB</a>&gt; <a href="call-service.html">callService</a>(domain: <a href="../../khome.values/-domain/index.html">Domain</a>, service: <a href="../../khome.values/-service/index.html">Service</a>, parameterBag: <a href="call-service.html">PB</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-705294491%2FFunctions%2F769193423" anchor-label="callService" id="-705294491%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="-705294491%2FFunctions%2F769193423" anchor-label="callService" id="-705294491%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Sends a service command to home assistant.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-541184083%2FFunctions%2F769193423" anchor-label="emitEvent" id="-541184083%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="emit-event.html">emitEvent</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-541184083%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun <a href="emit-event.html">emitEvent</a>(eventType: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, eventData: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>? = null)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-541184083%2FFunctions%2F769193423" anchor-label="emitEvent" id="-541184083%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="-541184083%2FFunctions%2F769193423" anchor-label="emitEvent" id="-541184083%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Emits a home assistant event with optional event data.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1252123368%2FFunctions%2F769193423" anchor-label="onApplicationReady" id="1252123368%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-application-ready.html">onApplicationReady</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1252123368%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun <a href="on-application-ready.html">onApplicationReady</a>(f: <a href="index.html">KhomeApplication</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="1252123368%2FFunctions%2F769193423" anchor-label="onApplicationReady" id="1252123368%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="1252123368%2FFunctions%2F769193423" anchor-label="onApplicationReady" id="1252123368%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Gets executed when the application did all checks and set all initial states</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="368721025%2FFunctions%2F769193423" anchor-label="runBlocking" id="368721025%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="run-blocking.html">runBlocking</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="368721025%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun <a href="run-blocking.html">runBlocking</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="368721025%2FFunctions%2F769193423" anchor-label="runBlocking" id="368721025%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="368721025%2FFunctions%2F769193423" anchor-label="runBlocking" id="368721025%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Start a single Khome application.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-981751263%2FFunctions%2F769193423" anchor-label="runTesting" id="-981751263%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="run-testing.html">runTesting</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-981751263%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun <a href="run-testing.html">runTesting</a>(block: <a href="../../khome.testing/-khome-test-application/index.html">KhomeTestApplication</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="377801917%2FFunctions%2F769193423" anchor-label="Sensor" id="377801917%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-sensor.html">Sensor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="377801917%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun &lt;<a href="-sensor.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="-sensor.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="-sensor.html">Sensor</a>(id: <a href="../../khome.values/-entity-id/index.html">EntityId</a>, stateType: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;, attributesType: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;): <a href="../../khome.entities.devices/-sensor/index.html">Sensor</a>&lt;<a href="-sensor.html">S</a>, <a href="-sensor.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="377801917%2FFunctions%2F769193423" anchor-label="Sensor" id="377801917%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="377801917%2FFunctions%2F769193423" anchor-label="Sensor" id="377801917%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><a href="../../khome.entities.devices/-sensor/index.html">Sensor</a> factory functionCreates a fresh instance of a sensor entity.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1759328885%2FFunctions%2F769193423" anchor-label="setErrorResponseHandler" id="-1759328885%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-error-response-handler.html">setErrorResponseHandler</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1759328885%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun <a href="set-error-response-handler.html">setErrorResponseHandler</a>(errorResponseHandler: (<a href="../../khome.errorHandling/-error-response-data/index.html">ErrorResponseData</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1759328885%2FFunctions%2F769193423" anchor-label="setErrorResponseHandler" id="-1759328885%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="-1759328885%2FFunctions%2F769193423" anchor-label="setErrorResponseHandler" id="-1759328885%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Attaches an error response handler to Khome.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="894461022%2FFunctions%2F769193423" anchor-label="setEventHandlerExceptionHandler" id="894461022%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-event-handler-exception-handler.html">setEventHandlerExceptionHandler</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="894461022%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun <a href="set-event-handler-exception-handler.html">setEventHandlerExceptionHandler</a>(f: (<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="894461022%2FFunctions%2F769193423" anchor-label="setEventHandlerExceptionHandler" id="894461022%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="894461022%2FFunctions%2F769193423" anchor-label="setEventHandlerExceptionHandler" id="894461022%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Overwrites the default event handler exception handler action.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1734039784%2FFunctions%2F769193423" anchor-label="setObserverExceptionHandler" id="-1734039784%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-observer-exception-handler.html">setObserverExceptionHandler</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1734039784%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">abstract fun <a href="set-observer-exception-handler.html">setObserverExceptionHandler</a>(f: (<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1734039784%2FFunctions%2F769193423" anchor-label="setObserverExceptionHandler" id="-1734039784%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="-1734039784%2FFunctions%2F769193423" anchor-label="setObserverExceptionHandler" id="-1734039784%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Overwrites the default observer exception handler action.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="tabbedcontent">Extensions</h2>
+              <div class="table" data-togglable="Extensions"><a data-name="-714851924%2FExtensions%2F769193423" anchor-label="Actuator" id="-714851924%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities/-actuator.html">Actuator</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-714851924%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities/-actuator.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="../../khome.extending.entities/-actuator.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities/-actuator.html">Actuator</a>(id: <a href="../../khome.values/-entity-id/index.html">EntityId</a>, serviceCommandResolver: <a href="../../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="../../khome.extending.entities/-actuator.html">S</a>&gt;): <a href="../../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../../khome.extending.entities/-actuator.html">S</a>, <a href="../../khome.extending.entities/-actuator.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="288228857%2FExtensions%2F769193423" anchor-label="attachEventHandler" id="288228857%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.events/attach-event-handler.html">attachEventHandler</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="288228857%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.events/attach-event-handler.html">ED</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.events/attach-event-handler.html">attachEventHandler</a>(eventType: <a href="../../khome.values/-event-type/index.html">EventType</a>, noinline eventHandler: <a href="../../khome.events/index.html#1911638263%2FClasslikes%2F769193423">EventHandlerFunction</a>&lt;<a href="../../khome.extending.events/attach-event-handler.html">ED</a>&gt;): <a href="../../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="781097229%2FExtensions%2F769193423" anchor-label="attachIosActionHandler" id="781097229%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.events/attach-ios-action-handler.html">attachIosActionHandler</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="781097229%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.events/attach-ios-action-handler.html">attachIosActionHandler</a>(eventHandler: <a href="../../khome.events/index.html#1911638263%2FClasslikes%2F769193423">EventHandlerFunction</a>&lt;<a href="../../khome.extending.events/-ios-action-event-data/index.html">IosActionEventData</a>&gt;): <a href="../../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1012771503%2FExtensions%2F769193423" anchor-label="attachIosNotificationActionHandler" id="-1012771503%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.events/attach-ios-notification-action-handler.html">attachIosNotificationActionHandler</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1012771503%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="../../khome.extending.events/attach-ios-notification-action-handler.html">AD</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.events/attach-ios-notification-action-handler.html">attachIosNotificationActionHandler</a>(eventHandler: <a href="../../khome.events/index.html#1911638263%2FClasslikes%2F769193423">EventHandlerFunction</a>&lt;<a href="../../khome.extending.events/-ios-notification-action-event-data/index.html">IosNotificationActionEventData</a>&lt;<a href="../../khome.extending.events/attach-ios-notification-action-handler.html">AD</a>&gt;&gt;): <a href="../../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1572553107%2FExtensions%2F769193423" anchor-label="BinarySensor" id="-1572553107%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors.binary/-binary-sensor.html">BinarySensor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1572553107%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities.sensors.binary/-binary-sensor.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="../../khome.extending.entities.sensors.binary/-binary-sensor.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.sensors.binary/-binary-sensor.html">BinarySensor</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.entities.devices/-sensor/index.html">Sensor</a>&lt;<a href="../../khome.extending.entities.sensors.binary/-binary-sensor.html">S</a>, <a href="../../khome.extending.entities.sensors.binary/-binary-sensor.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1044630706%2FExtensions%2F769193423" anchor-label="ClimateControl" id="1044630706%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.climate/-climate-control.html">ClimateControl</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1044630706%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities.actuators.climate/-climate-control.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="../../khome.extending.entities.actuators.climate/-climate-control.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.climate/-climate-control.html">ClimateControl</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>, serviceCommandResolver: <a href="../../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="../../khome.extending.entities.actuators.climate/-climate-control.html">S</a>&gt;): <a href="../../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../../khome.extending.entities.actuators.climate/-climate-control.html">S</a>, <a href="../../khome.extending.entities.actuators.climate/-climate-control.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1222777414%2FExtensions%2F769193423" anchor-label="ContactSensor" id="-1222777414%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors.binary/-contact-sensor.html">ContactSensor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1222777414%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.sensors.binary/-contact-sensor.html">ContactSensor</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.sensors.binary/index.html#686316429%2FClasslikes%2F769193423">ContactSensor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-947100180%2FExtensions%2F769193423" anchor-label="Cover" id="-947100180%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators/-cover.html">Cover</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-947100180%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities.actuators/-cover.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="../../khome.extending.entities.actuators/-cover.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators/-cover.html">Cover</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>, serviceCommandResolver: <a href="../../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="../../khome.extending.entities.actuators/-cover.html">S</a>&gt;): <a href="../../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../../khome.extending.entities.actuators/-cover.html">S</a>, <a href="../../khome.extending.entities.actuators/-cover.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="215910015%2FExtensions%2F769193423" anchor-label="createPersistentNotification" id="215910015%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.serviceCalls.notifications/create-persistent-notification.html">createPersistentNotification</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="215910015%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.serviceCalls.notifications/create-persistent-notification.html">createPersistentNotification</a>(message: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, title: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>? = null, notificationId: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>? = null)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1926852599%2FExtensions%2F769193423" anchor-label="DayTime" id="-1926852599%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors.binary/-day-time.html">DayTime</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1926852599%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.sensors.binary/-day-time.html">DayTime</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.sensors.binary/index.html#1619837534%2FClasslikes%2F769193423">DayTime</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-886682607%2FExtensions%2F769193423" anchor-label="DimmableLight" id="-886682607%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.light/-dimmable-light.html">DimmableLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-886682607%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.light/-dimmable-light.html">DimmableLight</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.light/index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1686404475%2FExtensions%2F769193423" anchor-label="dismissPersistentNotification" id="-1686404475%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.serviceCalls.notifications/dismiss-persistent-notification.html">dismissPersistentNotification</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1686404475%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.serviceCalls.notifications/dismiss-persistent-notification.html">dismissPersistentNotification</a>(id: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1104035703%2FExtensions%2F769193423" anchor-label="InputBoolean" id="1104035703%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-boolean.html">InputBoolean</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1104035703%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.inputs/-input-boolean.html">InputBoolean</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.inputs/index.html#-288035004%2FClasslikes%2F769193423">InputBoolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1935888785%2FExtensions%2F769193423" anchor-label="InputDate" id="1935888785%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-date.html">InputDate</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1935888785%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.inputs/-input-date.html">InputDate</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.inputs/index.html#-1252155416%2FClasslikes%2F769193423">InputDate</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1819248126%2FExtensions%2F769193423" anchor-label="InputDateTime" id="1819248126%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-date-time.html">InputDateTime</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1819248126%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.inputs/-input-date-time.html">InputDateTime</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.inputs/index.html#1222171163%2FClasslikes%2F769193423">InputDateTime</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1318773460%2FExtensions%2F769193423" anchor-label="InputNumber" id="-1318773460%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-number.html">InputNumber</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1318773460%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.inputs/-input-number.html">InputNumber</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.inputs/index.html#6787949%2FClasslikes%2F769193423">InputNumber</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1559645535%2FExtensions%2F769193423" anchor-label="InputSelect" id="1559645535%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-select.html">InputSelect</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1559645535%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.inputs/-input-select.html">InputSelect</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.inputs/index.html#-1738770150%2FClasslikes%2F769193423">InputSelect</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="738613136%2FExtensions%2F769193423" anchor-label="InputText" id="738613136%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-text.html">InputText</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="738613136%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.inputs/-input-text.html">InputText</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.inputs/index.html#245376841%2FClasslikes%2F769193423">InputText</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="592024880%2FExtensions%2F769193423" anchor-label="InputTime" id="592024880%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.inputs/-input-time.html">InputTime</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="592024880%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.inputs/-input-time.html">InputTime</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.inputs/index.html#1068281257%2FClasslikes%2F769193423">InputTime</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1421860195%2FExtensions%2F769193423" anchor-label="Light" id="1421860195%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.light/-light.html">Light</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1421860195%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities.actuators.light/-light.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="../../khome.extending.entities.actuators.light/-light.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.light/-light.html">Light</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>, serviceCommandResolver: <a href="../../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="../../khome.extending.entities.actuators.light/-light.html">S</a>&gt;): <a href="../../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../../khome.extending.entities.actuators.light/-light.html">S</a>, <a href="../../khome.extending.entities.actuators.light/-light.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="777157557%2FExtensions%2F769193423" anchor-label="LuminanceSensor" id="777157557%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors/-luminance-sensor.html">LuminanceSensor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="777157557%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.sensors/-luminance-sensor.html">LuminanceSensor</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.sensors/index.html#-145841256%2FClasslikes%2F769193423">LuminanceSensor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-700567080%2FExtensions%2F769193423" anchor-label="markPersistentNotificationAsRead" id="-700567080%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.serviceCalls.notifications/mark-persistent-notification-as-read.html">markPersistentNotificationAsRead</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-700567080%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.serviceCalls.notifications/mark-persistent-notification-as-read.html">markPersistentNotificationAsRead</a>(id: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1131244515%2FExtensions%2F769193423" anchor-label="MediaPlayer" id="1131244515%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html">MediaPlayer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1131244515%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html">MediaPlayer</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>, serviceCommandResolver: <a href="../../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html">S</a>&gt;): <a href="../../khome.extending.entities.actuators.mediaplayer/index.html#1713662637%2FClasslikes%2F769193423">MediaPlayer</a>&lt;<a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html">S</a>, <a href="../../khome.extending.entities.actuators.mediaplayer/-media-player.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1107855586%2FExtensions%2F769193423" anchor-label="MediaReceiver" id="-1107855586%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.mediaplayer/-media-receiver.html">MediaReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1107855586%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.mediaplayer/-media-receiver.html">MediaReceiver</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.mediaplayer/index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-194384926%2FExtensions%2F769193423" anchor-label="MotionSensor" id="-194384926%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors.binary/-motion-sensor.html">MotionSensor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-194384926%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.sensors.binary/-motion-sensor.html">MotionSensor</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.sensors.binary/index.html#1620601419%2FClasslikes%2F769193423">MotionSensor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1329796370%2FExtensions%2F769193423" anchor-label="notifyMobileApp" id="-1329796370%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.serviceCalls.notifications/notify-mobile-app.html">notifyMobileApp</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1329796370%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.serviceCalls.notifications/notify-mobile-app.html">notifyMobileApp</a>(device: <a href="../../khome.values/-device/index.html">Device</a>, message: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, title: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>? = null)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">inline fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.serviceCalls.notifications/notify-mobile-app.html">notifyMobileApp</a>(device: <a href="../../khome.values/-device/index.html">Device</a>, messageBuilder: <a href="../../khome.extending.serviceCalls.notifications/-notification-with-data-message/index.html">NotificationWithDataMessage</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.serviceCalls.notifications/notify-mobile-app.html">notifyMobileApp</a>(vararg devices: <a href="../../khome.values/-device/index.html">Device</a>, title: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, message: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1488451620%2FExtensions%2F769193423" anchor-label="Person" id="1488451620%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors/-person.html">Person</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1488451620%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.sensors/-person.html">Person</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.sensors/index.html#22175843%2FClasslikes%2F769193423">Person</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-567483050%2FExtensions%2F769193423" anchor-label="PositionableCover" id="-567483050%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators/-positionable-cover.html">PositionableCover</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-567483050%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators/-positionable-cover.html">PositionableCover</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators/index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1121469222%2FExtensions%2F769193423" anchor-label="PowerMeasuringSwitch" id="-1121469222%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators/-power-measuring-switch.html">PowerMeasuringSwitch</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1121469222%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators/-power-measuring-switch.html">PowerMeasuringSwitch</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators/index.html#838817392%2FClasslikes%2F769193423">PowerSwitch</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1775996380%2FExtensions%2F769193423" anchor-label="requestLocationUpdate" id="1775996380%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.serviceCalls.notifications/request-location-update.html">requestLocationUpdate</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1775996380%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.serviceCalls.notifications/request-location-update.html">requestLocationUpdate</a>(device: <a href="../../khome.values/-device/index.html">Device</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.serviceCalls.notifications/request-location-update.html">requestLocationUpdate</a>(vararg devices: <a href="../../khome.values/-device/index.html">Device</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-235311967%2FExtensions%2F769193423" anchor-label="RGBLight" id="-235311967%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.light/-r-g-b-light.html">RGBLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-235311967%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.light/-r-g-b-light.html">RGBLight</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.light/index.html#865790136%2FClasslikes%2F769193423">RGBLight</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-171485306%2FExtensions%2F769193423" anchor-label="RGBWLight" id="-171485306%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.light/-r-g-b-w-light.html">RGBWLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-171485306%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.light/-r-g-b-w-light.html">RGBWLight</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.light/index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1191847913%2FExtensions%2F769193423" anchor-label="Sensor" id="-1191847913%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities/-sensor.html">Sensor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1191847913%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities/-sensor.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="../../khome.extending.entities/-sensor.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities/-sensor.html">Sensor</a>(id: <a href="../../khome.values/-entity-id/index.html">EntityId</a>): <a href="../../khome.entities.devices/-sensor/index.html">Sensor</a>&lt;<a href="../../khome.extending.entities/-sensor.html">S</a>, <a href="../../khome.extending.entities/-sensor.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1422367398%2FExtensions%2F769193423" anchor-label="Sensor" id="-1422367398%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="brief "><a data-name="-1422367398%2FExtensions%2F769193423" anchor-label="Sensor" id="-1422367398%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>Base factories</div></div>
+<div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities.sensors/-sensor.html">S</a> : <a href="../../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="../../khome.extending.entities.sensors/-sensor.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.sensors/-sensor.html">Sensor</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.entities.devices/-sensor/index.html">Sensor</a>&lt;<a href="../../khome.extending.entities.sensors/-sensor.html">S</a>, <a href="../../khome.extending.entities.sensors/-sensor.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="211633841%2FExtensions%2F769193423" anchor-label="Sun" id="211633841%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.sensors/-sun.html">Sun</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="211633841%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.sensors/-sun.html">Sun</a>(): <a href="../../khome.extending.entities.sensors/index.html#-1122026786%2FClasslikes%2F769193423">Sun</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="33284452%2FExtensions%2F769193423" anchor-label="Switch" id="33284452%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators/-switch.html">Switch</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="33284452%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="../../khome.extending.entities.actuators/-switch.html">A</a> : <a href="../../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators/-switch.html">Switch</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators/index.html#1952491461%2FClasslikes%2F769193423">Switch</a>&lt;<a href="../../khome.extending.entities.actuators/-switch.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="529360354%2FExtensions%2F769193423" anchor-label="SwitchableLight" id="529360354%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.light/-switchable-light.html">SwitchableLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="529360354%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.light/-switchable-light.html">SwitchableLight</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.light/index.html#263932761%2FClasslikes%2F769193423">SwitchableLight</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1406663143%2FExtensions%2F769193423" anchor-label="Television" id="-1406663143%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.mediaplayer/-television.html">Television</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1406663143%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.mediaplayer/-television.html">Television</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.mediaplayer/index.html#1202423166%2FClasslikes%2F769193423">Television</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="771014078%2FExtensions%2F769193423" anchor-label="Thermostat" id="771014078%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../khome.extending.entities.actuators.climate.thermostate/-thermostat.html">Thermostat</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="771014078%2FExtensions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html">KhomeApplication</a>.<a href="../../khome.extending.entities.actuators.climate.thermostate/-thermostat.html">Thermostat</a>(objectId: <a href="../../khome.values/-object-id/index.html">ObjectId</a>): <a href="../../khome.extending.entities.actuators.climate.thermostate/index.html#1578528441%2FClasslikes%2F769193423">Thermostat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+
