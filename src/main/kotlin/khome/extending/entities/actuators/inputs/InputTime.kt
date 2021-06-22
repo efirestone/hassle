@@ -1,5 +1,6 @@
 package khome.extending.entities.actuators.inputs
 
+import io.fluidsonic.time.LocalTime
 import khome.KhomeApplication
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
@@ -15,7 +16,6 @@ import khome.values.UserId
 import khome.values.domain
 import khome.values.service
 import kotlinx.datetime.Instant
-import java.time.LocalTime
 
 typealias InputTime = Actuator<InputTimeState, InputTimeAttributes>
 

@@ -90,7 +90,7 @@ $dokka.location:khome.core.mapping.adapter.default/InstantTypeAdapter/to/#kotlin
 $dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter///PointingToDeclaration/khome/khome.core.mapping.adapter.default/-local-time-adapter/index.html
 $dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter/LocalTimeAdapter/#/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-local-time-adapter/-local-time-adapter.html
 $dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter/from/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-local-time-adapter/from.html
-$dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter/to/#java.time.LocalTime/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-local-time-adapter/to.html
+$dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter/to/#io.fluidsonic.time.LocalTime/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-local-time-adapter/to.html
 $dokka.location:khome.core.mapping.adapter.default/OffsetDateTimeAdapter///PointingToDeclaration/khome/khome.core.mapping.adapter.default/-offset-date-time-adapter/index.html
 $dokka.location:khome.core.mapping.adapter.default/OffsetDateTimeAdapter/OffsetDateTimeAdapter/#/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-offset-date-time-adapter/-offset-date-time-adapter.html
 $dokka.location:khome.core.mapping.adapter.default/OffsetDateTimeAdapter/from/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-offset-date-time-adapter/from.html
@@ -333,9 +333,9 @@ $dokka.location:khome.extending.entities.actuators.inputs/InputTimeAttributes/la
 $dokka.location:khome.extending.entities.actuators.inputs/InputTimeAttributes/timestamp/#/PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-attributes/timestamp.html
 $dokka.location:khome.extending.entities.actuators.inputs/InputTimeAttributes/userId/#/PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-attributes/user-id.html
 $dokka.location:khome.extending.entities.actuators.inputs/InputTimeServiceData///PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-service-data/index.html
-$dokka.location:khome.extending.entities.actuators.inputs/InputTimeServiceData/InputTimeServiceData/#java.time.LocalTime/PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-service-data/-input-time-service-data.html
+$dokka.location:khome.extending.entities.actuators.inputs/InputTimeServiceData/InputTimeServiceData/#io.fluidsonic.time.LocalTime/PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-service-data/-input-time-service-data.html
 $dokka.location:khome.extending.entities.actuators.inputs/InputTimeState///PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-state/index.html
-$dokka.location:khome.extending.entities.actuators.inputs/InputTimeState/InputTimeState/#java.time.LocalTime/PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-state/-input-time-state.html
+$dokka.location:khome.extending.entities.actuators.inputs/InputTimeState/InputTimeState/#io.fluidsonic.time.LocalTime/PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-state/-input-time-state.html
 $dokka.location:khome.extending.entities.actuators.inputs/InputTimeState/value/#/PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-input-time-state/value.html
 $dokka.location:khome.extending.entities.actuators.inputs/SettableStateValueServiceData///PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-settable-state-value-service-data/index.html
 $dokka.location:khome.extending.entities.actuators.inputs/SettableStateValueServiceData/SettableStateValueServiceData/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.extending.entities.actuators.inputs/-settable-state-value-service-data/-settable-state-value-service-data.html

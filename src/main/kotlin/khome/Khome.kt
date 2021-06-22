@@ -3,6 +3,7 @@ package khome
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.google.gson.TypeAdapter
+import io.fluidsonic.time.LocalTime
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.features.defaultRequest
@@ -100,7 +101,6 @@ import org.koin.core.component.inject
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import java.time.LocalDateTime
-import java.time.LocalTime
 import java.time.OffsetDateTime
 import kotlin.reflect.KClass
 

@@ -34,6 +34,9 @@ val kermitVersion: String by project
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    // kotlinx.datetime doesn't include LocalTime yet, so supplement it
+    // https://github.com/Kotlin/kotlinx-datetime/issues/57
+    implementation("io.fluidsonic.time:fluid-time:0.14.0")
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
