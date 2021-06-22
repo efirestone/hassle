@@ -1,253 +1,567 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>khome.extending.entities.actuators - khome</title>
-<link rel="stylesheet" href="../../style.css">
-</HEAD>
-<BODY>
-<a href="../index.html">khome</a>&nbsp;/&nbsp;<a href="./index.html">khome.extending.entities.actuators</a><br/>
-<br/>
-<h2>Package khome.extending.entities.actuators</h2>
-<h3>Types</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-positionable-cover.html">PositionableCover</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">PositionableCover</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="-positionable-cover-state/index.html"><span class="identifier">PositionableCoverState</span></a><span class="symbol">,</span>&nbsp;<a href="-positionable-cover-attributes/index.html"><span class="identifier">PositionableCoverAttributes</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-positionable-cover-attributes/index.html">PositionableCoverAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PositionableCoverAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-positionable-cover-service-data/index.html">PositionableCoverServiceData</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PositionableCoverServiceData</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-desired-service-data/index.html"><span class="identifier">DesiredServiceData</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-positionable-cover-state/index.html">PositionableCoverState</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PositionableCoverState</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><a href="-positionable-cover-value/index.html"><span class="identifier">PositionableCoverValue</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-positionable-cover-value/index.html">PositionableCoverValue</a></h4>
-</td>
-<td>
-<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">PositionableCoverValue</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-power-switch.html">PowerSwitch</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">PowerSwitch</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="-switch.html"><span class="identifier">Switch</span></a><span class="symbol">&lt;</span><a href="-power-switch-attributes/index.html"><span class="identifier">PowerSwitchAttributes</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-power-switch-attributes/index.html">PowerSwitchAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PowerSwitchAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-switch.html">Switch</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">Switch</span><span class="symbol">&lt;</span><span class="identifier">A</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-working/index.html">Working</a></h4>
-</td>
-<td>
-<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">Working</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="is-closed.html">isClosed</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">isClosed</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-off.html">isOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isOff</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-on.html">isOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isOn</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-open.html">isOpen</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">isOpen</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-working.html">isWorking</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">isWorking</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="call-service.html">callService</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">callService</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$callService(khome.entities.devices.Actuator((khome.extending.entities.actuators.callService.S, khome.extending.entities.actuators.callService.A)), khome.values.Service, khome.communicating.CommandDataWithEntityId)/service">service</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-service/index.html"><span class="identifier">Service</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators$callService(khome.entities.devices.Actuator((khome.extending.entities.actuators.callService.S, khome.extending.entities.actuators.callService.A)), khome.values.Service, khome.communicating.CommandDataWithEntityId)/parameterBag">parameterBag</span><span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-command-data-with-entity-id/index.html"><span class="identifier">CommandDataWithEntityId</span></a>&nbsp;<span class="symbol">=</span>&nbsp;EntityIdOnlyServiceData()<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="close.html">close</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-cover.html">Cover</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Cover</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$Cover(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.Cover.S)))/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators$Cover(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.Cover.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-closed.html">onClosed</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">onClosed</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$onClosed(khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-opened.html">onOpened</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">onOpened</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$onOpened(khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-start-working.html">onStartWorking</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">onStartWorking</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$onStartWorking(khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), kotlin.Function1((khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-state-value-changed-from.html">onStateValueChangedFrom</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">, </span><span class="identifier">SV</span><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">onStateValueChangedFrom</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$onStateValueChangedFrom(khome.entities.devices.Actuator((khome.extending.entities.actuators.onStateValueChangedFrom.S, khome.extending.entities.actuators.onStateValueChangedFrom.A)), kotlin.Pair((khome.extending.entities.actuators.onStateValueChangedFrom.SV, )), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.onStateValueChangedFrom.S, khome.extending.entities.actuators.onStateValueChangedFrom.A)), khome.observability.Switchable, kotlin.Unit)))/values">values</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html"><span class="identifier">Pair</span></a><span class="symbol">&lt;</span><span class="identifier">SV</span><span class="symbol">,</span>&nbsp;<span class="identifier">SV</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators$onStateValueChangedFrom(khome.entities.devices.Actuator((khome.extending.entities.actuators.onStateValueChangedFrom.S, khome.extending.entities.actuators.onStateValueChangedFrom.A)), kotlin.Pair((khome.extending.entities.actuators.onStateValueChangedFrom.SV, )), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.onStateValueChangedFrom.S, khome.extending.entities.actuators.onStateValueChangedFrom.A)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code><br/>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">, </span><span class="identifier">SV</span><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">onStateValueChangedFrom</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$onStateValueChangedFrom(khome.entities.devices.Actuator((khome.extending.entities.actuators.onStateValueChangedFrom.S, khome.extending.entities.actuators.onStateValueChangedFrom.A)), kotlin.Triple((khome.extending.entities.actuators.onStateValueChangedFrom.SV, , )), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.onStateValueChangedFrom.S, khome.extending.entities.actuators.onStateValueChangedFrom.A)), khome.observability.Switchable, kotlin.Unit)))/values">values</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html"><span class="identifier">Triple</span></a><span class="symbol">&lt;</span><span class="identifier">SV</span><span class="symbol">,</span>&nbsp;<span class="identifier">SV</span><span class="symbol">,</span>&nbsp;<span class="identifier">SV</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators$onStateValueChangedFrom(khome.entities.devices.Actuator((khome.extending.entities.actuators.onStateValueChangedFrom.S, khome.extending.entities.actuators.onStateValueChangedFrom.A)), kotlin.Triple((khome.extending.entities.actuators.onStateValueChangedFrom.SV, , )), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.onStateValueChangedFrom.S, khome.extending.entities.actuators.onStateValueChangedFrom.A)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-stop-working.html">onStopWorking</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">onStopWorking</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$onStopWorking(khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), kotlin.Function1((khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-turned-off.html">onTurnedOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">onTurnedOff</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$onTurnedOff(khome.entities.devices.Actuator((khome.extending.entities.SwitchableState, khome.extending.entities.actuators.onTurnedOff.A)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.SwitchableState, khome.extending.entities.actuators.onTurnedOff.A)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-turned-on.html">onTurnedOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">onTurnedOn</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$onTurnedOn(khome.entities.devices.Actuator((khome.extending.entities.SwitchableState, khome.extending.entities.actuators.onTurnedOn.A)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.SwitchableState, khome.extending.entities.actuators.onTurnedOn.A)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="open.html">open</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">open</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-positionable-cover.html">PositionableCover</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">PositionableCover</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$PositionableCover(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-power-measuring-switch.html">PowerMeasuringSwitch</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">PowerMeasuringSwitch</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$PowerMeasuringSwitch(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-power-switch.html"><span class="identifier">PowerSwitch</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-cover-position.html">setCoverPosition</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-positionable-cover.html"><span class="identifier">PositionableCover</span></a><span class="symbol">.</span><span class="identifier">setCoverPosition</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$setCoverPosition(khome.entities.devices.Actuator((khome.extending.entities.actuators.PositionableCoverState, khome.extending.entities.actuators.PositionableCoverAttributes)), kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="state-value-changed-from.html">stateValueChangedFrom</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">, </span><span class="identifier">SV</span><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">stateValueChangedFrom</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$stateValueChangedFrom(khome.entities.devices.Actuator((khome.extending.entities.actuators.stateValueChangedFrom.S, khome.extending.entities.actuators.stateValueChangedFrom.A)), kotlin.Pair((khome.extending.entities.actuators.stateValueChangedFrom.SV, )))/values">values</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html"><span class="identifier">Pair</span></a><span class="symbol">&lt;</span><span class="identifier">SV</span><span class="symbol">,</span>&nbsp;<span class="identifier">SV</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">, </span><span class="identifier">SV</span><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">stateValueChangedFrom</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$stateValueChangedFrom(khome.entities.devices.Actuator((khome.extending.entities.actuators.stateValueChangedFrom.S, khome.extending.entities.actuators.stateValueChangedFrom.A)), kotlin.Triple((khome.extending.entities.actuators.stateValueChangedFrom.SV, , )))/values">values</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html"><span class="identifier">Triple</span></a><span class="symbol">&lt;</span><span class="identifier">SV</span><span class="symbol">,</span>&nbsp;<span class="identifier">SV</span><span class="symbol">,</span>&nbsp;<span class="identifier">SV</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-switch.html">Switch</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Switch</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators$Switch(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-switch.html"><span class="identifier">Switch</span></a><span class="symbol">&lt;</span><span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="turn-off.html">turnOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">turnOff</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="turn-on.html">turnOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">turnOn</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>khome.extending.entities.actuators</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="khome::khome.extending.entities.actuators////PointingToDeclaration//769193423">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../index.html">khome</a>/<a href="index.html">khome.extending.entities.actuators</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Package khome.</span><wbr></wbr><span>extending.</span><wbr></wbr><span>entities.</span><wbr></wbr><span>actuators</span></h1>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="-1910693387%2FClasslikes%2F769193423" anchor-label="PositionableCover" id="-1910693387%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1910693387%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a> = <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="-positionable-cover-state/index.html">PositionableCoverState</a>, <a href="-positionable-cover-attributes/index.html">PositionableCoverAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1836450978%2FClasslikes%2F769193423" anchor-label="PositionableCoverAttributes" id="-1836450978%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-positionable-cover-attributes/index.html">PositionableCoverAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1836450978%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-positionable-cover-attributes/index.html">PositionableCoverAttributes</a>(working: <a href="-working/index.html">Working</a>, userId: <a href="../khome.values/-user-id/index.html">UserId</a>?, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, friendlyName: <a href="../khome.values/-friendly-name/index.html">FriendlyName</a>) : <a href="../khome.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-56221458%2FClasslikes%2F769193423" anchor-label="PositionableCoverServiceData" id="-56221458%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-positionable-cover-service-data/index.html">PositionableCoverServiceData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-56221458%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-positionable-cover-service-data/index.html">PositionableCoverServiceData</a>(position: <a href="../khome.values/-position/index.html">Position</a>) : <a href="../khome.communicating/-desired-service-data/index.html">DesiredServiceData</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1041277340%2FClasslikes%2F769193423" anchor-label="PositionableCoverState" id="1041277340%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-positionable-cover-state/index.html">PositionableCoverState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1041277340%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-positionable-cover-state/index.html">PositionableCoverState</a>(value: <a href="-positionable-cover-value/index.html">PositionableCoverValue</a>, currentPosition: <a href="../khome.values/-position/index.html">Position</a>?) : <a href="../khome.entities/-state/index.html">State</a>&lt;<a href="-positionable-cover-value/index.html">PositionableCoverValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1049292612%2FClasslikes%2F769193423" anchor-label="PositionableCoverValue" id="-1049292612%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-positionable-cover-value/index.html">PositionableCoverValue</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1049292612%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">enum <a href="-positionable-cover-value/index.html">PositionableCoverValue</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-positionable-cover-value/index.html">PositionableCoverValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="838817392%2FClasslikes%2F769193423" anchor-label="PowerSwitch" id="838817392%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#838817392%2FClasslikes%2F769193423">PowerSwitch</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="838817392%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#838817392%2FClasslikes%2F769193423">PowerSwitch</a> = <a href="index.html#1952491461%2FClasslikes%2F769193423">Switch</a>&lt;<a href="-power-switch-attributes/index.html">PowerSwitchAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1109201433%2FClasslikes%2F769193423" anchor-label="PowerSwitchAttributes" id="1109201433%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-power-switch-attributes/index.html">PowerSwitchAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1109201433%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-power-switch-attributes/index.html">PowerSwitchAttributes</a>(powerConsumption: <a href="../khome.values/-power-consumption/index.html">PowerConsumption</a>, userId: <a href="../khome.values/-user-id/index.html">UserId</a>?, friendlyName: <a href="../khome.values/-friendly-name/index.html">FriendlyName</a>, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>) : <a href="../khome.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1952491461%2FClasslikes%2F769193423" anchor-label="Switch" id="1952491461%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1952491461%2FClasslikes%2F769193423">Switch</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1952491461%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#1952491461%2FClasslikes%2F769193423">Switch</a>&lt;<a href="index.html#1952491461%2FClasslikes%2F769193423">A</a>&gt; = <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="index.html#1952491461%2FClasslikes%2F769193423">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="87619288%2FClasslikes%2F769193423" anchor-label="Working" id="87619288%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-working/index.html">Working</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="87619288%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">enum <a href="-working/index.html">Working</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-working/index.html">Working</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="1708284671%2FFunctions%2F769193423" anchor-label="callService" id="1708284671%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="call-service.html">callService</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1708284671%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="call-service.html">S</a> : <a href="../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="call-service.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="call-service.html">S</a>, <a href="call-service.html">A</a>&gt;.<a href="call-service.html">callService</a>(service: <a href="../khome.values/-service/index.html">Service</a>, parameterBag: <a href="../khome.communicating/-command-data-with-entity-id/index.html">CommandDataWithEntityId</a> = EntityIdOnlyServiceData())<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1081678281%2FFunctions%2F769193423" anchor-label="close" id="1081678281%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="close.html">close</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1081678281%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="close.html">close</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-947100180%2FFunctions%2F769193423" anchor-label="Cover" id="-947100180%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-cover.html">Cover</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-947100180%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="-cover.html">S</a> : <a href="../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="-cover.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-cover.html">Cover</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>, serviceCommandResolver: <a href="../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="-cover.html">S</a>&gt;): <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="-cover.html">S</a>, <a href="-cover.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="717404098%2FFunctions%2F769193423" anchor-label="onClosed" id="717404098%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-closed.html">onClosed</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="717404098%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="on-closed.html">onClosed</a>(f: <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="3531199%2FFunctions%2F769193423" anchor-label="onOpened" id="3531199%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-opened.html">onOpened</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="3531199%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="on-opened.html">onOpened</a>(f: <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1257970858%2FFunctions%2F769193423" anchor-label="onStartedWorking" id="-1257970858%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-started-working.html">onStartedWorking</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1257970858%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="on-started-working.html">onStartedWorking</a>(f: <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="745164320%2FFunctions%2F769193423" anchor-label="onStateValueChangedFrom" id="745164320%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-state-value-changed-from.html">onStateValueChangedFrom</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="745164320%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="on-state-value-changed-from.html">S</a> : <a href="../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="on-state-value-changed-from.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>, <a href="on-state-value-changed-from.html">SV</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="on-state-value-changed-from.html">S</a>, <a href="on-state-value-changed-from.html">A</a>&gt;.<a href="on-state-value-changed-from.html">onStateValueChangedFrom</a>(values: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="on-state-value-changed-from.html">SV</a>, <a href="on-state-value-changed-from.html">SV</a>&gt;, crossinline f: <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="on-state-value-changed-from.html">S</a>, <a href="on-state-value-changed-from.html">A</a>&gt;.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">inline fun &lt;<a href="on-state-value-changed-from.html">S</a> : <a href="../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="on-state-value-changed-from.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>, <a href="on-state-value-changed-from.html">SV</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="on-state-value-changed-from.html">S</a>, <a href="on-state-value-changed-from.html">A</a>&gt;.<a href="on-state-value-changed-from.html">onStateValueChangedFrom</a>(values: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html">Triple</a>&lt;<a href="on-state-value-changed-from.html">SV</a>, <a href="on-state-value-changed-from.html">SV</a>, <a href="on-state-value-changed-from.html">SV</a>&gt;, crossinline f: <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="on-state-value-changed-from.html">S</a>, <a href="on-state-value-changed-from.html">A</a>&gt;.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1386941602%2FFunctions%2F769193423" anchor-label="onStoppedWorking" id="1386941602%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-stopped-working.html">onStoppedWorking</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1386941602%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="on-stopped-working.html">onStoppedWorking</a>(f: <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1617325475%2FFunctions%2F769193423" anchor-label="onTurnedOff" id="-1617325475%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-turned-off.html">onTurnedOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1617325475%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="on-turned-off.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="on-turned-off.html">A</a>&gt;.<a href="on-turned-off.html">onTurnedOff</a>(crossinline f: <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="on-turned-off.html">A</a>&gt;.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-322450895%2FFunctions%2F769193423" anchor-label="onTurnedOn" id="-322450895%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-turned-on.html">onTurnedOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-322450895%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="on-turned-on.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="on-turned-on.html">A</a>&gt;.<a href="on-turned-on.html">onTurnedOn</a>(crossinline f: <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="on-turned-on.html">A</a>&gt;.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-305546903%2FFunctions%2F769193423" anchor-label="open" id="-305546903%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="open.html">open</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-305546903%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="open.html">open</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-567483050%2FFunctions%2F769193423" anchor-label="PositionableCover" id="-567483050%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-positionable-cover.html">PositionableCover</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-567483050%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-positionable-cover.html">PositionableCover</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1121469222%2FFunctions%2F769193423" anchor-label="PowerMeasuringSwitch" id="-1121469222%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-power-measuring-switch.html">PowerMeasuringSwitch</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1121469222%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-power-measuring-switch.html">PowerMeasuringSwitch</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#838817392%2FClasslikes%2F769193423">PowerSwitch</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1429573044%2FFunctions%2F769193423" anchor-label="setCoverPosition" id="1429573044%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-cover-position.html">setCoverPosition</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1429573044%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="set-cover-position.html">setCoverPosition</a>(position: <a href="../khome.values/-position/index.html">Position</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="85452632%2FFunctions%2F769193423" anchor-label="stateValueChangedFrom" id="85452632%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="state-value-changed-from.html">stateValueChangedFrom</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="85452632%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="state-value-changed-from.html">S</a> : <a href="../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="state-value-changed-from.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>, <a href="state-value-changed-from.html">SV</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="state-value-changed-from.html">S</a>, <a href="state-value-changed-from.html">A</a>&gt;.<a href="state-value-changed-from.html">stateValueChangedFrom</a>(values: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="state-value-changed-from.html">SV</a>, <a href="state-value-changed-from.html">SV</a>&gt;): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun &lt;<a href="state-value-changed-from.html">S</a> : <a href="../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="state-value-changed-from.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>, <a href="state-value-changed-from.html">SV</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="state-value-changed-from.html">S</a>, <a href="state-value-changed-from.html">A</a>&gt;.<a href="state-value-changed-from.html">stateValueChangedFrom</a>(values: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-triple/index.html">Triple</a>&lt;<a href="state-value-changed-from.html">SV</a>, <a href="state-value-changed-from.html">SV</a>, <a href="state-value-changed-from.html">SV</a>&gt;): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="33284452%2FFunctions%2F769193423" anchor-label="Switch" id="33284452%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-switch.html">Switch</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="33284452%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="-switch.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-switch.html">Switch</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#1952491461%2FClasslikes%2F769193423">Switch</a>&lt;<a href="-switch.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="677022263%2FFunctions%2F769193423" anchor-label="turnOff" id="677022263%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="turn-off.html">turnOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="677022263%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="turn-off.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="turn-off.html">A</a>&gt;.<a href="turn-off.html">turnOff</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="111613327%2FFunctions%2F769193423" anchor-label="turnOn" id="111613327%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="turn-on.html">turnOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="111613327%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="turn-on.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="turn-on.html">A</a>&gt;.<a href="turn-on.html">turnOn</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="1235587029%2FProperties%2F769193423" anchor-label="isClosed" id="1235587029%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-closed.html">isClosed</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1235587029%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1235587029%2FProperties%2F769193423" anchor-label="isClosed" id="1235587029%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="is-closed.html">isClosed</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="522844260%2FProperties%2F769193423" anchor-label="isOff" id="522844260%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-off.html">isOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="522844260%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="522844260%2FProperties%2F769193423" anchor-label="isOff" id="522844260%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, *&gt;.<a href="is-off.html">isOff</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1899567990%2FProperties%2F769193423" anchor-label="isOn" id="1899567990%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-on.html">isOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1899567990%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1899567990%2FProperties%2F769193423" anchor-label="isOn" id="1899567990%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, *&gt;.<a href="is-on.html">isOn</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-27290253%2FProperties%2F769193423" anchor-label="isOpen" id="-27290253%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-open.html">isOpen</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-27290253%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-27290253%2FProperties%2F769193423" anchor-label="isOpen" id="-27290253%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="is-open.html">isOpen</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1697589304%2FProperties%2F769193423" anchor-label="isWorking" id="1697589304%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-working.html">isWorking</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1697589304%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1697589304%2FProperties%2F769193423" anchor-label="isWorking" id="1697589304%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#-1910693387%2FClasslikes%2F769193423">PositionableCover</a>.<a href="is-working.html">isWorking</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

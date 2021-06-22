@@ -1,267 +1,606 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>khome.extending.entities.actuators.mediaplayer - khome</title>
-<link rel="stylesheet" href="../../style.css">
-</HEAD>
-<BODY>
-<a href="../index.html">khome</a>&nbsp;/&nbsp;<a href="./index.html">khome.extending.entities.actuators.mediaplayer</a><br/>
-<br/>
-<h2>Package khome.extending.entities.actuators.mediaplayer</h2>
-<h3>Types</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-media-player.html">MediaPlayer</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">MediaPlayer</span><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">, </span><span class="identifier">A</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-media-receiver.html">MediaReceiver</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">MediaReceiver</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="-media-player.html"><span class="identifier">MediaPlayer</span></a><span class="symbol">&lt;</span><a href="-media-receiver-state/index.html"><span class="identifier">MediaReceiverState</span></a><span class="symbol">,</span>&nbsp;<a href="-media-receiver-attributes/index.html"><span class="identifier">MediaReceiverAttributes</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-media-receiver-attributes/index.html">MediaReceiverAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MediaReceiverAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-media-receiver-desired-service-data/index.html">MediaReceiverDesiredServiceData</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MediaReceiverDesiredServiceData</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-desired-service-data/index.html"><span class="identifier">DesiredServiceData</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-media-receiver-state/index.html">MediaReceiverState</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MediaReceiverState</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><a href="-media-receiver-state-value/index.html"><span class="identifier">MediaReceiverStateValue</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-media-receiver-state-value/index.html">MediaReceiverStateValue</a></h4>
-</td>
-<td>
-<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">MediaReceiverStateValue</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-television.html">Television</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">Television</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="-media-player.html"><span class="identifier">MediaPlayer</span></a><span class="symbol">&lt;</span><a href="-television-state/index.html"><span class="identifier">TelevisionState</span></a><span class="symbol">,</span>&nbsp;<a href="-television-attributes/index.html"><span class="identifier">TelevisionAttributes</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-television-attributes/index.html">TelevisionAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">TelevisionAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-television-desired-service-data/index.html">TelevisionDesiredServiceData</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">TelevisionDesiredServiceData</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-desired-service-data/index.html"><span class="identifier">DesiredServiceData</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-television-state/index.html">TelevisionState</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">TelevisionState</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-value/index.html"><span class="identifier">SwitchableValue</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="is-idle.html">isIdle</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">isIdle</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-muted.html">isMuted</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">isMuted</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-off.html">isOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">isOff</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
-<code><span class="keyword">val </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">isOff</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-on.html">isOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">isOn</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
-<code><span class="keyword">val </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">isOn</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-paused.html">isPaused</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">isPaused</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-playing.html">isPlaying</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">isPlaying</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-media-player.html">MediaPlayer</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">MediaPlayer</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$MediaPlayer(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.mediaplayer.MediaPlayer.S)))/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$MediaPlayer(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.mediaplayer.MediaPlayer.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="-media-player.html"><span class="identifier">MediaPlayer</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-media-receiver.html">MediaReceiver</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">MediaReceiver</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$MediaReceiver(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="mute-volume.html">muteVolume</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">muteVolume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">muteVolume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-playback-paused.html">onPlaybackPaused</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">onPlaybackPaused</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$onPlaybackPaused(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-playback-resumed.html">onPlaybackResumed</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">onPlaybackResumed</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$onPlaybackResumed(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-playback-started.html">onPlaybackStarted</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">onPlaybackStarted</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$onPlaybackStarted(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-playback-stopped.html">onPlaybackStopped</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">onPlaybackStopped</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$onPlaybackStopped(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-turned-off.html">onTurnedOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">onTurnedOff</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$onTurnedOff(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">onTurnedOff</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$onTurnedOff(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.TelevisionState, khome.extending.entities.actuators.mediaplayer.TelevisionAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.TelevisionState, khome.extending.entities.actuators.mediaplayer.TelevisionAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-turned-on.html">onTurnedOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">onTurnedOn</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$onTurnedOn(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">onTurnedOn</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$onTurnedOn(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.TelevisionState, khome.extending.entities.actuators.mediaplayer.TelevisionAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.TelevisionState, khome.extending.entities.actuators.mediaplayer.TelevisionAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="pause.html">pause</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">pause</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="play.html">play</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">play</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-source.html">setSource</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">setSource</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$setSource(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.TelevisionState, khome.extending.entities.actuators.mediaplayer.TelevisionAttributes)), khome.values.MediaSource)/source">source</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-media-source/index.html"><span class="identifier">MediaSource</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-volume-to.html">setVolumeTo</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">setVolumeTo</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$setVolumeTo(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.MediaReceiverState, khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes)), khome.values.VolumeLevel)/level">level</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-volume-level/index.html"><span class="identifier">VolumeLevel</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">setVolumeTo</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$setVolumeTo(khome.entities.devices.Actuator((khome.extending.entities.actuators.mediaplayer.TelevisionState, khome.extending.entities.actuators.mediaplayer.TelevisionAttributes)), khome.values.VolumeLevel)/level">level</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-volume-level/index.html"><span class="identifier">VolumeLevel</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-television.html">Television</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Television</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.mediaplayer$Television(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-television.html"><span class="identifier">Television</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="turn-off.html">turnOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">turnOff</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">turnOff</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="turn-on.html">turnOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">turnOn</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">turnOn</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="un-mute-volume.html">unMuteVolume</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-media-receiver.html"><span class="identifier">MediaReceiver</span></a><span class="symbol">.</span><span class="identifier">unMuteVolume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-television.html"><span class="identifier">Television</span></a><span class="symbol">.</span><span class="identifier">unMuteVolume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>khome.extending.entities.actuators.mediaplayer</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="khome::khome.extending.entities.actuators.mediaplayer////PointingToDeclaration//769193423">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../index.html">khome</a>/<a href="index.html">khome.extending.entities.actuators.mediaplayer</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Package khome.</span><wbr></wbr><span>extending.</span><wbr></wbr><span>entities.</span><wbr></wbr><span>actuators.</span><wbr></wbr><span>mediaplayer</span></h1>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="1713662637%2FClasslikes%2F769193423" anchor-label="MediaPlayer" id="1713662637%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1713662637%2FClasslikes%2F769193423">MediaPlayer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1713662637%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#1713662637%2FClasslikes%2F769193423">MediaPlayer</a>&lt;<a href="index.html#1713662637%2FClasslikes%2F769193423">S</a>, <a href="index.html#1713662637%2FClasslikes%2F769193423">A</a>&gt; = <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="index.html#1713662637%2FClasslikes%2F769193423">S</a>, <a href="index.html#1713662637%2FClasslikes%2F769193423">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1995009055%2FClasslikes%2F769193423" anchor-label="MediaReceiver" id="1995009055%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1995009055%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a> = <a href="index.html#1713662637%2FClasslikes%2F769193423">MediaPlayer</a>&lt;<a href="-media-receiver-state/index.html">MediaReceiverState</a>, <a href="-media-receiver-attributes/index.html">MediaReceiverAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1971788040%2FClasslikes%2F769193423" anchor-label="MediaReceiverAttributes" id="1971788040%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-media-receiver-attributes/index.html">MediaReceiverAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1971788040%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-media-receiver-attributes/index.html">MediaReceiverAttributes</a>(mediaContentId: <a href="../khome.values/-media-content-id/index.html">MediaContentId</a>?, mediaTitle: <a href="../khome.values/-media-title/index.html">MediaTitle</a>?, mediaArtist: <a href="../khome.values/-artist/index.html">Artist</a>?, mediaAlbumName: <a href="../khome.values/-album-name/index.html">AlbumName</a>?, mediaContentType: <a href="../khome.values/-media-content-type/index.html">MediaContentType</a>?, mediaDuration: <a href="../khome.values/-media-duration/index.html">MediaDuration</a>?, mediaPositionUpdatedAt: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>?, appId: <a href="../khome.values/-app-id/index.html">AppId</a>?, appName: <a href="../khome.values/-app-name/index.html">AppName</a>?, entityPicture: <a href="../khome.values/-entity-picture/index.html">EntityPicture</a>, userId: <a href="../khome.values/-user-id/index.html">UserId</a>?, friendlyName: <a href="../khome.values/-friendly-name/index.html">FriendlyName</a>, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>) : <a href="../khome.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-390273254%2FClasslikes%2F769193423" anchor-label="MediaReceiverDesiredServiceData" id="-390273254%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-media-receiver-desired-service-data/index.html">MediaReceiverDesiredServiceData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-390273254%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-media-receiver-desired-service-data/index.html">MediaReceiverDesiredServiceData</a>(isVolumeMuted: <a href="../khome.values/-mute/index.html">Mute</a>?, volumeLevel: <a href="../khome.values/-volume-level/index.html">VolumeLevel</a>?, seekPosition: <a href="../khome.values/-media-position/index.html">MediaPosition</a>?) : <a href="../khome.communicating/-desired-service-data/index.html">DesiredServiceData</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-2096225870%2FClasslikes%2F769193423" anchor-label="MediaReceiverState" id="-2096225870%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-media-receiver-state/index.html">MediaReceiverState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2096225870%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-media-receiver-state/index.html">MediaReceiverState</a>(value: <a href="-media-receiver-state-value/index.html">MediaReceiverStateValue</a>, volumeLevel: <a href="../khome.values/-volume-level/index.html">VolumeLevel</a>?, isVolumeMuted: <a href="../khome.values/-mute/index.html">Mute</a>?, mediaPosition: <a href="../khome.values/-media-position/index.html">MediaPosition</a>?) : <a href="../khome.entities/-state/index.html">State</a>&lt;<a href="-media-receiver-state-value/index.html">MediaReceiverStateValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-925933793%2FClasslikes%2F769193423" anchor-label="MediaReceiverStateValue" id="-925933793%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-media-receiver-state-value/index.html">MediaReceiverStateValue</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-925933793%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">enum <a href="-media-receiver-state-value/index.html">MediaReceiverStateValue</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-media-receiver-state-value/index.html">MediaReceiverStateValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1202423166%2FClasslikes%2F769193423" anchor-label="Television" id="1202423166%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1202423166%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a> = <a href="index.html#1713662637%2FClasslikes%2F769193423">MediaPlayer</a>&lt;<a href="-television-state/index.html">TelevisionState</a>, <a href="-television-attributes/index.html">TelevisionAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1377585063%2FClasslikes%2F769193423" anchor-label="TelevisionAttributes" id="1377585063%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-television-attributes/index.html">TelevisionAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1377585063%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-television-attributes/index.html">TelevisionAttributes</a>(mediaContentId: <a href="../khome.values/-media-content-id/index.html">MediaContentId</a>, mediaTitle: <a href="../khome.values/-media-title/index.html">MediaTitle</a>, mediaContentType: <a href="../khome.values/-media-content-type/index.html">MediaContentType</a>, userId: <a href="../khome.values/-user-id/index.html">UserId</a>?, friendlyName: <a href="../khome.values/-friendly-name/index.html">FriendlyName</a>, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>) : <a href="../khome.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1027275079%2FClasslikes%2F769193423" anchor-label="TelevisionDesiredServiceData" id="-1027275079%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-television-desired-service-data/index.html">TelevisionDesiredServiceData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1027275079%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-television-desired-service-data/index.html">TelevisionDesiredServiceData</a>(isVolumeMuted: <a href="../khome.values/-mute/index.html">Mute</a>?, volumeLevel: <a href="../khome.values/-volume-level/index.html">VolumeLevel</a>?, source: <a href="../khome.values/-media-source/index.html">MediaSource</a>?) : <a href="../khome.communicating/-desired-service-data/index.html">DesiredServiceData</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="651168691%2FClasslikes%2F769193423" anchor-label="TelevisionState" id="651168691%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-television-state/index.html">TelevisionState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="651168691%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-television-state/index.html">TelevisionState</a>(value: <a href="../khome.extending.entities/-switchable-value/index.html">SwitchableValue</a>, volumeLevel: <a href="../khome.values/-volume-level/index.html">VolumeLevel</a>?, isVolumeMuted: <a href="../khome.values/-mute/index.html">Mute</a>?, source: <a href="../khome.values/-media-source/index.html">MediaSource</a>?) : <a href="../khome.entities/-state/index.html">State</a>&lt;<a href="../khome.extending.entities/-switchable-value/index.html">SwitchableValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="1131244515%2FFunctions%2F769193423" anchor-label="MediaPlayer" id="1131244515%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-media-player.html">MediaPlayer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1131244515%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="-media-player.html">S</a> : <a href="../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="-media-player.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-media-player.html">MediaPlayer</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>, serviceCommandResolver: <a href="../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="-media-player.html">S</a>&gt;): <a href="index.html#1713662637%2FClasslikes%2F769193423">MediaPlayer</a>&lt;<a href="-media-player.html">S</a>, <a href="-media-player.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1107855586%2FFunctions%2F769193423" anchor-label="MediaReceiver" id="-1107855586%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-media-receiver.html">MediaReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1107855586%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-media-receiver.html">MediaReceiver</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1867013226%2FFunctions%2F769193423" anchor-label="muteVolume" id="1867013226%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="mute-volume.html">muteVolume</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1867013226%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="mute-volume.html">muteVolume</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="mute-volume.html">muteVolume</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-170546026%2FFunctions%2F769193423" anchor-label="onPlaybackPaused" id="-170546026%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-playback-paused.html">onPlaybackPaused</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-170546026%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="on-playback-paused.html">onPlaybackPaused</a>(f: <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1537636497%2FFunctions%2F769193423" anchor-label="onPlaybackResumed" id="-1537636497%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-playback-resumed.html">onPlaybackResumed</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1537636497%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="on-playback-resumed.html">onPlaybackResumed</a>(f: <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1575893017%2FFunctions%2F769193423" anchor-label="onPlaybackStarted" id="1575893017%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-playback-started.html">onPlaybackStarted</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1575893017%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="on-playback-started.html">onPlaybackStarted</a>(f: <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1359475355%2FFunctions%2F769193423" anchor-label="onPlaybackStopped" id="-1359475355%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-playback-stopped.html">onPlaybackStopped</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1359475355%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="on-playback-stopped.html">onPlaybackStopped</a>(f: <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="968534476%2FFunctions%2F769193423" anchor-label="onTurnedOff" id="968534476%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-turned-off.html">onTurnedOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="968534476%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="on-turned-off.html">onTurnedOff</a>(f: <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="on-turned-off.html">onTurnedOff</a>(f: <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-235575164%2FFunctions%2F769193423" anchor-label="onTurnedOn" id="-235575164%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-turned-on.html">onTurnedOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-235575164%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="on-turned-on.html">onTurnedOn</a>(f: <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="on-turned-on.html">onTurnedOn</a>(f: <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-259230812%2FFunctions%2F769193423" anchor-label="pause" id="-259230812%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="pause.html">pause</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-259230812%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="pause.html">pause</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1218270462%2FFunctions%2F769193423" anchor-label="play" id="1218270462%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="play.html">play</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1218270462%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="play.html">play</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1466546544%2FFunctions%2F769193423" anchor-label="setSource" id="-1466546544%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-source.html">setSource</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1466546544%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="set-source.html">setSource</a>(source: <a href="../khome.values/-media-source/index.html">MediaSource</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="251573544%2FFunctions%2F769193423" anchor-label="setVolumeTo" id="251573544%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-volume-to.html">setVolumeTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="251573544%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="set-volume-to.html">setVolumeTo</a>(level: <a href="../khome.values/-volume-level/index.html">VolumeLevel</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="set-volume-to.html">setVolumeTo</a>(level: <a href="../khome.values/-volume-level/index.html">VolumeLevel</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1406663143%2FFunctions%2F769193423" anchor-label="Television" id="-1406663143%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-television.html">Television</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1406663143%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-television.html">Television</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="293207304%2FFunctions%2F769193423" anchor-label="turnOff" id="293207304%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="turn-off.html">turnOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="293207304%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="turn-off.html">turnOff</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="turn-off.html">turnOff</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-842598404%2FFunctions%2F769193423" anchor-label="turnOn" id="-842598404%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="turn-on.html">turnOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-842598404%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="turn-on.html">turnOn</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="turn-on.html">turnOn</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="2038385948%2FFunctions%2F769193423" anchor-label="unMuteVolume" id="2038385948%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="un-mute-volume.html">unMuteVolume</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2038385948%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="un-mute-volume.html">unMuteVolume</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="un-mute-volume.html">unMuteVolume</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="520024040%2FProperties%2F769193423" anchor-label="isIdle" id="520024040%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-idle.html">isIdle</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="520024040%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="520024040%2FProperties%2F769193423" anchor-label="isIdle" id="520024040%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="is-idle.html">isIdle</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-277578997%2FProperties%2F769193423" anchor-label="isMuted" id="-277578997%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-muted.html">isMuted</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-277578997%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-277578997%2FProperties%2F769193423" anchor-label="isMuted" id="-277578997%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="is-muted.html">isMuted</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1944074797%2FProperties%2F769193423" anchor-label="isOff" id="-1944074797%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-off.html">isOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1944074797%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-1944074797%2FProperties%2F769193423" anchor-label="isOff" id="-1944074797%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="is-off.html">isOff</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1703828239%2FProperties%2F769193423" anchor-label="isOff" id="1703828239%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-off.html">isOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1703828239%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1703828239%2FProperties%2F769193423" anchor-label="isOff" id="1703828239%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="is-off.html">isOff</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="229719347%2FProperties%2F769193423" anchor-label="isOn" id="229719347%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-on.html">isOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="229719347%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="229719347%2FProperties%2F769193423" anchor-label="isOn" id="229719347%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="is-on.html">isOn</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-236660113%2FProperties%2F769193423" anchor-label="isOn" id="-236660113%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-on.html">isOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-236660113%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-236660113%2FProperties%2F769193423" anchor-label="isOn" id="-236660113%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#1202423166%2FClasslikes%2F769193423">Television</a>.<a href="is-on.html">isOn</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1516178626%2FProperties%2F769193423" anchor-label="isPaused" id="1516178626%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-paused.html">isPaused</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1516178626%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1516178626%2FProperties%2F769193423" anchor-label="isPaused" id="1516178626%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="is-paused.html">isPaused</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-658208558%2FProperties%2F769193423" anchor-label="isPlaying" id="-658208558%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-playing.html">isPlaying</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-658208558%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-658208558%2FProperties%2F769193423" anchor-label="isPlaying" id="-658208558%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#1995009055%2FClasslikes%2F769193423">MediaReceiver</a>.<a href="is-playing.html">isPlaying</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,255 +1,597 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>khome.extending.entities.actuators.light - khome</title>
-<link rel="stylesheet" href="../../style.css">
-</HEAD>
-<BODY>
-<a href="../index.html">khome</a>&nbsp;/&nbsp;<a href="./index.html">khome.extending.entities.actuators.light</a><br/>
-<br/>
-<h2>Package khome.extending.entities.actuators.light</h2>
-<h3>Types</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-dimmable-light.html">DimmableLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">DimmableLight</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="-dimmable-light-state/index.html"><span class="identifier">DimmableLightState</span></a><span class="symbol">,</span>&nbsp;<a href="-light-attributes/index.html"><span class="identifier">LightAttributes</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-dimmable-light-service-data/index.html">DimmableLightServiceData</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">DimmableLightServiceData</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-desired-service-data/index.html"><span class="identifier">DesiredServiceData</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-dimmable-light-state/index.html">DimmableLightState</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">DimmableLightState</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-value/index.html"><span class="identifier">SwitchableValue</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-kelvin-service-data/index.html">KelvinServiceData</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">KelvinServiceData</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-desired-service-data/index.html"><span class="identifier">DesiredServiceData</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-light-attributes/index.html">LightAttributes</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">LightAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-named-color-service-data/index.html">NamedColorServiceData</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">NamedColorServiceData</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-desired-service-data/index.html"><span class="identifier">DesiredServiceData</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-r-g-b-light.html">RGBLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">RGBLight</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="-r-g-b-light-state/index.html"><span class="identifier">RGBLightState</span></a><span class="symbol">,</span>&nbsp;<a href="-light-attributes/index.html"><span class="identifier">LightAttributes</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-r-g-b-light-service-data/index.html">RGBLightServiceData</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">RGBLightServiceData</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-desired-service-data/index.html"><span class="identifier">DesiredServiceData</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-r-g-b-light-state/index.html">RGBLightState</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">RGBLightState</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-value/index.html"><span class="identifier">SwitchableValue</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-r-g-b-w-light.html">RGBWLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">RGBWLight</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="-r-g-b-w-light-state/index.html"><span class="identifier">RGBWLightState</span></a><span class="symbol">,</span>&nbsp;<a href="-light-attributes/index.html"><span class="identifier">LightAttributes</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-r-g-b-w-light-service-data/index.html">RGBWLightServiceData</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">RGBWLightServiceData</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-desired-service-data/index.html"><span class="identifier">DesiredServiceData</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-r-g-b-w-light-state/index.html">RGBWLightState</a></h4>
-</td>
-<td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">RGBWLightState</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-value/index.html"><span class="identifier">SwitchableValue</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-switchable-light.html">SwitchableLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">typealias </span><span class="identifier">SwitchableLight</span>&nbsp;<span class="symbol">=</span>&nbsp;<a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><a href="../khome.extending.entities/-switchable-state/index.html"><span class="identifier">SwitchableState</span></a><span class="symbol">,</span>&nbsp;<a href="-light-attributes/index.html"><span class="identifier">LightAttributes</span></a><span class="symbol">&gt;</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="is-off.html">isOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="identifier">isOff</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
-<code><span class="keyword">val </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">isOff</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
-<code><span class="keyword">val </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">isOff</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-on.html">isOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="identifier">isOn</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
-<code><span class="keyword">val </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">isOn</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
-<code><span class="keyword">val </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">isOn</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-dimmable-light.html">DimmableLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">DimmableLight</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$DimmableLight(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-light.html">Light</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-state/index.html"><span class="identifier">State</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../khome.entities/-attributes/index.html"><span class="identifier">Attributes</span></a><span class="symbol">&gt;</span> <a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">Light</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$Light(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.light.Light.S)))/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$Light(khome.KhomeApplication, khome.values.ObjectId, khome.communicating.ServiceCommandResolver((khome.extending.entities.actuators.light.Light.S)))/serviceCommandResolver">serviceCommandResolver</span><span class="symbol">:</span>&nbsp;<a href="../khome.communicating/-service-command-resolver/index.html"><span class="identifier">ServiceCommandResolver</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.entities.devices/-actuator/index.html"><span class="identifier">Actuator</span></a><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">,</span>&nbsp;<span class="identifier">A</span><span class="symbol">&gt;</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-turned-off.html">onTurnedOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="identifier">onTurnedOff</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$onTurnedOff(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.DimmableLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.light.DimmableLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">onTurnedOff</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$onTurnedOff(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">onTurnedOff</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$onTurnedOff(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-turned-on.html">onTurnedOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="identifier">onTurnedOn</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$onTurnedOn(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.DimmableLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.light.DimmableLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">onTurnedOn</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$onTurnedOn(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">onTurnedOn</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$onTurnedOn(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Function2((khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.observability.Switchable, kotlin.Unit)))/f">f</span><span class="symbol">:</span>&nbsp;<a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="symbol">(</span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../khome.observability/-switchable/index.html"><span class="identifier">Switchable</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-r-g-b-light.html">RGBLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">RGBLight</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$RGBLight(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-r-g-b-w-light.html">RGBWLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">RGBWLight</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$RGBWLight(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-brightness.html">setBrightness</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="identifier">setBrightness</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setBrightness(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.DimmableLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.values.Brightness)/level">level</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-brightness/index.html"><span class="identifier">Brightness</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">setBrightness</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setBrightness(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.values.Brightness)/level">level</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-brightness/index.html"><span class="identifier">Brightness</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">setBrightness</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setBrightness(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.values.Brightness)/level">level</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-brightness/index.html"><span class="identifier">Brightness</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-color.html">setColor</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">setColor</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setColor(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.values.ColorName)/name">name</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-color-name/index.html"><span class="identifier">ColorName</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">setColor</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setColor(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.values.ColorName)/name">name</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-color-name/index.html"><span class="identifier">ColorName</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-color-temperature.html">setColorTemperature</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">setColorTemperature</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setColorTemperature(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), khome.values.ColorTemperature)/temperature">temperature</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-color-temperature/index.html"><span class="identifier">ColorTemperature</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-h-s.html">setHS</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">setHS</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setHS(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Double, kotlin.Double)/hue">hue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$setHS(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Double, kotlin.Double)/saturation">saturation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">setHS</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setHS(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Double, kotlin.Double)/hue">hue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$setHS(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Double, kotlin.Double)/saturation">saturation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-r-g-b.html">setRGB</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">setRGB</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setRGB(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Int, kotlin.Int, kotlin.Int)/red">red</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$setRGB(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Int, kotlin.Int, kotlin.Int)/green">green</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$setRGB(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Int, kotlin.Int, kotlin.Int)/blue">blue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">setRGB</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setRGB(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Int, kotlin.Int, kotlin.Int)/red">red</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$setRGB(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Int, kotlin.Int, kotlin.Int)/green">green</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$setRGB(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Int, kotlin.Int, kotlin.Int)/blue">blue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-x-y.html">setXY</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">setXY</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setXY(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Double, kotlin.Double)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$setXY(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Double, kotlin.Double)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">setXY</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$setXY(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Double, kotlin.Double)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="khome.extending.entities.actuators.light$setXY(khome.entities.devices.Actuator((khome.extending.entities.actuators.light.RGBWLightState, khome.extending.entities.actuators.light.LightAttributes)), kotlin.Double, kotlin.Double)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-switchable-light.html">SwitchableLight</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="../khome/-khome-application/index.html"><span class="identifier">KhomeApplication</span></a><span class="symbol">.</span><span class="identifier">SwitchableLight</span><span class="symbol">(</span><span class="identifier" id="khome.extending.entities.actuators.light$SwitchableLight(khome.KhomeApplication, khome.values.ObjectId)/objectId">objectId</span><span class="symbol">:</span>&nbsp;<a href="../khome.values/-object-id/index.html"><span class="identifier">ObjectId</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-switchable-light.html"><span class="identifier">SwitchableLight</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="turn-off.html">turnOff</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="identifier">turnOff</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">turnOff</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">turnOff</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="turn-on.html">turnOn</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><a href="-dimmable-light.html"><span class="identifier">DimmableLight</span></a><span class="symbol">.</span><span class="identifier">turnOn</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-light.html"><span class="identifier">RGBLight</span></a><span class="symbol">.</span><span class="identifier">turnOn</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
-<code><span class="keyword">fun </span><a href="-r-g-b-w-light.html"><span class="identifier">RGBWLight</span></a><span class="symbol">.</span><span class="identifier">turnOn</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>khome.extending.entities.actuators.light</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="khome::khome.extending.entities.actuators.light////PointingToDeclaration//769193423">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../index.html">khome</a>/<a href="index.html">khome.extending.entities.actuators.light</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Package khome.</span><wbr></wbr><span>extending.</span><wbr></wbr><span>entities.</span><wbr></wbr><span>actuators.</span><wbr></wbr><span>light</span></h1>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="-1947563830%2FClasslikes%2F769193423" anchor-label="DimmableLight" id="-1947563830%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1947563830%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a> = <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="-dimmable-light-state/index.html">DimmableLightState</a>, <a href="-light-attributes/index.html">LightAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="2070647545%2FClasslikes%2F769193423" anchor-label="DimmableLightServiceData" id="2070647545%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-dimmable-light-service-data/index.html">DimmableLightServiceData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2070647545%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-dimmable-light-service-data/index.html">DimmableLightServiceData</a>(brightness: <a href="../khome.values/-brightness/index.html">Brightness</a>) : <a href="../khome.communicating/-desired-service-data/index.html">DesiredServiceData</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1378564071%2FClasslikes%2F769193423" anchor-label="DimmableLightState" id="1378564071%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-dimmable-light-state/index.html">DimmableLightState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1378564071%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-dimmable-light-state/index.html">DimmableLightState</a>(value: <a href="../khome.extending.entities/-switchable-value/index.html">SwitchableValue</a>, brightness: <a href="../khome.values/-brightness/index.html">Brightness</a>?) : <a href="../khome.entities/-state/index.html">State</a>&lt;<a href="../khome.extending.entities/-switchable-value/index.html">SwitchableValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1522192757%2FClasslikes%2F769193423" anchor-label="KelvinServiceData" id="-1522192757%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-kelvin-service-data/index.html">KelvinServiceData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1522192757%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-kelvin-service-data/index.html">KelvinServiceData</a>(kelvin: <a href="../khome.values/-color-temperature/index.html">ColorTemperature</a>) : <a href="../khome.communicating/-desired-service-data/index.html">DesiredServiceData</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-2127017196%2FClasslikes%2F769193423" anchor-label="LightAttributes" id="-2127017196%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-light-attributes/index.html">LightAttributes</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2127017196%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-light-attributes/index.html">LightAttributes</a>(supported_features: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, userId: <a href="../khome.values/-user-id/index.html">UserId</a>?, friendlyName: <a href="../khome.values/-friendly-name/index.html">FriendlyName</a>, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>) : <a href="../khome.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1331946196%2FClasslikes%2F769193423" anchor-label="NamedColorServiceData" id="-1331946196%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-named-color-service-data/index.html">NamedColorServiceData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1331946196%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-named-color-service-data/index.html">NamedColorServiceData</a>(color_name: <a href="../khome.values/-color-name/index.html">ColorName</a>) : <a href="../khome.communicating/-desired-service-data/index.html">DesiredServiceData</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="865790136%2FClasslikes%2F769193423" anchor-label="RGBLight" id="865790136%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="865790136%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a> = <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="-r-g-b-light-state/index.html">RGBLightState</a>, <a href="-light-attributes/index.html">LightAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="960598603%2FClasslikes%2F769193423" anchor-label="RGBLightServiceData" id="960598603%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-r-g-b-light-service-data/index.html">RGBLightServiceData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="960598603%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-r-g-b-light-service-data/index.html">RGBLightServiceData</a>(brightness: <a href="../khome.values/-brightness/index.html">Brightness</a>?, hsColor: <a href="../khome.values/-h-s-color/index.html">HSColor</a>?, rgbColor: <a href="../khome.values/-r-g-b-color/index.html">RGBColor</a>?, xyColor: <a href="../khome.values/-x-y-color/index.html">XYColor</a>?) : <a href="../khome.communicating/-desired-service-data/index.html">DesiredServiceData</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1426088775%2FClasslikes%2F769193423" anchor-label="RGBLightState" id="-1426088775%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-r-g-b-light-state/index.html">RGBLightState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1426088775%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-r-g-b-light-state/index.html">RGBLightState</a>(value: <a href="../khome.extending.entities/-switchable-value/index.html">SwitchableValue</a>, brightness: <a href="../khome.values/-brightness/index.html">Brightness</a>?, hsColor: <a href="../khome.values/-h-s-color/index.html">HSColor</a>?, rgbColor: <a href="../khome.values/-r-g-b-color/index.html">RGBColor</a>?, xyColor: <a href="../khome.values/-x-y-color/index.html">XYColor</a>?) : <a href="../khome.entities/-state/index.html">State</a>&lt;<a href="../khome.extending.entities/-switchable-value/index.html">SwitchableValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1053237003%2FClasslikes%2F769193423" anchor-label="RGBWLight" id="-1053237003%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1053237003%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a> = <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="-r-g-b-w-light-state/index.html">RGBWLightState</a>, <a href="-light-attributes/index.html">LightAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-452132370%2FClasslikes%2F769193423" anchor-label="RGBWLightServiceData" id="-452132370%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-r-g-b-w-light-service-data/index.html">RGBWLightServiceData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-452132370%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-r-g-b-w-light-service-data/index.html">RGBWLightServiceData</a>(brightness: <a href="../khome.values/-brightness/index.html">Brightness</a>?, hsColor: <a href="../khome.values/-h-s-color/index.html">HSColor</a>?, rgbColor: <a href="../khome.values/-r-g-b-color/index.html">RGBColor</a>?, xyColor: <a href="../khome.values/-x-y-color/index.html">XYColor</a>?, colorTemp: <a href="../khome.values/-color-temperature/index.html">ColorTemperature</a>?) : <a href="../khome.communicating/-desired-service-data/index.html">DesiredServiceData</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1317780836%2FClasslikes%2F769193423" anchor-label="RGBWLightState" id="-1317780836%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-r-g-b-w-light-state/index.html">RGBWLightState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1317780836%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">data class <a href="-r-g-b-w-light-state/index.html">RGBWLightState</a>(value: <a href="../khome.extending.entities/-switchable-value/index.html">SwitchableValue</a>, brightness: <a href="../khome.values/-brightness/index.html">Brightness</a>?, hsColor: <a href="../khome.values/-h-s-color/index.html">HSColor</a>?, rgbColor: <a href="../khome.values/-r-g-b-color/index.html">RGBColor</a>?, xyColor: <a href="../khome.values/-x-y-color/index.html">XYColor</a>?, colorTemp: <a href="../khome.values/-color-temperature/index.html">ColorTemperature</a>?) : <a href="../khome.entities/-state/index.html">State</a>&lt;<a href="../khome.extending.entities/-switchable-value/index.html">SwitchableValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="263932761%2FClasslikes%2F769193423" anchor-label="SwitchableLight" id="263932761%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#263932761%2FClasslikes%2F769193423">SwitchableLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="263932761%2FClasslikes%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">typealias <a href="index.html#263932761%2FClasslikes%2F769193423">SwitchableLight</a> = <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="../khome.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="-light-attributes/index.html">LightAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-886682607%2FFunctions%2F769193423" anchor-label="DimmableLight" id="-886682607%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-dimmable-light.html">DimmableLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-886682607%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-dimmable-light.html">DimmableLight</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1421860195%2FFunctions%2F769193423" anchor-label="Light" id="1421860195%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-light.html">Light</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1421860195%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="-light.html">S</a> : <a href="../khome.entities/-state/index.html">State</a>&lt;*&gt;, <a href="-light.html">A</a> : <a href="../khome.entities/-attributes/index.html">Attributes</a>&gt; <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-light.html">Light</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>, serviceCommandResolver: <a href="../khome.communicating/-service-command-resolver/index.html">ServiceCommandResolver</a>&lt;<a href="-light.html">S</a>&gt;): <a href="../khome.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="-light.html">S</a>, <a href="-light.html">A</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1660700275%2FFunctions%2F769193423" anchor-label="onTurnedOff" id="1660700275%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-turned-off.html">onTurnedOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1660700275%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.<a href="on-turned-off.html">onTurnedOff</a>(f: <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="on-turned-off.html">onTurnedOff</a>(f: <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="on-turned-off.html">onTurnedOff</a>(f: <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1303071509%2FFunctions%2F769193423" anchor-label="onTurnedOn" id="1303071509%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-turned-on.html">onTurnedOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1303071509%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.<a href="on-turned-on.html">onTurnedOn</a>(f: <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="on-turned-on.html">onTurnedOn</a>(f: <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="on-turned-on.html">onTurnedOn</a>(f: <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.(<a href="../khome.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../khome.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-235311967%2FFunctions%2F769193423" anchor-label="RGBLight" id="-235311967%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-r-g-b-light.html">RGBLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-235311967%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-r-g-b-light.html">RGBLight</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-171485306%2FFunctions%2F769193423" anchor-label="RGBWLight" id="-171485306%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-r-g-b-w-light.html">RGBWLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-171485306%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-r-g-b-w-light.html">RGBWLight</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-506593567%2FFunctions%2F769193423" anchor-label="setBrightness" id="-506593567%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-brightness.html">setBrightness</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-506593567%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.<a href="set-brightness.html">setBrightness</a>(level: <a href="../khome.values/-brightness/index.html">Brightness</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="set-brightness.html">setBrightness</a>(level: <a href="../khome.values/-brightness/index.html">Brightness</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="set-brightness.html">setBrightness</a>(level: <a href="../khome.values/-brightness/index.html">Brightness</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-543605545%2FFunctions%2F769193423" anchor-label="setColor" id="-543605545%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-color.html">setColor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-543605545%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="set-color.html">setColor</a>(name: <a href="../khome.values/-color-name/index.html">ColorName</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="set-color.html">setColor</a>(name: <a href="../khome.values/-color-name/index.html">ColorName</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-981712745%2FFunctions%2F769193423" anchor-label="setColorTemperature" id="-981712745%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-color-temperature.html">setColorTemperature</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-981712745%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="set-color-temperature.html">setColorTemperature</a>(temperature: <a href="../khome.values/-color-temperature/index.html">ColorTemperature</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1052770185%2FFunctions%2F769193423" anchor-label="setHS" id="-1052770185%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-h-s.html">setHS</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1052770185%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="set-h-s.html">setHS</a>(hue: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, saturation: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="set-h-s.html">setHS</a>(hue: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, saturation: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="2124043615%2FFunctions%2F769193423" anchor-label="setRGB" id="2124043615%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-r-g-b.html">setRGB</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2124043615%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="set-r-g-b.html">setRGB</a>(red: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, green: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, blue: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="set-r-g-b.html">setRGB</a>(red: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, green: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, blue: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1436433079%2FFunctions%2F769193423" anchor-label="setXY" id="1436433079%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-x-y.html">setXY</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1436433079%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="set-x-y.html">setXY</a>(x: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, y: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="set-x-y.html">setXY</a>(x: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, y: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="529360354%2FFunctions%2F769193423" anchor-label="SwitchableLight" id="529360354%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-switchable-light.html">SwitchableLight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="529360354%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="../khome/-khome-application/index.html">KhomeApplication</a>.<a href="-switchable-light.html">SwitchableLight</a>(objectId: <a href="../khome.values/-object-id/index.html">ObjectId</a>): <a href="index.html#263932761%2FClasslikes%2F769193423">SwitchableLight</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1515732411%2FFunctions%2F769193423" anchor-label="turnOff" id="-1515732411%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="turn-off.html">turnOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1515732411%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.<a href="turn-off.html">turnOff</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="turn-off.html">turnOff</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="turn-off.html">turnOff</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1864873153%2FFunctions%2F769193423" anchor-label="turnOn" id="1864873153%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="turn-on.html">turnOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1864873153%2FFunctions%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace">fun <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.<a href="turn-on.html">turnOn</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="turn-on.html">turnOn</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="turn-on.html">turnOn</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="606483033%2FProperties%2F769193423" anchor-label="isOff" id="606483033%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-off.html">isOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="606483033%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="606483033%2FProperties%2F769193423" anchor-label="isOff" id="606483033%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.<a href="is-off.html">isOff</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1061559467%2FProperties%2F769193423" anchor-label="isOff" id="1061559467%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-off.html">isOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1061559467%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1061559467%2FProperties%2F769193423" anchor-label="isOff" id="1061559467%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="is-off.html">isOff</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1471543228%2FProperties%2F769193423" anchor-label="isOff" id="-1471543228%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-off.html">isOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1471543228%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-1471543228%2FProperties%2F769193423" anchor-label="isOff" id="-1471543228%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="is-off.html">isOff</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="25303739%2FProperties%2F769193423" anchor-label="isOn" id="25303739%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-on.html">isOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="25303739%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="25303739%2FProperties%2F769193423" anchor-label="isOn" id="25303739%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#-1947563830%2FClasslikes%2F769193423">DimmableLight</a>.<a href="is-on.html">isOn</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-158400759%2FProperties%2F769193423" anchor-label="isOn" id="-158400759%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-on.html">isOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-158400759%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-158400759%2FProperties%2F769193423" anchor-label="isOn" id="-158400759%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#865790136%2FClasslikes%2F769193423">RGBLight</a>.<a href="is-on.html">isOn</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-635604570%2FProperties%2F769193423" anchor-label="isOn" id="-635604570%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-on.html">isOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-635604570%2FProperties%2F769193423"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-635604570%2FProperties%2F769193423" anchor-label="isOn" id="-635604570%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace">val <a href="index.html#-1053237003%2FClasslikes%2F769193423">RGBWLight</a>.<a href="is-on.html">isOn</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -6,11 +6,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v1
 
-      - name: Commit check
+      - name: Verify Conventional Commit format
         uses: docker://aevea/commitsar:latest
 
       - name: Code Check
-        run: ./gradlew --no-daemon clean check
+        run: ./gradlew --no-daemon clean check dokkaHtml
+
+      # Error out if any files were left dirty as the result of running the above.
+      - name: Check for dirty files
+        run: test -z "$(git status --porcelain)" || (echo "Changed files:" && git status --porcelain && exit 1)
