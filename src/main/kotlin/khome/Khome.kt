@@ -44,7 +44,6 @@ import khome.core.mapping.adapter.default.InstantTypeAdapter
 import khome.core.mapping.adapter.default.LocalDateAdapter
 import khome.core.mapping.adapter.default.LocalDateTimeAdapter
 import khome.core.mapping.adapter.default.LocalTimeAdapter
-import khome.core.mapping.adapter.default.OffsetDateTimeAdapter
 import khome.core.mapping.adapter.default.RegexTypeAdapter
 import khome.entities.ActuatorStateUpdater
 import khome.entities.EntityRegistrationValidation
@@ -101,7 +100,6 @@ import kotlinx.datetime.LocalDateTime
 import org.koin.core.component.inject
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import java.time.OffsetDateTime
 import kotlin.reflect.KClass
 
 internal typealias TypeAdapters = MutableMap<KClass<*>, TypeAdapter<*>>
@@ -288,7 +286,6 @@ private class KhomeImpl : Khome, KhomeComponent {
 }
 
 internal fun Khome.registerDefaultTypeAdapter() {
-    registerTypeAdapter<OffsetDateTime, String>(OffsetDateTimeAdapter())
     registerTypeAdapter<Instant, String>(InstantTypeAdapter())
     registerTypeAdapter<LocalDateTime, String>(LocalDateTimeAdapter())
     registerTypeAdapter<LocalDate, String>(LocalDateAdapter())
