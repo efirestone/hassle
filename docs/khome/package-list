@@ -91,10 +91,6 @@ $dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter///PointingTo
 $dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter/LocalTimeAdapter/#/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-local-time-adapter/-local-time-adapter.html
 $dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter/from/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-local-time-adapter/from.html
 $dokka.location:khome.core.mapping.adapter.default/LocalTimeAdapter/to/#io.fluidsonic.time.LocalTime/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-local-time-adapter/to.html
-$dokka.location:khome.core.mapping.adapter.default/OffsetDateTimeAdapter///PointingToDeclaration/khome/khome.core.mapping.adapter.default/-offset-date-time-adapter/index.html
-$dokka.location:khome.core.mapping.adapter.default/OffsetDateTimeAdapter/OffsetDateTimeAdapter/#/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-offset-date-time-adapter/-offset-date-time-adapter.html
-$dokka.location:khome.core.mapping.adapter.default/OffsetDateTimeAdapter/from/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-offset-date-time-adapter/from.html
-$dokka.location:khome.core.mapping.adapter.default/OffsetDateTimeAdapter/to/#java.time.OffsetDateTime/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-offset-date-time-adapter/to.html
 $dokka.location:khome.core.mapping.adapter.default/RegexTypeAdapter///PointingToDeclaration/khome/khome.core.mapping.adapter.default/-regex-type-adapter/index.html
 $dokka.location:khome.core.mapping.adapter.default/RegexTypeAdapter/RegexTypeAdapter/#/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-regex-type-adapter/-regex-type-adapter.html
 $dokka.location:khome.core.mapping.adapter.default/RegexTypeAdapter/from/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.core.mapping.adapter.default/-regex-type-adapter/from.html
