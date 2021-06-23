@@ -1,23 +1,18 @@
 package khome.core.mapping.adapter.default
 
 import khome.core.mapping.KhomeTypeAdapter
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import kotlinx.datetime.LocalDateTime
 
 internal class LocalDateTimeAdapter : KhomeTypeAdapter<LocalDateTime> {
     override fun <P> from(value: P): LocalDateTime {
-        return LocalDateTime
-            .parse(
-                value as String,
-                DateTimeFormatter.ofPattern("y-M-d H:m:s")
-            )
+        return LocalDateTime.parse(value as String)
     }
 
     @Suppress("UNCHECKED_CAST")
     override fun <P> to(value: LocalDateTime): P {
-        return LocalDateTime.of(
+        return LocalDateTime(
             value.year,
-            value.monthValue,
+            value.monthNumber,
             value.dayOfMonth,
             value.hour,
             value.minute,
