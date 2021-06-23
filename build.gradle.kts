@@ -63,13 +63,18 @@ tasks.withType<KotlinCompile> {
     }
 }
 
+tasks.create<Delete>("cleanDokka") {
+    delete = setOf("$rootDir/docs/khome")
+}
+
 tasks {
     dokkaHtml {
+        dependsOn("cleanDokka")
         outputDirectory.set(File("$rootDir/docs"))
     }
 }
 
-defaultTasks("dokka")
+defaultTasks("dokkaHtml")
 
 val sourcesJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
