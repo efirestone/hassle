@@ -23,7 +23,7 @@ inline fun <reified S : State<*>, reified A : Attributes> KhomeApplication.Light
 ): Actuator<S, A> = Actuator(EntityId.fromPair("light".domain to objectId), serviceCommandResolver)
 
 data class LightAttributes(
-    val supported_features: Int,
+    val supportedFeatures: Int,
     override val userId: UserId?,
     override val friendlyName: FriendlyName,
     override val lastChanged: Instant,
