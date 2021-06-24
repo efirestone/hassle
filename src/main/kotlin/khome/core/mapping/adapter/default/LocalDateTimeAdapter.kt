@@ -5,7 +5,7 @@ import kotlinx.datetime.LocalDateTime
 
 internal class LocalDateTimeAdapter : KhomeTypeAdapter<LocalDateTime> {
     override fun <P> from(value: P): LocalDateTime {
-        return LocalDateTime.parse(value as String)
+        return LocalDateTime.parse((value as String).replace(' ', 'T'))
     }
 
     @Suppress("UNCHECKED_CAST")
