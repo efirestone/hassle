@@ -35,12 +35,6 @@ data class InputDateState(override val value: LocalDate) : State<LocalDate>
 
 data class InputDateAttributes(
     val editable: Boolean,
-    val hasDate: Boolean,
-    val hasTime: Boolean,
-    val year: Int,
-    val month: Int,
-    val day: Int,
-    val timestamp: Double,
     override val userId: UserId?,
     override val friendlyName: FriendlyName,
     override val lastChanged: Instant,
