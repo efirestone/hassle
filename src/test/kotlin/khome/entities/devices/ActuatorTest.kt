@@ -20,6 +20,8 @@ import khome.entities.State
 import khome.extending.entities.SwitchableState
 import khome.extending.entities.SwitchableValue
 import khome.extending.entities.actuators.inputs.*
+import khome.extending.entities.actuators.light.LightAttributes
+import khome.extending.entities.actuators.light.RGBLightState
 import khome.khomeApplication
 import khome.values.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -137,7 +139,7 @@ internal class ActuatorTest {
 
         val firstTestState =
             //language=json
-            """ 
+            """
                 {
                     "entity_id":"test.object_id",
                     "last_changed":"2016-11-26T01:37:24.265390+00:00",
@@ -470,7 +472,7 @@ internal class ActuatorTest {
     }
 
     @Test
-    fun `test input time actuator`() {
+    fun `parse input time actuator`() {
         val json =
             //language=json
             """
@@ -511,6 +513,60 @@ internal class ActuatorTest {
 
             assertThat(actuator.attributes.editable).isEqualTo(false)
             assertThat(actuator.attributes.timestamp).isEqualTo(3600)
+        }
+    }
+
+    @Test
+    fun `parse RGB light`() {
+        val json =
+            //language=json
+            """
+                {
+                    "entity_id": "light.light_strip_bar_1",
+                    "state": "on",
+                    "attributes":
+                    {
+                        "min_mireds": 153,
+                        "max_mireds": 588,
+                        "effect_list": ["Strobe color", "Police", "Christmas", "RGB", "Random Loop", "Disco"],
+                        "supported_color_modes": ["color_temp", "hs"],
+                        "color_mode": "hs",
+                        "brightness": 138,
+                        "hs_color": [340.0, 7.059],
+                        "rgb_color": [255, 236, 242],
+                        "xy_color": [0.34, 0.321],
+                        "color_temp": 250,
+                        "flowing": false,
+                        "music_mode": false,
+                        "friendly_name": "Light Strip 1",
+                        "supported_features": 63
+                    },
+                    "last_changed": "2021-06-21T01:39:48.096892+00:00",
+                    "last_updated": "2021-06-21T02:03:54.908902+00:00",
+                    "context":
+                    {
+                        "id": "abcd1234",
+                        "parent_id": null,
+                        "user_id": "userid"
+                    }
+                }
+            """.trimIndent()
+
+        actuator<RGBLightState, LightAttributes>(json) { actuator ->
+            assertThat(actuator.actualState.value).isEqualTo(SwitchableValue.ON)
+            assertThat(actuator.actualState.brightness).isEqualTo(Brightness.from(138))
+            assertThat(actuator.actualState.hsColor).isEqualTo(HSColor.from(340.0, 7.059))
+            assertThat(actuator.actualState.rgbColor).isEqualTo(RGBColor.from(255, 236, 242))
+            assertThat(actuator.actualState.xyColor).isEqualTo(XYColor.from(0.34, 0.321))
+
+            assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
+            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Light Strip 1")
+            assertThat(actuator.attributes.lastChanged)
+                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
+            assertThat(actuator.attributes.lastUpdated)
+                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+
+            assertThat(actuator.attributes.supportedFeatures).isEqualTo(63)
         }
     }
 
