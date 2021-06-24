@@ -35,9 +35,6 @@ data class InputTimeState(override val value: LocalTime) : State<LocalTime>
 
 data class InputTimeAttributes(
     val editable: Boolean,
-    val hasDate: Boolean,
-    val hasTime: Boolean,
-    val timestamp: Int,
     override val userId: UserId?,
     override val friendlyName: FriendlyName,
     override val lastChanged: Instant,

@@ -137,7 +137,7 @@ internal class ActuatorTest {
 
         val firstTestState =
             //language=json
-            """ 
+            """
                 {
                     "entity_id":"test.object_id",
                     "last_changed":"2016-11-26T01:37:24.265390+00:00",
@@ -275,7 +275,6 @@ internal class ActuatorTest {
                 .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
 
             assertThat(actuator.attributes.editable).isEqualTo(false)
-            assertThat(actuator.attributes.timestamp).isEqualTo(1623819600.0)
         }
     }
 
@@ -323,7 +322,6 @@ internal class ActuatorTest {
                 .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
 
             assertThat(actuator.attributes.editable).isEqualTo(false)
-            assertThat(actuator.attributes.timestamp).isEqualTo(1624251600)
         }
     }
 
@@ -510,7 +508,6 @@ internal class ActuatorTest {
                 .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
 
             assertThat(actuator.attributes.editable).isEqualTo(false)
-            assertThat(actuator.attributes.timestamp).isEqualTo(3600)
         }
     }
 
