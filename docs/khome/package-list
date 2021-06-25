@@ -988,6 +988,9 @@ $dokka.location:khome.values/MediaContentType.CHANNEL/ordinal/#/PointingToDeclar
 $dokka.location:khome.values/MediaContentType.EPISODE///PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/index.html
 $dokka.location:khome.values/MediaContentType.EPISODE/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/name.html
 $dokka.location:khome.values/MediaContentType.EPISODE/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/ordinal.html
+$dokka.location:khome.values/MediaContentType.MOVIE///PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/index.html
+$dokka.location:khome.values/MediaContentType.MOVIE/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/name.html
+$dokka.location:khome.values/MediaContentType.MOVIE/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/ordinal.html
 $dokka.location:khome.values/MediaContentType.MUSIC///PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/index.html
 $dokka.location:khome.values/MediaContentType.MUSIC/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/name.html
 $dokka.location:khome.values/MediaContentType.MUSIC/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/ordinal.html
