@@ -371,7 +371,7 @@ $dokka.location:khome.extending.entities.actuators.light/LightAttributes/LightAt
 $dokka.location:khome.extending.entities.actuators.light/LightAttributes/friendlyName/#/PointingToDeclaration/khome/khome.extending.entities.actuators.light/-light-attributes/friendly-name.html
 $dokka.location:khome.extending.entities.actuators.light/LightAttributes/lastChanged/#/PointingToDeclaration/khome/khome.extending.entities.actuators.light/-light-attributes/last-changed.html
 $dokka.location:khome.extending.entities.actuators.light/LightAttributes/lastUpdated/#/PointingToDeclaration/khome/khome.extending.entities.actuators.light/-light-attributes/last-updated.html
-$dokka.location:khome.extending.entities.actuators.light/LightAttributes/supported_features/#/PointingToDeclaration/khome/khome.extending.entities.actuators.light/-light-attributes/supported_features.html
+$dokka.location:khome.extending.entities.actuators.light/LightAttributes/supportedFeatures/#/PointingToDeclaration/khome/khome.extending.entities.actuators.light/-light-attributes/supported-features.html
 $dokka.location:khome.extending.entities.actuators.light/LightAttributes/userId/#/PointingToDeclaration/khome/khome.extending.entities.actuators.light/-light-attributes/user-id.html
 $dokka.location:khome.extending.entities.actuators.light/NamedColorServiceData///PointingToDeclaration/khome/khome.extending.entities.actuators.light/-named-color-service-data/index.html
 $dokka.location:khome.extending.entities.actuators.light/NamedColorServiceData/NamedColorServiceData/#khome.values.ColorName/PointingToDeclaration/khome/khome.extending.entities.actuators.light/-named-color-service-data/-named-color-service-data.html
@@ -988,6 +988,9 @@ $dokka.location:khome.values/MediaContentType.CHANNEL/ordinal/#/PointingToDeclar
 $dokka.location:khome.values/MediaContentType.EPISODE///PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/index.html
 $dokka.location:khome.values/MediaContentType.EPISODE/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/name.html
 $dokka.location:khome.values/MediaContentType.EPISODE/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/ordinal.html
+$dokka.location:khome.values/MediaContentType.MOVIE///PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/index.html
+$dokka.location:khome.values/MediaContentType.MOVIE/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/name.html
+$dokka.location:khome.values/MediaContentType.MOVIE/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/ordinal.html
 $dokka.location:khome.values/MediaContentType.MUSIC///PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/index.html
 $dokka.location:khome.values/MediaContentType.MUSIC/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/name.html
 $dokka.location:khome.values/MediaContentType.MUSIC/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/ordinal.html

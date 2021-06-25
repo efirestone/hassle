@@ -1,5 +1,26 @@
 package khome.values
 
+import com.google.gson.annotations.SerializedName
+
 enum class MediaContentType {
-    MUSIC, TVSHOW, VIDEO, EPISODE, CHANNEL, PLAYLIST
+    @SerializedName("music")
+    MUSIC,
+
+    @SerializedName("tvshow")
+    TVSHOW,
+
+    @SerializedName("movie")
+    MOVIE,
+
+    @SerializedName("video")
+    VIDEO,
+
+    @SerializedName("episode")
+    EPISODE,
+
+    @SerializedName("channel")
+    CHANNEL,
+
+    @SerializedName("playlist")
+    PLAYLIST
 }

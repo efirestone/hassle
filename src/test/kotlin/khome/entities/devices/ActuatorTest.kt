@@ -20,6 +20,11 @@ import khome.entities.State
 import khome.extending.entities.SwitchableState
 import khome.extending.entities.SwitchableValue
 import khome.extending.entities.actuators.inputs.*
+import khome.extending.entities.actuators.light.LightAttributes
+import khome.extending.entities.actuators.light.RGBLightState
+import khome.extending.entities.actuators.mediaplayer.MediaReceiverAttributes
+import khome.extending.entities.actuators.mediaplayer.MediaReceiverState
+import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue
 import khome.khomeApplication
 import khome.values.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -33,6 +38,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertThrows
 import org.koin.core.component.get
+import kotlin.time.ExperimentalTime
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class ActuatorTest {
@@ -508,6 +514,124 @@ internal class ActuatorTest {
                 .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
 
             assertThat(actuator.attributes.editable).isEqualTo(false)
+        }
+    }
+
+    @OptIn(ExperimentalTime::class)
+    @Test
+    fun `parse media player playing a movie`() {
+        val json =
+            //language=json
+            """
+                {
+                    "entity_id": "media_player.plex_plex_for_apple_tv_play_room",
+                    "state": "playing",
+                    "attributes":
+                    {
+                        "is_volume_muted": false,
+                        "media_content_id": 8675309,
+                        "media_content_type": "movie",
+                        "media_duration": 5059,
+                        "media_position": 26,
+                        "media_position_updated_at": "2021-06-24T22:49:41.534947+00:00",
+                        "media_title": "Super Awesome Movie (2021)",
+                        "media_content_rating": "PG-13",
+                        "media_library_title": "Movies",
+                        "player_source": "session",
+                        "media_summary": "This is the best movie ever.",
+                        "username": "johnsmith",
+                        "friendly_name": "Plex (Plex for Apple TV - Play Room)",
+                        "entity_picture": "/api/media_player_proxy/media_player.plex_plex_for_apple_tv_play_room?token=abcd1234&cache=4321dcba",
+                        "supported_features": 131584
+                    },
+                    "last_changed": "2021-06-21T01:39:48.096892+00:00",
+                    "last_updated": "2021-06-21T02:03:54.908902+00:00",
+                    "context":
+                    {
+                        "id": "abcd1234",
+                        "parent_id": null,
+                        "user_id": null
+                    }
+                }
+            """.trimIndent()
+
+        actuator<MediaReceiverState, MediaReceiverAttributes>(json) { actuator ->
+            assertThat(actuator.actualState.value).isEqualTo(MediaReceiverStateValue.PLAYING)
+            assertThat(actuator.actualState.isVolumeMuted).isEqualTo(Mute.FALSE)
+            assertThat(actuator.actualState.mediaPosition).isEqualTo(MediaPosition.from(26.0))
+            assertThat(actuator.actualState.volumeLevel).isNull()
+
+            assertThat(actuator.attributes.userId?.value).isNull()
+            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Plex (Plex for Apple TV - Play Room)")
+            assertThat(actuator.attributes.lastChanged)
+                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
+            assertThat(actuator.attributes.lastUpdated)
+                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+
+            assertThat(actuator.attributes.appId).isNull()
+            assertThat(actuator.attributes.appName).isNull()
+            assertThat(actuator.attributes.entityPicture).isEqualTo(EntityPicture.from("/api/media_player_proxy/media_player.plex_plex_for_apple_tv_play_room?token=abcd1234&cache=4321dcba"))
+            assertThat(actuator.attributes.mediaAlbumName).isNull()
+            assertThat(actuator.attributes.mediaArtist).isNull()
+            assertThat(actuator.attributes.mediaContentId).isEqualTo(MediaContentId.from("8675309"))
+            assertThat(actuator.attributes.mediaContentType).isEqualTo(MediaContentType.MOVIE)
+            assertThat(actuator.attributes.mediaDuration).isEqualTo(MediaDuration.from(5059.0))
+            assertThat(actuator.attributes.mediaPositionUpdatedAt).isEqualTo(Instant.parse("2021-06-24T22:49:41.534947+00:00"))
+            assertThat(actuator.attributes.mediaTitle).isEqualTo(MediaTitle.from("Super Awesome Movie (2021)"))
+        }
+    }
+
+    @Test
+    fun `parse RGB light`() {
+        val json =
+            //language=json
+            """
+                {
+                    "entity_id": "light.light_strip_bar_1",
+                    "state": "on",
+                    "attributes":
+                    {
+                        "min_mireds": 153,
+                        "max_mireds": 588,
+                        "effect_list": ["Strobe color", "Police", "Christmas", "RGB", "Random Loop", "Disco"],
+                        "supported_color_modes": ["color_temp", "hs"],
+                        "color_mode": "hs",
+                        "brightness": 138,
+                        "hs_color": [340.0, 7.059],
+                        "rgb_color": [255, 236, 242],
+                        "xy_color": [0.34, 0.321],
+                        "color_temp": 250,
+                        "flowing": false,
+                        "music_mode": false,
+                        "friendly_name": "Light Strip 1",
+                        "supported_features": 63
+                    },
+                    "last_changed": "2021-06-21T01:39:48.096892+00:00",
+                    "last_updated": "2021-06-21T02:03:54.908902+00:00",
+                    "context":
+                    {
+                        "id": "abcd1234",
+                        "parent_id": null,
+                        "user_id": "userid"
+                    }
+                }
+            """.trimIndent()
+
+        actuator<RGBLightState, LightAttributes>(json) { actuator ->
+            assertThat(actuator.actualState.value).isEqualTo(SwitchableValue.ON)
+            assertThat(actuator.actualState.brightness).isEqualTo(Brightness.from(138))
+            assertThat(actuator.actualState.hsColor).isEqualTo(HSColor.from(340.0, 7.059))
+            assertThat(actuator.actualState.rgbColor).isEqualTo(RGBColor.from(255, 236, 242))
+            assertThat(actuator.actualState.xyColor).isEqualTo(XYColor.from(0.34, 0.321))
+
+            assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
+            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Light Strip 1")
+            assertThat(actuator.attributes.lastChanged)
+                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
+            assertThat(actuator.attributes.lastUpdated)
+                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+
+            assertThat(actuator.attributes.supportedFeatures).isEqualTo(63)
         }
     }
 
