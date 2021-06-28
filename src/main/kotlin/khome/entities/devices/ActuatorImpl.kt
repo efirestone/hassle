@@ -18,11 +18,9 @@ import khome.observability.ObserverImpl
 import khome.observability.StateAndAttributes
 import khome.observability.Switchable
 import khome.values.Service
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlin.reflect.KClass
 
 @KtorExperimentalAPI
-@ObsoleteCoroutinesApi
 internal class ActuatorImpl<S : State<*>, A : Attributes>(
     private val app: KhomeApplicationImpl,
     private val mapper: ObjectMapperInterface,

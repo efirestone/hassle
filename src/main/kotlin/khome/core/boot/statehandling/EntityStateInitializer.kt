@@ -10,13 +10,12 @@ import khome.entities.ActuatorStateUpdater
 import khome.entities.EntityRegistrationValidation
 import khome.entities.SensorStateUpdater
 import khome.values.EntityId
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 
 interface EntityStateInitializer {
     suspend fun initialize()
 }
 
-@OptIn(ObsoleteCoroutinesApi::class, KtorExperimentalAPI::class)
+@OptIn(KtorExperimentalAPI::class)
 internal class EntityStateInitializerImpl(
     val khomeSession: KhomeSession,
     private val sensorStateUpdater: SensorStateUpdater,

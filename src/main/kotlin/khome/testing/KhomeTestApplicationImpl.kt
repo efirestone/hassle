@@ -16,7 +16,6 @@ import khome.entities.ActuatorStateUpdater
 import khome.entities.SensorStateUpdater
 import khome.entities.devices.Actuator
 import khome.values.EntityId
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import org.koin.dsl.module
 
 @ExperimentalStdlibApi
@@ -39,7 +38,6 @@ internal class KhomeTestApplicationImpl(
     }
 
     @KtorExperimentalAPI
-    @ObsoleteCoroutinesApi
     @ExperimentalStdlibApi
     override fun setStateAndAttributes(json: String) {
         val stateJson = mapper.fromJson<JsonObject>(json)

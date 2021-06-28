@@ -6,12 +6,10 @@ import io.ktor.util.KtorExperimentalAPI
 import khome.ActuatorsByApiName
 import khome.SensorsByApiName
 import khome.values.EntityId
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 
 internal class ActuatorStateUpdater(private val actuatorsByApiName: ActuatorsByApiName) {
     private val logger = Kermit()
 
-    @ObsoleteCoroutinesApi
     @KtorExperimentalAPI
     @ExperimentalStdlibApi
     operator fun invoke(newActualState: JsonObject, entityId: EntityId) {

@@ -19,7 +19,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicInteger
@@ -60,7 +59,6 @@ abstract class DesiredServiceData : CommandDataWithEntityId {
 
 class EntityIdOnlyServiceData : DesiredServiceData()
 
-@ObsoleteCoroutinesApi
 @KtorExperimentalAPI
 internal data class ServiceCommandImpl<SD>(
     var domain: Domain? = null,
@@ -71,7 +69,6 @@ internal data class ServiceCommandImpl<SD>(
 ) : HassApiCommand
 
 @KtorExperimentalAPI
-@ObsoleteCoroutinesApi
 internal class HassApiClientImpl(
     private val khomeSession: KhomeSession,
     private val objectMapper: ObjectMapperInterface,

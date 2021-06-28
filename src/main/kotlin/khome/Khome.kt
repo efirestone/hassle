@@ -50,8 +50,6 @@ import khome.entities.EntityRegistrationValidation
 import khome.entities.SensorStateUpdater
 import khome.errorHandling.ErrorResponseData
 import khome.values.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
@@ -80,8 +78,6 @@ typealias KhomeBuilder = Khome.() -> Unit
  * @return [KhomeApplication]
  */
 
-@ExperimentalCoroutinesApi
-@ObsoleteCoroutinesApi
 @KtorExperimentalAPI
 fun khomeApplication(init: KhomeBuilder = {}): KhomeApplication =
     KhomeImpl().apply(init).createApplication()
@@ -111,7 +107,7 @@ interface Khome {
 inline fun <reified T : Any, reified P : Any> Khome.registerTypeAdapter(adapter: KhomeTypeAdapter<T>) =
     registerTypeAdapter(adapter, T::class, P::class)
 
-@OptIn(ExperimentalStdlibApi::class, KtorExperimentalAPI::class, ObsoleteCoroutinesApi::class)
+@OptIn(ExperimentalStdlibApi::class, KtorExperimentalAPI::class)
 private class KhomeImpl : Khome, KhomeComponent {
 
     init {

@@ -14,7 +14,6 @@ import khome.observability.ObserverFunction
 import khome.observability.ObserverImpl
 import khome.observability.StateAndAttributes
 import khome.observability.Switchable
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlin.reflect.KClass
 
 internal class SensorImpl<S : State<*>, A : Attributes>(
@@ -40,7 +39,6 @@ internal class SensorImpl<S : State<*>, A : Attributes>(
             ObserverExceptionHandler(app.observerExceptionHandlerFunction)
         ).also { observers.add(it) }
 
-    @ObsoleteCoroutinesApi
     @KtorExperimentalAPI
     @ExperimentalStdlibApi
     fun trySetActualStateFromAny(newState: JsonObject) {
@@ -49,7 +47,6 @@ internal class SensorImpl<S : State<*>, A : Attributes>(
         checkNotNull(measurement.value) { "State value shall not be null. Please check your State definition " }
     }
 
-    @ObsoleteCoroutinesApi
     @KtorExperimentalAPI
     fun trySetAttributesFromAny(newAttributes: JsonObject) {
         @Suppress("UNCHECKED_CAST")

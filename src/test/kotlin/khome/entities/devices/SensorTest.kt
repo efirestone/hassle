@@ -20,8 +20,6 @@ import khome.extending.entities.sensors.*
 import khome.extending.entities.sensors.binary.MotionSensorAttributes
 import khome.khomeApplication
 import khome.values.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.datetime.Instant
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -208,10 +206,8 @@ internal class SensorTest {
 
     @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
     @OptIn(
-        ExperimentalCoroutinesApi::class,
         ExperimentalStdlibApi::class,
-        KtorExperimentalAPI::class,
-        ObsoleteCoroutinesApi::class
+        KtorExperimentalAPI::class
     )
     private inline fun <reified S : State<*>, reified A : Attributes> sensor(json: String, block: (Sensor<S, A>) -> Unit) {
         khomeApplication().run {

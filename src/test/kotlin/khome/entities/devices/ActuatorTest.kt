@@ -27,8 +27,6 @@ import khome.extending.entities.actuators.mediaplayer.MediaReceiverState
 import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue
 import khome.khomeApplication
 import khome.values.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
@@ -124,7 +122,7 @@ internal class ActuatorTest {
         )
     }
 
-    @OptIn(KtorExperimentalAPI::class, ObsoleteCoroutinesApi::class)
+    @OptIn(KtorExperimentalAPI::class)
     @Test
     fun `actuator stores state and attributes youngest first`() {
         val sut = ActuatorImpl<ActuatorTestState, ActuatorTestAttributes>(
@@ -646,10 +644,8 @@ internal class ActuatorTest {
 
     @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
     @OptIn(
-        ExperimentalCoroutinesApi::class,
         ExperimentalStdlibApi::class,
-        KtorExperimentalAPI::class,
-        ObsoleteCoroutinesApi::class
+        KtorExperimentalAPI::class
     )
     private inline fun <reified S : State<*>, reified A : Attributes> actuator(json: String, block: (Actuator<S, A>) -> Unit) {
         khomeApplication().run {

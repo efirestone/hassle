@@ -34,8 +34,6 @@ import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
@@ -51,9 +49,7 @@ internal typealias ApplicationReadyCallbacks = MutableList<KhomeApplication.() -
 
 @OptIn(
     ExperimentalStdlibApi::class,
-    KtorExperimentalAPI::class,
-    ObsoleteCoroutinesApi::class,
-    ExperimentalCoroutinesApi::class
+    KtorExperimentalAPI::class
 )
 internal class KhomeApplicationImpl : KhomeApplication {
 

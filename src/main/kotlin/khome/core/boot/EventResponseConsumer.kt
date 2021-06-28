@@ -23,7 +23,6 @@ import khome.errorHandling.ErrorResponseData
 import khome.errorHandling.ErrorResponseHandlerImpl
 import khome.values.EventType
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.coroutineScope
 
@@ -31,9 +30,7 @@ interface EventResponseConsumer {
     suspend fun consumeBlocking()
 }
 
-@ObsoleteCoroutinesApi
 @KtorExperimentalAPI
-@ExperimentalCoroutinesApi
 internal class EventResponseConsumerImpl(
     private val khomeSession: KhomeSession,
     private val objectMapper: ObjectMapperInterface,
@@ -63,6 +60,7 @@ internal class EventResponseConsumerImpl(
     private inline fun <reified Response> mapFrameTextToResponse(frameText: Frame.Text): Response =
         objectMapper.fromJson(frameText.readText())
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private suspend inline fun WebSocketSession.consumeEachMappedToResponse(action: (ResolverResponse, Frame.Text) -> Unit) =
         incoming.consumeEach { frame ->
             (frame as? Frame.Text)?.let { frameText -> action(mapFrameTextToResponse(frameText), frameText) }
