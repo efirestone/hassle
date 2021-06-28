@@ -6,7 +6,6 @@ import com.google.gson.JsonNull
 import io.ktor.http.cio.websocket.Frame
 import io.ktor.http.cio.websocket.WebSocketSession
 import io.ktor.http.cio.websocket.readText
-import io.ktor.util.KtorExperimentalAPI
 import khome.EventHandlerByEventType
 import khome.KhomeSession
 import khome.core.EventResponse
@@ -30,7 +29,6 @@ interface EventResponseConsumer {
     suspend fun consumeBlocking()
 }
 
-@KtorExperimentalAPI
 internal class EventResponseConsumerImpl(
     private val khomeSession: KhomeSession,
     private val objectMapper: ObjectMapperInterface,

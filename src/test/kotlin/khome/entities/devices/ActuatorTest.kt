@@ -5,7 +5,6 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import com.google.gson.JsonObject
 import io.fluidsonic.time.LocalTime
-import io.ktor.util.KtorExperimentalAPI
 import khome.KhomeApplicationImpl
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.EntityIdOnlyServiceData
@@ -61,8 +60,6 @@ internal class ActuatorTest {
     private val mapper: ObjectMapperInterface
         get() = KoinContainer.get()
 
-    @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
-    @OptIn(KtorExperimentalAPI::class)
     @Test
     fun `actuator state response mapping is correct`() {
 
@@ -122,7 +119,6 @@ internal class ActuatorTest {
         )
     }
 
-    @OptIn(KtorExperimentalAPI::class)
     @Test
     fun `actuator stores state and attributes youngest first`() {
         val sut = ActuatorImpl<ActuatorTestState, ActuatorTestAttributes>(
@@ -643,10 +639,7 @@ internal class ActuatorTest {
     // Private Methods
 
     @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
-    @OptIn(
-        ExperimentalStdlibApi::class,
-        KtorExperimentalAPI::class
-    )
+    @OptIn(ExperimentalStdlibApi::class)
     private inline fun <reified S : State<*>, reified A : Attributes> actuator(json: String, block: (Actuator<S, A>) -> Unit) {
         khomeApplication().run {
             val mapper: ObjectMapperInterface = KoinContainer.get()

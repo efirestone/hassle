@@ -2,7 +2,6 @@ package khome.testing
 
 import co.touchlab.kermit.Kermit
 import com.google.gson.JsonObject
-import io.ktor.util.KtorExperimentalAPI
 import khome.ActuatorsByApiName
 import khome.ActuatorsByEntity
 import khome.HassAPiCommandHistory
@@ -37,7 +36,6 @@ internal class KhomeTestApplicationImpl(
         KhomeKoinContext.addModule(testClient)
     }
 
-    @KtorExperimentalAPI
     @ExperimentalStdlibApi
     override fun setStateAndAttributes(json: String) {
         val stateJson = mapper.fromJson<JsonObject>(json)

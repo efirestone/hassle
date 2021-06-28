@@ -13,7 +13,7 @@ import io.ktor.client.features.websocket.WebSockets
 import io.ktor.client.request.header
 import io.ktor.client.request.host
 import io.ktor.client.request.port
-import io.ktor.util.KtorExperimentalAPI
+import io.ktor.util.*
 import khome.core.Configuration
 import khome.core.DefaultConfiguration
 import khome.core.boot.EventResponseConsumer
@@ -78,7 +78,6 @@ typealias KhomeBuilder = Khome.() -> Unit
  * @return [KhomeApplication]
  */
 
-@KtorExperimentalAPI
 fun khomeApplication(init: KhomeBuilder = {}): KhomeApplication =
     KhomeImpl().apply(init).createApplication()
 
@@ -107,7 +106,7 @@ interface Khome {
 inline fun <reified T : Any, reified P : Any> Khome.registerTypeAdapter(adapter: KhomeTypeAdapter<T>) =
     registerTypeAdapter(adapter, T::class, P::class)
 
-@OptIn(ExperimentalStdlibApi::class, KtorExperimentalAPI::class)
+@OptIn(ExperimentalStdlibApi::class)
 private class KhomeImpl : Khome, KhomeComponent {
 
     init {
@@ -140,6 +139,7 @@ private class KhomeImpl : Khome, KhomeComponent {
         typeAdapters[valueObjectType] = GsonTypeAdapterBridge(adapter, primitiveType)
     }
 
+    @OptIn(KtorExperimentalAPI::class)
     fun createApplication(): KhomeApplicationImpl {
         registerDefaultTypeAdapter()
         val mapperModule = module {

@@ -4,7 +4,6 @@ import co.touchlab.kermit.Kermit
 import com.google.gson.annotations.SerializedName
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.utils.EmptyContent
-import io.ktor.util.KtorExperimentalAPI
 import khome.KhomeSession
 import khome.communicating.CommandType.CALL_SERVICE
 import khome.communicating.CommandType.SUBSCRIBE_EVENTS
@@ -59,7 +58,6 @@ abstract class DesiredServiceData : CommandDataWithEntityId {
 
 class EntityIdOnlyServiceData : DesiredServiceData()
 
-@KtorExperimentalAPI
 internal data class ServiceCommandImpl<SD>(
     var domain: Domain? = null,
     val service: Service,
@@ -68,7 +66,6 @@ internal data class ServiceCommandImpl<SD>(
     override val type: CommandType = CALL_SERVICE
 ) : HassApiCommand
 
-@KtorExperimentalAPI
 internal class HassApiClientImpl(
     private val khomeSession: KhomeSession,
     private val objectMapper: ObjectMapperInterface,

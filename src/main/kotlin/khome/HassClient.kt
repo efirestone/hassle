@@ -2,13 +2,11 @@ package khome
 
 import co.touchlab.kermit.Kermit
 import io.ktor.http.HttpMethod
-import io.ktor.util.KtorExperimentalAPI
 import khome.core.Configuration
 import khome.core.clients.WebSocketClient
 import khome.core.mapping.ObjectMapperInterface
 import java.net.ConnectException
 
-@KtorExperimentalAPI
 internal class HassClientImpl(
     private val config: Configuration,
     private val httpClient: WebSocketClient,
@@ -49,6 +47,5 @@ internal class HassClientImpl(
 }
 
 internal interface HassClient {
-    @KtorExperimentalAPI
     suspend fun startSession(block: suspend KhomeSession.() -> Unit)
 }

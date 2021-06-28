@@ -2,7 +2,6 @@ package khome.entities
 
 import co.touchlab.kermit.Kermit
 import com.google.gson.JsonObject
-import io.ktor.util.KtorExperimentalAPI
 import khome.ActuatorsByApiName
 import khome.SensorsByApiName
 import khome.values.EntityId
@@ -10,7 +9,6 @@ import khome.values.EntityId
 internal class ActuatorStateUpdater(private val actuatorsByApiName: ActuatorsByApiName) {
     private val logger = Kermit()
 
-    @KtorExperimentalAPI
     @ExperimentalStdlibApi
     operator fun invoke(newActualState: JsonObject, entityId: EntityId) {
         actuatorsByApiName[entityId]?.let { entity ->
