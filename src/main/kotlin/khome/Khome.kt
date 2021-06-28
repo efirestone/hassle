@@ -45,10 +45,6 @@ import khome.core.mapping.adapter.default.LocalDateAdapter
 import khome.core.mapping.adapter.default.LocalDateTimeAdapter
 import khome.core.mapping.adapter.default.LocalTimeAdapter
 import khome.core.mapping.adapter.default.RegexTypeAdapter
-import khome.entities.ActuatorStateUpdater
-import khome.entities.EntityRegistrationValidation
-import khome.entities.SensorStateUpdater
-import khome.errorHandling.ErrorResponseData
 import khome.values.*
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
@@ -191,45 +187,45 @@ private class KhomeImpl : Khome, KhomeComponent {
                         get()
                     )
                 }
-                single<Authenticator> { (khomeSession: KhomeSession) -> AuthenticatorImpl(khomeSession, get()) }
-                single<ServiceStoreInitializer> { (khomeSession: KhomeSession) ->
+                single<Authenticator> { parameters -> AuthenticatorImpl(parameters.get(), get()) }
+                single<ServiceStoreInitializer> { parameters ->
                     ServiceStoreInitializerImpl(
-                        khomeSession,
+                        parameters.get(),
                         get()
                     )
                 }
-                single<HassApiInitializer> { (khomeSession: KhomeSession) -> HassApiInitializerImpl(khomeSession) }
-                single<HassEventSubscriber> { (khomeSession: KhomeSession, subscriptions: EventHandlerByEventType) ->
+                single<HassApiInitializer> { parameters -> HassApiInitializerImpl(parameters.get()) }
+                single<HassEventSubscriber> { parameters ->
                     HassEventSubscriberImpl(
-                        khomeSession,
-                        subscriptions,
+                        parameters.get(),
+                        parameters.get(),
                         get()
                     )
                 }
 
-                single<EntityStateInitializer> { (khomeSession: KhomeSession, sensorStateUpdater: SensorStateUpdater, actuatorStateUpdater: ActuatorStateUpdater, entityRegistrationValidation: EntityRegistrationValidation) ->
+                single<EntityStateInitializer> { parameters ->
                     EntityStateInitializerImpl(
-                        khomeSession,
-                        sensorStateUpdater,
-                        actuatorStateUpdater,
-                        entityRegistrationValidation
+                        parameters.get(),
+                        parameters.get(),
+                        parameters.get(),
+                        parameters.get()
                     )
                 }
 
-                single<StateChangeEventSubscriber> { (khomeSession: KhomeSession) ->
+                single<StateChangeEventSubscriber> { parameters ->
                     StateChangeEventSubscriberImpl(
-                        khomeSession
+                        parameters.get()
                     )
                 }
 
-                single<EventResponseConsumer> { (khomeSession: KhomeSession, sensorStateUpdater: SensorStateUpdater, actuatorStateUpdater: ActuatorStateUpdater, eventHandlerByEventType: EventHandlerByEventType, errorResponseHandler: (ErrorResponseData) -> Unit) ->
+                single<EventResponseConsumer> { parameters ->
                     EventResponseConsumerImpl(
-                        khomeSession = khomeSession,
-                        sensorStateUpdater = sensorStateUpdater,
-                        actuatorStateUpdater = actuatorStateUpdater,
+                        khomeSession = parameters.get(),
+                        sensorStateUpdater = parameters.get(),
+                        actuatorStateUpdater = parameters.get(),
                         objectMapper = get(),
-                        eventHandlerByEventType = eventHandlerByEventType,
-                        errorResponseHandler = errorResponseHandler
+                        eventHandlerByEventType = parameters.get(),
+                        errorResponseHandler = parameters.get()
                     )
                 }
             }
