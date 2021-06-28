@@ -13,17 +13,18 @@ import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
+//import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
+//import kotlinx.coroutines.internal.AtomicOp
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.util.concurrent.atomic.AtomicInteger
 
-internal val CALLER_ID = AtomicInteger(0)
+internal val CALLER_ID = atomic<Int>(0)// 0 //AtomicInteger(0)
 
 @Serializable
 internal enum class CommandType {
@@ -75,7 +76,7 @@ internal class HassApiClientImpl(
     private val restApiClient: RestApiClient
 ) : HassApiClient {
     private val logger = Kermit()
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
+    private val coroutineScope = CoroutineScope(Dispatchers.Default)
 
     override fun sendCommand(command: HassApiCommand) =
         coroutineScope.launch(KhomeDispatchers.CommandDispatcher) {

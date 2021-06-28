@@ -22,14 +22,13 @@ group = "com.dennisschroeder"
 version = "0.1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
-val ktorVersion: String by project
-val koinVersion: String by project
-val kotlinLoggingVersion: String by project
-val mockkVersion: String by project
-val jupiterVersion: String by project
 val assertVersion: String by project
 val jsonAssertVersion: String by project
+val jupiterVersion: String by project
 val kermitVersion: String by project
+val ktorVersion: String by project
+val koinVersion: String by project
+val mockkVersion: String by project
 
 //dependencies {
 //    implementation(kotlin("stdlib-jdk8"))
@@ -59,13 +58,6 @@ val kermitVersion: String by project
 //    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
 //}
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict", "-Xopt-in=kotlin.RequiresOptIn")
-        jvmTarget = "1.8"
-    }
-}
-
 tasks.create<Delete>("cleanDokka") {
     delete = setOf("$rootDir/docs/khome")
 }
@@ -92,7 +84,10 @@ repositories {
 kotlin {
     jvm {
         compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions {
+                freeCompilerArgs = listOf("-Xjsr305=strict", "-Xopt-in=kotlin.RequiresOptIn")
+                jvmTarget = "1.8"
+            }
         }
         testRuns["test"].executionTask.configure {
             useJUnit()
@@ -109,13 +104,19 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-jdk8"))
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                // kotlinx.datetime doesn't include LocalTime yet, so supplement it
+                // https://github.com/Kotlin/kotlinx-datetime/issues/57
+                implementation("io.fluidsonic.time:fluid-time:0.14.0")
                 implementation("io.ktor:ktor-client-cio:$ktorVersion")
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.insert-koin:koin-core:$koinVersion")
+//                implementation("org.jetbrains.kotlinx.kotlinx-atomicfu:0.2.1") // TODO: Get version
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
                 implementation("org.slf4j:slf4j-simple:1.7.30")
-                implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
+                api("co.touchlab:kermit:$kermitVersion")
                 implementation(kotlin("stdlib-common"))
-                api("co.touchlab:kermit:0.1.9")
             }
         }
         val commonTest by getting {
@@ -127,7 +128,6 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-client-gson:$ktorVersion")
                 implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
             }
         }
@@ -152,18 +152,7 @@ kotlin {
 }
 
 
-//plugins {
-//    kotlin("multiplatform") version "1.5.10"
-////    kotlin("jvm") version "1.4.30"
-//    id("org.jetbrains.dokka") version "0.10.1"
-//    `maven-publish`
-//    id("io.gitlab.arturbosch.detekt") version "1.9.1"
-//    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
-//    id("de.jansauer.printcoverage") version "2.0.0"
-//    jacoco
-//    id("com.github.dawnwords.jacoco.badge") version "0.2.0"
-//}
-//
+
 
 //
 ////repositories {
@@ -205,21 +194,6 @@ kotlin {
 //}
 
 
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions {
-//        freeCompilerArgs = listOf("-Xjsr305=strict")
-//        jvmTarget = "1.8"
-//    }
-//}
-//
-//tasks {
-//    dokka {
-//        outputFormat = "html"
-//        outputDirectory = "$rootDir/docs"
-//    }
-//}
-//
-//defaultTasks("dokka")
 //
 //val sourcesJar by tasks.registering(Jar::class) {
 //    archiveClassifier.set("sources")
