@@ -31,33 +31,33 @@ val assertVersion: String by project
 val jsonAssertVersion: String by project
 val kermitVersion: String by project
 
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-    // kotlinx.datetime doesn't include LocalTime yet, so supplement it
-    // https://github.com/Kotlin/kotlinx-datetime/issues/57
-    implementation("io.fluidsonic.time:fluid-time:0.14.0")
-    implementation("io.ktor:ktor-client-cio:$ktorVersion")
-    implementation("io.ktor:ktor-client-core:$ktorVersion")
-    implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-    implementation("io.insert-koin:koin-core:$koinVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
-    implementation("org.slf4j:slf4j-simple:1.7.30")
-    implementation(kotlin("stdlib-common"))
-    api("co.touchlab:kermit:$kermitVersion")
-    testImplementation("io.insert-koin:koin-test:$koinVersion") {
-        exclude(group = "org.mockito")
-        exclude(group = "junit")
-    }
-    testImplementation("io.mockk:mockk:$mockkVersion")
-    implementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
-    testImplementation("com.willowtreeapps.assertk:assertk-jvm:$assertVersion")
-    testImplementation("org.skyscreamer:jsonassert:$jsonAssertVersion")
-
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
-}
+//dependencies {
+//    implementation(kotlin("stdlib-jdk8"))
+//    // kotlinx.datetime doesn't include LocalTime yet, so supplement it
+//    // https://github.com/Kotlin/kotlinx-datetime/issues/57
+//    implementation("io.fluidsonic.time:fluid-time:0.14.0")
+//    implementation("io.ktor:ktor-client-cio:$ktorVersion")
+//    implementation("io.ktor:ktor-client-core:$ktorVersion")
+//    implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
+//    implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
+//    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+//    implementation("io.insert-koin:koin-core:$koinVersion")
+//    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
+//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+//    implementation("org.slf4j:slf4j-simple:1.7.30")
+//    implementation(kotlin("stdlib-common"))
+//    api("co.touchlab:kermit:$kermitVersion")
+//    testImplementation("io.insert-koin:koin-test:$koinVersion") {
+//        exclude(group = "org.mockito")
+//        exclude(group = "junit")
+//    }
+//    testImplementation("io.mockk:mockk:$mockkVersion")
+//    implementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
+//    testImplementation("com.willowtreeapps.assertk:assertk-jvm:$assertVersion")
+//    testImplementation("org.skyscreamer:jsonassert:$jsonAssertVersion")
+//
+//    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
+//}
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
