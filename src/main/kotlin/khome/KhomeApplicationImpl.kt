@@ -46,7 +46,6 @@ internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscrip
 internal typealias HassAPiCommandHistory = MutableMap<EntityId, ServiceCommandImpl<CommandDataWithEntityId>>
 internal typealias ApplicationReadyCallbacks = MutableList<KhomeApplication.() -> Unit>
 
-@OptIn(ExperimentalStdlibApi::class)
 internal class KhomeApplicationImpl : KhomeApplication {
 
     private val logger = Kermit()

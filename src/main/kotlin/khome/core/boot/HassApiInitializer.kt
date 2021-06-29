@@ -6,7 +6,6 @@ import khome.communicating.HassApiClientImpl
 import khome.core.koin.KhomeKoinContext
 import org.koin.dsl.module
 
-@OptIn(ExperimentalStdlibApi::class)
 internal class HassApiInitializerImpl(
     private val khomeSession: KhomeSession
 ) : HassApiInitializer {

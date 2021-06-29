@@ -17,7 +17,6 @@ import khome.entities.devices.Actuator
 import khome.values.EntityId
 import org.koin.dsl.module
 
-@ExperimentalStdlibApi
 internal class KhomeTestApplicationImpl(
     private val sensorsByApiName: SensorsByApiName,
     private val actuatorsByApiName: ActuatorsByApiName,
@@ -36,7 +35,6 @@ internal class KhomeTestApplicationImpl(
         KhomeKoinContext.addModule(testClient)
     }
 
-    @ExperimentalStdlibApi
     override fun setStateAndAttributes(json: String) {
         val stateJson = mapper.fromJson<JsonObject>(json)
         val entityIdFromState = checkNotNull(stateJson["entity_id"])

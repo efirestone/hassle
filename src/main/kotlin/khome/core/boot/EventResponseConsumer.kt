@@ -39,7 +39,6 @@ internal class EventResponseConsumerImpl(
 ) : EventResponseConsumer {
     private val logger = Kermit()
 
-    @ExperimentalStdlibApi
     override suspend fun consumeBlocking() = coroutineScope {
         khomeSession.consumeEachMappedToResponse { response, frameText ->
             when (response.type) {
@@ -65,7 +64,6 @@ internal class EventResponseConsumerImpl(
                 ?: throw IllegalStateException("Frame could not ne casted to Frame.Text")
         }
 
-    @ExperimentalStdlibApi
     private fun handleStateChangedResponse(frameText: Frame.Text) =
         mapFrameTextToResponse<StateChangedResponse>(frameText)
             .takeIf { it.event.eventType == "state_changed" }

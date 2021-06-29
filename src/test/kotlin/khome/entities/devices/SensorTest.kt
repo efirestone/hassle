@@ -204,8 +204,6 @@ internal class SensorTest {
         }
     }
 
-    @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
-    @OptIn(ExperimentalStdlibApi::class)
     private inline fun <reified S : State<*>, reified A : Attributes> sensor(json: String, block: (Sensor<S, A>) -> Unit) {
         khomeApplication().run {
             val mapper: ObjectMapperInterface = KoinContainer.get()

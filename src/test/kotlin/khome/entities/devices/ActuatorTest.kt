@@ -638,8 +638,6 @@ internal class ActuatorTest {
 
     // Private Methods
 
-    @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
-    @OptIn(ExperimentalStdlibApi::class)
     private inline fun <reified S : State<*>, reified A : Attributes> actuator(json: String, block: (Actuator<S, A>) -> Unit) {
         khomeApplication().run {
             val mapper: ObjectMapperInterface = KoinContainer.get()

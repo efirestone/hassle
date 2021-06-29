@@ -9,7 +9,6 @@ import khome.values.EntityId
 internal class ActuatorStateUpdater(private val actuatorsByApiName: ActuatorsByApiName) {
     private val logger = Kermit()
 
-    @ExperimentalStdlibApi
     operator fun invoke(newActualState: JsonObject, entityId: EntityId) {
         actuatorsByApiName[entityId]?.let { entity ->
             entity.trySetAttributesFromAny(newAttributes = newActualState)
@@ -22,7 +21,6 @@ internal class ActuatorStateUpdater(private val actuatorsByApiName: ActuatorsByA
 internal class SensorStateUpdater(private val sensorsByApiName: SensorsByApiName) {
     private val logger = Kermit()
 
-    @ExperimentalStdlibApi
     operator fun invoke(newActualState: JsonObject, entityId: EntityId) {
         sensorsByApiName[entityId]?.let { entity ->
             entity.trySetAttributesFromAny(newAttributes = newActualState)

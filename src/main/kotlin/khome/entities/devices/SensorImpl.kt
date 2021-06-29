@@ -38,7 +38,6 @@ internal class SensorImpl<S : State<*>, A : Attributes>(
             ObserverExceptionHandler(app.observerExceptionHandlerFunction)
         ).also { observers.add(it) }
 
-    @ExperimentalStdlibApi
     fun trySetActualStateFromAny(newState: JsonObject) {
         @Suppress("UNCHECKED_CAST")
         measurement = mapper.fromJson(newState, stateType.java) as S

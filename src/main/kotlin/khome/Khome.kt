@@ -102,7 +102,6 @@ interface Khome {
 inline fun <reified T : Any, reified P : Any> Khome.registerTypeAdapter(adapter: KhomeTypeAdapter<T>) =
     registerTypeAdapter(adapter, T::class, P::class)
 
-@OptIn(ExperimentalStdlibApi::class)
 private class KhomeImpl : Khome, KhomeComponent {
 
     init {

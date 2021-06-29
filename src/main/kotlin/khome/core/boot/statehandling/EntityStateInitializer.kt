@@ -27,7 +27,6 @@ internal class EntityStateInitializerImpl(
 
     private val statesRequest = StatesRequest(id)
 
-    @ExperimentalStdlibApi
     override suspend fun initialize() {
         sendStatesRequest()
         logger.i { "Requested initial entity states" }
@@ -40,7 +39,6 @@ internal class EntityStateInitializerImpl(
     private suspend fun consumeStatesResponse() =
         khomeSession.consumeSingleMessage<StatesResponse>()
 
-    @ExperimentalStdlibApi
     private fun setInitialEntityState(stateResponse: StatesResponse) {
         if (stateResponse.success) {
             val statesByEntityId = stateResponse.result.associateBy { state ->
