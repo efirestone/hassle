@@ -35,7 +35,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertThrows
 import org.koin.core.component.get
-import kotlin.time.ExperimentalTime
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class ActuatorTest {
@@ -511,7 +510,6 @@ internal class ActuatorTest {
         }
     }
 
-    @OptIn(ExperimentalTime::class)
     @Test
     fun `parse media player playing a movie`() {
         val json =
