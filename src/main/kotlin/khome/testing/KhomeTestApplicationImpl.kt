@@ -29,7 +29,7 @@ internal class KhomeTestApplicationImpl(
     private val logger = Kermit()
 
     init {
-        val testClient = module(override = true) {
+        val testClient = module {
             single<HassApiClient> { HassApiTestClient(get()) }
         }
 
