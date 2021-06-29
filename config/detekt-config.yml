@@ -34,7 +34,7 @@ empty-blocks:
   EmptyForBlock:
     active: true
   EmptyFunctionBlock:
-    ignoreOverriddenFunctions: true
+    ignoreOverridden: true
   EmptyIfBlock:
     active: true
   EmptyInitBlock:
