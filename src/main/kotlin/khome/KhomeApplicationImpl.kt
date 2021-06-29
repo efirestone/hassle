@@ -1,7 +1,6 @@
 package khome
 
 import co.touchlab.kermit.Kermit
-import io.ktor.util.KtorExperimentalAPI
 import khome.communicating.CommandDataWithEntityId
 import khome.communicating.HassApiClient
 import khome.communicating.ServiceCommandImpl
@@ -34,8 +33,6 @@ import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
@@ -49,12 +46,6 @@ internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscrip
 internal typealias HassAPiCommandHistory = MutableMap<EntityId, ServiceCommandImpl<CommandDataWithEntityId>>
 internal typealias ApplicationReadyCallbacks = MutableList<KhomeApplication.() -> Unit>
 
-@OptIn(
-    ExperimentalStdlibApi::class,
-    KtorExperimentalAPI::class,
-    ObsoleteCoroutinesApi::class,
-    ExperimentalCoroutinesApi::class
-)
 internal class KhomeApplicationImpl : KhomeApplication {
 
     private val logger = Kermit()

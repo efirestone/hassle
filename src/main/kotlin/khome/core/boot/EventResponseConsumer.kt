@@ -6,7 +6,6 @@ import com.google.gson.JsonNull
 import io.ktor.http.cio.websocket.Frame
 import io.ktor.http.cio.websocket.WebSocketSession
 import io.ktor.http.cio.websocket.readText
-import io.ktor.util.KtorExperimentalAPI
 import khome.EventHandlerByEventType
 import khome.KhomeSession
 import khome.core.EventResponse
@@ -23,7 +22,6 @@ import khome.errorHandling.ErrorResponseData
 import khome.errorHandling.ErrorResponseHandlerImpl
 import khome.values.EventType
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.coroutineScope
 
@@ -31,9 +29,6 @@ interface EventResponseConsumer {
     suspend fun consumeBlocking()
 }
 
-@ObsoleteCoroutinesApi
-@KtorExperimentalAPI
-@ExperimentalCoroutinesApi
 internal class EventResponseConsumerImpl(
     private val khomeSession: KhomeSession,
     private val objectMapper: ObjectMapperInterface,
@@ -44,7 +39,6 @@ internal class EventResponseConsumerImpl(
 ) : EventResponseConsumer {
     private val logger = Kermit()
 
-    @ExperimentalStdlibApi
     override suspend fun consumeBlocking() = coroutineScope {
         khomeSession.consumeEachMappedToResponse { response, frameText ->
             when (response.type) {
@@ -63,13 +57,13 @@ internal class EventResponseConsumerImpl(
     private inline fun <reified Response> mapFrameTextToResponse(frameText: Frame.Text): Response =
         objectMapper.fromJson(frameText.readText())
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private suspend inline fun WebSocketSession.consumeEachMappedToResponse(action: (ResolverResponse, Frame.Text) -> Unit) =
         incoming.consumeEach { frame ->
             (frame as? Frame.Text)?.let { frameText -> action(mapFrameTextToResponse(frameText), frameText) }
                 ?: throw IllegalStateException("Frame could not ne casted to Frame.Text")
         }
 
-    @ExperimentalStdlibApi
     private fun handleStateChangedResponse(frameText: Frame.Text) =
         mapFrameTextToResponse<StateChangedResponse>(frameText)
             .takeIf { it.event.eventType == "state_changed" }

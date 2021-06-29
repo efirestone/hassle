@@ -2,7 +2,6 @@ package khome.core.boot.statehandling
 
 import co.touchlab.kermit.Kermit
 import com.google.gson.JsonObject
-import io.ktor.util.KtorExperimentalAPI
 import khome.KhomeSession
 import khome.communicating.CALLER_ID
 import khome.core.koin.KhomeComponent
@@ -10,13 +9,11 @@ import khome.entities.ActuatorStateUpdater
 import khome.entities.EntityRegistrationValidation
 import khome.entities.SensorStateUpdater
 import khome.values.EntityId
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 
 interface EntityStateInitializer {
     suspend fun initialize()
 }
 
-@OptIn(ObsoleteCoroutinesApi::class, KtorExperimentalAPI::class)
 internal class EntityStateInitializerImpl(
     val khomeSession: KhomeSession,
     private val sensorStateUpdater: SensorStateUpdater,
@@ -30,7 +27,6 @@ internal class EntityStateInitializerImpl(
 
     private val statesRequest = StatesRequest(id)
 
-    @ExperimentalStdlibApi
     override suspend fun initialize() {
         sendStatesRequest()
         logger.i { "Requested initial entity states" }
@@ -43,7 +39,6 @@ internal class EntityStateInitializerImpl(
     private suspend fun consumeStatesResponse() =
         khomeSession.consumeSingleMessage<StatesResponse>()
 
-    @ExperimentalStdlibApi
     private fun setInitialEntityState(stateResponse: StatesResponse) {
         if (stateResponse.success) {
             val statesByEntityId = stateResponse.result.associateBy { state ->

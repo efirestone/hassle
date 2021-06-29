@@ -5,7 +5,6 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import com.google.gson.JsonObject
 import io.fluidsonic.time.LocalTime
-import io.ktor.util.KtorExperimentalAPI
 import khome.KhomeApplicationImpl
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.EntityIdOnlyServiceData
@@ -27,8 +26,6 @@ import khome.extending.entities.actuators.mediaplayer.MediaReceiverState
 import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue
 import khome.khomeApplication
 import khome.values.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
@@ -38,7 +35,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertThrows
 import org.koin.core.component.get
-import kotlin.time.ExperimentalTime
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class ActuatorTest {
@@ -63,8 +59,6 @@ internal class ActuatorTest {
     private val mapper: ObjectMapperInterface
         get() = KoinContainer.get()
 
-    @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
-    @OptIn(KtorExperimentalAPI::class)
     @Test
     fun `actuator state response mapping is correct`() {
 
@@ -124,7 +118,6 @@ internal class ActuatorTest {
         )
     }
 
-    @OptIn(KtorExperimentalAPI::class, ObsoleteCoroutinesApi::class)
     @Test
     fun `actuator stores state and attributes youngest first`() {
         val sut = ActuatorImpl<ActuatorTestState, ActuatorTestAttributes>(
@@ -517,7 +510,6 @@ internal class ActuatorTest {
         }
     }
 
-    @OptIn(ExperimentalTime::class)
     @Test
     fun `parse media player playing a movie`() {
         val json =
@@ -644,13 +636,6 @@ internal class ActuatorTest {
 
     // Private Methods
 
-    @Suppress("EXPERIMENTAL_IS_NOT_ENABLED")
-    @OptIn(
-        ExperimentalCoroutinesApi::class,
-        ExperimentalStdlibApi::class,
-        KtorExperimentalAPI::class,
-        ObsoleteCoroutinesApi::class
-    )
     private inline fun <reified S : State<*>, reified A : Attributes> actuator(json: String, block: (Actuator<S, A>) -> Unit) {
         khomeApplication().run {
             val mapper: ObjectMapperInterface = KoinContainer.get()

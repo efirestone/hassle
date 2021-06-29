@@ -6,14 +6,10 @@ import io.ktor.client.features.websocket.DefaultClientWebSocketSession
 import io.ktor.http.cio.websocket.Frame
 import io.ktor.http.cio.websocket.readText
 import io.ktor.http.cio.websocket.send
-import io.ktor.util.KtorExperimentalAPI
 import khome.core.MessageInterface
 import khome.core.mapping.ObjectMapperInterface
 import khome.core.mapping.fromJson
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 
-@KtorExperimentalAPI
-@ObsoleteCoroutinesApi
 internal class KhomeSession(
     delegate: DefaultClientWebSocketSession,
     val objectMapper: ObjectMapperInterface

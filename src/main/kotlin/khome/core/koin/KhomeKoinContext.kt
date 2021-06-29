@@ -1,5 +1,3 @@
-@file:Suppress("EXPERIMENTAL_API_USAGE")
-
 package khome.core.koin
 
 import co.touchlab.kermit.Kermit

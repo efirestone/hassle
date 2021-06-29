@@ -13,7 +13,7 @@ import io.ktor.client.features.websocket.WebSockets
 import io.ktor.client.request.header
 import io.ktor.client.request.host
 import io.ktor.client.request.port
-import io.ktor.util.KtorExperimentalAPI
+import io.ktor.util.*
 import khome.core.Configuration
 import khome.core.DefaultConfiguration
 import khome.core.boot.EventResponseConsumer
@@ -45,13 +45,7 @@ import khome.core.mapping.adapter.default.LocalDateAdapter
 import khome.core.mapping.adapter.default.LocalDateTimeAdapter
 import khome.core.mapping.adapter.default.LocalTimeAdapter
 import khome.core.mapping.adapter.default.RegexTypeAdapter
-import khome.entities.ActuatorStateUpdater
-import khome.entities.EntityRegistrationValidation
-import khome.entities.SensorStateUpdater
-import khome.errorHandling.ErrorResponseData
 import khome.values.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
@@ -80,9 +74,6 @@ typealias KhomeBuilder = Khome.() -> Unit
  * @return [KhomeApplication]
  */
 
-@ExperimentalCoroutinesApi
-@ObsoleteCoroutinesApi
-@KtorExperimentalAPI
 fun khomeApplication(init: KhomeBuilder = {}): KhomeApplication =
     KhomeImpl().apply(init).createApplication()
 
@@ -111,7 +102,6 @@ interface Khome {
 inline fun <reified T : Any, reified P : Any> Khome.registerTypeAdapter(adapter: KhomeTypeAdapter<T>) =
     registerTypeAdapter(adapter, T::class, P::class)
 
-@OptIn(ExperimentalStdlibApi::class, KtorExperimentalAPI::class, ObsoleteCoroutinesApi::class)
 private class KhomeImpl : Khome, KhomeComponent {
 
     init {
@@ -144,6 +134,7 @@ private class KhomeImpl : Khome, KhomeComponent {
         typeAdapters[valueObjectType] = GsonTypeAdapterBridge(adapter, primitiveType)
     }
 
+    @OptIn(KtorExperimentalAPI::class)
     fun createApplication(): KhomeApplicationImpl {
         registerDefaultTypeAdapter()
         val mapperModule = module {
@@ -195,45 +186,45 @@ private class KhomeImpl : Khome, KhomeComponent {
                         get()
                     )
                 }
-                single<Authenticator> { (khomeSession: KhomeSession) -> AuthenticatorImpl(khomeSession, get()) }
-                single<ServiceStoreInitializer> { (khomeSession: KhomeSession) ->
+                single<Authenticator> { parameters -> AuthenticatorImpl(parameters.get(), get()) }
+                single<ServiceStoreInitializer> { parameters ->
                     ServiceStoreInitializerImpl(
-                        khomeSession,
+                        parameters.get(),
                         get()
                     )
                 }
-                single<HassApiInitializer> { (khomeSession: KhomeSession) -> HassApiInitializerImpl(khomeSession) }
-                single<HassEventSubscriber> { (khomeSession: KhomeSession, subscriptions: EventHandlerByEventType) ->
+                single<HassApiInitializer> { parameters -> HassApiInitializerImpl(parameters.get()) }
+                single<HassEventSubscriber> { parameters ->
                     HassEventSubscriberImpl(
-                        khomeSession,
-                        subscriptions,
+                        parameters.get(),
+                        parameters.get(),
                         get()
                     )
                 }
 
-                single<EntityStateInitializer> { (khomeSession: KhomeSession, sensorStateUpdater: SensorStateUpdater, actuatorStateUpdater: ActuatorStateUpdater, entityRegistrationValidation: EntityRegistrationValidation) ->
+                single<EntityStateInitializer> { parameters ->
                     EntityStateInitializerImpl(
-                        khomeSession,
-                        sensorStateUpdater,
-                        actuatorStateUpdater,
-                        entityRegistrationValidation
+                        parameters.get(),
+                        parameters.get(),
+                        parameters.get(),
+                        parameters.get()
                     )
                 }
 
-                single<StateChangeEventSubscriber> { (khomeSession: KhomeSession) ->
+                single<StateChangeEventSubscriber> { parameters ->
                     StateChangeEventSubscriberImpl(
-                        khomeSession
+                        parameters.get()
                     )
                 }
 
-                single<EventResponseConsumer> { (khomeSession: KhomeSession, sensorStateUpdater: SensorStateUpdater, actuatorStateUpdater: ActuatorStateUpdater, eventHandlerByEventType: EventHandlerByEventType, errorResponseHandler: (ErrorResponseData) -> Unit) ->
+                single<EventResponseConsumer> { parameters ->
                     EventResponseConsumerImpl(
-                        khomeSession = khomeSession,
-                        sensorStateUpdater = sensorStateUpdater,
-                        actuatorStateUpdater = actuatorStateUpdater,
+                        khomeSession = parameters.get(),
+                        sensorStateUpdater = parameters.get(),
+                        actuatorStateUpdater = parameters.get(),
                         objectMapper = get(),
-                        eventHandlerByEventType = eventHandlerByEventType,
-                        errorResponseHandler = errorResponseHandler
+                        eventHandlerByEventType = parameters.get(),
+                        errorResponseHandler = parameters.get()
                     )
                 }
             }

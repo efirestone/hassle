@@ -5,7 +5,7 @@ package khome.values
 import khome.core.mapping.KhomeTypeAdapter
 
 data class ColorTemperature private constructor(val value: Int, val unit: Unit) {
-    override fun toString(): String = "$value.${unit.name.toLowerCase()}"
+    override fun toString(): String = "$value.${unit.name.lowercase()}"
 
     companion object : KhomeTypeAdapter<ColorTemperature> {
         fun fromMired(value: Int) = ColorTemperature(value, Unit.MIRED)
