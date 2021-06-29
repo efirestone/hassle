@@ -24,5 +24,5 @@ interface Attributes {
     val userId: UserId?
     val lastChanged: Instant
     val lastUpdated: Instant
-    val friendlyName: FriendlyName
+    val friendlyName: FriendlyName?
 }
