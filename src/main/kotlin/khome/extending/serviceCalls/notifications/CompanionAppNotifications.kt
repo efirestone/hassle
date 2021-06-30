@@ -1,11 +1,11 @@
 package khome.extending.serviceCalls.notifications
 
-import com.google.gson.annotations.SerializedName
 import khome.KhomeApplication
 import khome.values.Device
 import khome.values.EntityId
 import khome.values.Service
 import khome.values.domain
+import kotlinx.serialization.SerialName
 
 private const val REQUEST_LOCATION_UPDATE = "request_location_update"
 
@@ -79,14 +79,14 @@ class MessageData {
 
 data class AttachmentData(
     val url: String?,
-    @SerializedName("content-type")
+    @SerialName("content-type")
     val contentType: String?,
-    @SerializedName("hide-thumbnail")
+    @SerialName("hide-thumbnail")
     val hideThumbnail: Boolean?
 )
 
 class PushData {
-    @SerializedName("thread-id")
+    @SerialName("thread-id")
     var threadId: String? = null
     private var sound: SoundData? = null
     var badge: Int? = null
@@ -112,4 +112,4 @@ data class MapActionData(
     var showsUsersLocation: Boolean? = null
 )
 
-data class ApnsHeaders(@SerializedName("apns-collapse-id") var id: String? = null)
+data class ApnsHeaders(@SerialName("apns-collapse-id") var id: String? = null)

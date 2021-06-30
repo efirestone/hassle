@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.5.20"
+    kotlin("plugin.serialization") version "1.5.0"
     id("org.jetbrains.dokka") version "1.4.32"
     `maven-publish`
     id("io.gitlab.arturbosch.detekt") version "1.9.1"
@@ -37,13 +38,14 @@ dependencies {
     // kotlinx.datetime doesn't include LocalTime yet, so supplement it
     // https://github.com/Kotlin/kotlinx-datetime/issues/57
     implementation("io.fluidsonic.time:fluid-time:0.14.0")
+    implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-gson:$ktorVersion")
+    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
     implementation("org.slf4j:slf4j-simple:1.7.30")
     implementation(kotlin("stdlib-common"))
     api("co.touchlab:kermit:$kermitVersion")

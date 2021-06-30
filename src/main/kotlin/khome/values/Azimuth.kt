@@ -1,26 +1,27 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class Azimuth private constructor(val value: Double) {
+@Serializable(Azimuth.Companion::class)
+data class Azimuth(val value: Double) {
     override fun toString(): String = value.toString()
 
-    companion object : KhomeTypeAdapter<Azimuth> {
-        override fun <P> from(value: P): Azimuth {
-            return Azimuth((value as Double))
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: Azimuth): P {
-            return value.value as P
-        }
+    companion object : KSerializer<Azimuth> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("Azimuth", PrimitiveKind.DOUBLE)
+        override fun deserialize(decoder: Decoder) = Azimuth(decoder.decodeDouble())
+        override fun serialize(encoder: Encoder, value: Azimuth) = encoder.encodeDouble(value.value)
     }
 }
 
 val Double.azimuth
-    get() = Azimuth.from(this)
+    get() = Azimuth(this)
 
 val Int.azimuth
-    get() = Azimuth.from(this.toDouble())
+    get() = Azimuth(this.toDouble())

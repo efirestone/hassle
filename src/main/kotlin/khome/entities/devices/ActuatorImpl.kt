@@ -1,6 +1,5 @@
 package khome.entities.devices
 
-import com.google.gson.JsonObject
 import khome.KhomeApplicationImpl
 import khome.communicating.CommandDataWithEntityId
 import khome.communicating.ServiceCommandImpl
@@ -17,6 +16,7 @@ import khome.observability.ObserverImpl
 import khome.observability.StateAndAttributes
 import khome.observability.Switchable
 import khome.values.Service
+import kotlinx.serialization.json.JsonObject
 import kotlin.reflect.KClass
 
 internal class ActuatorImpl<S : State<*>, A : Attributes>(
@@ -52,13 +52,13 @@ internal class ActuatorImpl<S : State<*>, A : Attributes>(
 
     fun trySetActualStateFromAny(newState: JsonObject) {
         @Suppress("UNCHECKED_CAST")
-        actualState = mapper.fromJson(newState, stateType.java) as S
+        actualState = mapper.fromJson(newState, stateType) as S
         checkNotNull(actualState.value) { "State value shall not be null. Please check your State definition  " }
     }
 
     fun trySetAttributesFromAny(newAttributes: JsonObject) {
         @Suppress("UNCHECKED_CAST")
-        attributes = mapper.fromJson(newAttributes, attributesType.java) as A
+        attributes = mapper.fromJson(newAttributes, attributesType) as A
     }
 
     override fun callService(service: Service, parameterBag: CommandDataWithEntityId) {

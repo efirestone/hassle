@@ -1,23 +1,25 @@
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-@Suppress("DataClassPrivateConstructor")
-data class Temperature private constructor(val value: Double) {
-    internal companion object : KhomeTypeAdapter<Temperature> {
-        override fun <P> from(value: P): Temperature {
-            return Temperature(value as Double)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: Temperature): P {
-            return value.value as P
-        }
+@Serializable
+data class Temperature(val value: Double) {
+    internal companion object : KSerializer<Temperature> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("Temperature", PrimitiveKind.DOUBLE)
+        override fun deserialize(decoder: Decoder) = Temperature(decoder.decodeDouble())
+        override fun serialize(encoder: Encoder, value: Temperature) = encoder.encodeDouble(value.value)
     }
 }
 
 val Double.degree
-    get() = Temperature.from(this)
+    get() = Temperature(this)
 
 val Int.degree
-    get() = Temperature.from(this.toDouble())
+    get() = Temperature(this.toDouble())

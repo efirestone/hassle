@@ -1,26 +1,27 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class ColorName private constructor(val value: String) {
+@Serializable(ColorName.Companion::class)
+data class ColorName(val value: String) {
     override fun toString(): String = value
 
-    companion object : KhomeTypeAdapter<ColorName> {
-        override fun <P> from(value: P): ColorName {
-            return ColorName(value as String)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: ColorName): P {
-            return value.value as P
-        }
+    companion object : KSerializer<ColorName> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("ColorName", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = ColorName(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: ColorName) = encoder.encodeString(value.value)
     }
 }
 
 val String.color
-    get() = ColorName.from(this)
+    get() = ColorName(this)
 
 val Enum<*>.color
-    get() = ColorName.from(this.name)
+    get() = ColorName(this.name)

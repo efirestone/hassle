@@ -1,25 +1,25 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class Service private constructor(val value: String) {
-    companion object : KhomeTypeAdapter<Service> {
-
+@Serializable(Service.Companion::class)
+data class Service(val value: String) {
+    companion object : KSerializer<Service> {
         fun fromDevice(device: Device): Service =
             Service(device.value)
 
-        override fun <P> from(value: P): Service {
-            return Service(value as String)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: Service): P {
-            return value.value as P
-        }
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("Service", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = Service(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: Service) = encoder.encodeString(value.value)
     }
 }
 
 val String.service
-    get() = Service.from(this)
+    get() = Service(this)

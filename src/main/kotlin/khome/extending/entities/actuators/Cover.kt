@@ -1,6 +1,5 @@
 package khome.extending.entities.actuators
 
-import com.google.gson.annotations.SerializedName
 import khome.KhomeApplication
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
@@ -19,6 +18,8 @@ import khome.values.UserId
 import khome.values.domain
 import khome.values.service
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 typealias PositionableCover = Actuator<PositionableCoverState, PositionableCoverAttributes>
 
@@ -52,32 +53,40 @@ fun KhomeApplication.PositionableCover(objectId: ObjectId): PositionableCover =
         }
     )
 
+@Serializable
 data class PositionableCoverState(
     override val value: PositionableCoverValue,
     val currentPosition: Position? = null
 ) : State<PositionableCoverValue>
 
+@Serializable
 enum class PositionableCoverValue {
-    @SerializedName("open")
+    @SerialName("open")
     OPEN,
 
-    @SerializedName("closed")
+    @SerialName("closed")
     CLOSED
 }
 
+@Serializable
 enum class Working {
-    @SerializedName("Yes")
+    @SerialName("Yes")
     YES,
 
-    @SerializedName("No")
+    @SerialName("No")
     NO
 }
 
+@Serializable
 data class PositionableCoverAttributes(
     val working: Working,
+    @SerialName("user_id")
     override val userId: UserId?,
+    @SerialName("last_changed")
     override val lastChanged: Instant,
+    @SerialName("last_updated")
     override val lastUpdated: Instant,
+    @SerialName("friendly_name")
     override val friendlyName: FriendlyName
 ) : Attributes
 

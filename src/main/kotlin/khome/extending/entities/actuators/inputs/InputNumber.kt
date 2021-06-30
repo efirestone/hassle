@@ -19,6 +19,8 @@ import khome.values.UserId
 import khome.values.domain
 import khome.values.service
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 typealias InputNumber = Actuator<InputNumberState, InputNumberAttributes>
 
@@ -36,8 +38,10 @@ fun KhomeApplication.InputNumber(objectId: ObjectId): InputNumber =
         }
     )
 
+@Serializable
 data class InputNumberState(override val value: Double) : State<Double>
 
+@Serializable
 data class InputNumberAttributes(
     val initial: Initial,
     val editable: Boolean,
@@ -45,8 +49,12 @@ data class InputNumberAttributes(
     val max: Max,
     val step: Step,
     val mode: Mode,
+    @SerialName("user_id")
     override val userId: UserId?,
+    @SerialName("friendly_name")
     override val friendlyName: FriendlyName,
+    @SerialName("last_changed")
     override val lastChanged: Instant,
+    @SerialName("last_updated")
     override val lastUpdated: Instant
 ) : Attributes

@@ -1,6 +1,5 @@
 package khome.extending.entities.sensors.binary
 
-import com.google.gson.annotations.SerializedName
 import khome.KhomeApplication
 import khome.entities.Attributes
 import khome.entities.State
@@ -12,26 +11,35 @@ import khome.values.FriendlyName
 import khome.values.ObjectId
 import khome.values.UserId
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 typealias ContactSensor = Sensor<ContactState, ContactAttributes>
 
 @Suppress("FunctionName")
 fun KhomeApplication.ContactSensor(objectId: ObjectId): ContactSensor = Sensor(objectId)
 
+@Serializable
 data class ContactState(override val value: ContactStateValue) : State<ContactStateValue>
 
+@Serializable
 enum class ContactStateValue {
-    @SerializedName("open")
+    @SerialName("open")
     OPEN,
 
-    @SerializedName("closed")
+    @SerialName("closed")
     CLOSED
 }
 
+@Serializable
 data class ContactAttributes(
+    @SerialName("user_id")
     override val userId: UserId?,
+    @SerialName("last_changed")
     override val lastChanged: Instant,
+    @SerialName("last_updated")
     override val lastUpdated: Instant,
+    @SerialName("friendly_name")
     override val friendlyName: FriendlyName
 ) : Attributes
 

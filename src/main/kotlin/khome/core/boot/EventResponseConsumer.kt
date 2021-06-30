@@ -1,8 +1,6 @@
 package khome.core.boot
 
 import co.touchlab.kermit.Kermit
-import com.google.gson.JsonElement
-import com.google.gson.JsonNull
 import io.ktor.http.cio.websocket.Frame
 import io.ktor.http.cio.websocket.WebSocketSession
 import io.ktor.http.cio.websocket.readText
@@ -24,6 +22,9 @@ import khome.values.EventType
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.coroutineScope
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.jsonObject
 
 interface EventResponseConsumer {
     suspend fun consumeBlocking()
@@ -71,11 +72,11 @@ internal class EventResponseConsumerImpl(
                 logger.d { "State change response: $stateChangedResponse" }
                 stateChangedResponse.event.data.newState.getOrNull()?.let { newState ->
                     sensorStateUpdater(
-                        flattenStateAttributes(newState.asJsonObject),
+                        flattenStateAttributes(newState.jsonObject),
                         stateChangedResponse.event.data.entityId
                     )
                     actuatorStateUpdater(
-                        flattenStateAttributes(newState.asJsonObject),
+                        flattenStateAttributes(newState.jsonObject),
                         stateChangedResponse.event.data.entityId
                     )
                 }
@@ -83,10 +84,10 @@ internal class EventResponseConsumerImpl(
 
     private fun handleEventResponse(frameText: Frame.Text) {
         mapFrameTextToResponse<EventResponse>(frameText)
-            .takeIf { EventType.from(it.event.eventType) in eventHandlerByEventType }
+            .takeIf { EventType(it.event.eventType) in eventHandlerByEventType }
             ?.let { eventResponse ->
                 logger.d { "Event response: $eventResponse" }
-                eventHandlerByEventType[EventType.from(eventResponse.event.eventType)]
+                eventHandlerByEventType[EventType(eventResponse.event.eventType)]
                     ?.invokeEventHandler(eventResponse.event.data)
                     ?: logger.w { "No event found for event type: ${eventResponse.event.eventType}" }
             }

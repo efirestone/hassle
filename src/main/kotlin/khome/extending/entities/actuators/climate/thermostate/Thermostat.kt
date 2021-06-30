@@ -1,6 +1,5 @@
 package khome.extending.entities.actuators.climate.thermostate
 
-import com.google.gson.annotations.SerializedName
 import khome.KhomeApplication
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
@@ -22,6 +21,8 @@ import khome.values.hvacMode
 import khome.values.presetMode
 import khome.values.service
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 typealias Thermostat = Actuator<ThermostatState, ThermostatAttributes>
 
@@ -77,11 +78,12 @@ data class ThermostatAttributes(
     override val userId: UserId?
 ) : Attributes
 
+@Serializable
 enum class ThermostatStateValue {
-    @SerializedName("heat")
+    @SerialName("heat")
     HEAT,
 
-    @SerializedName("off")
+    @SerialName("off")
     OFF
 }
 

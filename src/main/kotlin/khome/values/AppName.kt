@@ -1,26 +1,27 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class AppName private constructor(val value: String) {
+@Serializable(AppName.Companion::class)
+data class AppName(val value: String) {
     override fun toString(): String = value
 
-    companion object : KhomeTypeAdapter<AppName> {
-        override fun <P> from(value: P): AppName {
-            return AppName(value as String)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: AppName): P {
-            return value.value as P
-        }
+    companion object : KSerializer<AppName> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("AppName", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = AppName(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: AppName) = encoder.encodeString(value.value)
     }
 }
 
 val String.appName
-    get() = AppName.from(this)
+    get() = AppName(this)
 
 val Enum<*>.appName
-    get() = AppName.from(this.name)
+    get() = AppName(this.name)

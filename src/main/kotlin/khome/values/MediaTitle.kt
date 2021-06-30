@@ -1,20 +1,21 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class MediaTitle private constructor(val value: String) {
+@Serializable(MediaTitle.Companion::class)
+data class MediaTitle(val value: String) {
     override fun toString(): String = value
 
-    companion object : KhomeTypeAdapter<MediaTitle> {
-        override fun <P> from(value: P): MediaTitle {
-            return MediaTitle(value as String)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: MediaTitle): P {
-            return value.value as P
-        }
+    companion object : KSerializer<MediaTitle> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("MediaTitle", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = MediaTitle(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: MediaTitle) = encoder.encodeString(value.value)
     }
 }

@@ -1,52 +1,52 @@
 package khome.extending.events
 
-import com.google.gson.annotations.SerializedName
 import khome.KhomeApplication
 import khome.events.EventHandlerFunction
 import khome.extending.events.IosEventType.ACTION_FIRED
 import khome.extending.events.IosEventType.NOTIFICATION_ACTION_FIRED
 import khome.values.EventType
+import kotlinx.serialization.SerialName
 
 fun KhomeApplication.attachIosActionHandler(eventHandler: EventHandlerFunction<IosActionEventData>) =
     attachEventHandler(ACTION_FIRED.eventType, eventHandler)
 
 data class IosActionEventData(
-    @SerializedName("sourceDeviceID")
+    @SerialName("sourceDeviceID")
     val sourceDeviceID: String,
 
-    @SerializedName("actionID")
+    @SerialName("actionID")
     val actionID: String,
 
-    @SerializedName("actionName")
+    @SerialName("actionName")
     val actionName: String,
 
-    @SerializedName("sourceDeviceName")
+    @SerialName("sourceDeviceName")
     val sourceDeviceName: String,
 
-    @SerializedName("sourceDevicePermanentID")
+    @SerialName("sourceDevicePermanentID")
     val sourceDevicePermanentID: String,
 
-    @SerializedName("triggerSource")
+    @SerialName("triggerSource")
     val triggerSource: String
 )
 
 data class IosNotificationActionEventData<AD>(
-    @SerializedName("sourceDeviceName")
+    @SerialName("sourceDeviceName")
     val sourceDeviceName: String,
 
-    @SerializedName("sourceDeviceID")
+    @SerialName("sourceDeviceID")
     val sourceDeviceID: String,
 
-    @SerializedName("actionName")
+    @SerialName("actionName")
     val actionName: String,
 
-    @SerializedName("sourceDevicePermanentID")
+    @SerialName("sourceDevicePermanentID")
     val sourceDevicePermanentID: String?,
 
-    @SerializedName("textInput")
+    @SerialName("textInput")
     val textInput: String?,
 
-    @SerializedName("action_data")
+    @SerialName("action_data")
     val actionData: AD?
 )
 
@@ -59,4 +59,4 @@ internal enum class IosEventType(val value: String) {
 }
 
 internal val IosEventType.eventType
-    get() = EventType.from(this.value)
+    get() = EventType(this.value)

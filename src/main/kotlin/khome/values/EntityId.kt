@@ -1,8 +1,14 @@
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
 import khome.entities.devices.Actuator
 import khome.entities.devices.Sensor
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 /**
  * The EntityId of an [Actuator] or [Sensor]
@@ -13,8 +19,8 @@ import khome.entities.devices.Sensor
  * @property domain the domain that the entity belongs to e.g. cover, light, sensor
  * @property objectId the object id of an entity
  */
-@Suppress("DataClassPrivateConstructor")
-data class EntityId private constructor(val domain: Domain, val objectId: ObjectId) {
+@Serializable(EntityId.Companion::class)
+data class EntityId(val domain: Domain, val objectId: ObjectId) {
 
     /**
      * The EntityId's string representation.
@@ -24,24 +30,21 @@ data class EntityId private constructor(val domain: Domain, val objectId: Object
      */
     override fun toString(): String = "${domain.value}.${objectId.value}"
 
-    companion object : KhomeTypeAdapter<EntityId> {
+    companion object : KSerializer<EntityId> {
 
         fun fromPair(pair: Pair<Domain, ObjectId>) =
-            from("${pair.first}.${pair.second}")
+            fromString("${pair.first}.${pair.second}")
 
         fun fromString(value: String): EntityId {
             val parts = value.split(".")
             check(parts.size == 2) { "EntityId has wrong format. Correct format is: \"domain.objectId\"" }
             val (domain, id) = parts
-            return EntityId(Domain.from(domain), ObjectId.from(id))
+            return EntityId(Domain(domain), ObjectId(id))
         }
 
-        override fun <P> from(value: P): EntityId =
-            fromString(value as String)
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: EntityId): P {
-            return value.toString() as P
-        }
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("EntityId", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = fromString(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: EntityId) = encoder.encodeString(value.toString())
     }
 }

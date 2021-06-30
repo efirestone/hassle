@@ -1,23 +1,24 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-data class HvacMode private constructor(val value: String) {
+@Serializable(HvacMode.Companion::class)
+data class HvacMode(val value: String) {
     override fun toString(): String = value
 
-    companion object : KhomeTypeAdapter<HvacMode> {
-        override fun <P> from(value: P): HvacMode {
-            return HvacMode(value as String)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: HvacMode): P {
-            return value.value as P
-        }
+    companion object : KSerializer<HvacMode> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("HvacMode", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = HvacMode(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: HvacMode) = encoder.encodeString(value.value)
     }
 }
 
 val String.hvacMode
-    get() = HvacMode.from(this)
+    get() = HvacMode(this)

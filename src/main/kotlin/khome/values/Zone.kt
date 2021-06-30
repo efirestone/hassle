@@ -1,25 +1,27 @@
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-@Suppress("DataClassPrivateConstructor")
-data class Zone private constructor(val value: String) {
+@Serializable(Zone.Companion::class)
+data class Zone(val value: String) {
     override fun toString(): String = value
 
-    companion object : KhomeTypeAdapter<Zone> {
-        override fun <P> from(value: P): Zone {
-            return Zone(value as String)
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <P> to(value: Zone): P {
-            return value.value as P
-        }
+    companion object : KSerializer<Zone> {
+        override val descriptor: SerialDescriptor =
+            PrimitiveSerialDescriptor("Zone", PrimitiveKind.STRING)
+        override fun deserialize(decoder: Decoder) = Zone(decoder.decodeString())
+        override fun serialize(encoder: Encoder, value: Zone) = encoder.encodeString(value.value)
     }
 }
 
 val String.zone
-    get() = Zone.from(this)
+    get() = Zone(this)
 
 val Enum<*>.zone
-    get() = Zone.from(this.name)
+    get() = Zone(this.name)

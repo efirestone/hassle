@@ -1,10 +1,10 @@
 package khome.entities
 
 import co.touchlab.kermit.Kermit
-import com.google.gson.JsonObject
 import khome.ActuatorsByApiName
 import khome.SensorsByApiName
 import khome.values.EntityId
+import kotlinx.serialization.json.JsonObject
 
 internal class ActuatorStateUpdater(private val actuatorsByApiName: ActuatorsByApiName) {
     private val logger = Kermit()

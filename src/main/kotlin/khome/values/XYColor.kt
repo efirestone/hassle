@@ -1,23 +1,43 @@
-@file:Suppress("DataClassPrivateConstructor")
-
 package khome.values
 
-import khome.core.mapping.KhomeTypeAdapter
+import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.encoding.decodeStructure
+import kotlinx.serialization.encoding.encodeStructure
 
-data class XYColor private constructor(val x: Double, val y: Double) {
-    @Suppress("UNCHECKED_CAST")
-    companion object : KhomeTypeAdapter<XYColor> {
-        fun from(x: Double, y: Double) =
-            from(listOf(x, y))
+@Serializable(XYColor.Companion::class)
+data class XYColor(val x: Double, val y: Double) {
+    companion object : KSerializer<XYColor> {
+        private val xDescriptor: SerialDescriptor = PrimitiveSerialDescriptor("x", PrimitiveKind.DOUBLE)
+        private val yDescriptor: SerialDescriptor = PrimitiveSerialDescriptor("y", PrimitiveKind.DOUBLE)
 
-        override fun <P> from(value: P): XYColor {
-            val values = value as List<Double>
-            check(values.size == 2) { "To many values for XYColor creation. ${values.size} values are too much. Allowed are exactly 2 values." }
-            return XYColor(x = values[0], y = values[1])
+        @OptIn(InternalSerializationApi::class, kotlinx.serialization.ExperimentalSerializationApi::class)
+        override val descriptor: SerialDescriptor = buildSerialDescriptor(
+            "XYColor",
+            StructureKind.LIST,
+            xDescriptor,
+            yDescriptor
+        )
+
+        override fun deserialize(decoder: Decoder): XYColor {
+            decoder.decodeStructure(ListSerializer(Double.serializer()).descriptor) {
+                val x = decodeDoubleElement(xDescriptor, 0)
+                val y = decodeDoubleElement(yDescriptor, 1)
+                return XYColor(x, y)
+            }
         }
 
-        override fun <P> to(value: XYColor): P {
-            return doubleArrayOf(value.x, value.y) as P
+        override fun serialize(encoder: Encoder, value: XYColor) {
+            encoder.encodeStructure(ListSerializer(Double.serializer()).descriptor) {
+                encodeDoubleElement(xDescriptor, 0, value.x)
+                encodeDoubleElement(yDescriptor, 1, value.y)
+            }
         }
     }
 }

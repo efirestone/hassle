@@ -3,7 +3,6 @@ package khome.entities.devices
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
-import com.google.gson.JsonObject
 import io.fluidsonic.time.LocalTime
 import khome.KhomeApplicationImpl
 import khome.communicating.DefaultResolvedServiceCommand
@@ -29,6 +28,9 @@ import khome.values.*
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -39,15 +41,23 @@ import org.koin.core.component.get
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class ActuatorTest {
 
-    data class ActuatorTestState(override val value: String, val booleanAttribute: Boolean, val intAttribute: Int) :
+    @Serializable
+    data class ActuatorTestState(override val value: String, val boolean_attribute: Boolean, val int_attribute: Int) :
         State<String>
 
+    @Serializable
     data class ActuatorTestAttributes(
+        @SerialName("array_attribute")
         val arrayAttribute: List<Int>,
+        @SerialName("double_attribute")
         val doubleAttribute: Double,
+        @SerialName("user_id")
         override val userId: UserId?,
+        @SerialName("last_changed")
         override val lastChanged: Instant,
+        @SerialName("last_updated")
         override val lastUpdated: Instant,
+        @SerialName("friendly_name")
         override val friendlyName: FriendlyName
     ) : Attributes
 
@@ -105,11 +115,11 @@ internal class ActuatorTest {
         sut.trySetActualStateFromAny(flattenStateAttributes(stateAsJsonObject))
 
         assertThat(sut.actualState.value).isEqualTo("on")
-        assertThat(sut.actualState.booleanAttribute).isEqualTo(true)
-        assertThat(sut.actualState.intAttribute).isEqualTo(73)
+        assertThat(sut.actualState.boolean_attribute).isEqualTo(true)
+        assertThat(sut.actualState.int_attribute).isEqualTo(73)
         assertThat(sut.attributes.arrayAttribute).isEqualTo(listOf(1, 2, 3, 4, 5))
         assertThat(sut.attributes.doubleAttribute).isEqualTo(30.0)
-        assertThat(sut.attributes.friendlyName).isEqualTo(FriendlyName.from("Test Entity"))
+        assertThat(sut.attributes.friendlyName).isEqualTo(FriendlyName("Test Entity"))
         assertThat(sut.attributes.lastChanged).isEqualTo(
             Instant.parse("2016-11-26T01:37:24.265390+00:00")
         )
@@ -367,7 +377,7 @@ internal class ActuatorTest {
             assertThat(actuator.attributes.max.value).isEqualTo(35.0)
             assertThat(actuator.attributes.min.value).isEqualTo(-20.0)
             assertThat(actuator.attributes.step.value).isEqualTo(1.0)
-            assertThat(actuator.attributes.mode).isEqualTo(Mode.from("box"))
+            assertThat(actuator.attributes.mode).isEqualTo(Mode("box"))
         }
     }
 
@@ -400,7 +410,7 @@ internal class ActuatorTest {
                 }
             """.trimIndent()
         actuator<InputSelectState, InputSelectAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(Option.from("Visitors"))
+            assertThat(actuator.actualState.value).isEqualTo(Option("Visitors"))
 
             assertThat(actuator.attributes.userId?.value).isNull()
             assertThat(actuator.attributes.friendlyName?.value).isNull()
@@ -412,9 +422,9 @@ internal class ActuatorTest {
             assertThat(actuator.attributes.editable).isEqualTo(false)
             assertThat(actuator.attributes.options).isEqualTo(
                 listOf(
-                    Option.from("Visitors"),
-                    Option.from("Visitors with kids"),
-                    Option.from("Home Alone"),
+                    Option("Visitors"),
+                    Option("Visitors with kids"),
+                    Option("Home Alone"),
                 )
             )
         }
@@ -550,7 +560,7 @@ internal class ActuatorTest {
         actuator<MediaReceiverState, MediaReceiverAttributes>(json) { actuator ->
             assertThat(actuator.actualState.value).isEqualTo(MediaReceiverStateValue.PLAYING)
             assertThat(actuator.actualState.isVolumeMuted).isEqualTo(Mute.FALSE)
-            assertThat(actuator.actualState.mediaPosition).isEqualTo(MediaPosition.from(26.0))
+            assertThat(actuator.actualState.mediaPosition).isEqualTo(MediaPosition(26.0))
             assertThat(actuator.actualState.volumeLevel).isNull()
 
             assertThat(actuator.attributes.userId?.value).isNull()
@@ -562,14 +572,14 @@ internal class ActuatorTest {
 
             assertThat(actuator.attributes.appId).isNull()
             assertThat(actuator.attributes.appName).isNull()
-            assertThat(actuator.attributes.entityPicture).isEqualTo(EntityPicture.from("/api/media_player_proxy/media_player.plex_plex_for_apple_tv_play_room?token=abcd1234&cache=4321dcba"))
+            assertThat(actuator.attributes.entityPicture).isEqualTo(EntityPicture("/api/media_player_proxy/media_player.plex_plex_for_apple_tv_play_room?token=abcd1234&cache=4321dcba"))
             assertThat(actuator.attributes.mediaAlbumName).isNull()
             assertThat(actuator.attributes.mediaArtist).isNull()
-            assertThat(actuator.attributes.mediaContentId).isEqualTo(MediaContentId.from("8675309"))
+            assertThat(actuator.attributes.mediaContentId).isEqualTo(MediaContentId("8675309"))
             assertThat(actuator.attributes.mediaContentType).isEqualTo(MediaContentType.MOVIE)
-            assertThat(actuator.attributes.mediaDuration).isEqualTo(MediaDuration.from(5059.0))
+            assertThat(actuator.attributes.mediaDuration).isEqualTo(MediaDuration(5059.0))
             assertThat(actuator.attributes.mediaPositionUpdatedAt).isEqualTo(Instant.parse("2021-06-24T22:49:41.534947+00:00"))
-            assertThat(actuator.attributes.mediaTitle).isEqualTo(MediaTitle.from("Super Awesome Movie (2021)"))
+            assertThat(actuator.attributes.mediaTitle).isEqualTo(MediaTitle("Super Awesome Movie (2021)"))
         }
     }
 
@@ -611,10 +621,10 @@ internal class ActuatorTest {
 
         actuator<RGBLightState, LightAttributes>(json) { actuator ->
             assertThat(actuator.actualState.value).isEqualTo(SwitchableValue.ON)
-            assertThat(actuator.actualState.brightness).isEqualTo(Brightness.from(138))
-            assertThat(actuator.actualState.hsColor).isEqualTo(HSColor.from(340.0, 7.059))
-            assertThat(actuator.actualState.rgbColor).isEqualTo(RGBColor.from(255, 236, 242))
-            assertThat(actuator.actualState.xyColor).isEqualTo(XYColor.from(0.34, 0.321))
+            assertThat(actuator.actualState.brightness).isEqualTo(Brightness(138))
+            assertThat(actuator.actualState.hsColor).isEqualTo(HSColor(340.0, 7.059))
+            assertThat(actuator.actualState.rgbColor).isEqualTo(RGBColor(255, 236, 242))
+            assertThat(actuator.actualState.xyColor).isEqualTo(XYColor(0.34, 0.321))
 
             assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
             assertThat(actuator.attributes.friendlyName.value).isEqualTo("Light Strip 1")
