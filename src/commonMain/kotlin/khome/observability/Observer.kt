@@ -1,7 +1,8 @@
 package khome.observability
 
+import khome.concurrent.AtomicBoolean
+import khome.concurrent.AtomicBooleanFactory
 import khome.errorHandling.ObserverExceptionHandler
-import java.util.concurrent.atomic.AtomicBoolean
 
 typealias ObserverFunction<E> = E.(observer: Switchable) -> Unit
 
@@ -42,7 +43,7 @@ internal class ObserverImpl<E>(
     private val exceptionHandler: ObserverExceptionHandler
 ) : Switchable, Observer<E> {
 
-    private val enabled: AtomicBoolean = AtomicBoolean(true)
+    private val enabled: AtomicBoolean = AtomicBooleanFactory.create(true)
 
     override fun enable() = enabled.set(true)
     override fun disable() = enabled.set(false)

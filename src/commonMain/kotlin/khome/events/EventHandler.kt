@@ -1,8 +1,9 @@
 package khome.events
 
+import khome.concurrent.AtomicBoolean
+import khome.concurrent.AtomicBooleanFactory
 import khome.errorHandling.EventHandlerExceptionHandler
 import khome.observability.Switchable
-import java.util.concurrent.atomic.AtomicBoolean
 
 typealias EventHandlerFunction<EventData> = (EventData, switchable: Switchable) -> Unit
 
@@ -15,7 +16,7 @@ internal class EventHandlerImpl<EventData>(
     private val exceptionHandler: EventHandlerExceptionHandler
 ) : EventHandler<EventData>, Switchable {
 
-    private val enabled: AtomicBoolean = AtomicBoolean(true)
+    private val enabled: AtomicBoolean = AtomicBooleanFactory.create(true)
 
     override fun enable() = enabled.set(true)
     override fun disable() = enabled.set(false)
