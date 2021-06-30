@@ -5,8 +5,10 @@ import kotlinx.atomicfu.atomic
 class AtomicIntWrapper(initialValue: Int): AtomicInt {
     private val value = atomic(initialValue)
 
-    override fun addAndGet(delta: Int): Int = value.addAndGet(delta)
-    override fun incrementAndGet(): Int = value.incrementAndGet()
+    override fun addAndGet(delta: Int) = value.addAndGet(delta)
+    override fun get() = value.value
+    override fun getAndIncrement() = value.getAndIncrement()
+    override fun incrementAndGet() = value.incrementAndGet()
 }
 
 actual object AtomicIntFactory {
