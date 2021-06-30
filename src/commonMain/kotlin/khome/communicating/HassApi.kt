@@ -6,6 +6,7 @@ import io.ktor.client.utils.EmptyContent
 import khome.KhomeSession
 import khome.communicating.CommandType.CALL_SERVICE
 import khome.communicating.CommandType.SUBSCRIBE_EVENTS
+import khome.concurrent.AtomicIntFactory
 import khome.core.KhomeDispatchers
 import khome.core.clients.RestApiClient
 import khome.core.mapping.ObjectMapperInterface
@@ -13,18 +14,16 @@ import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
-//import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
-//import kotlinx.coroutines.internal.AtomicOp
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-internal val CALLER_ID = atomic<Int>(0)// 0 //AtomicInteger(0)
+internal val CALLER_ID = AtomicIntFactory.create(0)
 
 @Serializable
 internal enum class CommandType {
@@ -80,7 +79,7 @@ internal class HassApiClientImpl(
 
     override fun sendCommand(command: HassApiCommand) =
         coroutineScope.launch(KhomeDispatchers.CommandDispatcher) {
-            command.id = CALLER_ID.incrementAndGet() // has to be called within single thread to prevent race conditions
+            command.id = CALLER_ID.incrementAndGet()
             objectMapper.toJson(command).let { serializedCommand ->
                 khomeSession.callWebSocketApi(serializedCommand)
                     .also { logger.i { "Called hass api with message: $serializedCommand" } }
