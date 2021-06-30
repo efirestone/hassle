@@ -5,7 +5,7 @@ import khome.communicating.CommandDataWithEntityId
 import khome.communicating.ServiceCommandImpl
 import khome.communicating.ServiceCommandResolver
 import khome.core.mapping.ObjectMapperInterface
-import khome.core.observing.CircularBuffer
+import khome.core.observing.CircularArray
 import khome.entities.Attributes
 import khome.entities.State
 import khome.errorHandling.ObserverExceptionHandler
@@ -28,11 +28,11 @@ internal class ActuatorImpl<S : State<*>, A : Attributes>(
 ) : Actuator<S, A> {
     private val observers: MutableList<Observer<Actuator<S, A>>> = mutableListOf()
     override lateinit var attributes: A
-    private val _history = CircularBuffer<StateAndAttributes<S, A>>(10)
+    private val _history = CircularArray<StateAndAttributes<S, A>>(10)
     override var actualState: S by ObservableDelegateNoInitial(this, observers, _history)
 
     override val history: List<StateAndAttributes<S, A>>
-        get() = _history.snapshot
+        get() = _history.toList()
 
     override val observerCount: Int
         get() = observers.size

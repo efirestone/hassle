@@ -1,6 +1,6 @@
 package khome.observability
 
-import khome.core.observing.CircularBuffer
+import khome.core.observing.CircularArray
 import khome.entities.Attributes
 import khome.entities.State
 import kotlin.properties.ReadWriteProperty
@@ -26,7 +26,7 @@ internal class StateAndAttributesImpl<S, A>(
 ) : StateAndAttributes<S, A>
 
 /**
- * Represents the state, the attributes and an history with former state and attributes
+ * Represents the state, the attributes and a history with former state and attributes
  *
  * @property state the state object
  * @property attributes the attributes object
@@ -39,16 +39,16 @@ internal interface ObservableDelegate<S, H> : ReadWriteProperty<Any?, S>
 internal class ObservableDelegateNoInitial<S : State<*>, A : Attributes, E>(
     private val entity: E,
     private val observers: List<Observer<E>>,
-    private val history: CircularBuffer<StateAndAttributes<S, A>>
+    private val history: CircularArray<StateAndAttributes<S, A>>
 ) : ObservableDelegate<S, StateAndAttributes<S, A>> {
     private var dirty: Boolean = false
 
     override operator fun getValue(thisRef: Any?, property: KProperty<*>): S =
-        history.first?.state ?: throw IllegalStateException("No value available yet.")
+        history.lastOrNull()?.state ?: throw IllegalStateException("No value available yet.")
 
     override operator fun setValue(thisRef: Any?, property: KProperty<*>, value: S) {
         @Suppress("UNCHECKED_CAST")
-        history.addFirst(StateAndAttributesImpl(value, (entity as WithAttributes<A>).attributes))
+        history.add(StateAndAttributesImpl(value, (entity as WithAttributes<A>).attributes))
         if (dirty) observers.forEach { it.update(entity) }
         dirty = true
     }

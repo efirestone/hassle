@@ -21,6 +21,7 @@ import khome.extending.entities.actuators.mediaplayer.MediaReceiverState
 import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue
 import khome.khomeApplication
 import khome.values.*
+import khome.withApplication
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
@@ -115,23 +116,24 @@ internal class ActuatorTest {
 
     @Test
     fun `actuator stores state and attributes youngest first`() {
-        val sut = ActuatorImpl<ActuatorTestState, ActuatorTestAttributes>(
-            app = KhomeApplicationImpl(),
-            mapper = mapper,
-            resolver = ServiceCommandResolver {
-                DefaultResolvedServiceCommand(
-                    null,
-                    "turn_on".service,
-                    EntityIdOnlyServiceData()
-                )
-            },
-            stateType = ActuatorTestState::class,
-            attributesType = ActuatorTestAttributes::class
-        )
+        withApplication {
+            val sut = ActuatorImpl<ActuatorTestState, ActuatorTestAttributes>(
+                app = this as KhomeApplicationImpl,
+                mapper = mapper,
+                resolver = ServiceCommandResolver {
+                    DefaultResolvedServiceCommand(
+                        null,
+                        "turn_on".service,
+                        EntityIdOnlyServiceData()
+                    )
+                },
+                stateType = ActuatorTestState::class,
+                attributesType = ActuatorTestAttributes::class
+            )
 
-        val firstTestState =
-            //language=json
-            """
+            val firstTestState =
+                //language=json
+                """
                 {
                     "entity_id":"test.object_id",
                     "last_changed":"2016-11-26T01:37:24.265390+00:00",
@@ -146,11 +148,11 @@ internal class ActuatorTest {
                     "last_updated":"2016-11-26T01:37:24.265390+00:00",
                     "context": { "user_id": null }
                  }
-            """.trimIndent()
+                """.trimIndent()
 
-        val secondTestState =
-            //language=json
-            """
+            val secondTestState =
+                //language=json
+                """
                 {
                     "entity_id":"test.object_id",
                     "last_changed":"2016-11-26T01:37:24.265390+00:00",
@@ -165,25 +167,26 @@ internal class ActuatorTest {
                     "last_updated":"2016-11-26T01:37:24.265390+00:00",
                     "context": { "user_id": null }
                  }
-            """.trimIndent()
+                """.trimIndent()
 
-        val firstStateAsJsonObject = mapper.fromJson<JsonObject>(firstTestState)
+            val firstStateAsJsonObject = mapper.fromJson<JsonObject>(firstTestState)
 
-        sut.trySetAttributesFromAny(flattenStateAttributes(firstStateAsJsonObject))
-        sut.trySetActualStateFromAny(flattenStateAttributes(firstStateAsJsonObject))
+            sut.trySetAttributesFromAny(flattenStateAttributes(firstStateAsJsonObject))
+            sut.trySetActualStateFromAny(flattenStateAttributes(firstStateAsJsonObject))
 
-        assertEquals(1, sut.history.size)
-        assertEquals(sut.history.first().state, sut.actualState)
-        assertEquals("off", sut.actualState.value)
+            assertEquals(1, sut.history.size)
+            assertEquals(sut.history.first().state, sut.actualState)
+            assertEquals("off", sut.actualState.value)
 
-        val secondStateAsJsonObject = mapper.fromJson<JsonObject>(secondTestState)
+            val secondStateAsJsonObject = mapper.fromJson<JsonObject>(secondTestState)
 
-        sut.trySetAttributesFromAny(flattenStateAttributes(secondStateAsJsonObject))
-        sut.trySetActualStateFromAny(flattenStateAttributes(secondStateAsJsonObject))
+            sut.trySetAttributesFromAny(flattenStateAttributes(secondStateAsJsonObject))
+            sut.trySetActualStateFromAny(flattenStateAttributes(secondStateAsJsonObject))
 
-        assertEquals(2, sut.history.size)
-        assertEquals(sut.history.first().state, sut.actualState)
-        assertEquals("off", sut.history[1].state.value)
+            assertEquals(2, sut.history.size)
+            assertEquals(sut.history[1].state, sut.actualState)
+            assertEquals("on", sut.history[1].state.value)
+        }
     }
 
     // Tests - Parsing
