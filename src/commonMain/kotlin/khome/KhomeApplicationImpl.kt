@@ -1,6 +1,7 @@
 package khome
 
 import co.touchlab.kermit.Kermit
+import khome.MainScope
 import khome.communicating.CommandDataWithEntityId
 import khome.communicating.HassApiClient
 import khome.communicating.ServiceCommandImpl
@@ -14,6 +15,7 @@ import khome.core.boot.statehandling.EntityStateInitializer
 import khome.core.boot.subscribing.HassEventSubscriber
 import khome.core.koin.KoinContainer
 import khome.core.mapping.ObjectMapperInterface
+import khome.coroutines.MainDispatcherFactory
 import khome.entities.ActuatorStateUpdater
 import khome.entities.Attributes
 import khome.entities.EntityRegistrationValidation
@@ -33,10 +35,11 @@ import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 import kotlin.collections.set
+import kotlin.coroutines.CoroutineContext
 import kotlin.reflect.KClass
 
 internal typealias SensorsByApiName = MutableMap<EntityId, SensorImpl<*, *>>
@@ -163,8 +166,8 @@ internal class KhomeApplicationImpl : KhomeApplication {
         applicationReadyCallbacks.add(f)
     }
 
-    override fun runBlocking() =
-        runBlocking {
+    override fun launch() =
+        MainScope().launch {
             hassClient.startSession {
                 val authenticator: Authenticator by KoinContainer.inject { parametersOf(this) }
                 val serviceStoreInitializer: ServiceStoreInitializer by KoinContainer.inject { parametersOf(this) }
@@ -215,4 +218,12 @@ internal class KhomeApplicationImpl : KhomeApplication {
         ).apply(block)
         testApp.reset()
     }
+}
+
+internal class MainScope: CoroutineScope {
+    private val dispatcher = MainDispatcherFactory.create()
+    private val job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = dispatcher + job
 }

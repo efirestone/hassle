@@ -93,6 +93,13 @@ kotlin {
             useJUnit()
         }
     }
+//    macosX64 {
+//        compilations.all {
+//            kotlinOptions {
+//                freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
+//            }
+//        }
+//    }
     val hostOs = System.getProperty("os.name")
     val nativeTarget = when {
         hostOs == "Mac OS X" -> macosX64("native")
@@ -111,7 +118,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.insert-koin:koin-core:$koinVersion")
-//                implementation("org.jetbrains.kotlinx.kotlinx-atomicfu:0.2.1") // TODO: Get version
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
                 implementation("org.slf4j:slf4j-simple:1.7.30")
@@ -129,6 +136,7 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
                 implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
+//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.0")
             }
         }
         val jvmTest by getting {
@@ -146,7 +154,14 @@ kotlin {
 //                testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
             }
         }
-        val nativeMain by getting
+        val nativeMain by getting {
+            dependencies {
+//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.8")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-macosx64:1.5.0-native-mt") {
+                    version { strictly("1.5.0-native-mt") }
+                }
+            }
+        }
         val nativeTest by getting
     }
 }
