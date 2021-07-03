@@ -1,10 +1,12 @@
-//pluginManagement {
+import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
+
+// pluginManagement {
 //    repositories {
 //        google()
 //        gradlePluginPortal()
 //        mavenCentral()
 //    }
-//}
+// }
 
 plugins {
     kotlin("multiplatform") version "1.5.20"
@@ -30,7 +32,7 @@ val ktorVersion: String by project
 val koinVersion: String by project
 val mockkVersion: String by project
 
-//dependencies {
+// dependencies {
 //    implementation(kotlin("stdlib-jdk8"))
 //    // kotlinx.datetime doesn't include LocalTime yet, so supplement it
 //    // https://github.com/Kotlin/kotlinx-datetime/issues/57
@@ -56,7 +58,7 @@ val mockkVersion: String by project
 //    testImplementation("org.skyscreamer:jsonassert:$jsonAssertVersion")
 //
 //    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
-//}
+// }
 
 tasks.create<Delete>("cleanDokka") {
     delete = setOf("$rootDir/docs/khome")
@@ -98,6 +100,7 @@ kotlin {
 //            kotlinOptions {
 //                freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
 //            }
+//            depend
 //        }
 //    }
     val hostOs = System.getProperty("os.name")
@@ -158,6 +161,7 @@ kotlin {
             dependencies {
 //                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.8")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-macosx64:1.5.0-native-mt") {
+                    // https://youtrack.jetbrains.com/issue/KT-41378
                     version { strictly("1.5.0-native-mt") }
                 }
             }
@@ -166,20 +170,22 @@ kotlin {
     }
 }
 
-
-
+val compileKotlinNative: KotlinNativeCompile by tasks
+compileKotlinNative.apply {
+    kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
+}
 
 //
-////repositories {
-////    mavenLocal()
-////    mavenCentral()
-////    google()
-////    maven { url = uri("https://kotlin.bintray.com/ktor") }
-////    maven { url = uri("https://kotlin.bintray.com/kotlinx") }
-////}
+// //repositories {
+// //    mavenLocal()
+// //    mavenCentral()
+// //    google()
+// //    maven { url = uri("https://kotlin.bintray.com/ktor") }
+// //    maven { url = uri("https://kotlin.bintray.com/kotlinx") }
+// //}
 //
 //
-//kotlin {
+// kotlin {
 //    jvm()
 //    sourceSets {
 //        val commonMain by getting {
@@ -206,34 +212,33 @@ kotlin {
 //            }
 //        }
 //    }
-//}
-
+// }
 
 //
-//val sourcesJar by tasks.registering(Jar::class) {
+// val sourcesJar by tasks.registering(Jar::class) {
 //    archiveClassifier.set("sources")
 //    from(sourceSets["main"].allSource)
-//}
+// }
 //
-//publishing {
+// publishing {
 //    publications {
 //        register("mavenJava", MavenPublication::class.java) {
 //            from(components["java"])
 //            artifact(sourcesJar.get())
 //        }
 //    }
-//}
+// }
 //
-//tasks.withType<Test> {
+// tasks.withType<Test> {
 //    environment["HOST"] = "home-assistant.local"
 //    environment["PORT"] = 8321
 //    environment["ACCESS_TOKEN"] = "dsq7zht54899dhz43kbv4dgr56a8we234h>!sg?x"
 //    environment["SECURE"] = true
 //    environment["START_STATE_STREAM"] = false
 //    useJUnitPlatform()
-//}
+// }
 //
-//tasks {
+// tasks {
 //    check {
 //        dependsOn(test)
 //        finalizedBy(jacocoTestReport, jacocoTestCoverageVerification, printCoverage, generateJacocoBadge)
@@ -246,22 +251,22 @@ kotlin {
 //            html.required.set(true)
 //        }
 //    }
-//}
+// }
 //
-//detekt {
+// detekt {
 //    input = files("$projectDir/src/main/kotlin")
 //    config = files("$projectDir/config/detekt-config.yml")
-//}
+// }
 //
-//ktlint {
+// ktlint {
 //    version.set("0.41.0")
 //    ignoreFailures.set(false)
-//}
+// }
 //
-//jacoco {
+// jacoco {
 //    toolVersion = "0.8.7"
-//}
+// }
 //
-//printcoverage {
+// printcoverage {
 //    coverageType.set("LINE")
-//}
+// }

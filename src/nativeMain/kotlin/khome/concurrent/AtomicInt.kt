@@ -2,7 +2,7 @@ package khome.concurrent
 
 import kotlinx.atomicfu.atomic
 
-class AtomicIntWrapper(initialValue: Int): AtomicInt {
+class AtomicIntWrapper(initialValue: Int) : AtomicInt {
     private val value = atomic(initialValue)
 
     override fun addAndGet(delta: Int) = value.addAndGet(delta)

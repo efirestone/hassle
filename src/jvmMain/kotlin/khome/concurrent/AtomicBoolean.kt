@@ -1,6 +1,6 @@
 package khome.concurrent
 
-class AtomicBooleanWrapper(initialValue: Boolean): AtomicBoolean {
+class AtomicBooleanWrapper(initialValue: Boolean) : AtomicBoolean {
     private val value = java.util.concurrent.atomic.AtomicBoolean(initialValue)
 
     override fun get(): Boolean = value.get()

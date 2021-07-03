@@ -2,7 +2,7 @@ package khome.concurrent
 
 import kotlinx.atomicfu.atomic
 
-class AtomicBooleanWrapper(initialValue: Boolean): AtomicBoolean {
+class AtomicBooleanWrapper(initialValue: Boolean) : AtomicBoolean {
     private val value = atomic(initialValue)
 
     override fun get(): Boolean = value.value

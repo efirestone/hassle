@@ -75,5 +75,4 @@ class CircularArray<T> : Iterable<T> {
 
         override fun next(): T = get(index.getAndIncrement())
     }
-
 }

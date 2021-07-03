@@ -5,7 +5,7 @@ import io.ktor.http.HttpMethod
 import khome.core.Configuration
 import khome.core.clients.WebSocketClient
 import khome.core.mapping.ObjectMapperInterface
-//import java.net.ConnectException
+// import java.net.ConnectException
 
 internal class HassClientImpl(
     private val config: Configuration,

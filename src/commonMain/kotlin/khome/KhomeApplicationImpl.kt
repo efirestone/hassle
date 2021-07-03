@@ -1,7 +1,6 @@
 package khome
 
 import co.touchlab.kermit.Kermit
-import khome.MainScope
 import khome.communicating.CommandDataWithEntityId
 import khome.communicating.HassApiClient
 import khome.communicating.ServiceCommandImpl
@@ -220,7 +219,7 @@ internal class KhomeApplicationImpl : KhomeApplication {
     }
 }
 
-internal class MainScope: CoroutineScope {
+internal class MainScope : CoroutineScope {
     private val dispatcher = MainDispatcherFactory.create()
     private val job = Job()
 

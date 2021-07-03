@@ -111,7 +111,5 @@ class CircularArrayTest {
             .also { circularArray -> circularArray.add(1) }
             .clone()
             .also { clonedCircularArray -> assertEquals(1, clonedCircularArray[0]) }
-
     }
-
 }
