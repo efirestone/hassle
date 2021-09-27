@@ -44,6 +44,7 @@ dependencies {
     implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
     implementation("io.ktor:ktor-client-serialization:$ktorVersion")
     implementation("io.insert-koin:koin-core:$koinVersion")
+    implementation("org.jetbrains.kotlinx:atomicfu:0.16.2")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
     implementation("org.slf4j:slf4j-simple:1.7.30")

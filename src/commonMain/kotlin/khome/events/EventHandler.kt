@@ -2,7 +2,7 @@ package khome.events
 
 import khome.errorHandling.EventHandlerExceptionHandler
 import khome.observability.Switchable
-import java.util.concurrent.atomic.AtomicBoolean
+import kotlinx.atomicfu.atomic
 
 typealias EventHandlerFunction<EventData> = (EventData, switchable: Switchable) -> Unit
 
@@ -15,14 +15,14 @@ internal class EventHandlerImpl<EventData>(
     private val exceptionHandler: EventHandlerExceptionHandler
 ) : EventHandler<EventData>, Switchable {
 
-    private val enabled: AtomicBoolean = AtomicBoolean(true)
+    private val enabled = atomic(true)
 
-    override fun enable() = enabled.set(true)
-    override fun disable() = enabled.set(false)
-    override fun isEnabled(): Boolean = enabled.get()
+    override fun enable() { enabled.getAndSet(true) }
+    override fun disable() { enabled.getAndSet(false) }
+    override fun isEnabled(): Boolean = enabled.value
 
     override fun handle(eventData: EventData) {
-        if (!enabled.get()) return
+        if (!enabled.value) return
         try {
             f(eventData, this)
         } catch (e: Throwable) {
