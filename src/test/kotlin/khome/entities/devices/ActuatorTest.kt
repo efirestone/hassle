@@ -1,8 +1,5 @@
 package khome.entities.devices
 
-import assertk.assertThat
-import assertk.assertions.isEqualTo
-import assertk.assertions.isNull
 import io.fluidsonic.time.LocalTime
 import khome.KhomeApplicationImpl
 import khome.communicating.DefaultResolvedServiceCommand
@@ -32,7 +29,9 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import org.koin.core.component.get
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
 
 internal class ActuatorTest {
 
@@ -104,18 +103,14 @@ internal class ActuatorTest {
         sut.trySetAttributesFromAny(flattenStateAttributes(stateAsJsonObject))
         sut.trySetActualStateFromAny(flattenStateAttributes(stateAsJsonObject))
 
-        assertThat(sut.actualState.value).isEqualTo("on")
-        assertThat(sut.actualState.boolean_attribute).isEqualTo(true)
-        assertThat(sut.actualState.int_attribute).isEqualTo(73)
-        assertThat(sut.attributes.arrayAttribute).isEqualTo(listOf(1, 2, 3, 4, 5))
-        assertThat(sut.attributes.doubleAttribute).isEqualTo(30.0)
-        assertThat(sut.attributes.friendlyName).isEqualTo(FriendlyName("Test Entity"))
-        assertThat(sut.attributes.lastChanged).isEqualTo(
-            Instant.parse("2016-11-26T01:37:24.265390+00:00")
-        )
-        assertThat(sut.attributes.lastUpdated).isEqualTo(
-            Instant.parse("2016-11-26T01:37:24.265390+00:00")
-        )
+        assertEquals("on", sut.actualState.value)
+        assertEquals(true, sut.actualState.boolean_attribute)
+        assertEquals(73, sut.actualState.int_attribute)
+        assertEquals(listOf(1, 2, 3, 4, 5), sut.attributes.arrayAttribute)
+        assertEquals(30.0, sut.attributes.doubleAttribute)
+        assertEquals(FriendlyName("Test Entity"), sut.attributes.friendlyName)
+        assertEquals(Instant.parse("2016-11-26T01:37:24.265390+00:00"), sut.attributes.lastChanged)
+        assertEquals(Instant.parse("2016-11-26T01:37:24.265390+00:00"), sut.attributes.lastUpdated)
     }
 
     @Test
@@ -177,18 +172,18 @@ internal class ActuatorTest {
         sut.trySetAttributesFromAny(flattenStateAttributes(firstStateAsJsonObject))
         sut.trySetActualStateFromAny(flattenStateAttributes(firstStateAsJsonObject))
 
-        assertThat(sut.history.size).isEqualTo(1)
-        assertThat(sut.actualState).isEqualTo(sut.history.first().state)
-        assertThat(sut.actualState.value).isEqualTo("off")
+        assertEquals(1, sut.history.size)
+        assertEquals(sut.history.first().state, sut.actualState)
+        assertEquals("off", sut.actualState.value)
 
         val secondStateAsJsonObject = mapper.fromJson<JsonObject>(secondTestState)
 
         sut.trySetAttributesFromAny(flattenStateAttributes(secondStateAsJsonObject))
         sut.trySetActualStateFromAny(flattenStateAttributes(secondStateAsJsonObject))
 
-        assertThat(sut.history.size).isEqualTo(2)
-        assertThat(sut.actualState).isEqualTo(sut.history.first().state)
-        assertThat(sut.history[1].state.value).isEqualTo("off")
+        assertEquals(2, sut.history.size)
+        assertEquals(sut.history.first().state, sut.actualState)
+        assertEquals("off", sut.history[1].state.value)
     }
 
     // Tests - Parsing
@@ -219,17 +214,15 @@ internal class ActuatorTest {
             """.trimIndent()
 
         actuator<SwitchableState, InputBooleanAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(SwitchableValue.ON)
+            assertEquals(SwitchableValue.ON, actuator.actualState.value)
 
-            assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
-            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Notify when someone arrives home")
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertEquals("userid", actuator.attributes.userId?.value)
+            assertEquals("Notify when someone arrives home", actuator.attributes.friendlyName.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.editable).isEqualTo(false)
-            assertThat(actuator.attributes.icon.value).isEqualTo("mdi:car")
+            assertEquals(false, actuator.attributes.editable)
+            assertEquals("mdi:car", actuator.attributes.icon.value)
         }
     }
 
@@ -264,16 +257,14 @@ internal class ActuatorTest {
             """.trimIndent()
 
         actuator<InputDateState, InputDateAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(LocalDate.parse("2021-06-16"))
+            assertEquals(LocalDate.parse("2021-06-16"), actuator.actualState.value)
 
-            assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
-            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Input with only date")
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertEquals("userid", actuator.attributes.userId?.value)
+            assertEquals("Input with only date", actuator.attributes.friendlyName.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.editable).isEqualTo(false)
+            assertEquals(false, actuator.attributes.editable)
         }
     }
 
@@ -311,16 +302,14 @@ internal class ActuatorTest {
             """.trimIndent()
 
         actuator<InputDateTimeState, InputDateTimeAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(LocalDateTime.parse("2021-06-21T00:00:00"))
+            assertEquals(LocalDateTime.parse("2021-06-21T00:00:00"), actuator.actualState.value)
 
-            assertThat(actuator.attributes.userId?.value).isNull()
-            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Input with both date and time")
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertNull(actuator.attributes.userId?.value)
+            assertEquals("Input with both date and time", actuator.attributes.friendlyName.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.editable).isEqualTo(false)
+            assertEquals(false, actuator.attributes.editable)
         }
     }
 
@@ -354,20 +343,18 @@ internal class ActuatorTest {
             """.trimIndent()
 
         actuator<InputNumberState, InputNumberAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(29.0)
+            assertEquals(29.0, actuator.actualState.value)
 
-            assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
-            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Numeric Input Box")
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertEquals("userid", actuator.attributes.userId?.value)
+            assertEquals("Numeric Input Box", actuator.attributes.friendlyName.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.editable).isEqualTo(false)
-            assertThat(actuator.attributes.max.value).isEqualTo(35.0)
-            assertThat(actuator.attributes.min.value).isEqualTo(-20.0)
-            assertThat(actuator.attributes.step.value).isEqualTo(1.0)
-            assertThat(actuator.attributes.mode).isEqualTo(Mode("box"))
+            assertEquals(false, actuator.attributes.editable)
+            assertEquals(35.0, actuator.attributes.max.value)
+            assertEquals(-20.0, actuator.attributes.min.value)
+            assertEquals(1.0, actuator.attributes.step.value)
+            assertEquals(Mode("box"), actuator.attributes.mode)
         }
     }
 
@@ -400,22 +387,21 @@ internal class ActuatorTest {
                 }
             """.trimIndent()
         actuator<InputSelectState, InputSelectAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(Option("Visitors"))
+            assertEquals(Option("Visitors"), actuator.actualState.value)
 
-            assertThat(actuator.attributes.userId?.value).isNull()
-            assertThat(actuator.attributes.friendlyName?.value).isNull()
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertNull(actuator.attributes.userId?.value)
+            assertNull(actuator.attributes.friendlyName?.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.editable).isEqualTo(false)
-            assertThat(actuator.attributes.options).isEqualTo(
+            assertEquals(false, actuator.attributes.editable)
+            assertEquals(
                 listOf(
                     Option("Visitors"),
                     Option("Visitors with kids"),
                     Option("Home Alone"),
-                )
+                ),
+                actuator.attributes.options
             )
         }
     }
@@ -449,20 +435,18 @@ internal class ActuatorTest {
             """.trimIndent()
 
         actuator<InputTextState, InputTextAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo("abc")
+            assertEquals("abc", actuator.actualState.value)
 
-            assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
-            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Text 1")
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertEquals("userid", actuator.attributes.userId?.value)
+            assertEquals("Text 1", actuator.attributes.friendlyName.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.editable).isEqualTo(false)
-            assertThat(actuator.attributes.min.value).isEqualTo(0.0)
-            assertThat(actuator.attributes.max.value).isEqualTo(100.0)
-            assertThat(actuator.attributes.pattern.pattern).isEqualTo(Regex("[a-fA-F0-9]*").pattern)
-            assertThat(actuator.attributes.mode.value).isEqualTo("text")
+            assertEquals(false, actuator.attributes.editable)
+            assertEquals(0.0, actuator.attributes.min.value)
+            assertEquals(100.0, actuator.attributes.max.value)
+            assertEquals(Regex("[a-fA-F0-9]*").pattern, actuator.attributes.pattern.pattern)
+            assertEquals("text", actuator.attributes.mode.value)
         }
     }
 
@@ -497,16 +481,14 @@ internal class ActuatorTest {
             """.trimIndent()
 
         actuator<InputTimeState, InputTimeAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(LocalTime.parse("01:00:00"))
+            assertEquals(LocalTime.parse("01:00:00"), actuator.actualState.value)
 
-            assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
-            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Input with only time")
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertEquals("userid", actuator.attributes.userId?.value)
+            assertEquals("Input with only time", actuator.attributes.friendlyName.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.editable).isEqualTo(false)
+            assertEquals(false, actuator.attributes.editable)
         }
     }
 
@@ -548,28 +530,29 @@ internal class ActuatorTest {
             """.trimIndent()
 
         actuator<MediaReceiverState, MediaReceiverAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(MediaReceiverStateValue.PLAYING)
-            assertThat(actuator.actualState.isVolumeMuted).isEqualTo(Mute.FALSE)
-            assertThat(actuator.actualState.mediaPosition).isEqualTo(MediaPosition(26.0))
-            assertThat(actuator.actualState.volumeLevel).isNull()
+            assertEquals(MediaReceiverStateValue.PLAYING, actuator.actualState.value)
+            assertEquals(Mute.FALSE, actuator.actualState.isVolumeMuted)
+            assertEquals(MediaPosition(26.0), actuator.actualState.mediaPosition)
+            assertNull(actuator.actualState.volumeLevel)
 
-            assertThat(actuator.attributes.userId?.value).isNull()
-            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Plex (Plex for Apple TV - Play Room)")
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertNull(actuator.attributes.userId?.value)
+            assertEquals("Plex (Plex for Apple TV - Play Room)", actuator.attributes.friendlyName.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.appId).isNull()
-            assertThat(actuator.attributes.appName).isNull()
-            assertThat(actuator.attributes.entityPicture).isEqualTo(EntityPicture("/api/media_player_proxy/media_player.plex_plex_for_apple_tv_play_room?token=abcd1234&cache=4321dcba"))
-            assertThat(actuator.attributes.mediaAlbumName).isNull()
-            assertThat(actuator.attributes.mediaArtist).isNull()
-            assertThat(actuator.attributes.mediaContentId).isEqualTo(MediaContentId("8675309"))
-            assertThat(actuator.attributes.mediaContentType).isEqualTo(MediaContentType.MOVIE)
-            assertThat(actuator.attributes.mediaDuration).isEqualTo(MediaDuration(5059.0))
-            assertThat(actuator.attributes.mediaPositionUpdatedAt).isEqualTo(Instant.parse("2021-06-24T22:49:41.534947+00:00"))
-            assertThat(actuator.attributes.mediaTitle).isEqualTo(MediaTitle("Super Awesome Movie (2021)"))
+            assertNull(actuator.attributes.appId)
+            assertNull(actuator.attributes.appName)
+            assertEquals(
+                EntityPicture("/api/media_player_proxy/media_player.plex_plex_for_apple_tv_play_room?token=abcd1234&cache=4321dcba"),
+                actuator.attributes.entityPicture
+            )
+            assertNull(actuator.attributes.mediaAlbumName)
+            assertNull(actuator.attributes.mediaArtist)
+            assertEquals(MediaContentId("8675309"), actuator.attributes.mediaContentId)
+            assertEquals(MediaContentType.MOVIE, actuator.attributes.mediaContentType)
+            assertEquals(MediaDuration(5059.0), actuator.attributes.mediaDuration)
+            assertEquals(Instant.parse("2021-06-24T22:49:41.534947+00:00"), actuator.attributes.mediaPositionUpdatedAt)
+            assertEquals(MediaTitle("Super Awesome Movie (2021)"), actuator.attributes.mediaTitle)
         }
     }
 
@@ -610,20 +593,18 @@ internal class ActuatorTest {
             """.trimIndent()
 
         actuator<RGBLightState, LightAttributes>(json) { actuator ->
-            assertThat(actuator.actualState.value).isEqualTo(SwitchableValue.ON)
-            assertThat(actuator.actualState.brightness).isEqualTo(Brightness(138))
-            assertThat(actuator.actualState.hsColor).isEqualTo(HSColor(340.0, 7.059))
-            assertThat(actuator.actualState.rgbColor).isEqualTo(RGBColor(255, 236, 242))
-            assertThat(actuator.actualState.xyColor).isEqualTo(XYColor(0.34, 0.321))
+            assertEquals(SwitchableValue.ON, actuator.actualState.value)
+            assertEquals(Brightness(138), actuator.actualState.brightness)
+            assertEquals(HSColor(340.0, 7.059), actuator.actualState.hsColor)
+            assertEquals(RGBColor(255, 236, 242), actuator.actualState.rgbColor)
+            assertEquals(XYColor(0.34, 0.321), actuator.actualState.xyColor)
 
-            assertThat(actuator.attributes.userId?.value).isEqualTo("userid")
-            assertThat(actuator.attributes.friendlyName.value).isEqualTo("Light Strip 1")
-            assertThat(actuator.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(actuator.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertEquals("userid", actuator.attributes.userId?.value)
+            assertEquals("Light Strip 1", actuator.attributes.friendlyName.value)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), actuator.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), actuator.attributes.lastUpdated)
 
-            assertThat(actuator.attributes.supportedFeatures).isEqualTo(63)
+            assertEquals(63, actuator.attributes.supportedFeatures)
         }
     }
 

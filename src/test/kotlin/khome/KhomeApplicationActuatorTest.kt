@@ -1,13 +1,11 @@
 package khome
 
-import assertk.assertThat
-import assertk.assertions.isInstanceOf
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.EntityIdOnlyServiceData
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
-import khome.entities.devices.Actuator
+import khome.entities.devices.ActuatorImpl
 import khome.values.EntityId
 import khome.values.FriendlyName
 import khome.values.UserId
@@ -43,7 +41,7 @@ internal class KhomeApplicationActuatorTest {
                     }
                 )
 
-            assertThat(actuator).isInstanceOf(Actuator::class)
+            assert(actuator is ActuatorImpl)
         }
 
     }

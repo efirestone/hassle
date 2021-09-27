@@ -1,10 +1,5 @@
 package khome.entities.devices
 
-import assertk.assertThat
-import assertk.assertions.isEqualTo
-import assertk.assertions.isFalse
-import assertk.assertions.isNull
-import assertk.assertions.isTrue
 import khome.KhomeApplicationImpl
 import khome.core.boot.statehandling.flattenStateAttributes
 import khome.core.koin.KoinContainer
@@ -22,6 +17,8 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.json.JsonObject
 import org.koin.core.component.get
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 internal class SensorTest {
 
@@ -51,14 +48,12 @@ internal class SensorTest {
             """.trimIndent()
 
         sensor<LuminanceState, LuminanceAttributes>(json) { sensor ->
-            assertThat(sensor.measurement.value).isEqualTo(5000.0)
+            assertEquals(5000.0, sensor.measurement.value)
 
-            assertThat(sensor.attributes.userId).isNull()
-            assertThat(sensor.attributes.friendlyName).isEqualTo(FriendlyName("Outside Luminance"))
-            assertThat(sensor.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(sensor.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertNull(sensor.attributes.userId)
+            assertEquals(FriendlyName("Outside Luminance"), sensor.attributes.friendlyName)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), sensor.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), sensor.attributes.lastUpdated)
         }
     }
 
@@ -87,14 +82,12 @@ internal class SensorTest {
             """.trimIndent()
 
         sensor<SwitchableState, MotionSensorAttributes>(json) { sensor ->
-            assertThat(sensor.measurement.value).isEqualTo(SwitchableValue.OFF)
+            assertEquals(SwitchableValue.OFF, sensor.measurement.value)
 
-            assertThat(sensor.attributes.userId).isNull()
-            assertThat(sensor.attributes.friendlyName).isEqualTo(FriendlyName("Hallway Motion"))
-            assertThat(sensor.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(sensor.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertNull(sensor.attributes.userId)
+            assertEquals(FriendlyName("Hallway Motion"), sensor.attributes.friendlyName)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), sensor.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), sensor.attributes.lastUpdated)
         }
     }
 
@@ -129,17 +122,15 @@ internal class SensorTest {
             """.trimIndent()
 
         sensor<PersonState, PersonAttributes>(json) { sensor ->
-            assertThat(sensor.measurement.value).isEqualTo(Zone("home"))
+            assertEquals(Zone("home"), sensor.measurement.value)
 
-            assertThat(sensor.attributes.userId).isEqualTo(UserId("abcd1234efgh5678"))
-            assertThat(sensor.attributes.friendlyName).isEqualTo(FriendlyName("John"))
-            assertThat(sensor.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(sensor.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertEquals(UserId("abcd1234efgh5678"), sensor.attributes.userId)
+            assertEquals(FriendlyName("John"), sensor.attributes.friendlyName)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), sensor.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), sensor.attributes.lastUpdated)
 
-            assertThat(sensor.attributes.id).isEqualTo(PersonId("john"))
-            assertThat(sensor.attributes.source).isEqualTo(EntityId.fromString("device_tracker.macbookair"))
+            assertEquals(PersonId("john"), sensor.attributes.id)
+            assertEquals(EntityId.fromString("device_tracker.macbookair"), sensor.attributes.source)
         }
     }
 
@@ -176,28 +167,24 @@ internal class SensorTest {
             """.trimIndent()
 
         sensor<SunState, SunAttributes>(json) { sensor ->
-            assertThat(sensor.measurement.value).isEqualTo(SunValue.BELOW_HORIZON)
-            assertThat(sensor.isAboveHorizon).isFalse()
-            assertThat(sensor.isBelowHorizon).isTrue()
+            assertEquals(SunValue.BELOW_HORIZON, sensor.measurement.value)
+            assertEquals(false, sensor.isAboveHorizon)
+            assertEquals(true, sensor.isBelowHorizon)
 
-            assertThat(sensor.attributes.userId).isEqualTo(null)
-            assertThat(sensor.attributes.friendlyName).isEqualTo(FriendlyName("Sun"))
-            assertThat(sensor.attributes.lastChanged)
-                .isEqualTo(Instant.parse("2021-06-21T01:39:48.096892+00:00"))
-            assertThat(sensor.attributes.lastUpdated)
-                .isEqualTo(Instant.parse("2021-06-21T02:03:54.908902+00:00"))
+            assertNull(sensor.attributes.userId)
+            assertEquals(FriendlyName("Sun"), sensor.attributes.friendlyName)
+            assertEquals(Instant.parse("2021-06-21T01:39:48.096892+00:00"), sensor.attributes.lastChanged)
+            assertEquals(Instant.parse("2021-06-21T02:03:54.908902+00:00"), sensor.attributes.lastUpdated)
 
-            assertThat(sensor.attributes.azimuth).isEqualTo(Azimuth(301.67))
-            assertThat(sensor.attributes.elevation).isEqualTo(Elevation(-6.0))
-            assertThat(sensor.attributes.nextDawn).isEqualTo(Instant.parse("2021-06-21T11:02:13.760874+00:00"))
-            assertThat(sensor.attributes.nextDusk).isEqualTo(Instant.parse("2021-06-22T02:04:07.347021+00:00"))
-            assertThat(sensor.attributes.nextMidnight).isEqualTo(Instant.parse("2021-06-21T06:33:10+00:00"))
-            assertThat(sensor.attributes.nextNoon).isEqualTo(Instant.parse("2021-06-21T18:33:00+00:00"))
-            assertThat(sensor.attributes.nextRising)
-                .isEqualTo(Instant.parse("2021-06-21T11:30:20.573917+00:00"))
-            assertThat(sensor.attributes.nextSetting)
-                .isEqualTo(Instant.parse("2021-06-22T01:36:00.624975+00:00"))
-            assertThat(sensor.attributes.rising).isEqualTo(Rising.FALSE)
+            assertEquals(Azimuth(301.67), sensor.attributes.azimuth)
+            assertEquals(Elevation(-6.0), sensor.attributes.elevation)
+            assertEquals(Instant.parse("2021-06-21T11:02:13.760874+00:00"), sensor.attributes.nextDawn)
+            assertEquals(Instant.parse("2021-06-22T02:04:07.347021+00:00"), sensor.attributes.nextDusk)
+            assertEquals(Instant.parse("2021-06-21T06:33:10+00:00"), sensor.attributes.nextMidnight)
+            assertEquals(Instant.parse("2021-06-21T18:33:00+00:00"), sensor.attributes.nextNoon)
+            assertEquals(Instant.parse("2021-06-21T11:30:20.573917+00:00"), sensor.attributes.nextRising)
+            assertEquals(Instant.parse("2021-06-22T01:36:00.624975+00:00"), sensor.attributes.nextSetting)
+            assertEquals(Rising.FALSE, sensor.attributes.rising)
         }
     }
 

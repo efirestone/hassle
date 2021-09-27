@@ -1,10 +1,8 @@
 package khome
 
-import assertk.assertThat
-import assertk.assertions.isInstanceOf
 import khome.entities.Attributes
 import khome.entities.State
-import khome.entities.devices.Sensor
+import khome.entities.devices.SensorImpl
 import khome.values.EntityId
 import khome.values.FriendlyName
 import khome.values.UserId
@@ -34,7 +32,7 @@ internal class KhomeApplicationSensorTest {
                     SensorAttributes::class
                 )
 
-            assertThat(sensor).isInstanceOf(Sensor::class)
+            assert(sensor is SensorImpl)
         }
     }
 }

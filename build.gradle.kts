@@ -28,7 +28,6 @@ repositories {
 val ktorVersion: String by project
 val koinVersion: String by project
 val jupiterVersion: String by project
-val assertVersion: String by project
 val kermitVersion: String by project
 
 dependencies {
@@ -53,7 +52,6 @@ dependencies {
         exclude(group = "junit")
     }
     testImplementation(kotlin("test-junit"))
-    testImplementation("com.willowtreeapps.assertk:assertk-jvm:$assertVersion")
 }
 
 tasks.withType<KotlinCompile> {

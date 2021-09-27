@@ -1,10 +1,9 @@
 package khome.core.observing
 
-import assertk.assertThat
-import assertk.assertions.isEqualTo
-import assertk.assertions.isNull
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
 
 internal class CircularBufferTest {
 
@@ -16,8 +15,8 @@ internal class CircularBufferTest {
             sut.addFirst(it)
         }
 
-        assertThat(sut.snapshot[0]).isEqualTo(10)
-        assertThat(sut.snapshot[9]).isEqualTo(1)
+        assertEquals(10, sut.snapshot[0])
+        assertEquals(1, sut.snapshot[9])
     }
 
     @Test
@@ -36,7 +35,7 @@ internal class CircularBufferTest {
     @Test
     fun `last() returns null on empty buffer`() {
         val sut = CircularBuffer<Int>(10)
-        assertThat(sut.first).isNull()
-        assertThat(sut.last).isNull()
+        assertNull(sut.first)
+        assertNull(sut.last)
     }
 }
