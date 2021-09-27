@@ -27,10 +27,8 @@ repositories {
 
 val ktorVersion: String by project
 val koinVersion: String by project
-val mockkVersion: String by project
 val jupiterVersion: String by project
 val assertVersion: String by project
-val jsonAssertVersion: String by project
 val kermitVersion: String by project
 
 dependencies {
@@ -54,12 +52,8 @@ dependencies {
         exclude(group = "org.mockito")
         exclude(group = "junit")
     }
-    testImplementation("io.mockk:mockk:$mockkVersion")
-    implementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
+    testImplementation(kotlin("test-junit"))
     testImplementation("com.willowtreeapps.assertk:assertk-jvm:$assertVersion")
-    testImplementation("org.skyscreamer:jsonassert:$jsonAssertVersion")
-
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
 }
 
 tasks.withType<KotlinCompile> {
@@ -106,7 +100,6 @@ tasks.withType<Test> {
     environment["ACCESS_TOKEN"] = "dsq7zht54899dhz43kbv4dgr56a8we234h>!sg?x"
     environment["SECURE"] = true
     environment["START_STATE_STREAM"] = false
-    useJUnitPlatform()
 }
 
 tasks {

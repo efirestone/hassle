@@ -9,7 +9,6 @@ import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.EntityIdOnlyServiceData
 import khome.communicating.ServiceCommandResolver
 import khome.core.boot.statehandling.flattenStateAttributes
-import khome.core.koin.KhomeKoinContext
 import khome.core.koin.KoinContainer
 import khome.core.mapping.ObjectMapperInterface
 import khome.core.mapping.fromJson
@@ -31,14 +30,10 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
-import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.assertThrows
 import org.koin.core.component.get
+import kotlin.test.Test
+import kotlin.test.assertFailsWith
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class ActuatorTest {
 
     @Serializable
@@ -61,11 +56,6 @@ internal class ActuatorTest {
         override val friendlyName: FriendlyName
     ) : Attributes
 
-    @BeforeAll
-    fun createKhome() {
-        khomeApplication()
-    }
-
     private val mapper: ObjectMapperInterface
         get() = KoinContainer.get()
 
@@ -86,7 +76,7 @@ internal class ActuatorTest {
             attributesType = ActuatorTestAttributes::class
         )
 
-        assertThrows<IllegalStateException> {
+        assertFailsWith<IllegalStateException> {
             sut.actualState
         }
 
@@ -635,13 +625,6 @@ internal class ActuatorTest {
 
             assertThat(actuator.attributes.supportedFeatures).isEqualTo(63)
         }
-    }
-
-    // Tests - Cleanup
-
-    @AfterAll
-    fun stopKoin() {
-        KhomeKoinContext.application?.close()
     }
 
     // Private Methods

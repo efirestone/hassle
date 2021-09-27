@@ -101,7 +101,6 @@ private class KhomeImpl : Khome, KhomeComponent {
     override fun configure(builder: Configuration.() -> Unit) =
         config.apply(builder)
 
-    @OptIn(KtorExperimentalAPI::class)
     fun createApplication(): KhomeApplicationImpl {
         val mapperModule = module {
             single {

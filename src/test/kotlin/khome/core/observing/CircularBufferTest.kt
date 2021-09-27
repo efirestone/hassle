@@ -3,11 +3,9 @@ package khome.core.observing
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.assertThrows
+import kotlin.test.Test
+import kotlin.test.assertFailsWith
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class CircularBufferTest {
 
     @Test
@@ -30,7 +28,7 @@ internal class CircularBufferTest {
             sut.addFirst(it)
         }
 
-        assertThrows<IndexOutOfBoundsException> {
+        assertFailsWith<IndexOutOfBoundsException> {
             sut.snapshot[100]
         }
     }

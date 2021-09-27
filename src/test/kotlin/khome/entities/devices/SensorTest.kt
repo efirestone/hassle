@@ -5,7 +5,6 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
-import io.ktor.util.*
 import khome.KhomeApplicationImpl
 import khome.core.boot.statehandling.flattenStateAttributes
 import khome.core.koin.KoinContainer
@@ -21,11 +20,9 @@ import khome.khomeApplication
 import khome.values.*
 import kotlinx.datetime.Instant
 import kotlinx.serialization.json.JsonObject
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 import org.koin.core.component.get
+import kotlin.test.Test
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class SensorTest {
 
     @Test
