@@ -113,17 +113,15 @@ $dokka.location:khome.core.mapping/ObjectMapperInterface/fromJson/#kotlin.String
 $dokka.location:khome.core.mapping/ObjectMapperInterface/fromJson/#kotlinx.serialization.json.JsonElement#kotlin.reflect.KClass[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/khome/khome.core.mapping/-object-mapper-interface/from-json.html
 $dokka.location:khome.core.mapping/ObjectMapperInterface/toJson/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/khome/khome.core.mapping/-object-mapper-interface/to-json.html
 $dokka.location:khome.core.observing////PointingToDeclaration/khome/khome.core.observing/index.html
-$dokka.location:khome.core.observing/CircularBuffer///PointingToDeclaration/khome/khome.core.observing/-circular-buffer/index.html
-$dokka.location:khome.core.observing/CircularBuffer/CircularBuffer/#kotlin.Int/PointingToDeclaration/khome/khome.core.observing/-circular-buffer/-circular-buffer.html
-$dokka.location:khome.core.observing/CircularBuffer/addFirst/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.core.observing/-circular-buffer/add-first.html
-$dokka.location:khome.core.observing/CircularBuffer/first/#/PointingToDeclaration/khome/khome.core.observing/-circular-buffer/first.html
-$dokka.location:khome.core.observing/CircularBuffer/last/#/PointingToDeclaration/khome/khome.core.observing/-circular-buffer/last.html
-$dokka.location:khome.core.observing/CircularBuffer/snapshot/#/PointingToDeclaration/khome/khome.core.observing/-circular-buffer/snapshot.html
-$dokka.location:khome.core.observing/CircularBufferInterface///PointingToDeclaration/khome/khome.core.observing/-circular-buffer-interface/index.html
-$dokka.location:khome.core.observing/CircularBufferInterface/addFirst/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.core.observing/-circular-buffer-interface/add-first.html
-$dokka.location:khome.core.observing/CircularBufferInterface/first/#/PointingToDeclaration/khome/khome.core.observing/-circular-buffer-interface/first.html
-$dokka.location:khome.core.observing/CircularBufferInterface/last/#/PointingToDeclaration/khome/khome.core.observing/-circular-buffer-interface/last.html
-$dokka.location:khome.core.observing/CircularBufferInterface/snapshot/#/PointingToDeclaration/khome/khome.core.observing/-circular-buffer-interface/snapshot.html
+$dokka.location:khome.core.observing/CircularArray///PointingToDeclaration/khome/khome.core.observing/-circular-array/index.html
+$dokka.location:khome.core.observing/CircularArray/CircularArray/#khome.core.observing.CircularArray[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/khome/khome.core.observing/-circular-array/-circular-array.html
+$dokka.location:khome.core.observing/CircularArray/CircularArray/#kotlin.Int/PointingToDeclaration/khome/khome.core.observing/-circular-array/-circular-array.html
+$dokka.location:khome.core.observing/CircularArray/add/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.core.observing/-circular-array/add.html
+$dokka.location:khome.core.observing/CircularArray/clone/#/PointingToDeclaration/khome/khome.core.observing/-circular-array/clone.html
+$dokka.location:khome.core.observing/CircularArray/get/#kotlin.Int/PointingToDeclaration/khome/khome.core.observing/-circular-array/get.html
+$dokka.location:khome.core.observing/CircularArray/iterator/#/PointingToDeclaration/khome/khome.core.observing/-circular-array/iterator.html
+$dokka.location:khome.core.observing/CircularArray/size/#/PointingToDeclaration/khome/khome.core.observing/-circular-array/size.html
+$dokka.location:khome.core.observing/CircularArray/toList/#/PointingToDeclaration/khome/khome.core.observing/-circular-array/to-list.html
 $dokka.location:khome.core////PointingToDeclaration/khome/khome.core/index.html
 $dokka.location:khome.core/Configuration///PointingToDeclaration/khome/khome.core/-configuration/index.html
 $dokka.location:khome.core/Configuration/accessToken/#/PointingToDeclaration/khome/khome.core/-configuration/access-token.html
@@ -147,11 +145,10 @@ $dokka.location:khome.core/EventDtoInterface/eventType/#/PointingToDeclaration/
 $dokka.location:khome.core/EventDtoInterface/origin/#/PointingToDeclaration/khome/khome.core/-event-dto-interface/origin.html
 $dokka.location:khome.core/EventDtoInterface/timeFired/#/PointingToDeclaration/khome/khome.core/-event-dto-interface/time-fired.html
 $dokka.location:khome.core/KhomeDispatchers///PointingToDeclaration/khome/khome.core/-khome-dispatchers/index.html
-$dokka.location:khome.core/KhomeDispatchers/CPUBound/#/PointingToDeclaration/khome/khome.core/-khome-dispatchers/-c-p-u-bound.html
-$dokka.location:khome.core/KhomeDispatchers/IOBound/#/PointingToDeclaration/khome/khome.core/-khome-dispatchers/-i-o-bound.html
-$dokka.location:khome.core/KhomeDispatchers/SingleThread/#/PointingToDeclaration/khome/khome.core/-khome-dispatchers/-single-thread.html
-$dokka.location:khome.core/KhomeDispatchers/Unconfined/#/PointingToDeclaration/khome/khome.core/-khome-dispatchers/-unconfined.html
 $dokka.location:khome.core/MessageInterface///PointingToDeclaration/khome/khome.core/-message-interface/index.html
+$dokka.location:khome.coroutines////PointingToDeclaration/khome/khome.coroutines/index.html
+$dokka.location:khome.coroutines/MainDispatcherFactory///PointingToDeclaration/khome/khome.coroutines/-main-dispatcher-factory/index.html
+$dokka.location:khome.coroutines/MainDispatcherFactory/create/#/PointingToDeclaration/khome/khome.coroutines/-main-dispatcher-factory/create.html
 $dokka.location:khome.entities.devices////PointingToDeclaration/khome/khome.entities.devices/index.html
 $dokka.location:khome.entities.devices/Actuator///PointingToDeclaration/khome/khome.entities.devices/-actuator/index.html
 $dokka.location:khome.entities.devices/Actuator/actualState/#/PointingToDeclaration/khome/khome.entities.devices/-actuator/actual-state.html
@@ -215,11 +212,7 @@ $dokka.location:khome.extending.entities.actuators.climate.thermostate/Thermosta
 $dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatState/temperature/#/PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state/temperature.html
 $dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatState/value/#/PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state/value.html
 $dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatStateValue.HEAT///PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state-value/-h-e-a-t/index.html
-$dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatStateValue.HEAT/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state-value/-h-e-a-t/name.html
-$dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatStateValue.HEAT/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state-value/-h-e-a-t/ordinal.html
 $dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatStateValue.OFF///PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state-value/-o-f-f/index.html
-$dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatStateValue.OFF/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state-value/-o-f-f/name.html
-$dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatStateValue.OFF/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state-value/-o-f-f/ordinal.html
 $dokka.location:khome.extending.entities.actuators.climate.thermostate/ThermostatStateValue///PointingToDeclaration/khome/khome.extending.entities.actuators.climate.thermostate/-thermostat-state-value/index.html
 $dokka.location:khome.extending.entities.actuators.climate////PointingToDeclaration/khome/khome.extending.entities.actuators.climate/index.html
 $dokka.location:khome.extending.entities.actuators.climate//ClimateControl/khome.KhomeApplication#khome.values.ObjectId#khome.communicating.ServiceCommandResolver[TypeParam(bounds=[khome.entities.State[*]])]/PointingToDeclaration/khome/khome.extending.entities.actuators.climate/-climate-control.html
@@ -455,23 +448,11 @@ $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStat
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverState/value/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state/value.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverState/volumeLevel/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state/volume-level.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.IDLE///PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-i-d-l-e/index.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.IDLE/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-i-d-l-e/name.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.IDLE/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-i-d-l-e/ordinal.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.OFF///PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-o-f-f/index.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.OFF/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-o-f-f/name.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.OFF/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-o-f-f/ordinal.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.PAUSED///PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-p-a-u-s-e-d/index.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.PAUSED/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-p-a-u-s-e-d/name.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.PAUSED/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-p-a-u-s-e-d/ordinal.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.PLAYING///PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-p-l-a-y-i-n-g/index.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.PLAYING/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-p-l-a-y-i-n-g/name.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.PLAYING/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-p-l-a-y-i-n-g/ordinal.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.UNAVAILABLE///PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-u-n-a-v-a-i-l-a-b-l-e/index.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.UNAVAILABLE/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-u-n-a-v-a-i-l-a-b-l-e/name.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.UNAVAILABLE/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-u-n-a-v-a-i-l-a-b-l-e/ordinal.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.UNKNOWN///PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-u-n-k-n-o-w-n/index.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.UNKNOWN/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-u-n-k-n-o-w-n/name.html
-$dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue.UNKNOWN/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/-u-n-k-n-o-w-n/ordinal.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/MediaReceiverStateValue///PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-media-receiver-state-value/index.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/TelevisionAttributes///PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-television-attributes/index.html
 $dokka.location:khome.extending.entities.actuators.mediaplayer/TelevisionAttributes/TelevisionAttributes/#khome.values.MediaContentId#khome.values.MediaTitle#khome.values.MediaContentType#khome.values.UserId?#khome.values.FriendlyName#kotlinx.datetime.Instant#kotlinx.datetime.Instant/PointingToDeclaration/khome/khome.extending.entities.actuators.mediaplayer/-television-attributes/-television-attributes.html
@@ -533,11 +514,7 @@ $dokka.location:khome.extending.entities.actuators/PositionableCoverState/Positi
 $dokka.location:khome.extending.entities.actuators/PositionableCoverState/currentPosition/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-state/current-position.html
 $dokka.location:khome.extending.entities.actuators/PositionableCoverState/value/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-state/value.html
 $dokka.location:khome.extending.entities.actuators/PositionableCoverValue.CLOSED///PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-value/-c-l-o-s-e-d/index.html
-$dokka.location:khome.extending.entities.actuators/PositionableCoverValue.CLOSED/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-value/-c-l-o-s-e-d/name.html
-$dokka.location:khome.extending.entities.actuators/PositionableCoverValue.CLOSED/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-value/-c-l-o-s-e-d/ordinal.html
 $dokka.location:khome.extending.entities.actuators/PositionableCoverValue.OPEN///PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-value/-o-p-e-n/index.html
-$dokka.location:khome.extending.entities.actuators/PositionableCoverValue.OPEN/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-value/-o-p-e-n/name.html
-$dokka.location:khome.extending.entities.actuators/PositionableCoverValue.OPEN/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-value/-o-p-e-n/ordinal.html
 $dokka.location:khome.extending.entities.actuators/PositionableCoverValue///PointingToDeclaration/khome/khome.extending.entities.actuators/-positionable-cover-value/index.html
 $dokka.location:khome.extending.entities.actuators/PowerSwitchAttributes///PointingToDeclaration/khome/khome.extending.entities.actuators/-power-switch-attributes/index.html
 $dokka.location:khome.extending.entities.actuators/PowerSwitchAttributes/PowerSwitchAttributes/#khome.values.PowerConsumption#khome.values.UserId?#khome.values.FriendlyName#kotlinx.datetime.Instant#kotlinx.datetime.Instant/PointingToDeclaration/khome/khome.extending.entities.actuators/-power-switch-attributes/-power-switch-attributes.html
@@ -547,11 +524,7 @@ $dokka.location:khome.extending.entities.actuators/PowerSwitchAttributes/lastUpd
 $dokka.location:khome.extending.entities.actuators/PowerSwitchAttributes/powerConsumption/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-power-switch-attributes/power-consumption.html
 $dokka.location:khome.extending.entities.actuators/PowerSwitchAttributes/userId/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-power-switch-attributes/user-id.html
 $dokka.location:khome.extending.entities.actuators/Working.NO///PointingToDeclaration/khome/khome.extending.entities.actuators/-working/-n-o/index.html
-$dokka.location:khome.extending.entities.actuators/Working.NO/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-working/-n-o/name.html
-$dokka.location:khome.extending.entities.actuators/Working.NO/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-working/-n-o/ordinal.html
 $dokka.location:khome.extending.entities.actuators/Working.YES///PointingToDeclaration/khome/khome.extending.entities.actuators/-working/-y-e-s/index.html
-$dokka.location:khome.extending.entities.actuators/Working.YES/name/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-working/-y-e-s/name.html
-$dokka.location:khome.extending.entities.actuators/Working.YES/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.actuators/-working/-y-e-s/ordinal.html
 $dokka.location:khome.extending.entities.actuators/Working///PointingToDeclaration/khome/khome.extending.entities.actuators/-working/index.html
 $dokka.location:khome.extending.entities.sensors.binary////PointingToDeclaration/khome/khome.extending.entities.sensors.binary/index.html
 $dokka.location:khome.extending.entities.sensors.binary//BinarySensor/khome.KhomeApplication#khome.values.ObjectId/PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-binary-sensor.html
@@ -574,11 +547,7 @@ $dokka.location:khome.extending.entities.sensors.binary/ContactState///PointingT
 $dokka.location:khome.extending.entities.sensors.binary/ContactState/ContactState/#khome.extending.entities.sensors.binary.ContactStateValue/PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state/-contact-state.html
 $dokka.location:khome.extending.entities.sensors.binary/ContactState/value/#/PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state/value.html
 $dokka.location:khome.extending.entities.sensors.binary/ContactStateValue.CLOSED///PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state-value/-c-l-o-s-e-d/index.html
-$dokka.location:khome.extending.entities.sensors.binary/ContactStateValue.CLOSED/name/#/PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state-value/-c-l-o-s-e-d/name.html
-$dokka.location:khome.extending.entities.sensors.binary/ContactStateValue.CLOSED/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state-value/-c-l-o-s-e-d/ordinal.html
 $dokka.location:khome.extending.entities.sensors.binary/ContactStateValue.OPEN///PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state-value/-o-p-e-n/index.html
-$dokka.location:khome.extending.entities.sensors.binary/ContactStateValue.OPEN/name/#/PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state-value/-o-p-e-n/name.html
-$dokka.location:khome.extending.entities.sensors.binary/ContactStateValue.OPEN/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state-value/-o-p-e-n/ordinal.html
 $dokka.location:khome.extending.entities.sensors.binary/ContactStateValue///PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-contact-state-value/index.html
 $dokka.location:khome.extending.entities.sensors.binary/DayTimeAttributes///PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-day-time-attributes/index.html
 $dokka.location:khome.extending.entities.sensors.binary/DayTimeAttributes/DayTimeAttributes/#kotlinx.datetime.Instant#kotlinx.datetime.Instant#kotlinx.datetime.Instant#khome.values.UserId?#khome.values.FriendlyName#kotlinx.datetime.Instant#kotlinx.datetime.Instant/PointingToDeclaration/khome/khome.extending.entities.sensors.binary/-day-time-attributes/-day-time-attributes.html
@@ -659,11 +628,7 @@ $dokka.location:khome.extending.entities.sensors/SunState///PointingToDeclaratio
 $dokka.location:khome.extending.entities.sensors/SunState/SunState/#khome.extending.entities.sensors.SunValue/PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-state/-sun-state.html
 $dokka.location:khome.extending.entities.sensors/SunState/value/#/PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-state/value.html
 $dokka.location:khome.extending.entities.sensors/SunValue.ABOVE_HORIZON///PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-value/-a-b-o-v-e_-h-o-r-i-z-o-n/index.html
-$dokka.location:khome.extending.entities.sensors/SunValue.ABOVE_HORIZON/name/#/PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-value/-a-b-o-v-e_-h-o-r-i-z-o-n/name.html
-$dokka.location:khome.extending.entities.sensors/SunValue.ABOVE_HORIZON/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-value/-a-b-o-v-e_-h-o-r-i-z-o-n/ordinal.html
 $dokka.location:khome.extending.entities.sensors/SunValue.BELOW_HORIZON///PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-value/-b-e-l-o-w_-h-o-r-i-z-o-n/index.html
-$dokka.location:khome.extending.entities.sensors/SunValue.BELOW_HORIZON/name/#/PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-value/-b-e-l-o-w_-h-o-r-i-z-o-n/name.html
-$dokka.location:khome.extending.entities.sensors/SunValue.BELOW_HORIZON/ordinal/#/PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-value/-b-e-l-o-w_-h-o-r-i-z-o-n/ordinal.html
 $dokka.location:khome.extending.entities.sensors/SunValue///PointingToDeclaration/khome/khome.extending.entities.sensors/-sun-value/index.html
 $dokka.location:khome.extending.entities////PointingToDeclaration/khome/khome.extending.entities/index.html
 $dokka.location:khome.extending.entities//Actuator/khome.KhomeApplication#khome.values.EntityId#khome.communicating.ServiceCommandResolver[TypeParam(bounds=[khome.entities.State[*]])]/PointingToDeclaration/khome/khome.extending.entities/-actuator.html
@@ -679,14 +644,8 @@ $dokka.location:khome.extending.entities/SwitchableState///PointingToDeclaration
 $dokka.location:khome.extending.entities/SwitchableState/SwitchableState/#khome.extending.entities.SwitchableValue/PointingToDeclaration/khome/khome.extending.entities/-switchable-state/-switchable-state.html
 $dokka.location:khome.extending.entities/SwitchableState/value/#/PointingToDeclaration/khome/khome.extending.entities/-switchable-state/value.html
 $dokka.location:khome.extending.entities/SwitchableValue.OFF///PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-o-f-f/index.html
-$dokka.location:khome.extending.entities/SwitchableValue.OFF/name/#/PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-o-f-f/name.html
-$dokka.location:khome.extending.entities/SwitchableValue.OFF/ordinal/#/PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-o-f-f/ordinal.html
 $dokka.location:khome.extending.entities/SwitchableValue.ON///PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-o-n/index.html
-$dokka.location:khome.extending.entities/SwitchableValue.ON/name/#/PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-o-n/name.html
-$dokka.location:khome.extending.entities/SwitchableValue.ON/ordinal/#/PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-o-n/ordinal.html
 $dokka.location:khome.extending.entities/SwitchableValue.UNAVAILABLE///PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-u-n-a-v-a-i-l-a-b-l-e/index.html
-$dokka.location:khome.extending.entities/SwitchableValue.UNAVAILABLE/name/#/PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-u-n-a-v-a-i-l-a-b-l-e/name.html
-$dokka.location:khome.extending.entities/SwitchableValue.UNAVAILABLE/ordinal/#/PointingToDeclaration/khome/khome.extending.entities/-switchable-value/-u-n-a-v-a-i-l-a-b-l-e/ordinal.html
 $dokka.location:khome.extending.entities/SwitchableValue///PointingToDeclaration/khome/khome.extending.entities/-switchable-value/index.html
 $dokka.location:khome.extending.events////PointingToDeclaration/khome/khome.extending.events/index.html
 $dokka.location:khome.extending.events//attachEventHandler/khome.KhomeApplication#khome.values.EventType#kotlin.Function2[TypeParam(bounds=[kotlin.Any?]),khome.observability.Switchable,kotlin.Unit]/PointingToDeclaration/khome/khome.extending.events/attach-event-handler.html
@@ -742,14 +701,8 @@ $dokka.location:khome.extending.serviceCalls.notifications/MapActionData/showsSc
 $dokka.location:khome.extending.serviceCalls.notifications/MapActionData/showsTraffic/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-map-action-data/shows-traffic.html
 $dokka.location:khome.extending.serviceCalls.notifications/MapActionData/showsUsersLocation/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-map-action-data/shows-users-location.html
 $dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.ALERT///PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-a-l-e-r-t/index.html
-$dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.ALERT/name/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-a-l-e-r-t/name.html
-$dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.ALERT/ordinal/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-a-l-e-r-t/ordinal.html
 $dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.BATCH///PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-b-a-t-c-h/index.html
-$dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.BATCH/name/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-b-a-t-c-h/name.html
-$dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.BATCH/ordinal/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-b-a-t-c-h/ordinal.html
 $dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.SOUND///PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-s-o-u-n-d/index.html
-$dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.SOUND/name/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-s-o-u-n-d/name.html
-$dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions.SOUND/ordinal/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/-s-o-u-n-d/ordinal.html
 $dokka.location:khome.extending.serviceCalls.notifications/MessageData.PresentationOptions///PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-presentation-options/index.html
 $dokka.location:khome.extending.serviceCalls.notifications/MessageData///PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/index.html
 $dokka.location:khome.extending.serviceCalls.notifications/MessageData/MessageData/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-message-data/-message-data.html
@@ -903,11 +856,7 @@ $dokka.location:khome.values/ColorTemperature.Companion/fromKelvin/#kotlin.Int/P
 $dokka.location:khome.values/ColorTemperature.Companion/fromMired/#kotlin.Int/PointingToDeclaration/khome/khome.values/-color-temperature/-companion/from-mired.html
 $dokka.location:khome.values/ColorTemperature.Companion/serialize/#kotlinx.serialization.encoding.Encoder#khome.values.ColorTemperature/PointingToDeclaration/khome/khome.values/-color-temperature/-companion/serialize.html
 $dokka.location:khome.values/ColorTemperature.Unit.KELVIN///PointingToDeclaration/khome/khome.values/-color-temperature/-unit/-k-e-l-v-i-n/index.html
-$dokka.location:khome.values/ColorTemperature.Unit.KELVIN/name/#/PointingToDeclaration/khome/khome.values/-color-temperature/-unit/-k-e-l-v-i-n/name.html
-$dokka.location:khome.values/ColorTemperature.Unit.KELVIN/ordinal/#/PointingToDeclaration/khome/khome.values/-color-temperature/-unit/-k-e-l-v-i-n/ordinal.html
 $dokka.location:khome.values/ColorTemperature.Unit.MIRED///PointingToDeclaration/khome/khome.values/-color-temperature/-unit/-m-i-r-e-d/index.html
-$dokka.location:khome.values/ColorTemperature.Unit.MIRED/name/#/PointingToDeclaration/khome/khome.values/-color-temperature/-unit/-m-i-r-e-d/name.html
-$dokka.location:khome.values/ColorTemperature.Unit.MIRED/ordinal/#/PointingToDeclaration/khome/khome.values/-color-temperature/-unit/-m-i-r-e-d/ordinal.html
 $dokka.location:khome.values/ColorTemperature.Unit///PointingToDeclaration/khome/khome.values/-color-temperature/-unit/index.html
 $dokka.location:khome.values/ColorTemperature///PointingToDeclaration/khome/khome.values/-color-temperature/index.html
 $dokka.location:khome.values/ColorTemperature/toString/#/PointingToDeclaration/khome/khome.values/-color-temperature/to-string.html
@@ -1019,26 +968,12 @@ $dokka.location:khome.values/MediaContentId/MediaContentId/#kotlin.String/Pointi
 $dokka.location:khome.values/MediaContentId/toString/#/PointingToDeclaration/khome/khome.values/-media-content-id/to-string.html
 $dokka.location:khome.values/MediaContentId/value/#/PointingToDeclaration/khome/khome.values/-media-content-id/value.html
 $dokka.location:khome.values/MediaContentType.CHANNEL///PointingToDeclaration/khome/khome.values/-media-content-type/-c-h-a-n-n-e-l/index.html
-$dokka.location:khome.values/MediaContentType.CHANNEL/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-c-h-a-n-n-e-l/name.html
-$dokka.location:khome.values/MediaContentType.CHANNEL/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-c-h-a-n-n-e-l/ordinal.html
 $dokka.location:khome.values/MediaContentType.EPISODE///PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/index.html
-$dokka.location:khome.values/MediaContentType.EPISODE/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/name.html
-$dokka.location:khome.values/MediaContentType.EPISODE/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-e-p-i-s-o-d-e/ordinal.html
 $dokka.location:khome.values/MediaContentType.MOVIE///PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/index.html
-$dokka.location:khome.values/MediaContentType.MOVIE/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/name.html
-$dokka.location:khome.values/MediaContentType.MOVIE/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-o-v-i-e/ordinal.html
 $dokka.location:khome.values/MediaContentType.MUSIC///PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/index.html
-$dokka.location:khome.values/MediaContentType.MUSIC/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/name.html
-$dokka.location:khome.values/MediaContentType.MUSIC/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-m-u-s-i-c/ordinal.html
 $dokka.location:khome.values/MediaContentType.PLAYLIST///PointingToDeclaration/khome/khome.values/-media-content-type/-p-l-a-y-l-i-s-t/index.html
-$dokka.location:khome.values/MediaContentType.PLAYLIST/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-p-l-a-y-l-i-s-t/name.html
-$dokka.location:khome.values/MediaContentType.PLAYLIST/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-p-l-a-y-l-i-s-t/ordinal.html
 $dokka.location:khome.values/MediaContentType.TVSHOW///PointingToDeclaration/khome/khome.values/-media-content-type/-t-v-s-h-o-w/index.html
-$dokka.location:khome.values/MediaContentType.TVSHOW/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-t-v-s-h-o-w/name.html
-$dokka.location:khome.values/MediaContentType.TVSHOW/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-t-v-s-h-o-w/ordinal.html
 $dokka.location:khome.values/MediaContentType.VIDEO///PointingToDeclaration/khome/khome.values/-media-content-type/-v-i-d-e-o/index.html
-$dokka.location:khome.values/MediaContentType.VIDEO/name/#/PointingToDeclaration/khome/khome.values/-media-content-type/-v-i-d-e-o/name.html
-$dokka.location:khome.values/MediaContentType.VIDEO/ordinal/#/PointingToDeclaration/khome/khome.values/-media-content-type/-v-i-d-e-o/ordinal.html
 $dokka.location:khome.values/MediaContentType///PointingToDeclaration/khome/khome.values/-media-content-type/index.html
 $dokka.location:khome.values/MediaDuration.Companion///PointingToDeclaration/khome/khome.values/-media-duration/-companion/index.html
 $dokka.location:khome.values/MediaDuration.Companion/descriptor/#/PointingToDeclaration/khome/khome.values/-media-duration/-companion/descriptor.html
@@ -1225,8 +1160,8 @@ $dokka.location:khome/KhomeApplication/Sensor/#khome.values.EntityId#kotlin.refl
 $dokka.location:khome/KhomeApplication/attachEventHandler/#khome.values.EventType#kotlin.reflect.KClass[*]#kotlin.Function2[TypeParam(bounds=[kotlin.Any?]),khome.observability.Switchable,kotlin.Unit]/PointingToDeclaration/khome/khome/-khome-application/attach-event-handler.html
 $dokka.location:khome/KhomeApplication/callService/#khome.values.Domain#khome.values.Service#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome/-khome-application/call-service.html
 $dokka.location:khome/KhomeApplication/emitEvent/#kotlin.String#kotlin.Any?/PointingToDeclaration/khome/khome/-khome-application/emit-event.html
+$dokka.location:khome/KhomeApplication/launch/#/PointingToDeclaration/khome/khome/-khome-application/launch.html
 $dokka.location:khome/KhomeApplication/onApplicationReady/#kotlin.Function1[khome.KhomeApplication,kotlin.Unit]/PointingToDeclaration/khome/khome/-khome-application/on-application-ready.html
-$dokka.location:khome/KhomeApplication/runBlocking/#/PointingToDeclaration/khome/khome/-khome-application/run-blocking.html
 $dokka.location:khome/KhomeApplication/runTesting/#kotlin.Function1[khome.testing.KhomeTestApplication,kotlin.Unit]/PointingToDeclaration/khome/khome/-khome-application/run-testing.html
 $dokka.location:khome/KhomeApplication/setErrorResponseHandler/#kotlin.Function1[khome.errorHandling.ErrorResponseData,kotlin.Unit]/PointingToDeclaration/khome/khome/-khome-application/set-error-response-handler.html
 $dokka.location:khome/KhomeApplication/setEventHandlerExceptionHandler/#kotlin.Function1[kotlin.Throwable,kotlin.Unit]/PointingToDeclaration/khome/khome/-khome-application/set-event-handler-exception-handler.html
@@ -1245,6 +1180,7 @@ khome.core.mapping
 khome.core.mapping.exceptions
 khome.core.mapping.serializers.default
 khome.core.observing
+khome.coroutines
 khome.entities
 khome.entities.devices
 khome.errorHandling
