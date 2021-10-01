@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -24,13 +24,13 @@ import kotlinx.serialization.Serializable
 typealias PositionableCover = Actuator<PositionableCoverState, PositionableCoverAttributes>
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> KhomeApplication.Cover(
+inline fun <reified S : State<*>, reified A : Attributes> HassConnection.Cover(
     objectId: ObjectId,
     serviceCommandResolver: ServiceCommandResolver<S>
 ): Actuator<S, A> = Actuator(EntityId.fromPair("cover".domain to objectId), serviceCommandResolver)
 
 @Suppress("FunctionName")
-fun KhomeApplication.PositionableCover(objectId: ObjectId): PositionableCover =
+fun HassConnection.PositionableCover(objectId: ObjectId): PositionableCover =
     Cover(
         objectId,
         ServiceCommandResolver { state ->
@@ -101,16 +101,16 @@ val PositionableCover.isClosed
 val PositionableCover.isWorking
     get() = attributes.working == Working.YES
 
-fun PositionableCover.open() {
-    desiredState = PositionableCoverState(PositionableCoverValue.OPEN)
+suspend fun PositionableCover.open() {
+    setDesiredState(PositionableCoverState(PositionableCoverValue.OPEN))
 }
 
-fun PositionableCover.close() {
-    desiredState = PositionableCoverState(PositionableCoverValue.CLOSED)
+suspend fun PositionableCover.close() {
+    setDesiredState(PositionableCoverState(PositionableCoverValue.CLOSED))
 }
 
-fun PositionableCover.setCoverPosition(position: Position) {
-    desiredState = PositionableCoverState(PositionableCoverValue.OPEN, position)
+suspend fun PositionableCover.setCoverPosition(position: Position) {
+    setDesiredState(PositionableCoverState(PositionableCoverValue.OPEN, position))
 }
 
 fun PositionableCover.onStartedWorking(f: PositionableCover.() -> Unit) =

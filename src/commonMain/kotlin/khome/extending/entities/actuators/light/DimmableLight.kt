@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -18,7 +18,7 @@ import khome.values.service
 typealias DimmableLight = Actuator<DimmableLightState, LightAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.DimmableLight(objectId: ObjectId): DimmableLight =
+fun HassConnection.DimmableLight(objectId: ObjectId): DimmableLight =
     Light(
         objectId,
         ServiceCommandResolver { desiredState ->
@@ -66,16 +66,16 @@ val DimmableLight.isOn
 val DimmableLight.isOff
     get() = actualState.value == SwitchableValue.OFF
 
-fun DimmableLight.turnOn() {
-    desiredState = DimmableLightState(SwitchableValue.ON)
+suspend fun DimmableLight.turnOn() {
+    setDesiredState(DimmableLightState(SwitchableValue.ON))
 }
 
-fun DimmableLight.turnOff() {
-    desiredState = DimmableLightState(SwitchableValue.OFF)
+suspend fun DimmableLight.turnOff() {
+    setDesiredState(DimmableLightState(SwitchableValue.OFF))
 }
 
-fun DimmableLight.setBrightness(level: Brightness) {
-    desiredState = DimmableLightState(SwitchableValue.ON, level)
+suspend fun DimmableLight.setBrightness(level: Brightness) {
+    setDesiredState(DimmableLightState(SwitchableValue.ON, level))
 }
 
 fun DimmableLight.onTurnedOn(f: DimmableLight.(Switchable) -> Unit) =

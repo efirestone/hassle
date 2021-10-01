@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.mediaplayer
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -39,7 +39,7 @@ import kotlinx.serialization.Serializable
 typealias MediaReceiver = MediaPlayer<MediaReceiverState, MediaReceiverAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.MediaReceiver(objectId: ObjectId): MediaReceiver =
+fun HassConnection.MediaReceiver(objectId: ObjectId): MediaReceiver =
     MediaPlayer(
         objectId,
         ServiceCommandResolver { desiredState ->
@@ -217,35 +217,35 @@ val MediaReceiver.isOn
 val MediaReceiver.isPaused
     get() = actualState.value == PAUSED
 
-fun MediaReceiver.turnOn() {
-    desiredState = MediaReceiverState(value = IDLE)
+suspend fun MediaReceiver.turnOn() {
+    setDesiredState(MediaReceiverState(value = IDLE))
 }
 
-fun MediaReceiver.turnOff() {
-    desiredState = MediaReceiverState(value = OFF)
+suspend fun MediaReceiver.turnOff() {
+    setDesiredState(MediaReceiverState(value = OFF))
 }
 
-fun MediaReceiver.play() {
-    desiredState = MediaReceiverState(value = PLAYING)
+suspend fun MediaReceiver.play() {
+    setDesiredState(MediaReceiverState(value = PLAYING))
 }
 
-fun MediaReceiver.pause() {
-    desiredState = MediaReceiverState(value = PAUSED)
+suspend fun MediaReceiver.pause() {
+    setDesiredState(MediaReceiverState(value = PAUSED))
 }
 
-fun MediaReceiver.setVolumeTo(level: VolumeLevel) {
+suspend fun MediaReceiver.setVolumeTo(level: VolumeLevel) {
     if (actualState.value == UNAVAILABLE || actualState.value == OFF)
         throw RuntimeException("Volume can not be set when MediaReceiver is ${actualState.value}")
 
-    desiredState = MediaReceiverState(value = actualState.value, volumeLevel = level)
+    setDesiredState(MediaReceiverState(value = actualState.value, volumeLevel = level))
 }
 
-fun MediaReceiver.muteVolume() {
-    desiredState = MediaReceiverState(value = actualState.value, isVolumeMuted = Mute.TRUE)
+suspend fun MediaReceiver.muteVolume() {
+    setDesiredState(MediaReceiverState(value = actualState.value, isVolumeMuted = Mute.TRUE))
 }
 
-fun MediaReceiver.unMuteVolume() {
-    desiredState = MediaReceiverState(value = actualState.value, isVolumeMuted = Mute.FALSE)
+suspend fun MediaReceiver.unMuteVolume() {
+    setDesiredState(MediaReceiverState(value = actualState.value, isVolumeMuted = Mute.FALSE))
 }
 
 fun MediaReceiver.onPlaybackStarted(f: MediaReceiver.(Switchable) -> Unit) =

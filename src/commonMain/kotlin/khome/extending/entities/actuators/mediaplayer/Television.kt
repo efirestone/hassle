@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.mediaplayer
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -27,7 +27,7 @@ import kotlinx.serialization.Serializable
 typealias Television = MediaPlayer<TelevisionState, TelevisionAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.Television(objectId: ObjectId): Television =
+fun HassConnection.Television(objectId: ObjectId): Television =
     MediaPlayer(
         objectId,
         ServiceCommandResolver { desiredState ->
@@ -115,28 +115,28 @@ val Television.isOff
 val Television.isMuted
     get() = actualState.isVolumeMuted == Mute.TRUE
 
-fun Television.turnOn() {
-    desiredState = TelevisionState(value = SwitchableValue.ON)
+suspend fun Television.turnOn() {
+    setDesiredState(TelevisionState(value = SwitchableValue.ON))
 }
 
-fun Television.turnOff() {
-    desiredState = TelevisionState(value = SwitchableValue.OFF)
+suspend fun Television.turnOff() {
+    setDesiredState(TelevisionState(value = SwitchableValue.OFF))
 }
 
-fun Television.setVolumeTo(level: VolumeLevel) {
-    desiredState = TelevisionState(value = SwitchableValue.ON, volumeLevel = level)
+suspend fun Television.setVolumeTo(level: VolumeLevel) {
+    setDesiredState(TelevisionState(value = SwitchableValue.ON, volumeLevel = level))
 }
 
-fun Television.muteVolume() {
-    desiredState = TelevisionState(value = SwitchableValue.ON, isVolumeMuted = Mute.TRUE)
+suspend fun Television.muteVolume() {
+    setDesiredState(TelevisionState(value = SwitchableValue.ON, isVolumeMuted = Mute.TRUE))
 }
 
-fun Television.unMuteVolume() {
-    desiredState = TelevisionState(value = SwitchableValue.ON, isVolumeMuted = Mute.FALSE)
+suspend fun Television.unMuteVolume() {
+    setDesiredState(TelevisionState(value = SwitchableValue.ON, isVolumeMuted = Mute.FALSE))
 }
 
-fun Television.setSource(source: MediaSource) {
-    desiredState = TelevisionState(value = SwitchableValue.ON, source = source)
+suspend fun Television.setSource(source: MediaSource) {
+    setDesiredState(TelevisionState(value = SwitchableValue.ON, source = source))
 }
 
 fun Television.onTurnedOn(f: Television.(Switchable) -> Unit) =

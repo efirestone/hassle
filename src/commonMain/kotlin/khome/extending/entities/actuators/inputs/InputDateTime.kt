@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.inputs
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.ServiceCommandResolver
@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
 typealias InputDateTime = Actuator<InputDateTimeState, InputDateTimeAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.InputDateTime(objectId: ObjectId): InputDateTime =
+fun HassConnection.InputDateTime(objectId: ObjectId): InputDateTime =
     Actuator(
         EntityId.fromPair("input_datetime".domain to objectId),
         ServiceCommandResolver { desiredState ->

@@ -1,6 +1,6 @@
 package khome.extending.serviceCalls.notifications
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.values.Device
 import khome.values.EntityId
 import khome.values.Service
@@ -9,7 +9,7 @@ import kotlinx.serialization.SerialName
 
 private const val REQUEST_LOCATION_UPDATE = "request_location_update"
 
-fun KhomeApplication.notifyMobileApp(device: Device, message: String, title: String? = null) =
+suspend fun HassConnection.notifyMobileApp(device: Device, message: String, title: String? = null) =
     callService(
         domain = "notify".domain,
         service = Service.fromDevice(device),
@@ -19,20 +19,20 @@ fun KhomeApplication.notifyMobileApp(device: Device, message: String, title: Str
         )
     )
 
-inline fun KhomeApplication.notifyMobileApp(device: Device, messageBuilder: NotificationWithDataMessage.() -> Unit) =
+suspend inline fun HassConnection.notifyMobileApp(device: Device, messageBuilder: NotificationWithDataMessage.() -> Unit) =
     callService(
         domain = "notify".domain,
         service = Service.fromDevice(device),
         parameterBag = NotificationWithDataMessage().apply(messageBuilder)
     )
 
-fun KhomeApplication.notifyMobileApp(vararg devices: Device, title: String, message: String) =
+suspend fun HassConnection.notifyMobileApp(vararg devices: Device, title: String, message: String) =
     devices.forEach { device -> notifyMobileApp(device, message, title) }
 
-fun KhomeApplication.requestLocationUpdate(device: Device) =
+suspend fun HassConnection.requestLocationUpdate(device: Device) =
     notifyMobileApp(device, message = REQUEST_LOCATION_UPDATE)
 
-fun KhomeApplication.requestLocationUpdate(vararg devices: Device) =
+suspend fun HassConnection.requestLocationUpdate(vararg devices: Device) =
     devices.forEach { device -> notifyMobileApp(device, message = REQUEST_LOCATION_UPDATE) }
 
 data class NotificationMessage(

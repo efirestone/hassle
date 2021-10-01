@@ -1,48 +1,44 @@
 package khome.core.boot.servicestore
 
 import co.touchlab.kermit.Kermit
-import khome.KhomeSession
+import khome.HassSession
 import khome.communicating.CALLER_ID
 
-internal class ServiceStoreInitializerImpl(
-    private val khomeSession: KhomeSession,
+internal class ServiceStoreInitializer(
+    private val hassSession: HassSession,
     private val serviceStore: ServiceStoreInterface
-) : ServiceStoreInitializer {
+) {
     private val logger = Kermit()
     private val servicesRequest =
         ServicesRequest(CALLER_ID.incrementAndGet())
 
-    override suspend fun initialize() {
+    suspend fun initialize() {
         sendServicesRequest()
-        logger.i { "Requested registered homeassistant services" }
+        logger.i { "Requested registered Home Assistant services" }
         storeServices(consumeServicesResponse())
     }
 
     private suspend fun consumeServicesResponse() =
-        khomeSession.consumeSingleMessage<ServicesResponse>()
+        hassSession.consumeSingleMessage<ServicesResponse>()
 
     private suspend fun sendServicesRequest() =
-        khomeSession.callWebSocketApi(servicesRequest)
+        hassSession.callWebSocketApi(servicesRequest)
 
     private fun storeServices(servicesResponse: ServicesResponse) =
         servicesResponse.let { response ->
             when (response.success) {
-                false -> logger.e { "Could not fetch services from homeassistant" }
+                false -> logger.e { "Could not fetch services from Home Assistant" }
                 true -> {
                     response.result.forEach { (domain, services) ->
                         val serviceList = mutableListOf<String>()
                         services.forEach { (name, _) ->
                             serviceList += name
-                            logger.d { "Fetched service: $name in domain: $domain from homeassistant" }
+                            logger.d { "Fetched service: $name in domain: $domain from Home Assistant" }
                         }
                         serviceStore[domain] = serviceList
                     }
                 }
             }
-            logger.i { "Stored homeassistant services in local service store" }
+            logger.i { "Stored Home Assistant services in local service store" }
         }
-}
-
-interface ServiceStoreInitializer {
-    suspend fun initialize()
 }

@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
 val assertVersion: String by project
 val kermitVersion: String by project
 val ktorVersion: String by project
-val koinVersion: String by project
 val mockkVersion: String by project
 
 plugins {
@@ -53,7 +52,6 @@ kotlin {
                 implementation("io.ktor:ktor-client-cio:$ktorVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-                implementation("io.insert-koin:koin-core:$koinVersion")
                 implementation("org.jetbrains.kotlinx:atomicfu:0.16.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.0")

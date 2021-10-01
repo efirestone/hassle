@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.ServiceCommandResolver
 import khome.entities.devices.Actuator
 import khome.extending.entities.SwitchableState
@@ -10,7 +10,7 @@ import khome.values.ObjectId
 typealias SwitchableLight = Actuator<SwitchableState, LightAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.SwitchableLight(objectId: ObjectId): SwitchableLight =
+fun HassConnection.SwitchableLight(objectId: ObjectId): SwitchableLight =
     Light(
         objectId,
         ServiceCommandResolver { desiredState ->

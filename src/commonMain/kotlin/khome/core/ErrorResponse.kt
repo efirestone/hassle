@@ -1,7 +1,7 @@
 package khome.core
 
 /**
- * A data class representing home assistants error response details
+ * A data class representing home assistant's error response details
  *
  * @property code error code returning from home assistant
  * @property message error message returning from home assistant

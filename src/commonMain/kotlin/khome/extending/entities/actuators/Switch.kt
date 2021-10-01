@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.devices.Actuator
@@ -19,7 +19,7 @@ typealias Switch<reified A> = Actuator<SwitchableState, A>
 typealias PowerSwitch = Switch<PowerSwitchAttributes>
 
 @Suppress("FunctionName")
-inline fun <reified A : Attributes> KhomeApplication.Switch(objectId: ObjectId): Switch<A> =
+inline fun <reified A : Attributes> HassConnection.Switch(objectId: ObjectId): Switch<A> =
     Actuator(
         EntityId.fromPair("switch".domain to objectId),
         ServiceCommandResolver { switchableState ->
@@ -28,7 +28,7 @@ inline fun <reified A : Attributes> KhomeApplication.Switch(objectId: ObjectId):
     )
 
 @Suppress("FunctionName")
-fun KhomeApplication.PowerMeasuringSwitch(objectId: ObjectId): PowerSwitch = Switch(objectId)
+fun HassConnection.PowerMeasuringSwitch(objectId: ObjectId): PowerSwitch = Switch(objectId)
 
 data class PowerSwitchAttributes(
     val powerConsumption: PowerConsumption,

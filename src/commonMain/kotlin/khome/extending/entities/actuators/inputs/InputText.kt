@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.inputs
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.core.mapping.serializers.default.RegexSerializer
@@ -24,7 +24,7 @@ import kotlinx.serialization.Serializable
 typealias InputText = Actuator<InputTextState, InputTextAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.InputText(objectId: ObjectId): InputText =
+fun HassConnection.InputText(objectId: ObjectId): InputText =
     Actuator(
         EntityId.fromPair("input_text".domain to objectId),
         ServiceCommandResolver { desiredState ->

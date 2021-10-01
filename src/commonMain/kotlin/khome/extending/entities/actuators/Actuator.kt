@@ -21,12 +21,12 @@ val Actuator<SwitchableState, *>.isOn
 val Actuator<SwitchableState, *>.isOff
     get() = actualState.value == SwitchableValue.OFF
 
-fun <A : Attributes> Actuator<SwitchableState, A>.turnOn() {
-    desiredState = SwitchableState(SwitchableValue.ON)
+suspend fun <A : Attributes> Actuator<SwitchableState, A>.turnOn() {
+    setDesiredState(SwitchableState(SwitchableValue.ON))
 }
 
-fun <A : Attributes> Actuator<SwitchableState, A>.turnOff() {
-    desiredState = SwitchableState(SwitchableValue.OFF)
+suspend fun <A : Attributes> Actuator<SwitchableState, A>.turnOff() {
+    setDesiredState(SwitchableState(SwitchableValue.OFF))
 }
 
 inline fun <S : State<*>, A : Attributes, SV> Actuator<S, A>.onStateValueChangedFrom(

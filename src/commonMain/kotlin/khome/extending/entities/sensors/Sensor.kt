@@ -1,6 +1,6 @@
 package khome.extending.entities.sensors
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Sensor
@@ -13,7 +13,7 @@ import khome.values.ObjectId
 import khome.values.domain
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> KhomeApplication.Sensor(objectId: ObjectId): Sensor<S, A> =
+inline fun <reified S : State<*>, reified A : Attributes> HassConnection.Sensor(objectId: ObjectId): Sensor<S, A> =
     Sensor(EntityId.fromPair("sensor".domain to objectId))
 
 fun <S : State<*>, A : Attributes, SV> Sensor<S, A>.measurementValueChangedFrom(values: Pair<SV, SV>) =

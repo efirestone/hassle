@@ -1,6 +1,6 @@
 package khome.extending.entities.sensors.binary
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Sensor
@@ -17,7 +17,7 @@ import kotlinx.serialization.Serializable
 typealias ContactSensor = Sensor<ContactState, ContactAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.ContactSensor(objectId: ObjectId): ContactSensor = Sensor(objectId)
+fun HassConnection.ContactSensor(objectId: ObjectId): ContactSensor = Sensor(objectId)
 
 @Serializable
 data class ContactState(override val value: ContactStateValue) : State<ContactStateValue>

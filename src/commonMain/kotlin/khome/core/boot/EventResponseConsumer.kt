@@ -5,15 +5,14 @@ import io.ktor.http.cio.websocket.Frame
 import io.ktor.http.cio.websocket.WebSocketSession
 import io.ktor.http.cio.websocket.readText
 import khome.EventHandlerByEventType
-import khome.KhomeSession
+import khome.HassSession
 import khome.core.EventResponse
 import khome.core.ResolverResponse
 import khome.core.ResponseType
 import khome.core.ResultResponse
 import khome.core.StateChangedResponse
 import khome.core.boot.statehandling.flattenStateAttributes
-import khome.core.mapping.ObjectMapperInterface
-import khome.core.mapping.fromJson
+import khome.core.mapping.ObjectMapper
 import khome.entities.ActuatorStateUpdater
 import khome.entities.SensorStateUpdater
 import khome.errorHandling.ErrorResponseData
@@ -26,22 +25,18 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.jsonObject
 
-interface EventResponseConsumer {
-    suspend fun consumeBlocking()
-}
-
-internal class EventResponseConsumerImpl(
-    private val khomeSession: KhomeSession,
-    private val objectMapper: ObjectMapperInterface,
+internal class EventResponseConsumer(
+    private val hassSession: HassSession,
+    private val objectMapper: ObjectMapper,
     private val sensorStateUpdater: SensorStateUpdater,
     private val actuatorStateUpdater: ActuatorStateUpdater,
     private val eventHandlerByEventType: EventHandlerByEventType,
     private val errorResponseHandler: (ErrorResponseData) -> Unit
-) : EventResponseConsumer {
+) {
     private val logger = Kermit()
 
-    override suspend fun consumeBlocking() = coroutineScope {
-        khomeSession.consumeEachMappedToResponse { response, frameText ->
+    suspend fun consumeBlocking() = coroutineScope {
+        hassSession.consumeEachMappedToResponse { response, frameText ->
             when (response.type) {
                 ResponseType.EVENT -> {
                     handleStateChangedResponse(frameText)

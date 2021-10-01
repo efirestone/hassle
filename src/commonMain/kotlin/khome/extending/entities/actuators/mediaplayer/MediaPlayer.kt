@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.mediaplayer
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
@@ -13,7 +13,7 @@ import khome.values.domain
 typealias MediaPlayer<S, A> = Actuator<S, A>
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> KhomeApplication.MediaPlayer(
+inline fun <reified S : State<*>, reified A : Attributes> HassConnection.MediaPlayer(
     objectId: ObjectId,
     serviceCommandResolver: ServiceCommandResolver<S>
 ): MediaPlayer<S, A> = Actuator(EntityId.fromPair("media_player".domain to objectId), serviceCommandResolver)

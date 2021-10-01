@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -22,7 +22,7 @@ import khome.values.service
 typealias RGBWLight = Actuator<RGBWLightState, LightAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.RGBWLight(objectId: ObjectId): RGBWLight =
+fun HassConnection.RGBWLight(objectId: ObjectId): RGBWLight =
     Light(
         objectId,
         ServiceCommandResolver { desiredState ->
@@ -104,38 +104,38 @@ val RGBWLight.isOn
 val RGBWLight.isOff
     get() = actualState.value == SwitchableValue.OFF
 
-fun RGBWLight.turnOn() {
-    desiredState = RGBWLightState(SwitchableValue.ON)
+suspend fun RGBWLight.turnOn() {
+    setDesiredState(RGBWLightState(SwitchableValue.ON))
 }
 
-fun RGBWLight.turnOff() {
-    desiredState = RGBWLightState(SwitchableValue.OFF)
+suspend fun RGBWLight.turnOff() {
+    setDesiredState(RGBWLightState(SwitchableValue.OFF))
 }
 
-fun RGBWLight.setBrightness(level: Brightness) {
-    desiredState = RGBWLightState(SwitchableValue.ON, level)
+suspend fun RGBWLight.setBrightness(level: Brightness) {
+    setDesiredState(RGBWLightState(SwitchableValue.ON, level))
 }
 
-fun RGBWLight.setRGB(red: Int, green: Int, blue: Int) {
-    desiredState = RGBWLightState(SwitchableValue.ON, rgbColor = RGBColor(red, green, blue))
+suspend fun RGBWLight.setRGB(red: Int, green: Int, blue: Int) {
+    setDesiredState(RGBWLightState(SwitchableValue.ON, rgbColor = RGBColor(red, green, blue)))
 }
 
-fun RGBWLight.setHS(hue: Double, saturation: Double) {
-    desiredState = RGBWLightState(SwitchableValue.ON, hsColor = HSColor(hue, saturation))
+suspend fun RGBWLight.setHS(hue: Double, saturation: Double) {
+    setDesiredState(RGBWLightState(SwitchableValue.ON, hsColor = HSColor(hue, saturation)))
 }
 
-fun RGBWLight.setXY(x: Double, y: Double) {
-    desiredState = RGBWLightState(SwitchableValue.ON, xyColor = XYColor(x, y))
+suspend fun RGBWLight.setXY(x: Double, y: Double) {
+    setDesiredState(RGBWLightState(SwitchableValue.ON, xyColor = XYColor(x, y)))
 }
 
-fun RGBWLight.setColorTemperature(temperature: ColorTemperature) {
+suspend fun RGBWLight.setColorTemperature(temperature: ColorTemperature) {
     when (temperature.unit) {
-        ColorTemperature.Unit.MIRED -> desiredState = RGBWLightState(SwitchableValue.ON, colorTemp = temperature)
+        ColorTemperature.Unit.MIRED -> setDesiredState(RGBWLightState(SwitchableValue.ON, colorTemp = temperature))
         ColorTemperature.Unit.KELVIN -> callService("turn_on".service, KelvinServiceData(temperature))
     }
 }
 
-fun RGBWLight.setColor(name: ColorName) {
+suspend fun RGBWLight.setColor(name: ColorName) {
     callService("turn_on".service, NamedColorServiceData(name))
 }
 
