@@ -1,7 +1,7 @@
 package khome.extending.entities.actuators.inputs
 
 import io.fluidsonic.time.LocalTime
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.ServiceCommandResolver
@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
 typealias InputTime = Actuator<InputTimeState, InputTimeAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.InputTime(objectId: ObjectId): InputTime =
+fun HassConnection.InputTime(objectId: ObjectId): InputTime =
     Actuator(
         EntityId.fromPair("input_datetime".domain to objectId),
         ServiceCommandResolver { desiredState ->

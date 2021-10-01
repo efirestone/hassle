@@ -1,13 +1,13 @@
 package khome.extending.events
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.events.EventHandlerFunction
 import khome.extending.events.IosEventType.ACTION_FIRED
 import khome.extending.events.IosEventType.NOTIFICATION_ACTION_FIRED
 import khome.values.EventType
 import kotlinx.serialization.SerialName
 
-fun KhomeApplication.attachIosActionHandler(eventHandler: EventHandlerFunction<IosActionEventData>) =
+fun HassConnection.attachIosActionHandler(eventHandler: EventHandlerFunction<IosActionEventData>) =
     attachEventHandler(ACTION_FIRED.eventType, eventHandler)
 
 data class IosActionEventData(
@@ -50,7 +50,7 @@ data class IosNotificationActionEventData<AD>(
     val actionData: AD?
 )
 
-fun <AD> KhomeApplication.attachIosNotificationActionHandler(eventHandler: EventHandlerFunction<IosNotificationActionEventData<AD>>) =
+fun <AD> HassConnection.attachIosNotificationActionHandler(eventHandler: EventHandlerFunction<IosNotificationActionEventData<AD>>) =
     attachEventHandler(NOTIFICATION_ACTION_FIRED.eventType, eventHandler)
 
 internal enum class IosEventType(val value: String) {

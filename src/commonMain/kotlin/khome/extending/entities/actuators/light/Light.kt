@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DesiredServiceData
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
@@ -19,7 +19,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> KhomeApplication.Light(
+inline fun <reified S : State<*>, reified A : Attributes> HassConnection.Light(
     objectId: ObjectId,
     serviceCommandResolver: ServiceCommandResolver<S>
 ): Actuator<S, A> = Actuator(EntityId.fromPair("light".domain to objectId), serviceCommandResolver)

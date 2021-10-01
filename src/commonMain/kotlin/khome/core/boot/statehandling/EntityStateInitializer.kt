@@ -1,9 +1,8 @@
 package khome.core.boot.statehandling
 
 import co.touchlab.kermit.Kermit
-import khome.KhomeSession
+import khome.HassSession
 import khome.communicating.CALLER_ID
-import khome.core.koin.KhomeComponent
 import khome.entities.ActuatorStateUpdater
 import khome.entities.EntityRegistrationValidation
 import khome.entities.SensorStateUpdater
@@ -11,16 +10,12 @@ import khome.values.EntityId
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 
-interface EntityStateInitializer {
-    suspend fun initialize()
-}
-
-internal class EntityStateInitializerImpl(
-    val khomeSession: KhomeSession,
+internal class EntityStateInitializer(
+    val hassSession: HassSession,
     private val sensorStateUpdater: SensorStateUpdater,
     private val actuatorStateUpdater: ActuatorStateUpdater,
     private val entityRegistrationValidation: EntityRegistrationValidation
-) : EntityStateInitializer, KhomeComponent {
+) {
 
     private val logger = Kermit()
     private val id
@@ -28,22 +23,22 @@ internal class EntityStateInitializerImpl(
 
     private val statesRequest = StatesRequest(id)
 
-    override suspend fun initialize() {
+    suspend fun initialize() {
         sendStatesRequest()
         logger.i { "Requested initial entity states" }
         setInitialEntityState(consumeStatesResponse())
     }
 
     private suspend fun sendStatesRequest() =
-        khomeSession.callWebSocketApi(statesRequest)
+        hassSession.callWebSocketApi(statesRequest)
 
     private suspend fun consumeStatesResponse() =
-        khomeSession.consumeSingleMessage<StatesResponse>()
+        hassSession.consumeSingleMessage<StatesResponse>()
 
     private fun setInitialEntityState(stateResponse: StatesResponse) {
         if (stateResponse.success) {
             val statesByEntityId = stateResponse.result.associateBy { state ->
-                khomeSession.objectMapper.fromJson(state["entity_id"]!!, EntityId::class)
+                hassSession.objectMapper.fromJson(state["entity_id"]!!, EntityId::class)
             }
             entityRegistrationValidation.validate(statesByEntityId.map { it.key })
             for (state in statesByEntityId) {

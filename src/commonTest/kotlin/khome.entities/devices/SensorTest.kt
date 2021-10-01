@@ -1,21 +1,16 @@
 package khome.entities.devices
 
-import khome.KhomeApplicationImpl
 import khome.core.boot.statehandling.flattenStateAttributes
-import khome.core.koin.KoinContainer
-import khome.core.mapping.ObjectMapperInterface
-import khome.core.mapping.fromJson
 import khome.entities.Attributes
 import khome.entities.State
 import khome.extending.entities.SwitchableState
 import khome.extending.entities.SwitchableValue
 import khome.extending.entities.sensors.*
 import khome.extending.entities.sensors.binary.MotionSensorAttributes
-import khome.khomeApplication
 import khome.values.*
+import khome.withConnection
 import kotlinx.datetime.Instant
 import kotlinx.serialization.json.JsonObject
-import org.koin.core.component.get
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -27,24 +22,24 @@ internal class SensorTest {
         val json =
             //language=json
             """
+            {
+                "entity_id": "sensor.luminance",
+                "state": "5000",
+                "attributes":
                 {
-                    "entity_id": "sensor.luminance",
-                    "state": "5000",
-                    "attributes":
-                    {
-                        "unit_of_measurement": "lx",
-                        "friendly_name": "Outside Luminance",
-                        "device_class": "illuminance"
-                    },
-                    "last_changed": "2021-06-21T01:39:48.096892+00:00",
-                    "last_updated": "2021-06-21T02:03:54.908902+00:00",
-                    "context":
-                    {
-                        "id": "abcd1234",
-                        "parent_id": null,
-                        "user_id": null
-                    }
+                    "unit_of_measurement": "lx",
+                    "friendly_name": "Outside Luminance",
+                    "device_class": "illuminance"
+                },
+                "last_changed": "2021-06-21T01:39:48.096892+00:00",
+                "last_updated": "2021-06-21T02:03:54.908902+00:00",
+                "context":
+                {
+                    "id": "abcd1234",
+                    "parent_id": null,
+                    "user_id": null
                 }
+            }
             """.trimIndent()
 
         sensor<LuminanceState, LuminanceAttributes>(json) { sensor ->
@@ -62,23 +57,23 @@ internal class SensorTest {
         val json =
             //language=json
             """
+            {
+                "entity_id": "binary_sensor.hallway_motion",
+                "state": "off",
+                "attributes":
                 {
-                    "entity_id": "binary_sensor.hallway_motion",
-                    "state": "off",
-                    "attributes":
-                    {
-                        "friendly_name": "Hallway Motion",
-                        "device_class": "motion"
-                    },
-                    "last_changed": "2021-06-21T01:39:48.096892+00:00",
-                    "last_updated": "2021-06-21T02:03:54.908902+00:00",
-                    "context":
-                    {
-                        "id": "abcd1234",
-                        "parent_id": null,
-                        "user_id": null
-                    }
+                    "friendly_name": "Hallway Motion",
+                    "device_class": "motion"
+                },
+                "last_changed": "2021-06-21T01:39:48.096892+00:00",
+                "last_updated": "2021-06-21T02:03:54.908902+00:00",
+                "context":
+                {
+                    "id": "abcd1234",
+                    "parent_id": null,
+                    "user_id": null
                 }
+            }
             """.trimIndent()
 
         sensor<SwitchableState, MotionSensorAttributes>(json) { sensor ->
@@ -96,29 +91,29 @@ internal class SensorTest {
         val json =
             //language=json
             """
+            {
+                "entity_id": "person.john",
+                "state": "home",
+                "attributes":
                 {
-                    "entity_id": "person.john",
-                    "state": "home",
-                    "attributes":
-                    {
-                        "editable": false,
-                        "id": "john",
-                        "latitude": 220.941325508873,
-                        "longitude": -974.56800880282,
-                        "gps_accuracy": 65,
-                        "source": "device_tracker.macbookair",
-                        "user_id": "abcd1234efgh5678",
-                        "friendly_name": "John"
-                    },
-                    "last_changed": "2021-06-21T01:39:48.096892+00:00",
-                    "last_updated": "2021-06-21T02:03:54.908902+00:00",
-                    "context":
-                    {
-                        "id": "abcd1234",
-                        "parent_id": null,
-                        "user_id": null
-                    }
+                    "editable": false,
+                    "id": "john",
+                    "latitude": 220.941325508873,
+                    "longitude": -974.56800880282,
+                    "gps_accuracy": 65,
+                    "source": "device_tracker.macbookair",
+                    "user_id": "abcd1234efgh5678",
+                    "friendly_name": "John"
+                },
+                "last_changed": "2021-06-21T01:39:48.096892+00:00",
+                "last_updated": "2021-06-21T02:03:54.908902+00:00",
+                "context":
+                {
+                    "id": "abcd1234",
+                    "parent_id": null,
+                    "user_id": null
                 }
+            }
             """.trimIndent()
 
         sensor<PersonState, PersonAttributes>(json) { sensor ->
@@ -139,31 +134,31 @@ internal class SensorTest {
         val json =
             //language=json
             """
+            {
+                "entity_id": "sun.sun",
+                "state": "below_horizon",
+                "attributes":
                 {
-                    "entity_id": "sun.sun",
-                    "state": "below_horizon",
-                    "attributes":
-                    {
-                        "next_dawn": "2021-06-21T11:02:13.760874+00:00",
-                        "next_dusk": "2021-06-22T02:04:07.347021+00:00",
-                        "next_midnight": "2021-06-21T06:33:10+00:00",
-                        "next_noon": "2021-06-21T18:33:00+00:00",
-                        "next_rising": "2021-06-21T11:30:20.573917+00:00",
-                        "next_setting": "2021-06-22T01:36:00.624975+00:00",
-                        "elevation": -6.0,
-                        "azimuth": 301.67,
-                        "rising": false,
-                        "friendly_name": "Sun"
-                    },
-                    "last_changed": "2021-06-21T01:39:48.096892+00:00",
-                    "last_updated": "2021-06-21T02:03:54.908902+00:00",
-                    "context":
-                    {
-                        "id": "abcd1234",
-                        "parent_id": null,
-                        "user_id": null
-                    }
+                    "next_dawn": "2021-06-21T11:02:13.760874+00:00",
+                    "next_dusk": "2021-06-22T02:04:07.347021+00:00",
+                    "next_midnight": "2021-06-21T06:33:10+00:00",
+                    "next_noon": "2021-06-21T18:33:00+00:00",
+                    "next_rising": "2021-06-21T11:30:20.573917+00:00",
+                    "next_setting": "2021-06-22T01:36:00.624975+00:00",
+                    "elevation": -6.0,
+                    "azimuth": 301.67,
+                    "rising": false,
+                    "friendly_name": "Sun"
+                },
+                "last_changed": "2021-06-21T01:39:48.096892+00:00",
+                "last_updated": "2021-06-21T02:03:54.908902+00:00",
+                "context":
+                {
+                    "id": "abcd1234",
+                    "parent_id": null,
+                    "user_id": null
                 }
+            }
             """.trimIndent()
 
         sensor<SunState, SunAttributes>(json) { sensor ->
@@ -188,20 +183,20 @@ internal class SensorTest {
         }
     }
 
-    private inline fun <reified S : State<*>, reified A : Attributes> sensor(json: String, block: (Sensor<S, A>) -> Unit) {
-        khomeApplication().run {
-            val mapper: ObjectMapperInterface = KoinContainer.get()
-            val sut = SensorImpl<S, A>(
-                app = KhomeApplicationImpl(),
-                mapper = mapper,
-                stateType = S::class,
-                attributesType = A::class
-            )
+    private inline fun <reified S : State<*>, reified A : Attributes> sensor(
+        json: String,
+        crossinline block: (Sensor<S, A>) -> Unit
+    ) = withConnection {
+        val sut = Sensor<S, A>(
+            connection = this,
+            mapper = mapper,
+            stateType = S::class,
+            attributesType = A::class
+        )
 
-            val stateAsJsonObject = mapper.fromJson<JsonObject>(json)
-            sut.trySetAttributesFromAny(flattenStateAttributes(stateAsJsonObject))
-            sut.trySetActualStateFromAny(flattenStateAttributes(stateAsJsonObject))
-            block(sut)
-        }
+        val stateAsJsonObject = mapper.fromJson<JsonObject>(json)
+        sut.trySetAttributesFromAny(flattenStateAttributes(stateAsJsonObject))
+        sut.trySetActualStateFromAny(flattenStateAttributes(stateAsJsonObject))
+        block(sut)
     }
 }

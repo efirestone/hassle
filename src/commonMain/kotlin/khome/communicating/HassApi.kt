@@ -1,25 +1,19 @@
 package khome.communicating
 
 import co.touchlab.kermit.Kermit
+import io.ktor.client.*
+import io.ktor.client.request.*
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.utils.EmptyContent
-import khome.KhomeSession
+import khome.HassSession
 import khome.communicating.CommandType.CALL_SERVICE
 import khome.communicating.CommandType.SUBSCRIBE_EVENTS
-import khome.core.KhomeDispatchers
-import khome.core.clients.RestApiClient
-import khome.core.mapping.ObjectMapperInterface
+import khome.core.mapping.ObjectMapper
 import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
 import kotlinx.atomicfu.atomic
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -61,7 +55,7 @@ abstract class DesiredServiceData : CommandDataWithEntityId {
 
 class EntityIdOnlyServiceData : DesiredServiceData()
 
-internal data class ServiceCommandImpl<SD>(
+internal data class ServiceCommand<SD>(
     var domain: Domain? = null,
     val service: Service,
     override var id: Int? = null,
@@ -70,42 +64,29 @@ internal data class ServiceCommandImpl<SD>(
 ) : HassApiCommand
 
 internal class HassApiClientImpl(
-    private val khomeSession: KhomeSession,
-    private val objectMapper: ObjectMapperInterface,
-    private val restApiClient: RestApiClient
+    private val session: HassSession,
+    private val objectMapper: ObjectMapper,
+    private val httpClient: HttpClient
 ) : HassApiClient {
     private val logger = Kermit()
-    private val coroutineScope = CoroutineScope(Dispatchers.Default)
 
-    override fun sendCommand(command: HassApiCommand) =
-        coroutineScope.launch(KhomeDispatchers.CommandDispatcher) {
-            command.id = CALLER_ID.getAndIncrement() // has to be called within single thread to prevent race conditions
-            objectMapper.toJson(command).let { serializedCommand ->
-                khomeSession.callWebSocketApi(serializedCommand)
-                    .also { logger.i { "Called hass api with message: $serializedCommand" } }
-            }
-        }
-
-    override fun emitEvent(eventType: String, eventData: Any?) {
-        coroutineScope.launch {
-            restApiClient.post<HttpResponse> {
-                url { encodedPath = "/api/events/$eventType" }
-                body = eventData ?: EmptyContent
-            }
+    override suspend fun sendCommand(command: HassApiCommand) {
+        command.id = CALLER_ID.getAndIncrement() // has to be called within single thread to prevent race conditions
+        objectMapper.toJson(command).let { serializedCommand ->
+            session.callWebSocketApi(serializedCommand)
+                .also { logger.i { "Called hass api with message: $serializedCommand" } }
         }
     }
 
-    override fun emitEventAsync(eventType: String, eventData: Any?) =
-        coroutineScope.async {
-            restApiClient.post<HttpResponse> {
-                url { encodedPath = "/api/events/$eventType" }
-                body = eventData ?: EmptyContent
-            }
+    override suspend fun emitEvent(eventType: String, eventData: Any?) {
+        httpClient.post<HttpResponse> {
+            url { encodedPath = "/api/events/$eventType" }
+            body = eventData ?: EmptyContent
         }
+    }
 }
 
 internal interface HassApiClient {
-    fun sendCommand(command: HassApiCommand): Job
-    fun emitEvent(eventType: String, eventData: Any?)
-    fun emitEventAsync(eventType: String, eventData: Any?): Deferred<HttpResponse>
+    suspend fun sendCommand(command: HassApiCommand)
+    suspend fun emitEvent(eventType: String, eventData: Any?)
 }

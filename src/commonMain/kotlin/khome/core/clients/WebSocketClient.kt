@@ -9,7 +9,7 @@ import io.ktor.http.HttpMethod
 class WebSocketClient(delegate: HttpClient) {
     private val client = delegate
 
-    suspend fun secureWebsocket(
+    suspend fun secureWebSocket(
         method: HttpMethod,
         host: String,
         port: Int,
@@ -24,7 +24,7 @@ class WebSocketClient(delegate: HttpClient) {
             block = block
         )
 
-    suspend fun websocket(
+    suspend fun webSocket(
         method: HttpMethod,
         host: String,
         port: Int,

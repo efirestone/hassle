@@ -1,15 +1,15 @@
 package khome.core.boot.authentication
 
 import co.touchlab.kermit.Kermit
-import khome.KhomeSession
-import khome.core.Configuration
+import khome.HassSession
+import khome.core.Credentials
 
-internal class AuthenticatorImpl(
-    private val khomeSession: KhomeSession,
-    configuration: Configuration
-) : Authenticator {
+internal class Authenticator(
+    private val hassSession: HassSession,
+    credentials: Credentials
+) {
 
-    override suspend fun authenticate() =
+    suspend fun authenticate() =
         consumeInitialResponse()
             .let { initialResponse ->
                 when (initialResponse.type) {
@@ -30,22 +30,18 @@ internal class AuthenticatorImpl(
 
     private val logger = Kermit()
     private val authRequest =
-        AuthRequest(accessToken = configuration.accessToken)
+        AuthRequest(accessToken = credentials.accessToken)
 
     private suspend fun consumeInitialResponse() =
-        khomeSession.consumeSingleMessage<InitialResponse>()
+        hassSession.consumeSingleMessage<InitialResponse>()
 
     private suspend fun consumeAuthenticationResponse() =
-        khomeSession.consumeSingleMessage<AuthResponse>()
+        hassSession.consumeSingleMessage<AuthResponse>()
 
     private suspend fun sendAuthenticationMessage() =
         try {
-            khomeSession.callWebSocketApi(authRequest).also { logger.i { "Sending authentication message." } }
+            hassSession.callWebSocketApi(authRequest).also { logger.i { "Sending authentication message." } }
         } catch (e: Exception) {
             logger.e(e) { "Could not send authentication message" }
         }
-}
-
-interface Authenticator {
-    suspend fun authenticate()
 }

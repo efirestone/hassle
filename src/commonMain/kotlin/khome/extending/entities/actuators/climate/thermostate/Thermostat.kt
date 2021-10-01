@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.climate.thermostate
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -27,7 +27,7 @@ import kotlinx.serialization.Serializable
 typealias Thermostat = Actuator<ThermostatState, ThermostatAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.Thermostat(objectId: ObjectId): Thermostat {
+fun HassConnection.Thermostat(objectId: ObjectId): Thermostat {
     return ClimateControl(
         objectId,
         ServiceCommandResolver { desiredState ->
@@ -102,23 +102,23 @@ val Thermostat.isOn
 val Thermostat.isOff
     get() = actualState == ThermostatState(ThermostatStateValue.OFF)
 
-fun Thermostat.turnOff() {
-    desiredState = ThermostatState(ThermostatStateValue.OFF)
+suspend fun Thermostat.turnOff() {
+    setDesiredState(ThermostatState(ThermostatStateValue.OFF))
 }
 
-fun Thermostat.turnOn() {
-    desiredState = ThermostatState(ThermostatStateValue.HEAT)
+suspend fun Thermostat.turnOn() {
+    setDesiredState(ThermostatState(ThermostatStateValue.HEAT))
 }
 
-fun Thermostat.setPreset(preset: PresetMode) {
-    desiredState = ThermostatState(ThermostatStateValue.HEAT, presetMode = preset)
+suspend fun Thermostat.setPreset(preset: PresetMode) {
+    setDesiredState(ThermostatState(ThermostatStateValue.HEAT, presetMode = preset))
 }
 
-fun Thermostat.setTargetTemperature(temperature: Temperature) {
-    desiredState = ThermostatState(ThermostatStateValue.HEAT, temperature = temperature)
+suspend fun Thermostat.setTargetTemperature(temperature: Temperature) {
+    setDesiredState(ThermostatState(ThermostatStateValue.HEAT, temperature = temperature))
 }
 
-fun Thermostat.turnOnBoost() = setPreset("boost".presetMode)
+suspend fun Thermostat.turnOnBoost() = setPreset("boost".presetMode)
 
 fun Thermostat.onTurnedOn(f: Thermostat.(Switchable) -> Unit) =
     onStateValueChangedFrom(ThermostatStateValue.OFF to ThermostatStateValue.HEAT, f)

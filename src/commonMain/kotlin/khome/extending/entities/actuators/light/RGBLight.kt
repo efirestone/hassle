@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
 typealias RGBLight = Actuator<RGBLightState, LightAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.RGBLight(objectId: ObjectId): RGBLight =
+fun HassConnection.RGBLight(objectId: ObjectId): RGBLight =
     Light(
         objectId,
         ServiceCommandResolver { desiredState ->
@@ -100,31 +100,31 @@ val RGBLight.isOn
 val RGBLight.isOff
     get() = actualState.value == SwitchableValue.OFF
 
-fun RGBLight.turnOn() {
-    desiredState = RGBLightState(SwitchableValue.ON)
+suspend fun RGBLight.turnOn() {
+    setDesiredState(RGBLightState(SwitchableValue.ON))
 }
 
-fun RGBLight.turnOff() {
-    desiredState = RGBLightState(SwitchableValue.OFF)
+suspend fun RGBLight.turnOff() {
+    setDesiredState(RGBLightState(SwitchableValue.OFF))
 }
 
-fun RGBLight.setBrightness(level: Brightness) {
-    desiredState = RGBLightState(SwitchableValue.ON, level)
+suspend fun RGBLight.setBrightness(level: Brightness) {
+    setDesiredState(RGBLightState(SwitchableValue.ON, level))
 }
 
-fun RGBLight.setRGB(red: Int, green: Int, blue: Int) {
-    desiredState = RGBLightState(SwitchableValue.ON, rgbColor = RGBColor(red, green, blue))
+suspend fun RGBLight.setRGB(red: Int, green: Int, blue: Int) {
+    setDesiredState(RGBLightState(SwitchableValue.ON, rgbColor = RGBColor(red, green, blue)))
 }
 
-fun RGBLight.setHS(hue: Double, saturation: Double) {
-    desiredState = RGBLightState(SwitchableValue.ON, hsColor = HSColor(hue, saturation))
+suspend fun RGBLight.setHS(hue: Double, saturation: Double) {
+    setDesiredState(RGBLightState(SwitchableValue.ON, hsColor = HSColor(hue, saturation)))
 }
 
-fun RGBLight.setXY(x: Double, y: Double) {
-    desiredState = RGBLightState(SwitchableValue.ON, xyColor = XYColor(x, y))
+suspend fun RGBLight.setXY(x: Double, y: Double) {
+    setDesiredState(RGBLightState(SwitchableValue.ON, xyColor = XYColor(x, y)))
 }
 
-fun RGBLight.setColor(name: ColorName) =
+suspend fun RGBLight.setColor(name: ColorName) =
     callService("turn_on".service, NamedColorServiceData(name))
 
 fun RGBLight.onTurnedOn(f: RGBLight.(Switchable) -> Unit) =

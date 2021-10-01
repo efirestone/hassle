@@ -1,6 +1,6 @@
 package khome.extending.entities.sensors
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Sensor
@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 typealias LuminanceSensor = Sensor<LuminanceState, LuminanceAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.LuminanceSensor(objectId: ObjectId): LuminanceSensor = Sensor(objectId)
+fun HassConnection.LuminanceSensor(objectId: ObjectId): LuminanceSensor = Sensor(objectId)
 
 @Serializable
 data class LuminanceState(override val value: Double) : State<Double>

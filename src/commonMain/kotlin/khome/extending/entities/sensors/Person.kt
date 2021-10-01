@@ -1,6 +1,6 @@
 package khome.extending.entities.sensors
 
-import khome.KhomeApplication
+import khome.HassConnection
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Sensor
@@ -21,7 +21,7 @@ import kotlinx.serialization.Serializable
 typealias Person = Sensor<PersonState, PersonAttributes>
 
 @Suppress("FunctionName")
-fun KhomeApplication.Person(objectId: ObjectId): Person =
+fun HassConnection.Person(objectId: ObjectId): Person =
     Sensor(EntityId.fromPair("person".domain to objectId))
 
 @Serializable
