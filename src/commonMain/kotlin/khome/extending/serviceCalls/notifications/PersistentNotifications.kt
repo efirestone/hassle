@@ -1,18 +1,18 @@
 package khome.extending.serviceCalls.notifications
 
 import khome.HassConnection
-import khome.values.domain
-import khome.values.service
+import khome.callService
+import khome.values.Domain
+import khome.values.Service
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
 
-val PERSISTENT_NOTIFICATION = "persistent_notification".domain
-val CREATE = "create".service
-val DISMISS = "dismiss".service
-val MARK_READ = "mark_read".service
+val PERSISTENT_NOTIFICATION = Domain("persistent_notification")
 
 suspend fun HassConnection.createPersistentNotification(message: String, title: String? = null, notificationId: String? = null) =
     callService(
         PERSISTENT_NOTIFICATION,
-        CREATE,
+        Service("create"),
         PersistentNotificationMessage(
             message,
             title,
@@ -23,20 +23,22 @@ suspend fun HassConnection.createPersistentNotification(message: String, title: 
 suspend fun HassConnection.dismissPersistentNotification(id: String) =
     callService(
         PERSISTENT_NOTIFICATION,
-        DISMISS,
+        Service("dismiss"),
         PersistentNotificationId(id)
     )
 
 suspend fun HassConnection.markPersistentNotificationAsRead(id: String) =
     callService(
         PERSISTENT_NOTIFICATION,
-        MARK_READ,
+        Service("mark_read"),
         PersistentNotificationId(id)
     )
 
+@Serializable
 internal data class PersistentNotificationMessage(
     val message: String,
     val title: String?,
+    @SerialName("notification_id")
     val notificationId: String?
 )
 
