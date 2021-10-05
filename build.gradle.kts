@@ -55,9 +55,9 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:atomicfu:0.16.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
                 implementation("org.slf4j:slf4j-simple:1.7.30")
                 api("co.touchlab:kermit:$kermitVersion")
+                api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
             }
         }
         val commonTest by getting {
@@ -168,5 +168,9 @@ printcoverage {
 
 val compileKotlinNative: KotlinNativeCompile by tasks
 compileKotlinNative.apply {
+    kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
+}
+val compileTestKotlinNative: KotlinNativeCompile by tasks
+compileTestKotlinNative.apply {
     kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
 }
