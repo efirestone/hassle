@@ -41,7 +41,7 @@ internal class HassClient(
                 )
             }
 //        } catch (exception: ConnectException) {
-//            logger.e(exception) { "Could not establish a connection to your homeassistant instance." }
+//            logger.e(exception) { "Could not establish a connection to your Home Assistant instance." }
         } catch (exception: RuntimeException) {
             logger.e(exception) { "Could not start khome due to: ${exception.message}" }
         }

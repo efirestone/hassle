@@ -57,7 +57,7 @@ internal class EventResponseConsumer(
     private suspend inline fun WebSocketSession.consumeEachMappedToResponse(action: (ResolverResponse, Frame.Text) -> Unit) =
         incoming.consumeEach { frame ->
             (frame as? Frame.Text)?.let { frameText -> action(mapFrameTextToResponse(frameText), frameText) }
-                ?: throw IllegalStateException("Frame could not ne casted to Frame.Text")
+                ?: throw IllegalStateException("Frame could not be cast to Frame.Text")
         }
 
     private fun handleStateChangedResponse(frameText: Frame.Text) =

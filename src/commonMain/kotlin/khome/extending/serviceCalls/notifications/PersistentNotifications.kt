@@ -4,8 +4,8 @@ import khome.HassConnection
 import khome.callService
 import khome.values.Domain
 import khome.values.Service
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 val PERSISTENT_NOTIFICATION = Domain("persistent_notification")
 
