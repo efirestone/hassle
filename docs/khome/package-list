@@ -648,6 +648,8 @@ $dokka.location:khome.extending.events/IosNotificationActionEventData/sourceDevi
 $dokka.location:khome.extending.events/IosNotificationActionEventData/sourceDeviceName/#/PointingToDeclaration/khome/khome.extending.events/-ios-notification-action-event-data/source-device-name.html
 $dokka.location:khome.extending.events/IosNotificationActionEventData/sourceDevicePermanentID/#/PointingToDeclaration/khome/khome.extending.events/-ios-notification-action-event-data/source-device-permanent-i-d.html
 $dokka.location:khome.extending.events/IosNotificationActionEventData/textInput/#/PointingToDeclaration/khome/khome.extending.events/-ios-notification-action-event-data/text-input.html
+$dokka.location:khome.extending.serviceCalls.mediaPlayer////PointingToDeclaration/khome/khome.extending.serviceCalls.mediaPlayer/index.html
+$dokka.location:khome.extending.serviceCalls.mediaPlayer//playMedia/khome.HassConnection#khome.values.MediaContentId/PointingToDeclaration/khome/khome.extending.serviceCalls.mediaPlayer/play-media.html
 $dokka.location:khome.extending.serviceCalls.notifications////PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/index.html
 $dokka.location:khome.extending.serviceCalls.notifications//PERSISTENT_NOTIFICATION/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-p-e-r-s-i-s-t-e-n-t_-n-o-t-i-f-i-c-a-t-i-o-n.html
 $dokka.location:khome.extending.serviceCalls.notifications//createPersistentNotification/khome.HassConnection#kotlin.String#kotlin.String?#kotlin.String?/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/create-persistent-notification.html
@@ -1181,6 +1183,7 @@ khome.extending.entities.actuators.mediaplayer
 khome.extending.entities.sensors
 khome.extending.entities.sensors.binary
 khome.extending.events
+khome.extending.serviceCalls.mediaPlayer
 khome.extending.serviceCalls.notifications
 khome.observability
 khome.testing
