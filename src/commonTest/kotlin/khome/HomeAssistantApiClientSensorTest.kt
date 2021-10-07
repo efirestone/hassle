@@ -11,7 +11,7 @@ import khome.values.objectId
 import kotlinx.datetime.Instant
 import kotlin.test.Test
 
-internal class HassConnectionSensorTest {
+internal class HomeAssistantApiClientSensorTest {
 
     data class SensorState(override val value: String) : State<String>
 

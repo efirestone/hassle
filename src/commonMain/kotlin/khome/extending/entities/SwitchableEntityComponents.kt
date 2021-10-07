@@ -1,7 +1,7 @@
 package khome.extending.entities
 
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.EntityIdOnlyServiceData
+import khome.communicating.ResolvedServiceCommand
 import khome.entities.Attributes
 import khome.entities.State
 import khome.values.FriendlyName
@@ -40,11 +40,11 @@ data class DefaultAttributes(
 
 fun mapSwitchable(switchableValue: SwitchableValue) =
     when (switchableValue) {
-        SwitchableValue.ON -> DefaultResolvedServiceCommand(
+        SwitchableValue.ON -> ResolvedServiceCommand(
             service = "turn_on".service,
             serviceData = EntityIdOnlyServiceData()
         )
-        SwitchableValue.OFF -> DefaultResolvedServiceCommand(
+        SwitchableValue.OFF -> ResolvedServiceCommand(
             service = "turn_off".service,
             serviceData = EntityIdOnlyServiceData()
         )
