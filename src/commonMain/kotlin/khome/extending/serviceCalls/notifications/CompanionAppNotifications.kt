@@ -1,6 +1,7 @@
 package khome.extending.serviceCalls.notifications
 
 import khome.HassConnection
+import khome.callService
 import khome.values.Device
 import khome.values.EntityId
 import khome.values.Service

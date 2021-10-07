@@ -5,6 +5,7 @@ import khome.EventHandlerByEventType
 import khome.HassSession
 import khome.communicating.HassApiClient
 import khome.communicating.SubscribeEventCommand
+import khome.communicating.sendCommand
 import khome.core.ResultResponse
 
 internal class HassEventSubscriber(

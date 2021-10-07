@@ -16,6 +16,8 @@ import khome.values.Service
 import kotlinx.atomicfu.atomic
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.reflect.KType
+import kotlin.reflect.typeOf
 
 internal val CALLER_ID = atomic(0)
 
@@ -38,30 +40,34 @@ interface CommandDataWithEntityId {
     var entityId: EntityId
 }
 
-internal interface HassApiCommand {
+internal interface HassApiCommand<SD> {
     val type: CommandType
     var id: Int?
 }
 
 @Serializable
-internal class SubscribeEventCommand(private val eventType: EventType) : HassApiCommand {
+internal class SubscribeEventCommand(private val eventType: EventType) : HassApiCommand<Unit> {
     override val type: CommandType = SUBSCRIBE_EVENTS
     override var id: Int? = null
 }
 
 abstract class DesiredServiceData : CommandDataWithEntityId {
+    @SerialName("entity_id")
     override lateinit var entityId: EntityId
 }
 
+@Serializable
 class EntityIdOnlyServiceData : DesiredServiceData()
 
+@Serializable
 internal data class ServiceCommand<SD>(
     var domain: Domain? = null,
     val service: Service,
     override var id: Int? = null,
+    @SerialName("service_data")
     val serviceData: SD? = null,
     override val type: CommandType = CALL_SERVICE
-) : HassApiCommand
+) : HassApiCommand<SD>
 
 internal class HassApiClientImpl(
     private val session: HassSession,
@@ -70,9 +76,9 @@ internal class HassApiClientImpl(
 ) : HassApiClient {
     private val logger = Kermit()
 
-    override suspend fun sendCommand(command: HassApiCommand) {
+    override suspend fun <SD> sendCommand(command: HassApiCommand<SD>, parameterType: KType) {
         command.id = CALLER_ID.getAndIncrement() // has to be called within single thread to prevent race conditions
-        objectMapper.toJson(command).let { serializedCommand ->
+        objectMapper.toJson(command, parameterType).let { serializedCommand ->
             session.callWebSocketApi(serializedCommand)
                 .also { logger.i { "Called hass api with message: $serializedCommand" } }
         }
@@ -87,6 +93,10 @@ internal class HassApiClientImpl(
 }
 
 internal interface HassApiClient {
-    suspend fun sendCommand(command: HassApiCommand)
+    suspend fun <SD> sendCommand(command: HassApiCommand<SD>, parameterType: KType)
     suspend fun emitEvent(eventType: String, eventData: Any?)
 }
+
+@OptIn(ExperimentalStdlibApi::class)
+internal suspend inline fun <reified SD : Any> HassApiClient.sendCommand(command: HassApiCommand<SD>) =
+    sendCommand(command, typeOf<SD>())

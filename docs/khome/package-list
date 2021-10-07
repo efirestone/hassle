@@ -82,10 +82,12 @@ $dokka.location:khome.core.mapping.serializers.default/RegexSerializer/serialize
 $dokka.location:khome.core.mapping////PointingToDeclaration/khome/khome.core.mapping/index.html
 $dokka.location:khome.core.mapping/ObjectMapper///PointingToDeclaration/khome/khome.core.mapping/-object-mapper/index.html
 $dokka.location:khome.core.mapping/ObjectMapper/ObjectMapper/#kotlinx.serialization.json.Json/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/-object-mapper.html
-$dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlin.String#kotlin.reflect.KClass[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
+$dokka.location:khome.core.mapping/ObjectMapper/delegate/#/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/delegate.html
+$dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlin.String#kotlin.reflect.KType/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlin.String/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlinx.serialization.json.JsonElement#kotlin.reflect.KClass[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlinx.serialization.json.JsonElement/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
+$dokka.location:khome.core.mapping/ObjectMapper/toJson/#TypeParam(bounds=[kotlin.Any])#kotlin.reflect.KType/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/to-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/toJson/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/to-json.html
 $dokka.location:khome.core.observing////PointingToDeclaration/khome/khome.core.observing/index.html
 $dokka.location:khome.core.observing/CircularArray///PointingToDeclaration/khome/khome.core.observing/-circular-array/index.html
@@ -647,9 +649,6 @@ $dokka.location:khome.extending.events/IosNotificationActionEventData/sourceDevi
 $dokka.location:khome.extending.events/IosNotificationActionEventData/sourceDevicePermanentID/#/PointingToDeclaration/khome/khome.extending.events/-ios-notification-action-event-data/source-device-permanent-i-d.html
 $dokka.location:khome.extending.events/IosNotificationActionEventData/textInput/#/PointingToDeclaration/khome/khome.extending.events/-ios-notification-action-event-data/text-input.html
 $dokka.location:khome.extending.serviceCalls.notifications////PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/index.html
-$dokka.location:khome.extending.serviceCalls.notifications//CREATE/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-c-r-e-a-t-e.html
-$dokka.location:khome.extending.serviceCalls.notifications//DISMISS/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-d-i-s-m-i-s-s.html
-$dokka.location:khome.extending.serviceCalls.notifications//MARK_READ/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-m-a-r-k_-r-e-a-d.html
 $dokka.location:khome.extending.serviceCalls.notifications//PERSISTENT_NOTIFICATION/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-p-e-r-s-i-s-t-e-n-t_-n-o-t-i-f-i-c-a-t-i-o-n.html
 $dokka.location:khome.extending.serviceCalls.notifications//createPersistentNotification/khome.HassConnection#kotlin.String#kotlin.String?#kotlin.String?/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/create-persistent-notification.html
 $dokka.location:khome.extending.serviceCalls.notifications//dismissPersistentNotification/khome.HassConnection#kotlin.String/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/dismiss-persistent-notification.html
@@ -1130,11 +1129,13 @@ $dokka.location:khome.values/Zone/Zone/#kotlin.String/PointingToDeclaration/kho
 $dokka.location:khome.values/Zone/toString/#/PointingToDeclaration/khome/khome.values/-zone/to-string.html
 $dokka.location:khome.values/Zone/value/#/PointingToDeclaration/khome/khome.values/-zone/value.html
 $dokka.location:khome////PointingToDeclaration/khome/khome/index.html
+$dokka.location:khome//callService/khome.HassConnection#khome.values.Domain#khome.values.Service#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/khome/khome/call-service.html
+$dokka.location:khome//hassConnection/#khome.core.Credentials/PointingToDeclaration/khome/khome/hass-connection.html
 $dokka.location:khome/HassConnection///PointingToDeclaration/khome/khome/-hass-connection/index.html
 $dokka.location:khome/HassConnection/Actuator/#khome.values.EntityId#kotlin.reflect.KClass[*]#kotlin.reflect.KClass[*]#khome.communicating.ServiceCommandResolver[TypeParam(bounds=[khome.entities.State[*]])]/PointingToDeclaration/khome/khome/-hass-connection/-actuator.html
 $dokka.location:khome/HassConnection/Sensor/#khome.values.EntityId#kotlin.reflect.KClass[*]#kotlin.reflect.KClass[*]/PointingToDeclaration/khome/khome/-hass-connection/-sensor.html
 $dokka.location:khome/HassConnection/attachEventHandler/#khome.values.EventType#kotlin.reflect.KClass[*]#kotlin.Function2[TypeParam(bounds=[kotlin.Any?]),khome.observability.Switchable,kotlin.Unit]/PointingToDeclaration/khome/khome/-hass-connection/attach-event-handler.html
-$dokka.location:khome/HassConnection/callService/#khome.values.Domain#khome.values.Service#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome/-hass-connection/call-service.html
+$dokka.location:khome/HassConnection/callService/#khome.values.Domain#khome.values.Service#TypeParam(bounds=[kotlin.Any])#kotlin.reflect.KType/PointingToDeclaration/khome/khome/-hass-connection/call-service.html
 $dokka.location:khome/HassConnection/emitEvent/#kotlin.String#kotlin.Any?/PointingToDeclaration/khome/khome/-hass-connection/emit-event.html
 $dokka.location:khome/HassConnection/observerExceptionHandler/#/PointingToDeclaration/khome/khome/-hass-connection/observer-exception-handler.html
 $dokka.location:khome/HassConnection/setErrorResponseHandler/#kotlin.Function1[khome.errorHandling.ErrorResponseData,kotlin.Unit]/PointingToDeclaration/khome/khome/-hass-connection/set-error-response-handler.html
@@ -1144,7 +1145,7 @@ $dokka.location:khome/HassConnectionImpl/Actuator/#khome.values.EntityId#kotlin.
 $dokka.location:khome/HassConnectionImpl/HassConnectionImpl/#khome.core.Credentials/PointingToDeclaration/khome/khome/-hass-connection-impl/-hass-connection-impl.html
 $dokka.location:khome/HassConnectionImpl/Sensor/#khome.values.EntityId#kotlin.reflect.KClass[*]#kotlin.reflect.KClass[*]/PointingToDeclaration/khome/khome/-hass-connection-impl/-sensor.html
 $dokka.location:khome/HassConnectionImpl/attachEventHandler/#khome.values.EventType#kotlin.reflect.KClass[*]#kotlin.Function2[TypeParam(bounds=[kotlin.Any?]),khome.observability.Switchable,kotlin.Unit]/PointingToDeclaration/khome/khome/-hass-connection-impl/attach-event-handler.html
-$dokka.location:khome/HassConnectionImpl/callService/#khome.values.Domain#khome.values.Service#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome/-hass-connection-impl/call-service.html
+$dokka.location:khome/HassConnectionImpl/callService/#khome.values.Domain#khome.values.Service#TypeParam(bounds=[kotlin.Any])#kotlin.reflect.KType/PointingToDeclaration/khome/khome/-hass-connection-impl/call-service.html
 $dokka.location:khome/HassConnectionImpl/emitEvent/#kotlin.String#kotlin.Any?/PointingToDeclaration/khome/khome/-hass-connection-impl/emit-event.html
 $dokka.location:khome/HassConnectionImpl/errorResponseHandlerFunction/#/PointingToDeclaration/khome/khome/-hass-connection-impl/error-response-handler-function.html
 $dokka.location:khome/HassConnectionImpl/eventHandlerExceptionHandlerFunction/#/PointingToDeclaration/khome/khome/-hass-connection-impl/event-handler-exception-handler-function.html

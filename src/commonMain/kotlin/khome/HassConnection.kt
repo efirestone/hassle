@@ -13,6 +13,8 @@ import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
 import kotlin.reflect.KClass
+import kotlin.reflect.KType
+import kotlin.reflect.typeOf
 
 /**
  * The Khome Application
@@ -106,6 +108,16 @@ interface HassConnection {
      * @param domain the name of the service domain
      * @param service the name of the service to call
      * @param parameterBag the parameters to be send with the command
+     * @param parameterBagType the type of the parameterBag
      */
-    suspend fun <PB> callService(domain: Domain, service: Service, parameterBag: PB)
+    suspend fun <PB : Any> callService(
+        domain: Domain,
+        service: Service,
+        parameterBag: PB,
+        parameterBagType: KType
+    )
 }
+
+@OptIn(ExperimentalStdlibApi::class)
+suspend inline fun <reified PB : Any> HassConnection.callService(domain: Domain, service: Service, parameterBag: PB) =
+    callService(domain, service, parameterBag, typeOf<PB>())

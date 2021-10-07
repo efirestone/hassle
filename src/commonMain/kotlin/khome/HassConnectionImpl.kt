@@ -31,11 +31,10 @@ import khome.values.EntityId
 import khome.values.EventType
 import khome.values.Service
 import kotlinx.coroutines.*
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.modules.SerializersModule
 import kotlin.collections.set
 import kotlin.coroutines.CoroutineContext
 import kotlin.reflect.KClass
+import kotlin.reflect.KType
 import kotlinx.serialization.json.Json as SerializationJson
 
 internal typealias SensorsByApiName = MutableMap<EntityId, Sensor<*, *>>
@@ -44,19 +43,14 @@ internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
 internal typealias HassApiCommandHistory = MutableMap<EntityId, ServiceCommand<CommandDataWithEntityId>>
 
-class HassConnectionImpl(private val credentials: Credentials) : HassConnection {
+fun hassConnection(credentials: Credentials): HassConnection = HassConnectionImpl(credentials)
+
+class HassConnectionImpl(
+    private val credentials: Credentials
+) : HassConnection {
 
     private val logger = Kermit()
-    val mapper: ObjectMapper = ObjectMapper(
-        SerializationJson {
-            isLenient = true
-            prettyPrint = true
-            ignoreUnknownKeys = true
-            serializersModule = SerializersModule {
-                contextual(JsonObject::class, JsonObject.serializer())
-            }
-        }
-    )
+    val mapper: ObjectMapper = ObjectMapper()
     private val hassClient: HassClient = HassClient(
         credentials,
         objectMapper = mapper
@@ -145,12 +139,17 @@ class HassConnectionImpl(private val credentials: Credentials) : HassConnection 
         errorResponseHandlerFunction = errorResponseHandler
     }
 
-    override suspend fun <PB> callService(domain: Domain, service: Service, parameterBag: PB) {
+    override suspend fun <PB : Any> callService(
+        domain: Domain,
+        service: Service,
+        parameterBag: PB,
+        parameterBagType: KType
+    ) {
         ServiceCommand(
             domain = domain,
             service = service,
             serviceData = parameterBag
-        ).also { hassApi?.sendCommand(it) } // TODO: Reconnect if no session available
+        ).also { hassApi?.sendCommand(it, parameterBagType) } // TODO: Reconnect if no session available
     }
 
     private fun registerSensor(entityId: EntityId, sensor: Sensor<*, *>) {
