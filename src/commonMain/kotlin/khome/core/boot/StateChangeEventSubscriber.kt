@@ -1,12 +1,12 @@
 package khome.core.boot
 
 import co.touchlab.kermit.Kermit
-import khome.HassSession
+import khome.WebSocketSession
 import khome.communicating.CALLER_ID
 import khome.core.ResultResponse
 
 internal class StateChangeEventSubscriber(
-    val hassSession: HassSession
+    val session: WebSocketSession
 ) {
 
     private val logger = Kermit()
@@ -27,8 +27,8 @@ internal class StateChangeEventSubscriber(
         EventListeningRequest(id = id, eventType = "state_changed")
 
     private suspend fun sendEventListenerRequest() =
-        hassSession.callWebSocketApi(eventListenerRequest)
+        session.callWebSocketApi(eventListenerRequest)
 
     private suspend fun consumeResultResponse() =
-        hassSession.consumeSingleMessage<ResultResponse>()
+        session.consumeSingleMessage<ResultResponse>()
 }

@@ -17,11 +17,9 @@ import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
 /**
- * The Khome Application
- *
- * @author Dennis Schröder
+ * The client object for interacting with the Home Assistant WebSocket API.
  */
-interface HassConnection {
+interface HomeAssistantApiClient {
     /**
      * [Sensor] factory function
      *
@@ -119,5 +117,5 @@ interface HassConnection {
 }
 
 @OptIn(ExperimentalStdlibApi::class)
-suspend inline fun <reified PB : Any> HassConnection.callService(domain: Domain, service: Service, parameterBag: PB) =
+suspend inline fun <reified PB : Any> HomeAssistantApiClient.callService(domain: Domain, service: Service, parameterBag: PB) =
     callService(domain, service, parameterBag, typeOf<PB>())

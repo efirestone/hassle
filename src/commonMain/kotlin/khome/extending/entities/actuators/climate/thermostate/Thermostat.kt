@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.climate.thermostate
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -27,7 +27,7 @@ import kotlinx.serialization.Serializable
 typealias Thermostat = Actuator<ThermostatState, ThermostatAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.Thermostat(objectId: ObjectId): Thermostat {
+fun HomeAssistantApiClient.Thermostat(objectId: ObjectId): Thermostat {
     return ClimateControl(
         objectId,
         ServiceCommandResolver { desiredState ->

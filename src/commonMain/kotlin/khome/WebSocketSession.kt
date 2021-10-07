@@ -9,7 +9,7 @@ import io.ktor.http.cio.websocket.send
 import khome.core.MessageInterface
 import khome.core.mapping.ObjectMapper
 
-internal class HassSession(
+internal class WebSocketSession(
     delegate: DefaultClientWebSocketSession,
     val objectMapper: ObjectMapper
 ) : ClientWebSocketSession by delegate {

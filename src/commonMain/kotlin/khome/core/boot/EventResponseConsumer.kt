@@ -2,10 +2,9 @@ package khome.core.boot
 
 import co.touchlab.kermit.Kermit
 import io.ktor.http.cio.websocket.Frame
-import io.ktor.http.cio.websocket.WebSocketSession
 import io.ktor.http.cio.websocket.readText
 import khome.EventHandlerByEventType
-import khome.HassSession
+import khome.WebSocketSession
 import khome.core.EventResponse
 import khome.core.ResolverResponse
 import khome.core.ResponseType
@@ -26,7 +25,7 @@ import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.jsonObject
 
 internal class EventResponseConsumer(
-    private val hassSession: HassSession,
+    private val session: WebSocketSession,
     private val objectMapper: ObjectMapper,
     private val sensorStateUpdater: SensorStateUpdater,
     private val actuatorStateUpdater: ActuatorStateUpdater,
@@ -36,7 +35,7 @@ internal class EventResponseConsumer(
     private val logger = Kermit()
 
     suspend fun consumeBlocking() = coroutineScope {
-        hassSession.consumeEachMappedToResponse { response, frameText ->
+        session.consumeEachMappedToResponse { response, frameText ->
             when (response.type) {
                 ResponseType.EVENT -> {
                     handleStateChangedResponse(frameText)

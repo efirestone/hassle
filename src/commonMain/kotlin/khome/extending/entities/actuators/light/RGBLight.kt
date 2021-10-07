@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
 typealias RGBLight = Actuator<RGBLightState, LightAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.RGBLight(objectId: ObjectId): RGBLight =
+fun HomeAssistantApiClient.RGBLight(objectId: ObjectId): RGBLight =
     Light(
         objectId,
         ServiceCommandResolver { desiredState ->

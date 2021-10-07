@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.inputs
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.ServiceCommandResolver
@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
 typealias InputDateTime = Actuator<InputDateTimeState, InputDateTimeAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.InputDateTime(objectId: ObjectId): InputDateTime =
+fun HomeAssistantApiClient.InputDateTime(objectId: ObjectId): InputDateTime =
     Actuator(
         EntityId.fromPair("input_datetime".domain to objectId),
         ServiceCommandResolver { desiredState ->

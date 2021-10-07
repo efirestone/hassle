@@ -1,6 +1,6 @@
 package khome.extending.serviceCalls.notifications
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.callService
 import khome.values.Domain
 import khome.values.Service
@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 
 val PERSISTENT_NOTIFICATION = Domain("persistent_notification")
 
-suspend fun HassConnection.createPersistentNotification(message: String, title: String? = null, notificationId: String? = null) =
+suspend fun HomeAssistantApiClient.createPersistentNotification(message: String, title: String? = null, notificationId: String? = null) =
     callService(
         PERSISTENT_NOTIFICATION,
         Service("create"),
@@ -20,14 +20,14 @@ suspend fun HassConnection.createPersistentNotification(message: String, title: 
         )
     )
 
-suspend fun HassConnection.dismissPersistentNotification(id: String) =
+suspend fun HomeAssistantApiClient.dismissPersistentNotification(id: String) =
     callService(
         PERSISTENT_NOTIFICATION,
         Service("dismiss"),
         PersistentNotificationId(id)
     )
 
-suspend fun HassConnection.markPersistentNotificationAsRead(id: String) =
+suspend fun HomeAssistantApiClient.markPersistentNotificationAsRead(id: String) =
     callService(
         PERSISTENT_NOTIFICATION,
         Service("mark_read"),

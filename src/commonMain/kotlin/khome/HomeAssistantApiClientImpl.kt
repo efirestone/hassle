@@ -43,11 +43,11 @@ internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
 internal typealias HassApiCommandHistory = MutableMap<EntityId, ServiceCommand<CommandDataWithEntityId>>
 
-fun hassConnection(credentials: Credentials): HassConnection = HassConnectionImpl(credentials)
+fun homeAssistantApiClient(credentials: Credentials): HomeAssistantApiClient = HomeAssistantApiClientImpl(credentials)
 
-class HassConnectionImpl(
+class HomeAssistantApiClientImpl(
     private val credentials: Credentials
-) : HassConnection {
+) : HomeAssistantApiClient {
 
     private val logger = Kermit()
     val mapper: ObjectMapper = ObjectMapper()
@@ -186,7 +186,7 @@ class HassConnectionImpl(
         MainScope().launch {
             hassClient.startSession {
                 val hassApi = HassApiClientImpl(this, mapper, httpClient)
-                this@HassConnectionImpl.hassApi = hassApi
+                this@HomeAssistantApiClientImpl.hassApi = hassApi
                 val serviceStore = ServiceStore()
                 val authenticator = Authenticator(this, credentials)
                 val serviceStoreInitializer = ServiceStoreInitializer(this, serviceStore)

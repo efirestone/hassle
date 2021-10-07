@@ -1,6 +1,6 @@
 package khome.entities.devices
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.core.mapping.ObjectMapper
 import khome.core.observing.CircularArray
 import khome.entities.Attributes
@@ -22,7 +22,7 @@ import kotlin.reflect.KClass
  * @param A the type of the attributes object that represents all attribute values of the entity. Has to implement the [Attributes] interface.
  */
 class Sensor<S : State<*>, A : Attributes>(
-    private val connection: HassConnection,
+    private val connection: HomeAssistantApiClient,
     private val mapper: ObjectMapper,
     private val stateType: KClass<*>,
     private val attributesType: KClass<*>

@@ -1,6 +1,6 @@
 package khome.events
 
-import khome.HassConnectionImpl
+import khome.HomeAssistantApiClientImpl
 import khome.core.mapping.ObjectMapper
 import khome.errorHandling.EventHandlerExceptionHandler
 import khome.observability.Switchable
@@ -8,7 +8,7 @@ import kotlinx.serialization.json.JsonElement
 import kotlin.reflect.KClass
 
 internal class EventSubscription<ED>(
-    private val connection: HassConnectionImpl,
+    private val connection: HomeAssistantApiClientImpl,
     private val mapper: ObjectMapper,
     private val eventDataType: KClass<*>
 ) {

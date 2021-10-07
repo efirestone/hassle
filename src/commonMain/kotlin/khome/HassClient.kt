@@ -19,10 +19,10 @@ internal class HassClient(
     private val method = HttpMethod.Get
     private val path = "/api/websocket"
 
-    suspend fun startSession(block: suspend HassSession.() -> Unit) =
+    suspend fun startSession(block: suspend WebSocketSession.() -> Unit) =
         startSessionCatching(block)
 
-    private suspend fun startSessionCatching(block: suspend HassSession.() -> Unit) =
+    private suspend fun startSessionCatching(block: suspend WebSocketSession.() -> Unit) =
         try {
             when (credentials.isSecure) {
                 true -> httpClient.secureWebSocket(
@@ -30,14 +30,14 @@ internal class HassClient(
                     host = credentials.host,
                     port = credentials.port,
                     path = path,
-                    block = { block(HassSession(this, objectMapper)) }
+                    block = { block(WebSocketSession(this, objectMapper)) }
                 )
                 false -> httpClient.webSocket(
                     method = method,
                     host = credentials.host,
                     port = credentials.port,
                     path = path,
-                    block = { block(HassSession(this, objectMapper)) }
+                    block = { block(WebSocketSession(this, objectMapper)) }
                 )
             }
 //        } catch (exception: ConnectException) {

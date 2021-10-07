@@ -18,7 +18,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
 
-internal class TestHassConnection : HassConnection {
+internal class TestHomeAssistantApiClient : HomeAssistantApiClient {
     val callServiceRequests = mutableListOf<String>()
 
     private val mapper = ObjectMapper()

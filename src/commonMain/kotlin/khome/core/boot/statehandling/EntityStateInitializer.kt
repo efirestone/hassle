@@ -1,7 +1,7 @@
 package khome.core.boot.statehandling
 
 import co.touchlab.kermit.Kermit
-import khome.HassSession
+import khome.WebSocketSession
 import khome.communicating.CALLER_ID
 import khome.entities.ActuatorStateUpdater
 import khome.entities.EntityRegistrationValidation
@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 
 internal class EntityStateInitializer(
-    val hassSession: HassSession,
+    val session: WebSocketSession,
     private val sensorStateUpdater: SensorStateUpdater,
     private val actuatorStateUpdater: ActuatorStateUpdater,
     private val entityRegistrationValidation: EntityRegistrationValidation
@@ -30,15 +30,15 @@ internal class EntityStateInitializer(
     }
 
     private suspend fun sendStatesRequest() =
-        hassSession.callWebSocketApi(statesRequest)
+        session.callWebSocketApi(statesRequest)
 
     private suspend fun consumeStatesResponse() =
-        hassSession.consumeSingleMessage<StatesResponse>()
+        session.consumeSingleMessage<StatesResponse>()
 
     private fun setInitialEntityState(stateResponse: StatesResponse) {
         if (stateResponse.success) {
             val statesByEntityId = stateResponse.result.associateBy { state ->
-                hassSession.objectMapper.fromJson(state["entity_id"]!!, EntityId::class)
+                session.objectMapper.fromJson(state["entity_id"]!!, EntityId::class)
             }
             entityRegistrationValidation.validate(statesByEntityId.map { it.key })
             for (state in statesByEntityId) {

@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -24,13 +24,13 @@ import kotlinx.serialization.Serializable
 typealias PositionableCover = Actuator<PositionableCoverState, PositionableCoverAttributes>
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> HassConnection.Cover(
+inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Cover(
     objectId: ObjectId,
     serviceCommandResolver: ServiceCommandResolver<S>
 ): Actuator<S, A> = Actuator(EntityId.fromPair("cover".domain to objectId), serviceCommandResolver)
 
 @Suppress("FunctionName")
-fun HassConnection.PositionableCover(objectId: ObjectId): PositionableCover =
+fun HomeAssistantApiClient.PositionableCover(objectId: ObjectId): PositionableCover =
     Cover(
         objectId,
         ServiceCommandResolver { state ->

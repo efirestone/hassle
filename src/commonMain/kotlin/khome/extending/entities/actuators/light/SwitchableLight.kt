@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.ServiceCommandResolver
 import khome.entities.devices.Actuator
 import khome.extending.entities.SwitchableState
@@ -10,7 +10,7 @@ import khome.values.ObjectId
 typealias SwitchableLight = Actuator<SwitchableState, LightAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.SwitchableLight(objectId: ObjectId): SwitchableLight =
+fun HomeAssistantApiClient.SwitchableLight(objectId: ObjectId): SwitchableLight =
     Light(
         objectId,
         ServiceCommandResolver { desiredState ->

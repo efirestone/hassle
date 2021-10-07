@@ -1,6 +1,6 @@
 package khome.extending.entities.sensors
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Sensor
@@ -21,7 +21,7 @@ import kotlinx.serialization.Serializable
 typealias Sun = Sensor<SunState, SunAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.Sun(): Sun =
+fun HomeAssistantApiClient.Sun(): Sun =
     Sensor(EntityId.fromPair("sun".domain to "sun".objectId))
 
 @Serializable
