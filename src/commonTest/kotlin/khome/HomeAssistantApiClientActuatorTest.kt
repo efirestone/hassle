@@ -1,7 +1,7 @@
 package khome
 
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.EntityIdOnlyServiceData
+import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
@@ -10,7 +10,7 @@ import khome.values.*
 import kotlinx.datetime.Instant
 import kotlin.test.Test
 
-internal class HassConnectionActuatorTest {
+internal class HomeAssistantApiClientActuatorTest {
     data class ActuatorState(override val value: String) : State<String>
     data class ActuatorAttributes(
         override val userId: UserId?,
@@ -27,7 +27,7 @@ internal class HassConnectionActuatorTest {
                 ActuatorState::class,
                 ActuatorAttributes::class,
                 ServiceCommandResolver {
-                    DefaultResolvedServiceCommand(
+                    ResolvedServiceCommand(
                         null,
                         "turn_on".service,
                         EntityIdOnlyServiceData()

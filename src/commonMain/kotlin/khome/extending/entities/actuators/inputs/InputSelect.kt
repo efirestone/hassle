@@ -1,20 +1,14 @@
 package khome.extending.entities.actuators.inputs
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
+import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Actuator
 import khome.extending.entities.Actuator
-import khome.values.EntityId
-import khome.values.FriendlyName
-import khome.values.ObjectId
-import khome.values.Option
-import khome.values.UserId
-import khome.values.domain
-import khome.values.service
+import khome.values.*
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -26,7 +20,7 @@ fun HomeAssistantApiClient.InputSelect(objectId: ObjectId): InputSelect =
     Actuator(
         EntityId.fromPair("input_select".domain to objectId),
         ServiceCommandResolver { desiredState ->
-            DefaultResolvedServiceCommand(
+            ResolvedServiceCommand(
                 service = "select_option".service,
                 serviceData = InputSelectServiceData(
                     desiredState.value

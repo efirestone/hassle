@@ -4,17 +4,13 @@ $dokka.location:khome.communicating////PointingToDeclaration/khome/khome.commun
 $dokka.location:khome.communicating//ServiceCommandResolver/#kotlin.Function1[TypeParam(bounds=[khome.entities.State[*]]),khome.communicating.ResolvedServiceCommand]/PointingToDeclaration/khome/khome.communicating/-service-command-resolver.html
 $dokka.location:khome.communicating/CommandDataWithEntityId///PointingToDeclaration/khome/khome.communicating/-command-data-with-entity-id/index.html
 $dokka.location:khome.communicating/CommandDataWithEntityId/entityId/#/PointingToDeclaration/khome/khome.communicating/-command-data-with-entity-id/entity-id.html
-$dokka.location:khome.communicating/DefaultResolvedServiceCommand///PointingToDeclaration/khome/khome.communicating/-default-resolved-service-command/index.html
-$dokka.location:khome.communicating/DefaultResolvedServiceCommand/DefaultResolvedServiceCommand/#khome.values.Domain?#khome.values.Service#khome.communicating.CommandDataWithEntityId/PointingToDeclaration/khome/khome.communicating/-default-resolved-service-command/-default-resolved-service-command.html
-$dokka.location:khome.communicating/DefaultResolvedServiceCommand/domain/#/PointingToDeclaration/khome/khome.communicating/-default-resolved-service-command/domain.html
-$dokka.location:khome.communicating/DefaultResolvedServiceCommand/service/#/PointingToDeclaration/khome/khome.communicating/-default-resolved-service-command/service.html
-$dokka.location:khome.communicating/DefaultResolvedServiceCommand/serviceData/#/PointingToDeclaration/khome/khome.communicating/-default-resolved-service-command/service-data.html
 $dokka.location:khome.communicating/DesiredServiceData///PointingToDeclaration/khome/khome.communicating/-desired-service-data/index.html
 $dokka.location:khome.communicating/DesiredServiceData/DesiredServiceData/#/PointingToDeclaration/khome/khome.communicating/-desired-service-data/-desired-service-data.html
 $dokka.location:khome.communicating/DesiredServiceData/entityId/#/PointingToDeclaration/khome/khome.communicating/-desired-service-data/entity-id.html
 $dokka.location:khome.communicating/EntityIdOnlyServiceData///PointingToDeclaration/khome/khome.communicating/-entity-id-only-service-data/index.html
 $dokka.location:khome.communicating/EntityIdOnlyServiceData/EntityIdOnlyServiceData/#/PointingToDeclaration/khome/khome.communicating/-entity-id-only-service-data/-entity-id-only-service-data.html
 $dokka.location:khome.communicating/ResolvedServiceCommand///PointingToDeclaration/khome/khome.communicating/-resolved-service-command/index.html
+$dokka.location:khome.communicating/ResolvedServiceCommand/ResolvedServiceCommand/#khome.values.Domain?#khome.values.Service#khome.communicating.CommandDataWithEntityId/PointingToDeclaration/khome/khome.communicating/-resolved-service-command/-resolved-service-command.html
 $dokka.location:khome.communicating/ResolvedServiceCommand/domain/#/PointingToDeclaration/khome/khome.communicating/-resolved-service-command/domain.html
 $dokka.location:khome.communicating/ResolvedServiceCommand/service/#/PointingToDeclaration/khome/khome.communicating/-resolved-service-command/service.html
 $dokka.location:khome.communicating/ResolvedServiceCommand/serviceData/#/PointingToDeclaration/khome/khome.communicating/-resolved-service-command/service-data.html
@@ -728,10 +724,6 @@ $dokka.location:khome.observability/WithHistory///PointingToDeclaration/khome/k
 $dokka.location:khome.observability/WithHistory/history/#/PointingToDeclaration/khome/khome.observability/-with-history/history.html
 $dokka.location:khome.observability/WithState///PointingToDeclaration/khome/khome.observability/-with-state/index.html
 $dokka.location:khome.observability/WithState/state/#/PointingToDeclaration/khome/khome.observability/-with-state/state.html
-$dokka.location:khome.testing////PointingToDeclaration/khome/khome.testing/index.html
-$dokka.location:khome.testing/KhomeTestApplication///PointingToDeclaration/khome/khome.testing/-khome-test-application/index.html
-$dokka.location:khome.testing/KhomeTestApplication/lastApiCommandFrom/#khome.entities.devices.Actuator[*,*]/PointingToDeclaration/khome/khome.testing/-khome-test-application/last-api-command-from.html
-$dokka.location:khome.testing/KhomeTestApplication/setStateAndAttributes/#kotlin.String/PointingToDeclaration/khome/khome.testing/-khome-test-application/set-state-and-attributes.html
 $dokka.location:khome.values////PointingToDeclaration/khome/khome.values/index.html
 $dokka.location:khome.values//albumName/kotlin.Enum[*]#/PointingToDeclaration/khome/khome.values/album-name.html
 $dokka.location:khome.values//albumName/kotlin.String#/PointingToDeclaration/khome/khome.values/album-name.html
@@ -1186,6 +1178,5 @@ khome.extending.events
 khome.extending.serviceCalls.mediaPlayer
 khome.extending.serviceCalls.notifications
 khome.observability
-khome.testing
 khome.values
 

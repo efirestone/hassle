@@ -1,7 +1,6 @@
 package khome.extending.entities.actuators.light
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
 import khome.communicating.ResolvedServiceCommand
@@ -25,13 +24,13 @@ fun HomeAssistantApiClient.DimmableLight(objectId: ObjectId): DimmableLight =
             when (desiredState.value) {
                 SwitchableValue.OFF -> {
                     val resolvedServiceCommand: ResolvedServiceCommand = desiredState.brightness?.let { brightness ->
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "turn_on".service,
                             serviceData = DimmableLightServiceData(
                                 brightness
                             )
                         )
-                    } ?: DefaultResolvedServiceCommand(
+                    } ?: ResolvedServiceCommand(
                         service = "turn_off".service,
                         serviceData = EntityIdOnlyServiceData()
                     )
@@ -39,13 +38,13 @@ fun HomeAssistantApiClient.DimmableLight(objectId: ObjectId): DimmableLight =
                 }
                 SwitchableValue.ON -> {
                     desiredState.brightness?.let { brightness ->
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "turn_on".service,
                             serviceData = DimmableLightServiceData(
                                 brightness
                             )
                         )
-                    } ?: DefaultResolvedServiceCommand(
+                    } ?: ResolvedServiceCommand(
                         service = "turn_on".service,
                         serviceData = EntityIdOnlyServiceData()
                     )

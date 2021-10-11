@@ -1,8 +1,8 @@
 package khome.entities.devices
 
 import io.fluidsonic.time.LocalTime
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.EntityIdOnlyServiceData
+import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.core.boot.statehandling.flattenStateAttributes
 import khome.entities.Attributes
@@ -56,7 +56,7 @@ internal class ActuatorTest {
             connection = this,
             mapper = mapper,
             resolver = ServiceCommandResolver {
-                DefaultResolvedServiceCommand(
+                ResolvedServiceCommand(
                     null,
                     "turn_on".service,
                     EntityIdOnlyServiceData()
@@ -110,7 +110,7 @@ internal class ActuatorTest {
             connection = this,
             mapper = mapper,
             resolver = ServiceCommandResolver {
-                DefaultResolvedServiceCommand(
+                ResolvedServiceCommand(
                     null,
                     "turn_on".service,
                     EntityIdOnlyServiceData()
@@ -609,7 +609,7 @@ internal class ActuatorTest {
             connection = this,
             mapper = mapper,
             resolver = ServiceCommandResolver {
-                DefaultResolvedServiceCommand(
+                ResolvedServiceCommand(
                     null,
                     "turn_on".service,
                     EntityIdOnlyServiceData()

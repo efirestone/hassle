@@ -1,22 +1,16 @@
 package khome.extending.entities.actuators
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
+import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Actuator
 import khome.extending.entities.Actuator
 import khome.observability.Switchable
-import khome.values.EntityId
-import khome.values.FriendlyName
-import khome.values.ObjectId
-import khome.values.Position
-import khome.values.UserId
-import khome.values.domain
-import khome.values.service
+import khome.values.*
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -36,16 +30,16 @@ fun HomeAssistantApiClient.PositionableCover(objectId: ObjectId): PositionableCo
         ServiceCommandResolver { state ->
             when (state.value) {
                 PositionableCoverValue.OPEN -> state.currentPosition?.let { position ->
-                    DefaultResolvedServiceCommand(
+                    ResolvedServiceCommand(
                         service = "set_cover_position".service,
                         serviceData = PositionableCoverServiceData(position)
                     )
-                } ?: DefaultResolvedServiceCommand(
+                } ?: ResolvedServiceCommand(
                     service = "open_cover".service,
                     serviceData = EntityIdOnlyServiceData()
                 )
 
-                PositionableCoverValue.CLOSED -> DefaultResolvedServiceCommand(
+                PositionableCoverValue.CLOSED -> ResolvedServiceCommand(
                     service = "close_cover".service,
                     serviceData = EntityIdOnlyServiceData()
                 )

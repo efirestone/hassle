@@ -1,22 +1,16 @@
 package khome.extending.entities.actuators.light
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
+import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.entities.State
 import khome.entities.devices.Actuator
 import khome.extending.entities.SwitchableValue
 import khome.extending.entities.actuators.onStateValueChangedFrom
 import khome.observability.Switchable
-import khome.values.Brightness
-import khome.values.ColorName
-import khome.values.HSColor
-import khome.values.ObjectId
-import khome.values.RGBColor
-import khome.values.XYColor
-import khome.values.service
+import khome.values.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -29,7 +23,7 @@ fun HomeAssistantApiClient.RGBLight(objectId: ObjectId): RGBLight =
         ServiceCommandResolver { desiredState ->
             when (desiredState.value) {
                 SwitchableValue.OFF -> {
-                    DefaultResolvedServiceCommand(
+                    ResolvedServiceCommand(
                         service = "turn_off".service,
                         serviceData = EntityIdOnlyServiceData()
                     )
@@ -37,34 +31,34 @@ fun HomeAssistantApiClient.RGBLight(objectId: ObjectId): RGBLight =
 
                 SwitchableValue.ON -> {
                     desiredState.hsColor?.let {
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "turn_on".service,
                             serviceData = RGBLightServiceData(
                                 hsColor = it
                             )
                         )
                     } ?: desiredState.rgbColor?.let {
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "turn_on".service,
                             serviceData = RGBLightServiceData(
                                 rgbColor = it
                             )
                         )
                     } ?: desiredState.brightness?.let {
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "turn_on".service,
                             serviceData = RGBLightServiceData(
                                 brightness = it
                             )
                         )
                     } ?: desiredState.xyColor?.let {
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "turn_on".service,
                             serviceData = RGBLightServiceData(
                                 xyColor = it
                             )
                         )
-                    } ?: DefaultResolvedServiceCommand(
+                    } ?: ResolvedServiceCommand(
                         service = "turn_on".service,
                         serviceData = EntityIdOnlyServiceData()
                     )

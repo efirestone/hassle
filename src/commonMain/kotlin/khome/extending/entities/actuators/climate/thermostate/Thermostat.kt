@@ -1,9 +1,9 @@
 package khome.extending.entities.actuators.climate.thermostate
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
+import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
@@ -11,15 +11,7 @@ import khome.entities.devices.Actuator
 import khome.extending.entities.actuators.climate.ClimateControl
 import khome.extending.entities.actuators.onStateValueChangedFrom
 import khome.observability.Switchable
-import khome.values.FriendlyName
-import khome.values.HvacMode
-import khome.values.ObjectId
-import khome.values.PresetMode
-import khome.values.Temperature
-import khome.values.UserId
-import khome.values.hvacMode
-import khome.values.presetMode
-import khome.values.service
+import khome.values.*
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -33,7 +25,7 @@ fun HomeAssistantApiClient.Thermostat(objectId: ObjectId): Thermostat {
         ServiceCommandResolver { desiredState ->
             when (desiredState.value) {
                 ThermostatStateValue.OFF -> {
-                    DefaultResolvedServiceCommand(
+                    ResolvedServiceCommand(
                         service = "turn_off".service,
                         serviceData = EntityIdOnlyServiceData()
                     )
@@ -41,16 +33,16 @@ fun HomeAssistantApiClient.Thermostat(objectId: ObjectId): Thermostat {
 
                 ThermostatStateValue.HEAT -> {
                     desiredState.temperature?.let { temperature ->
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "set_temperature".service,
                             serviceData = ThermostatServiceData(temperature, hvacMode = "heat".hvacMode)
                         )
                     } ?: (if (desiredState.presetMode.isNone) null else desiredState.presetMode)?.let { preset ->
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "set_preset_mode".service,
                             serviceData = ThermostatServiceData(presetMode = preset)
                         )
-                    } ?: DefaultResolvedServiceCommand(
+                    } ?: ResolvedServiceCommand(
                         service = "turn_on".service,
                         serviceData = EntityIdOnlyServiceData()
                     )

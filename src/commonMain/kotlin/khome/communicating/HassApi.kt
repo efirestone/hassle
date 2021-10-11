@@ -18,28 +18,8 @@ import kotlin.reflect.typeOf
 
 internal val CALLER_ID = atomic(0)
 
-@Serializable
-internal enum class CommandType {
-    @SerialName("call_service")
-    CALL_SERVICE,
-
-    @SerialName("subscribe_events")
-    SUBSCRIBE_EVENTS,
-
-    @SerialName("get_services")
-    GET_SERVICES,
-
-    @SerialName("get_states")
-    GET_STATES
-}
-
 interface CommandDataWithEntityId {
     var entityId: EntityId
-}
-
-internal interface HassApiCommand<SD> {
-    val type: CommandType
-    var id: Int?
 }
 
 @Serializable

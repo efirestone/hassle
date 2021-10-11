@@ -1,25 +1,16 @@
 package khome.extending.entities.actuators.mediaplayer
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
+import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
 import khome.extending.entities.SwitchableValue
 import khome.extending.entities.actuators.onStateValueChangedFrom
 import khome.observability.Switchable
-import khome.values.FriendlyName
-import khome.values.MediaContentId
-import khome.values.MediaContentType
-import khome.values.MediaSource
-import khome.values.MediaTitle
-import khome.values.Mute
-import khome.values.ObjectId
-import khome.values.UserId
-import khome.values.VolumeLevel
-import khome.values.service
+import khome.values.*
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -34,34 +25,34 @@ fun HomeAssistantApiClient.Television(objectId: ObjectId): Television =
             when (desiredState.value) {
                 SwitchableValue.ON -> {
                     desiredState.isVolumeMuted?.let { isMuted ->
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "volume_mute".service,
                             serviceData = TelevisionDesiredServiceData(
                                 isVolumeMuted = isMuted
                             )
                         )
                     } ?: desiredState.volumeLevel?.let { volumeLevel ->
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "volume_set".service,
                             serviceData = TelevisionDesiredServiceData(
                                 volumeLevel = volumeLevel
                             )
                         )
                     } ?: desiredState.source?.let { source ->
-                        DefaultResolvedServiceCommand(
+                        ResolvedServiceCommand(
                             service = "volume_set".service,
                             serviceData = TelevisionDesiredServiceData(
                                 source = source
                             )
                         )
-                    } ?: DefaultResolvedServiceCommand(
+                    } ?: ResolvedServiceCommand(
                         service = "turn_on".service,
                         serviceData = EntityIdOnlyServiceData()
                     )
                 }
 
                 SwitchableValue.OFF -> {
-                    DefaultResolvedServiceCommand(
+                    ResolvedServiceCommand(
                         service = "turn_off".service,
                         serviceData = EntityIdOnlyServiceData()
                     )
