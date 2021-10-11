@@ -1,6 +1,6 @@
 package khome.extending.entities.sensors.binary
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.entities.Attributes
 import khome.entities.devices.Sensor
 import khome.extending.entities.SwitchableState
@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 typealias DayTime = Sensor<SwitchableState, DayTimeAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.DayTime(objectId: ObjectId): DayTime = BinarySensor(objectId)
+fun HomeAssistantApiClient.DayTime(objectId: ObjectId): DayTime = BinarySensor(objectId)
 
 @Serializable
 data class DayTimeAttributes(

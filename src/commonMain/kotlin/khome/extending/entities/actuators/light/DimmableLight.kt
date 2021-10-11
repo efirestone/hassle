@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -18,7 +18,7 @@ import khome.values.service
 typealias DimmableLight = Actuator<DimmableLightState, LightAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.DimmableLight(objectId: ObjectId): DimmableLight =
+fun HomeAssistantApiClient.DimmableLight(objectId: ObjectId): DimmableLight =
     Light(
         objectId,
         ServiceCommandResolver { desiredState ->

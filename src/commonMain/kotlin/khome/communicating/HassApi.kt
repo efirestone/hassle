@@ -5,14 +5,11 @@ import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.utils.EmptyContent
-import khome.HassSession
-import khome.communicating.CommandType.CALL_SERVICE
+import khome.WebSocketSession
 import khome.communicating.CommandType.SUBSCRIBE_EVENTS
 import khome.core.mapping.ObjectMapper
-import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
-import khome.values.Service
 import kotlinx.atomicfu.atomic
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -59,18 +56,8 @@ abstract class DesiredServiceData : CommandDataWithEntityId {
 @Serializable
 class EntityIdOnlyServiceData : DesiredServiceData()
 
-@Serializable
-internal data class ServiceCommand<SD>(
-    var domain: Domain? = null,
-    val service: Service,
-    override var id: Int? = null,
-    @SerialName("service_data")
-    val serviceData: SD? = null,
-    override val type: CommandType = CALL_SERVICE
-) : HassApiCommand<SD>
-
 internal class HassApiClientImpl(
-    private val session: HassSession,
+    private val session: WebSocketSession,
     private val objectMapper: ObjectMapper,
     private val httpClient: HttpClient
 ) : HassApiClient {

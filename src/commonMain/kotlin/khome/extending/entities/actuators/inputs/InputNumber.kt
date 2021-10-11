@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.inputs
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
@@ -25,7 +25,7 @@ import kotlinx.serialization.Serializable
 typealias InputNumber = Actuator<InputNumberState, InputNumberAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.InputNumber(objectId: ObjectId): InputNumber =
+fun HomeAssistantApiClient.InputNumber(objectId: ObjectId): InputNumber =
     Actuator(
         EntityId.fromPair("input_number".domain to objectId),
         ServiceCommandResolver { desiredState ->

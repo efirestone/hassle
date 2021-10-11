@@ -1,6 +1,6 @@
 package khome.extending.serviceCalls.mediaPlayer
 
-import khome.TestHassConnection
+import khome.TestHomeAssistantApiClient
 import khome.values.*
 import kotlinx.coroutines.*
 import kotlin.test.Test
@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 class MediaPlayerTest {
     @Test
     fun playMedia() = runBlocking {
-        val connection = TestHassConnection()
+        val connection = TestHomeAssistantApiClient()
 
         connection.playMedia(MediaContentId("content/id"))
 

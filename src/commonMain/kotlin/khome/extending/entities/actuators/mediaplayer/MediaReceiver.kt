@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.mediaplayer
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -39,7 +39,7 @@ import kotlinx.serialization.Serializable
 typealias MediaReceiver = MediaPlayer<MediaReceiverState, MediaReceiverAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.MediaReceiver(objectId: ObjectId): MediaReceiver =
+fun HomeAssistantApiClient.MediaReceiver(objectId: ObjectId): MediaReceiver =
     MediaPlayer(
         objectId,
         ServiceCommandResolver { desiredState ->

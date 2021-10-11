@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.inputs
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.devices.Actuator
@@ -20,7 +20,7 @@ import kotlinx.serialization.Serializable
 typealias InputBoolean = Actuator<SwitchableState, InputBooleanAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.InputBoolean(objectId: ObjectId): InputBoolean =
+fun HomeAssistantApiClient.InputBoolean(objectId: ObjectId): InputBoolean =
     Actuator(
         EntityId.fromPair("input_boolean".domain to objectId),
         ServiceCommandResolver { desiredState ->

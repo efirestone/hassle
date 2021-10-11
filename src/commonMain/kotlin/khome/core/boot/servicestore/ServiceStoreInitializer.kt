@@ -1,11 +1,11 @@
 package khome.core.boot.servicestore
 
 import co.touchlab.kermit.Kermit
-import khome.HassSession
+import khome.WebSocketSession
 import khome.communicating.CALLER_ID
 
 internal class ServiceStoreInitializer(
-    private val hassSession: HassSession,
+    private val session: WebSocketSession,
     private val serviceStore: ServiceStoreInterface
 ) {
     private val logger = Kermit()
@@ -19,10 +19,10 @@ internal class ServiceStoreInitializer(
     }
 
     private suspend fun consumeServicesResponse() =
-        hassSession.consumeSingleMessage<ServicesResponse>()
+        session.consumeSingleMessage<ServicesResponse>()
 
     private suspend fun sendServicesRequest() =
-        hassSession.callWebSocketApi(servicesRequest)
+        session.callWebSocketApi(servicesRequest)
 
     private fun storeServices(servicesResponse: ServicesResponse) =
         servicesResponse.let { response ->

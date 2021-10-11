@@ -1,6 +1,6 @@
 package khome.entities.devices
 
-import khome.HassConnectionImpl
+import khome.HomeAssistantApiClientImpl
 import khome.communicating.CommandDataWithEntityId
 import khome.communicating.ServiceCommand
 import khome.communicating.ServiceCommandResolver
@@ -26,7 +26,7 @@ import kotlin.reflect.KClass
  * @param A the type of the attributes object that represents all immutable attribute values of the entity. Has to implement the [Attributes] interface.
  */
 class Actuator<S : State<*>, A : Attributes>(
-    private val connection: HassConnectionImpl,
+    private val connection: HomeAssistantApiClientImpl,
     private val mapper: ObjectMapper,
     private val resolver: ServiceCommandResolver<S>,
     private val stateType: KClass<*>,

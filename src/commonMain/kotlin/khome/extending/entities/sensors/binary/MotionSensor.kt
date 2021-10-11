@@ -1,6 +1,6 @@
 package khome.extending.entities.sensors.binary
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.entities.Attributes
 import khome.entities.devices.Sensor
 import khome.extending.entities.SwitchableState
@@ -17,7 +17,7 @@ import kotlinx.serialization.Serializable
 typealias MotionSensor = Sensor<SwitchableState, MotionSensorAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.MotionSensor(objectId: ObjectId): MotionSensor = BinarySensor(objectId)
+fun HomeAssistantApiClient.MotionSensor(objectId: ObjectId): MotionSensor = BinarySensor(objectId)
 
 @Serializable
 data class MotionSensorAttributes(

@@ -1,6 +1,6 @@
 package khome.extending.entities.actuators.light
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.DefaultResolvedServiceCommand
 import khome.communicating.DesiredServiceData
 import khome.communicating.EntityIdOnlyServiceData
@@ -22,7 +22,7 @@ import khome.values.service
 typealias RGBWLight = Actuator<RGBWLightState, LightAttributes>
 
 @Suppress("FunctionName")
-fun HassConnection.RGBWLight(objectId: ObjectId): RGBWLight =
+fun HomeAssistantApiClient.RGBWLight(objectId: ObjectId): RGBWLight =
     Light(
         objectId,
         ServiceCommandResolver { desiredState ->

@@ -1,6 +1,6 @@
 package khome.extending.entities
 
-import khome.HassConnection
+import khome.HomeAssistantApiClient
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
@@ -13,11 +13,11 @@ import khome.values.EntityId
  */
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> HassConnection.Sensor(id: EntityId): Sensor<S, A> =
+inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Sensor(id: EntityId): Sensor<S, A> =
     Sensor(id, S::class, A::class)
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> HassConnection.Actuator(
+inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Actuator(
     id: EntityId,
     serviceCommandResolver: ServiceCommandResolver<S>
 ): Actuator<S, A> = Actuator(id, S::class, A::class, serviceCommandResolver)

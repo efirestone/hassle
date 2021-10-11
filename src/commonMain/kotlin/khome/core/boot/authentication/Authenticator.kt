@@ -1,11 +1,11 @@
 package khome.core.boot.authentication
 
 import co.touchlab.kermit.Kermit
-import khome.HassSession
+import khome.WebSocketSession
 import khome.core.Credentials
 
 internal class Authenticator(
-    private val hassSession: HassSession,
+    private val session: WebSocketSession,
     credentials: Credentials
 ) {
 
@@ -33,14 +33,14 @@ internal class Authenticator(
         AuthRequest(accessToken = credentials.accessToken)
 
     private suspend fun consumeInitialResponse() =
-        hassSession.consumeSingleMessage<InitialResponse>()
+        session.consumeSingleMessage<InitialResponse>()
 
     private suspend fun consumeAuthenticationResponse() =
-        hassSession.consumeSingleMessage<AuthResponse>()
+        session.consumeSingleMessage<AuthResponse>()
 
     private suspend fun sendAuthenticationMessage() =
         try {
-            hassSession.callWebSocketApi(authRequest).also { logger.i { "Sending authentication message." } }
+            session.callWebSocketApi(authRequest).also { logger.i { "Sending authentication message." } }
         } catch (e: Exception) {
             logger.e(e) { "Could not send authentication message" }
         }

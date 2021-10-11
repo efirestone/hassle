@@ -2,14 +2,14 @@ package khome.core.boot.subscribing
 
 import co.touchlab.kermit.Kermit
 import khome.EventHandlerByEventType
-import khome.HassSession
+import khome.WebSocketSession
 import khome.communicating.HassApiClient
 import khome.communicating.SubscribeEventCommand
 import khome.communicating.sendCommand
 import khome.core.ResultResponse
 
 internal class HassEventSubscriber(
-    private val hassSession: HassSession,
+    private val session: WebSocketSession,
     private val subscriptions: EventHandlerByEventType,
     private val hassApi: HassApiClient
 ) {
@@ -18,7 +18,7 @@ internal class HassEventSubscriber(
     suspend fun subscribe() {
         subscriptions.forEach { entry ->
             SubscribeEventCommand(entry.key).also { command -> hassApi.sendCommand(command) }
-            hassSession.consumeSingleMessage<ResultResponse>()
+            session.consumeSingleMessage<ResultResponse>()
                 .takeIf { resultResponse -> resultResponse.success }
                 ?.let { logger.i { "Subscribed to event: ${entry.key}" } }
         }
