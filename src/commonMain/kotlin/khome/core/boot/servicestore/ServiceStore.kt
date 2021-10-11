@@ -1,6 +1,6 @@
 package khome.core.boot.servicestore
 
-interface ServiceStoreInterface {
+interface ServiceStore {
     val list: MutableMap<String, List<String>>
 
     operator fun set(domain: String, services: List<String>)
@@ -9,8 +9,8 @@ interface ServiceStoreInterface {
     fun clear()
 }
 
-internal class ServiceStore :
-    Iterable<MutableMap.MutableEntry<String, List<String>>>, ServiceStoreInterface {
+internal class ServiceStoreImpl :
+    Iterable<MutableMap.MutableEntry<String, List<String>>>, ServiceStore {
     override val list = createMapForServiceStore<String, List<String>>(10)
     override operator fun iterator() = list.iterator()
     override operator fun set(domain: String, services: List<String>) {

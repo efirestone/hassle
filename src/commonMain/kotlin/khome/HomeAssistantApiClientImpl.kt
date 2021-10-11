@@ -7,13 +7,12 @@ import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
-import io.ktor.http.*
 import khome.communicating.*
 import khome.core.Credentials
 import khome.core.boot.EventResponseConsumer
 import khome.core.boot.StateChangeEventSubscriber
 import khome.core.boot.authentication.Authenticator
-import khome.core.boot.servicestore.ServiceStore
+import khome.core.boot.servicestore.ServiceStoreImpl
 import khome.core.boot.servicestore.ServiceStoreInitializer
 import khome.core.boot.statehandling.EntityStateInitializer
 import khome.core.boot.subscribing.HassEventSubscriber
@@ -187,7 +186,7 @@ class HomeAssistantApiClientImpl(
             hassClient.startSession {
                 val hassApi = HassApiClientImpl(this, mapper, httpClient)
                 this@HomeAssistantApiClientImpl.hassApi = hassApi
-                val serviceStore = ServiceStore()
+                val serviceStore = ServiceStoreImpl()
                 val authenticator = Authenticator(this, credentials)
                 val serviceStoreInitializer = ServiceStoreInitializer(this, serviceStore)
                 val hassEventSubscriber = HassEventSubscriber(
