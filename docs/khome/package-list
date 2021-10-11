@@ -77,14 +77,14 @@ $dokka.location:khome.core.mapping.serializers.default/RegexSerializer/deseriali
 $dokka.location:khome.core.mapping.serializers.default/RegexSerializer/serialize/#kotlinx.serialization.encoding.Encoder#kotlin.text.Regex/PointingToDeclaration/khome/khome.core.mapping.serializers.default/-regex-serializer/serialize.html
 $dokka.location:khome.core.mapping////PointingToDeclaration/khome/khome.core.mapping/index.html
 $dokka.location:khome.core.mapping/ObjectMapper///PointingToDeclaration/khome/khome.core.mapping/-object-mapper/index.html
-$dokka.location:khome.core.mapping/ObjectMapper/ObjectMapper/#kotlinx.serialization.json.Json/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/-object-mapper.html
-$dokka.location:khome.core.mapping/ObjectMapper/delegate/#/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/delegate.html
+$dokka.location:khome.core.mapping/ObjectMapper/ObjectMapper/#kotlinx.serialization.json.Json#co.touchlab.kermit.Kermit/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/-object-mapper.html
 $dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlin.String#kotlin.reflect.KType/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlin.String/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlinx.serialization.json.JsonElement#kotlin.reflect.KClass[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/fromJson/#kotlinx.serialization.json.JsonElement/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/from-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/toJson/#TypeParam(bounds=[kotlin.Any])#kotlin.reflect.KType/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/to-json.html
 $dokka.location:khome.core.mapping/ObjectMapper/toJson/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/to-json.html
+$dokka.location:khome.core.mapping/ObjectMapper/toJsonWithParameter/#TypeParam(bounds=[kotlin.Any])#kotlin.reflect.KType/PointingToDeclaration/khome/khome.core.mapping/-object-mapper/to-json-with-parameter.html
 $dokka.location:khome.core.observing////PointingToDeclaration/khome/khome.core.observing/index.html
 $dokka.location:khome.core.observing/CircularArray///PointingToDeclaration/khome/khome.core.observing/-circular-array/index.html
 $dokka.location:khome.core.observing/CircularArray/CircularArray/#khome.core.observing.CircularArray[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/khome/khome.core.observing/-circular-array/-circular-array.html

@@ -64,7 +64,7 @@ internal class TestHomeAssistantApiClient : HomeAssistantApiClient {
         parameterBagType: KType
     ) {
         val command = ServiceCommand(domain, service, serviceData = parameterBag)
-        val json = mapper.toJson(command, parameterBagType)
+        val json = mapper.toJsonWithParameter(command, parameterBagType)
         callServiceRequests.add(json)
     }
 }
