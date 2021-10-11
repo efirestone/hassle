@@ -24,7 +24,7 @@ $dokka.location:khome.core.boot.servicestore/ServiceStoreInterface/get/#kotlin.S
 $dokka.location:khome.core.boot.servicestore/ServiceStoreInterface/list/#/PointingToDeclaration/khome/khome.core.boot.servicestore/-service-store-interface/list.html
 $dokka.location:khome.core.boot.servicestore/ServiceStoreInterface/set/#kotlin.String#kotlin.collections.List[kotlin.String]/PointingToDeclaration/khome/khome.core.boot.servicestore/-service-store-interface/set.html
 $dokka.location:khome.core.boot.servicestore/ServicesResponse///PointingToDeclaration/khome/khome.core.boot.servicestore/-services-response/index.html
-$dokka.location:khome.core.boot.servicestore/ServicesResponse/ServicesResponse/#kotlin.Int#kotlin.String#kotlin.Boolean#kotlin.collections.Map[kotlin.String,kotlin.collections.Map[kotlin.String,kotlin.Any]]/PointingToDeclaration/khome/khome.core.boot.servicestore/-services-response/-services-response.html
+$dokka.location:khome.core.boot.servicestore/ServicesResponse/ServicesResponse/#kotlin.Int#kotlin.String#kotlin.Boolean#kotlin.collections.Map[kotlin.String,kotlinx.serialization.json.JsonObject]/PointingToDeclaration/khome/khome.core.boot.servicestore/-services-response/-services-response.html
 $dokka.location:khome.core.boot.servicestore/ServicesResponse/id/#/PointingToDeclaration/khome/khome.core.boot.servicestore/-services-response/id.html
 $dokka.location:khome.core.boot.servicestore/ServicesResponse/result/#/PointingToDeclaration/khome/khome.core.boot.servicestore/-services-response/result.html
 $dokka.location:khome.core.boot.servicestore/ServicesResponse/success/#/PointingToDeclaration/khome/khome.core.boot.servicestore/-services-response/success.html
@@ -112,7 +112,6 @@ $dokka.location:khome.core/EventDtoInterface/eventType/#/PointingToDeclaration/
 $dokka.location:khome.core/EventDtoInterface/origin/#/PointingToDeclaration/khome/khome.core/-event-dto-interface/origin.html
 $dokka.location:khome.core/EventDtoInterface/timeFired/#/PointingToDeclaration/khome/khome.core/-event-dto-interface/time-fired.html
 $dokka.location:khome.core/KhomeDispatchers///PointingToDeclaration/khome/khome.core/-khome-dispatchers/index.html
-$dokka.location:khome.core/MessageInterface///PointingToDeclaration/khome/khome.core/-message-interface/index.html
 $dokka.location:khome.coroutines////PointingToDeclaration/khome/khome.coroutines/index.html
 $dokka.location:khome.coroutines/MainDispatcherFactory///PointingToDeclaration/khome/khome.coroutines/-main-dispatcher-factory/index.html
 $dokka.location:khome.coroutines/MainDispatcherFactory/create/#/PointingToDeclaration/khome/khome.coroutines/-main-dispatcher-factory/create.html

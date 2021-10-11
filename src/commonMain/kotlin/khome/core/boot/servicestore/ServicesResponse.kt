@@ -1,10 +1,12 @@
 package khome.core.boot.servicestore
 
-import khome.core.MessageInterface
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
 
+@Serializable
 data class ServicesResponse(
     val id: Int,
     val type: String,
     val success: Boolean,
-    val result: Map<String, Map<String, Any>>
-) : MessageInterface
+    val result: Map<String, JsonObject>
+)

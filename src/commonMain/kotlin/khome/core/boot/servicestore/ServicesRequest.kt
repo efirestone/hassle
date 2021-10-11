@@ -1,6 +1,9 @@
 package khome.core.boot.servicestore
 
-import khome.core.MessageInterface
+import kotlinx.serialization.Serializable
 
-internal data class ServicesRequest(val id: Int, val type: String = "get_services") :
-    MessageInterface
+@Serializable
+internal data class ServicesRequest(
+    val id: Int,
+    val type: String = "get_services"
+)
