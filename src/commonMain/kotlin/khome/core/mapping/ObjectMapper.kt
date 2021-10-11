@@ -77,6 +77,7 @@ class ObjectMapper(
 
 private fun makeJson(builder: SerializersModuleBuilder.() -> Unit = {}) =
     Json {
+        encodeDefaults = true
         isLenient = true
         prettyPrint = true
         ignoreUnknownKeys = true
