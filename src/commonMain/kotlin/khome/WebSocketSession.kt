@@ -17,11 +17,11 @@ internal class WebSocketSession(
     suspend fun callWebSocketApi(message: String) =
         send(message).also { logger.d { "Called hass api with message: $message" } }
 
-    suspend fun <M : Any> callWebSocketApi(message: M) =
+    suspend inline fun <reified M : Any> callWebSocketApi(message: M) =
         send(objectMapper.toJson(message))
             .also { logger.d { "Called hass api with message: ${objectMapper.toJson(message)}" } }
 
     suspend inline fun <reified M : Any> consumeSingleMessage(): M = incoming.receive().asObject()
-    inline fun <reified M : Any> Frame.asObject() = (this as Frame.Text).toObject<M>()
+    inline fun <reified M : Any> Frame.asObject(): M = (this as Frame.Text).toObject()
     inline fun <reified M : Any> Frame.Text.toObject(): M = objectMapper.fromJson(readText())
 }
