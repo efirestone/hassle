@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 
 internal class EntityStateInitializer(
-    val session: WebSocketSession,
+    private val session: WebSocketSession,
     private val sensorStateUpdater: SensorStateUpdater,
     private val actuatorStateUpdater: ActuatorStateUpdater,
     private val entityRegistrationValidation: EntityRegistrationValidation

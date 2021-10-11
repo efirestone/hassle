@@ -6,7 +6,7 @@ import khome.communicating.CALLER_ID
 import khome.core.ResultResponse
 
 internal class StateChangeEventSubscriber(
-    val session: WebSocketSession
+    private val session: WebSocketSession
 ) {
 
     private val logger = Kermit()
