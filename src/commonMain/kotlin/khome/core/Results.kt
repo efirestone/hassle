@@ -8,20 +8,35 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 
 @Serializable
-internal data class ResolverResponse(val id: Int, val type: ResponseType)
+internal data class ResolverResponse(
+    val id: Int,
+    val type: ResponseType
+)
+
 @Serializable
-internal data class StateChangedResponse(val id: Int, val type: ResponseType, val event: StateChangedEventData)
+internal data class StateChangedResponse(
+    val id: Int,
+    val type: ResponseType,
+    val event: StateChangedEventData
+)
 
 @Serializable
 internal data class StateChangedEventData(
+    @SerialName("event_type")
     override val eventType: String,
     val data: StateChangedData,
+    @SerialName("time_fired")
     override val timeFired: Instant,
     override val origin: String
 ) : EventDtoInterface
 
 @Serializable
-internal data class StateChangedData(val entityId: EntityId, val newState: JsonElement)
+internal data class StateChangedData(
+    @SerialName("entity_id")
+    val entityId: EntityId,
+    @SerialName("new_state")
+    val newState: JsonElement
+)
 
 interface EventDtoInterface {
     val eventType: String
@@ -31,17 +46,29 @@ interface EventDtoInterface {
 
 @Serializable
 internal data class StateResponse(
+    @SerialName("entity_id")
     val entityId: EntityId,
+    @SerialName("last_changed")
     val lastChanged: Instant,
     val state: JsonObject,
     val attributes: JsonElement,
+    @SerialName("last_updated")
     val lastUpdated: Instant
 )
 
-internal data class EventResponse(val id: Int, val type: ResponseType, val event: Event)
+@Serializable
+internal data class EventResponse(
+    val id: Int,
+    val type: ResponseType,
+    val event: Event
+)
+
+@Serializable
 internal data class Event(
+    @SerialName("event_type")
     override val eventType: String,
     val data: JsonElement,
+    @SerialName("time_fired")
     override val timeFired: Instant,
     override val origin: String
 ) : EventDtoInterface
@@ -52,7 +79,7 @@ internal data class ResultResponse(
     val type: String,
     val success: Boolean,
     val error: ErrorResponse? = null,
-    val result: JsonObject?
+    val result: JsonObject? = null
 )
 
 @Serializable
