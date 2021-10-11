@@ -31,7 +31,6 @@ import khome.values.EventType
 import khome.values.Service
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import kotlin.collections.set
 import kotlin.coroutines.CoroutineContext
 import kotlin.reflect.KClass
@@ -44,17 +43,20 @@ internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
 internal typealias HassApiCommandHistory = MutableMap<EntityId, ServiceCommand<CommandDataWithEntityId>>
 
-fun homeAssistantApiClient(credentials: Credentials): HomeAssistantApiClient = HomeAssistantApiClientImpl(credentials)
+fun homeAssistantApiClient(credentials: Credentials, coroutineScope: CoroutineScope): HomeAssistantApiClient =
+    HomeAssistantApiClientImpl(credentials, coroutineScope)
 
 class HomeAssistantApiClientImpl(
-    private val credentials: Credentials
+    private val credentials: Credentials,
+    coroutineScope: CoroutineScope,
 ) : HomeAssistantApiClient {
 
     private val logger = Kermit()
     val mapper: ObjectMapper = ObjectMapper()
-    private val hassClient: HassClient = HassClient(
+    private val connection: Connection = Connection(
         credentials,
-        objectMapper = mapper
+        coroutineScope,
+        mapper
     )
     private val httpClient = HttpClient(CIO) {
         install(JsonFeature) {
@@ -183,44 +185,42 @@ class HomeAssistantApiClientImpl(
         hassApi?.sendCommand(command)
     }
 
-    fun launch() =
-        MainScope().launch {
-            hassClient.startSession {
-                val hassApi = HassApiClientImpl(this, mapper, httpClient)
-                this@HomeAssistantApiClientImpl.hassApi = hassApi
-                val serviceStore = ServiceStoreImpl()
-                val authenticator = Authenticator(this, credentials)
-                val serviceStoreInitializer = ServiceStoreInitializer(this, serviceStore)
-                val hassEventSubscriber = HassEventSubscriber(
-                    this,
-                    eventSubscriptionsByEventType,
-                    hassApi
-                )
+    override fun connect() =
+        connection.connect {
+            val hassApi = HassApiClientImpl(this, mapper, httpClient)
+            this@HomeAssistantApiClientImpl.hassApi = hassApi
+            val serviceStore = ServiceStoreImpl()
+            val authenticator = Authenticator(this, credentials)
+            val serviceStoreInitializer = ServiceStoreInitializer(this, serviceStore)
+            val hassEventSubscriber = HassEventSubscriber(
+                this,
+                eventSubscriptionsByEventType,
+                hassApi
+            )
 
-                val entityStateInitializer = EntityStateInitializer(
-                    this,
-                    SensorStateUpdater(sensorsByApiName),
-                    ActuatorStateUpdater(actuatorsByApiName),
-                    EntityRegistrationValidation(actuatorsByApiName, sensorsByApiName)
-                )
+            val entityStateInitializer = EntityStateInitializer(
+                this,
+                SensorStateUpdater(sensorsByApiName),
+                ActuatorStateUpdater(actuatorsByApiName),
+                EntityRegistrationValidation(actuatorsByApiName, sensorsByApiName)
+            )
 
-                val stateChangeEventSubscriber = StateChangeEventSubscriber(this)
-                val eventResponseConsumer = EventResponseConsumer(
-                    this,
-                    mapper,
-                    SensorStateUpdater(sensorsByApiName),
-                    ActuatorStateUpdater(actuatorsByApiName),
-                    eventSubscriptionsByEventType,
-                    errorResponseHandlerFunction
-                )
+            val stateChangeEventSubscriber = StateChangeEventSubscriber(this)
+            val eventResponseConsumer = EventResponseConsumer(
+                this,
+                mapper,
+                SensorStateUpdater(sensorsByApiName),
+                ActuatorStateUpdater(actuatorsByApiName),
+                eventSubscriptionsByEventType,
+                errorResponseHandlerFunction
+            )
 
-                authenticator.authenticate()
-                serviceStoreInitializer.initialize()
-                hassEventSubscriber.subscribe()
-                entityStateInitializer.initialize()
-                stateChangeEventSubscriber.subscribe()
-                eventResponseConsumer.consumeBlocking()
-            }
+            authenticator.authenticate()
+            serviceStoreInitializer.initialize()
+            hassEventSubscriber.subscribe()
+            entityStateInitializer.initialize()
+            stateChangeEventSubscriber.subscribe()
+            eventResponseConsumer.consumeBlocking()
         }
 }
 

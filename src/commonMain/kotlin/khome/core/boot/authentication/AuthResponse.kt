@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class AuthResponse(
     val type: String,
-    val message: String?,
+    val message: String? = null,
     @SerialName("ha_version")
     val haVersion: String
 )
