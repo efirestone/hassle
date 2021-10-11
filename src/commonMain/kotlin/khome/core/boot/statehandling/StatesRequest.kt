@@ -1,6 +1,9 @@
 package khome.core.boot.statehandling
 
-import khome.core.MessageInterface
+import kotlinx.serialization.Serializable
 
-internal data class StatesRequest(val id: Int, val type: String = "get_states") :
-    MessageInterface
+@Serializable
+internal data class StatesRequest(
+    val id: Int,
+    val type: String = "get_states"
+)
