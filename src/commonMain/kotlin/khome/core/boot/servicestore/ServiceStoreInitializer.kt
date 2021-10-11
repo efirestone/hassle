@@ -6,7 +6,7 @@ import khome.communicating.CALLER_ID
 
 internal class ServiceStoreInitializer(
     private val session: WebSocketSession,
-    private val serviceStore: ServiceStoreInterface
+    private val serviceStore: ServiceStore
 ) {
     private val logger = Kermit()
     private val servicesRequest =
