@@ -155,6 +155,13 @@ class HomeAssistantApiClientImpl(
         ).also { hassApi?.sendCommand(it, parameterBagType) } // TODO: Reconnect if no session available
     }
 
+    override suspend fun callService2(
+        command: ServiceCommand2
+    ) {
+        // TODO: Reconnect if no session available
+        hassApi?.sendCommand2(command)
+    }
+
     private fun registerSensor(entityId: EntityId, sensor: Sensor<*, *>) {
         check(!sensorsByApiName.containsKey(entityId)) { "Sensor with id: $entityId already exists." }
         sensorsByApiName[entityId] = sensor
