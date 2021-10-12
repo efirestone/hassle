@@ -1,5 +1,6 @@
 package khome
 
+import khome.communicating.ServiceCommand2
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
@@ -116,8 +117,15 @@ interface HomeAssistantApiClient {
         parameterBag: PB,
         parameterBagType: KType
     )
+
+    suspend fun callService2(
+        command: ServiceCommand2
+    )
 }
 
 @OptIn(ExperimentalStdlibApi::class)
-suspend inline fun <reified PB : Any> HomeAssistantApiClient.callService(domain: Domain, service: Service, parameterBag: PB) =
-    callService(domain, service, parameterBag, typeOf<PB>())
+suspend inline fun <reified PB : Any> HomeAssistantApiClient.callService(
+    domain: Domain,
+    service: Service,
+    parameterBag: PB
+) = callService(domain, service, parameterBag, typeOf<PB>())

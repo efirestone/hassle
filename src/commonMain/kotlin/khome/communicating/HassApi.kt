@@ -51,6 +51,14 @@ internal class HassApiClientImpl(
         }
     }
 
+    override suspend fun sendCommand2(command: ServiceCommand2) {
+        command.id = CALLER_ID.getAndIncrement() // has to be called within single thread to prevent race conditions
+        objectMapper.toJson(command).let { serializedCommand ->
+            session.callWebSocketApi(serializedCommand)
+                .also { logger.i { "Called hass api with message: $serializedCommand" } }
+        }
+    }
+
     override suspend fun emitEvent(eventType: String, eventData: Any?) {
         httpClient.post<HttpResponse> {
             url { encodedPath = "/api/events/$eventType" }
@@ -62,6 +70,8 @@ internal class HassApiClientImpl(
 internal interface HassApiClient {
     // Tell a Home Assistant service to perform a command.
     suspend fun <SD> sendCommand(command: HassApiCommand<SD>, parameterType: KType)
+
+    suspend fun sendCommand2(command: ServiceCommand2)
 
     // Emit an event, such as a sensor change event.
     suspend fun emitEvent(eventType: String, eventData: Any?)

@@ -2,6 +2,12 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:khome.communicating////PointingToDeclaration/khome/khome.communicating/index.html
 $dokka.location:khome.communicating//ServiceCommandResolver/#kotlin.Function1[TypeParam(bounds=[khome.entities.State[*]]),khome.communicating.ResolvedServiceCommand]/PointingToDeclaration/khome/khome.communicating/-service-command-resolver.html
+$dokka.location:khome.communicating/CallServiceCommand.Target///PointingToDeclaration/khome/khome.communicating/-call-service-command/-target/index.html
+$dokka.location:khome.communicating/CallServiceCommand.Target/Target/#khome.values.EntityId/PointingToDeclaration/khome/khome.communicating/-call-service-command/-target/-target.html
+$dokka.location:khome.communicating/CallServiceCommand.Target/entityId/#/PointingToDeclaration/khome/khome.communicating/-call-service-command/-target/entity-id.html
+$dokka.location:khome.communicating/CallServiceCommand///PointingToDeclaration/khome/khome.communicating/-call-service-command/index.html
+$dokka.location:khome.communicating/CallServiceCommand/domain/#/PointingToDeclaration/khome/khome.communicating/-call-service-command/domain.html
+$dokka.location:khome.communicating/CallServiceCommand/service/#/PointingToDeclaration/khome/khome.communicating/-call-service-command/service.html
 $dokka.location:khome.communicating/CommandDataWithEntityId///PointingToDeclaration/khome/khome.communicating/-command-data-with-entity-id/index.html
 $dokka.location:khome.communicating/CommandDataWithEntityId/entityId/#/PointingToDeclaration/khome/khome.communicating/-command-data-with-entity-id/entity-id.html
 $dokka.location:khome.communicating/DesiredServiceData///PointingToDeclaration/khome/khome.communicating/-desired-service-data/index.html
@@ -9,11 +15,21 @@ $dokka.location:khome.communicating/DesiredServiceData/DesiredServiceData/#/Poin
 $dokka.location:khome.communicating/DesiredServiceData/entityId/#/PointingToDeclaration/khome/khome.communicating/-desired-service-data/entity-id.html
 $dokka.location:khome.communicating/EntityIdOnlyServiceData///PointingToDeclaration/khome/khome.communicating/-entity-id-only-service-data/index.html
 $dokka.location:khome.communicating/EntityIdOnlyServiceData/EntityIdOnlyServiceData/#/PointingToDeclaration/khome/khome.communicating/-entity-id-only-service-data/-entity-id-only-service-data.html
+$dokka.location:khome.communicating/PlayMediaServiceCommand.ServiceData///PointingToDeclaration/khome/khome.communicating/-play-media-service-command/-service-data/index.html
+$dokka.location:khome.communicating/PlayMediaServiceCommand.ServiceData/ServiceData/#khome.values.MediaContentId/PointingToDeclaration/khome/khome.communicating/-play-media-service-command/-service-data/-service-data.html
+$dokka.location:khome.communicating/PlayMediaServiceCommand.ServiceData/mediaContentId/#/PointingToDeclaration/khome/khome.communicating/-play-media-service-command/-service-data/media-content-id.html
+$dokka.location:khome.communicating/PlayMediaServiceCommand///PointingToDeclaration/khome/khome.communicating/-play-media-service-command/index.html
+$dokka.location:khome.communicating/PlayMediaServiceCommand/PlayMediaServiceCommand/#khome.communicating.PlayMediaServiceCommand.ServiceData#khome.communicating.CallServiceCommand.Target/PointingToDeclaration/khome/khome.communicating/-play-media-service-command/-play-media-service-command.html
+$dokka.location:khome.communicating/PlayMediaServiceCommand/PlayMediaServiceCommand/#khome.values.MediaContentId#khome.values.EntityId/PointingToDeclaration/khome/khome.communicating/-play-media-service-command/-play-media-service-command.html
+$dokka.location:khome.communicating/PlayMediaServiceCommand/serviceData/#/PointingToDeclaration/khome/khome.communicating/-play-media-service-command/service-data.html
+$dokka.location:khome.communicating/PlayMediaServiceCommand/target/#/PointingToDeclaration/khome/khome.communicating/-play-media-service-command/target.html
 $dokka.location:khome.communicating/ResolvedServiceCommand///PointingToDeclaration/khome/khome.communicating/-resolved-service-command/index.html
 $dokka.location:khome.communicating/ResolvedServiceCommand/ResolvedServiceCommand/#khome.values.Domain?#khome.values.Service#khome.communicating.CommandDataWithEntityId/PointingToDeclaration/khome/khome.communicating/-resolved-service-command/-resolved-service-command.html
 $dokka.location:khome.communicating/ResolvedServiceCommand/domain/#/PointingToDeclaration/khome/khome.communicating/-resolved-service-command/domain.html
 $dokka.location:khome.communicating/ResolvedServiceCommand/service/#/PointingToDeclaration/khome/khome.communicating/-resolved-service-command/service.html
 $dokka.location:khome.communicating/ResolvedServiceCommand/serviceData/#/PointingToDeclaration/khome/khome.communicating/-resolved-service-command/service-data.html
+$dokka.location:khome.communicating/ServiceCommand2///PointingToDeclaration/khome/khome.communicating/-service-command2/index.html
+$dokka.location:khome.communicating/ServiceCommand2/id/#/PointingToDeclaration/khome/khome.communicating/-service-command2/id.html
 $dokka.location:khome.communicating/ServiceCommandResolver///PointingToDeclaration/khome/khome.communicating/-service-command-resolver/index.html
 $dokka.location:khome.communicating/ServiceCommandResolver/resolve/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/khome/khome.communicating/-service-command-resolver/resolve.html
 $dokka.location:khome.core.boot.servicestore////PointingToDeclaration/khome/khome.core.boot.servicestore/index.html
@@ -643,8 +659,6 @@ $dokka.location:khome.extending.events/IosNotificationActionEventData/sourceDevi
 $dokka.location:khome.extending.events/IosNotificationActionEventData/sourceDeviceName/#/PointingToDeclaration/khome/khome.extending.events/-ios-notification-action-event-data/source-device-name.html
 $dokka.location:khome.extending.events/IosNotificationActionEventData/sourceDevicePermanentID/#/PointingToDeclaration/khome/khome.extending.events/-ios-notification-action-event-data/source-device-permanent-i-d.html
 $dokka.location:khome.extending.events/IosNotificationActionEventData/textInput/#/PointingToDeclaration/khome/khome.extending.events/-ios-notification-action-event-data/text-input.html
-$dokka.location:khome.extending.serviceCalls.mediaPlayer////PointingToDeclaration/khome/khome.extending.serviceCalls.mediaPlayer/index.html
-$dokka.location:khome.extending.serviceCalls.mediaPlayer//playMedia/khome.HomeAssistantApiClient#khome.values.MediaContentId/PointingToDeclaration/khome/khome.extending.serviceCalls.mediaPlayer/play-media.html
 $dokka.location:khome.extending.serviceCalls.notifications////PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/index.html
 $dokka.location:khome.extending.serviceCalls.notifications//PERSISTENT_NOTIFICATION/#/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/-p-e-r-s-i-s-t-e-n-t_-n-o-t-i-f-i-c-a-t-i-o-n.html
 $dokka.location:khome.extending.serviceCalls.notifications//createPersistentNotification/khome.HomeAssistantApiClient#kotlin.String#kotlin.String?#kotlin.String?/PointingToDeclaration/khome/khome.extending.serviceCalls.notifications/create-persistent-notification.html
@@ -1129,6 +1143,7 @@ $dokka.location:khome/HomeAssistantApiClient/Actuator/#khome.values.EntityId#kot
 $dokka.location:khome/HomeAssistantApiClient/Sensor/#khome.values.EntityId#kotlin.reflect.KClass[*]#kotlin.reflect.KClass[*]/PointingToDeclaration/khome/khome/-home-assistant-api-client/-sensor.html
 $dokka.location:khome/HomeAssistantApiClient/attachEventHandler/#khome.values.EventType#kotlin.reflect.KClass[*]#kotlin.Function2[TypeParam(bounds=[kotlin.Any?]),khome.observability.Switchable,kotlin.Unit]/PointingToDeclaration/khome/khome/-home-assistant-api-client/attach-event-handler.html
 $dokka.location:khome/HomeAssistantApiClient/callService/#khome.values.Domain#khome.values.Service#TypeParam(bounds=[kotlin.Any])#kotlin.reflect.KType/PointingToDeclaration/khome/khome/-home-assistant-api-client/call-service.html
+$dokka.location:khome/HomeAssistantApiClient/callService2/#khome.communicating.ServiceCommand2/PointingToDeclaration/khome/khome/-home-assistant-api-client/call-service2.html
 $dokka.location:khome/HomeAssistantApiClient/connect/#/PointingToDeclaration/khome/khome/-home-assistant-api-client/connect.html
 $dokka.location:khome/HomeAssistantApiClient/emitEvent/#kotlin.String#kotlin.Any?/PointingToDeclaration/khome/khome/-home-assistant-api-client/emit-event.html
 $dokka.location:khome/HomeAssistantApiClient/observerExceptionHandler/#/PointingToDeclaration/khome/khome/-home-assistant-api-client/observer-exception-handler.html
@@ -1140,6 +1155,7 @@ $dokka.location:khome/HomeAssistantApiClientImpl/HomeAssistantApiClientImpl/#kho
 $dokka.location:khome/HomeAssistantApiClientImpl/Sensor/#khome.values.EntityId#kotlin.reflect.KClass[*]#kotlin.reflect.KClass[*]/PointingToDeclaration/khome/khome/-home-assistant-api-client-impl/-sensor.html
 $dokka.location:khome/HomeAssistantApiClientImpl/attachEventHandler/#khome.values.EventType#kotlin.reflect.KClass[*]#kotlin.Function2[TypeParam(bounds=[kotlin.Any?]),khome.observability.Switchable,kotlin.Unit]/PointingToDeclaration/khome/khome/-home-assistant-api-client-impl/attach-event-handler.html
 $dokka.location:khome/HomeAssistantApiClientImpl/callService/#khome.values.Domain#khome.values.Service#TypeParam(bounds=[kotlin.Any])#kotlin.reflect.KType/PointingToDeclaration/khome/khome/-home-assistant-api-client-impl/call-service.html
+$dokka.location:khome/HomeAssistantApiClientImpl/callService2/#khome.communicating.ServiceCommand2/PointingToDeclaration/khome/khome/-home-assistant-api-client-impl/call-service2.html
 $dokka.location:khome/HomeAssistantApiClientImpl/connect/#/PointingToDeclaration/khome/khome/-home-assistant-api-client-impl/connect.html
 $dokka.location:khome/HomeAssistantApiClientImpl/emitEvent/#kotlin.String#kotlin.Any?/PointingToDeclaration/khome/khome/-home-assistant-api-client-impl/emit-event.html
 $dokka.location:khome/HomeAssistantApiClientImpl/errorResponseHandlerFunction/#/PointingToDeclaration/khome/khome/-home-assistant-api-client-impl/error-response-handler-function.html
@@ -1175,7 +1191,6 @@ khome.extending.entities.actuators.mediaplayer
 khome.extending.entities.sensors
 khome.extending.entities.sensors.binary
 khome.extending.events
-khome.extending.serviceCalls.mediaPlayer
 khome.extending.serviceCalls.notifications
 khome.observability
 khome.values

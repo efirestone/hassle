@@ -1,6 +1,7 @@
 package khome
 
 import khome.communicating.ServiceCommand
+import khome.communicating.ServiceCommand2
 import khome.communicating.ServiceCommandResolver
 import khome.core.mapping.ObjectMapper
 import khome.entities.Attributes
@@ -67,6 +68,11 @@ internal class TestHomeAssistantApiClient : HomeAssistantApiClient {
     ) {
         val command = ServiceCommand(domain, service, serviceData = parameterBag)
         val json = mapper.toJsonWithParameter(command, parameterBagType)
+        callServiceRequests.add(json)
+    }
+
+    override suspend fun callService2(command: ServiceCommand2) {
+        val json = mapper.toJson(command)
         callServiceRequests.add(json)
     }
 }
