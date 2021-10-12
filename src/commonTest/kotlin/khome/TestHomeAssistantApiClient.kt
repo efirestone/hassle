@@ -42,6 +42,8 @@ internal class TestHomeAssistantApiClient : HomeAssistantApiClient {
 
     override var observerExceptionHandler: (Throwable) -> Unit = {}
 
+    override fun connect() {}
+
     override fun <ED> attachEventHandler(
         eventType: EventType,
         eventDataType: KClass<*>,

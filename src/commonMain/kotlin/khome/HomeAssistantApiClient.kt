@@ -78,6 +78,8 @@ interface HomeAssistantApiClient {
         eventHandler: EventHandlerFunction<ED>
     ): Switchable
 
+    fun connect()
+
     /**
      * Overwrites the default event handler exception handler action.
      *
