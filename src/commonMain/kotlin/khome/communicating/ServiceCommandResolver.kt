@@ -3,13 +3,13 @@ package khome.communicating
 import khome.entities.State
 import khome.values.EntityId
 
-typealias ServiceCommandResolverFunction<S> = (EntityId, S) -> ServiceCommand
+internal typealias ServiceCommandResolverFunction<S> = (EntityId, S) -> ServiceCommand
 
 @Suppress("FunctionName")
-fun <S : State<*>> ServiceCommandResolver(resolverFunction: ServiceCommandResolverFunction<S>): ServiceCommandResolver<S> =
+internal fun <S : State<*>> ServiceCommandResolver(resolverFunction: ServiceCommandResolverFunction<S>): ServiceCommandResolver<S> =
     ServiceCommandResolverImpl(resolverFunction)
 
-interface ServiceCommandResolver<S> {
+internal interface ServiceCommandResolver<S> {
     fun resolve(entityId: EntityId, desiredState: S): ServiceCommand
 }
 

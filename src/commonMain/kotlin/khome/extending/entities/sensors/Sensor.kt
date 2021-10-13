@@ -13,7 +13,7 @@ import khome.values.ObjectId
 import khome.values.domain
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Sensor(objectId: ObjectId): Sensor<S, A> =
+internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Sensor(objectId: ObjectId): Sensor<S, A> =
     Sensor(EntityId.fromPair("sensor".domain to objectId))
 
 fun <S : State<*>, A : Attributes, SV> Sensor<S, A>.measurementValueChangedFrom(values: Pair<SV, SV>) =

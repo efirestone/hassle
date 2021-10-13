@@ -3,7 +3,7 @@ package khome
 import khome.core.Credentials
 import kotlinx.coroutines.*
 
-fun withConnection(block: HomeAssistantApiClientImpl.() -> Unit) = runBlocking {
+internal fun withConnection(block: HomeAssistantApiClientImpl.() -> Unit) = runBlocking {
     val credentials = Credentials(
         "Test Server",
         host = "localhost",

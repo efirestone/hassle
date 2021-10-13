@@ -21,7 +21,7 @@ import kotlin.reflect.KClass
  * @param S the type of the state object that represents all mutable state values of the entity. Has to implement the [State] interface.
  * @param A the type of the attributes object that represents all immutable attribute values of the entity. Has to implement the [Attributes] interface.
  */
-class Actuator<S : State<*>, A : Attributes>(
+class Actuator<S : State<*>, A : Attributes> internal constructor(
     val entityId: EntityId,
     private val connection: HomeAssistantApiClientImpl,
     private val mapper: ObjectMapper,
@@ -80,7 +80,7 @@ class Actuator<S : State<*>, A : Attributes>(
      *
      * @param command the command to send
      */
-    suspend fun send(command: ServiceCommand) = connection.send(command)
+    internal suspend fun send(command: ServiceCommand) = connection.send(command)
 
     override fun attachObserver(observer: ObserverFunction<Actuator<S, A>>): Switchable =
         ObserverImpl(

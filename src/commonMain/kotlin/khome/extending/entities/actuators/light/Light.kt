@@ -16,7 +16,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Light(
+internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Light(
     objectId: ObjectId,
     serviceCommandResolver: ServiceCommandResolver<S>
 ): Actuator<S, A> = Actuator(EntityId.fromPair("light".domain to objectId), serviceCommandResolver)

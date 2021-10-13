@@ -43,7 +43,7 @@ internal typealias HassApiCommandHistory = MutableMap<EntityId, Command>
 fun homeAssistantApiClient(credentials: Credentials, coroutineScope: CoroutineScope): HomeAssistantApiClient =
     HomeAssistantApiClientImpl(credentials, coroutineScope)
 
-class HomeAssistantApiClientImpl(
+internal class HomeAssistantApiClientImpl(
     private val credentials: Credentials,
     coroutineScope: CoroutineScope,
 ) : HomeAssistantApiClient {
@@ -93,7 +93,21 @@ class HomeAssistantApiClientImpl(
         logger.e { "CommandId: ${errorResponseData.commandId} - errorCode: ${errorResponseData.errorResponse.code} | message: ${errorResponseData.errorResponse.message}" }
     }
 
-    override fun <S : State<*>, A : Attributes> Sensor(
+    /**
+     * [Sensor] factory function
+     *
+     * Creates a fresh instance of a sensor entity.
+     *
+     * @param S the type of the state that represents all state values of the entity. Has to implement the [State] interface.
+     * @param A the type of the attributes that represents all attribute values of the entity. Has to implement the [Attributes] interface.
+     * @param id the corresponding [EntityId] for the sensor.
+     * @param stateType the type param [S] as [KClass].
+     * @param attributesType the type param [A] as [KClass].
+     *
+     * @return [Sensor]
+     */
+    @Suppress("FunctionName")
+    fun <S : State<*>, A : Attributes> Sensor(
         id: EntityId,
         stateType: KClass<*>,
         attributesType: KClass<*>
@@ -101,7 +115,22 @@ class HomeAssistantApiClientImpl(
         Sensor<S, A>(this, mapper, stateType, attributesType)
             .also { registerSensor(id, it) }
 
-    override fun <S : State<*>, A : Attributes> Actuator(
+    /**
+     * [Actuator] factory function
+     *
+     * Creates a fresh instance of a actuator entity.
+     *
+     * @param S the type of the state that represents all state values of the entity. Has to implement the [State] interface.
+     * @param A the type of the attributes that represents all attribute values of the entity. Has to implement the [Attributes] interface.
+     * @param id the corresponding [EntityId] for the sensor.
+     * @param stateType the type param [S] as [KClass].
+     * @param attributesType the type param [A] as [KClass].
+     * @param serviceCommandResolver the serviceCommandResolver instance. @See [ServiceCommandResolver] for more.
+     *
+     * @return [Actuator]
+     */
+    @Suppress("FunctionName")
+    fun <S : State<*>, A : Attributes> Actuator(
         id: EntityId,
         stateType: KClass<*>,
         attributesType: KClass<*>,
@@ -140,7 +169,12 @@ class HomeAssistantApiClientImpl(
         errorResponseHandlerFunction = errorResponseHandler
     }
 
-    override suspend fun send(command: Command) {
+    /**
+     * Sends a service command to home assistant.
+     *
+     * @param command the command to send
+     */
+    internal suspend fun send(command: Command) {
         // TODO: Reconnect if no session available
         hassApi?.send(command)
     }
