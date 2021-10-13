@@ -1,10 +1,7 @@
 package khome.extending.entities.actuators.light
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DesiredServiceData
-import khome.communicating.EntityIdOnlyServiceData
-import khome.communicating.ResolvedServiceCommand
-import khome.communicating.ServiceCommandResolver
+import khome.communicating.*
 import khome.entities.State
 import khome.entities.devices.Actuator
 import khome.extending.entities.SwitchableValue
@@ -20,61 +17,38 @@ typealias RGBLight = Actuator<RGBLightState, LightAttributes>
 fun HomeAssistantApiClient.RGBLight(objectId: ObjectId): RGBLight =
     Light(
         objectId,
-        ServiceCommandResolver { desiredState ->
+        ServiceCommandResolver { entityId, desiredState ->
             when (desiredState.value) {
-                SwitchableValue.OFF -> {
-                    ResolvedServiceCommand(
-                        service = "turn_off".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
-                }
+                SwitchableValue.OFF -> TurnOffServiceCommand(entityId)
 
                 SwitchableValue.ON -> {
                     desiredState.hsColor?.let {
-                        ResolvedServiceCommand(
-                            service = "turn_on".service,
-                            serviceData = RGBLightServiceData(
-                                hsColor = it
-                            )
+                        TurnOnLightServiceCommand(
+                            entityId,
+                            TurnOnLightServiceCommand.ServiceData(hsColor = it)
                         )
                     } ?: desiredState.rgbColor?.let {
-                        ResolvedServiceCommand(
-                            service = "turn_on".service,
-                            serviceData = RGBLightServiceData(
-                                rgbColor = it
-                            )
+                        TurnOnLightServiceCommand(
+                            entityId,
+                            TurnOnLightServiceCommand.ServiceData(rgbColor = it)
                         )
                     } ?: desiredState.brightness?.let {
-                        ResolvedServiceCommand(
-                            service = "turn_on".service,
-                            serviceData = RGBLightServiceData(
-                                brightness = it
-                            )
+                        TurnOnLightServiceCommand(
+                            entityId,
+                            TurnOnLightServiceCommand.ServiceData(brightness = it)
                         )
                     } ?: desiredState.xyColor?.let {
-                        ResolvedServiceCommand(
-                            service = "turn_on".service,
-                            serviceData = RGBLightServiceData(
-                                xyColor = it
-                            )
+                        TurnOnLightServiceCommand(
+                            entityId,
+                            TurnOnLightServiceCommand.ServiceData(xyColor = it)
                         )
-                    } ?: ResolvedServiceCommand(
-                        service = "turn_on".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
+                    } ?: TurnOnServiceCommand(entityId)
                 }
 
                 SwitchableValue.UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
             }
         }
     )
-
-data class RGBLightServiceData(
-    private val brightness: Brightness? = null,
-    private val hsColor: HSColor? = null,
-    private val rgbColor: RGBColor? = null,
-    private val xyColor: XYColor? = null
-) : DesiredServiceData()
 
 @Serializable
 data class RGBLightState(
@@ -119,7 +93,7 @@ suspend fun RGBLight.setXY(x: Double, y: Double) {
 }
 
 suspend fun RGBLight.setColor(name: ColorName) =
-    callService("turn_on".service, NamedColorServiceData(name))
+    send(TurnOnLightServiceCommand(entityId, TurnOnLightServiceCommand.ServiceData(colorName = name)))
 
 fun RGBLight.onTurnedOn(f: RGBLight.(Switchable) -> Unit) =
     onStateValueChangedFrom(SwitchableValue.OFF to SwitchableValue.ON, f)

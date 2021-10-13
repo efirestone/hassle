@@ -1,12 +1,12 @@
 package khome.extending.entities
 
-import khome.communicating.EntityIdOnlyServiceData
-import khome.communicating.ResolvedServiceCommand
+import khome.communicating.TurnOffServiceCommand
+import khome.communicating.TurnOnServiceCommand
 import khome.entities.Attributes
 import khome.entities.State
+import khome.values.EntityId
 import khome.values.FriendlyName
 import khome.values.UserId
-import khome.values.service
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -38,16 +38,10 @@ data class DefaultAttributes(
     override val lastUpdated: Instant
 ) : Attributes
 
-fun mapSwitchable(switchableValue: SwitchableValue) =
+fun mapSwitchable(entityId: EntityId, switchableValue: SwitchableValue) =
     when (switchableValue) {
-        SwitchableValue.ON -> ResolvedServiceCommand(
-            service = "turn_on".service,
-            serviceData = EntityIdOnlyServiceData()
-        )
-        SwitchableValue.OFF -> ResolvedServiceCommand(
-            service = "turn_off".service,
-            serviceData = EntityIdOnlyServiceData()
-        )
+        SwitchableValue.ON -> TurnOnServiceCommand(entityId)
+        SwitchableValue.OFF -> TurnOffServiceCommand(entityId)
 
         SwitchableValue.UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
     }

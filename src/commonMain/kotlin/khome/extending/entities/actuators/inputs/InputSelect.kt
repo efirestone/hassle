@@ -1,8 +1,7 @@
 package khome.extending.entities.actuators.inputs
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DesiredServiceData
-import khome.communicating.ResolvedServiceCommand
+import khome.communicating.SelectOptionServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
@@ -19,13 +18,8 @@ typealias InputSelect = Actuator<InputSelectState, InputSelectAttributes>
 fun HomeAssistantApiClient.InputSelect(objectId: ObjectId): InputSelect =
     Actuator(
         EntityId.fromPair("input_select".domain to objectId),
-        ServiceCommandResolver { desiredState ->
-            ResolvedServiceCommand(
-                service = "select_option".service,
-                serviceData = InputSelectServiceData(
-                    desiredState.value
-                )
-            )
+        ServiceCommandResolver { entityId, desiredState ->
+            SelectOptionServiceCommand(entityId, desiredState.value)
         }
     )
 
@@ -42,8 +36,6 @@ data class InputSelectAttributes(
     @SerialName("last_updated")
     override val lastUpdated: Instant
 ) : Attributes
-
-data class InputSelectServiceData(val option: Option) : DesiredServiceData()
 
 @Serializable
 data class InputSelectState(override val value: Option) : State<Option>

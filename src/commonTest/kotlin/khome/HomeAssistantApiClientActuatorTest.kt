@@ -1,8 +1,7 @@
 package khome
 
-import khome.communicating.EntityIdOnlyServiceData
-import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
+import khome.communicating.TurnOnServiceCommand
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Actuator
@@ -23,15 +22,11 @@ internal class HomeAssistantApiClientActuatorTest {
     fun `assert actuator factory creates new Actuator instance`() = withConnection {
         val actuator =
             Actuator<ActuatorState, ActuatorAttributes>(
-                EntityId.fromPair("light".domain to "some_light".objectId),
+                EntityId.fromString("light.some_light"),
                 ActuatorState::class,
                 ActuatorAttributes::class,
-                ServiceCommandResolver {
-                    ResolvedServiceCommand(
-                        null,
-                        "turn_on".service,
-                        EntityIdOnlyServiceData()
-                    )
+                ServiceCommandResolver { entityId, _ ->
+                    TurnOnServiceCommand(entityId)
                 }
             )
 

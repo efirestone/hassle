@@ -7,7 +7,10 @@ import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
-import khome.communicating.*
+import khome.communicating.Command
+import khome.communicating.HassApiClient
+import khome.communicating.HassApiClientImpl
+import khome.communicating.ServiceCommandResolver
 import khome.core.Credentials
 import khome.core.boot.EventResponseConsumer
 import khome.core.boot.StateChangeEventSubscriber
@@ -17,7 +20,6 @@ import khome.core.boot.servicestore.ServiceStoreInitializer
 import khome.core.boot.statehandling.EntityStateInitializer
 import khome.core.boot.subscribing.HassEventSubscriber
 import khome.core.mapping.ObjectMapper
-import khome.coroutines.MainDispatcherFactory
 import khome.entities.*
 import khome.entities.devices.Actuator
 import khome.entities.devices.Sensor
@@ -25,23 +27,18 @@ import khome.errorHandling.ErrorResponseData
 import khome.events.EventHandlerFunction
 import khome.events.EventSubscription
 import khome.observability.Switchable
-import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
-import khome.values.Service
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlin.collections.set
-import kotlin.coroutines.CoroutineContext
 import kotlin.reflect.KClass
-import kotlin.reflect.KType
 import kotlinx.serialization.json.Json as SerializationJson
 
 internal typealias SensorsByApiName = MutableMap<EntityId, Sensor<*, *>>
 internal typealias ActuatorsByApiName = MutableMap<EntityId, Actuator<*, *>>
 internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
-internal typealias HassApiCommandHistory = MutableMap<EntityId, ServiceCommand<CommandDataWithEntityId>>
+internal typealias HassApiCommandHistory = MutableMap<EntityId, Command>
 
 fun homeAssistantApiClient(credentials: Credentials, coroutineScope: CoroutineScope): HomeAssistantApiClient =
     HomeAssistantApiClientImpl(credentials, coroutineScope)
@@ -111,6 +108,7 @@ class HomeAssistantApiClientImpl(
         serviceCommandResolver: ServiceCommandResolver<S>
     ): Actuator<S, A> =
         Actuator<S, A>(
+            id,
             this,
             mapper,
             serviceCommandResolver,
@@ -142,24 +140,9 @@ class HomeAssistantApiClientImpl(
         errorResponseHandlerFunction = errorResponseHandler
     }
 
-    override suspend fun <PB : Any> callService(
-        domain: Domain,
-        service: Service,
-        parameterBag: PB,
-        parameterBagType: KType
-    ) {
-        ServiceCommand(
-            domain = domain,
-            service = service,
-            serviceData = parameterBag
-        ).also { hassApi?.sendCommand(it, parameterBagType) } // TODO: Reconnect if no session available
-    }
-
-    override suspend fun callService2(
-        command: ServiceCommand2
-    ) {
+    override suspend fun send(command: Command) {
         // TODO: Reconnect if no session available
-        hassApi?.sendCommand2(command)
+        hassApi?.send(command)
     }
 
     private fun registerSensor(entityId: EntityId, sensor: Sensor<*, *>) {
@@ -177,20 +160,6 @@ class HomeAssistantApiClientImpl(
 
     private fun <ED> registerEventSubscription(eventType: EventType, eventDataType: KClass<*>) =
         EventSubscription<ED>(this, mapper, eventDataType).also { eventSubscriptionsByEventType[eventType] = it }
-
-    internal suspend fun <S : State<*>, SA : Attributes> enqueueStateChange(
-        actuator: Actuator<S, SA>,
-        command: ServiceCommand<CommandDataWithEntityId>
-    ) {
-        val entityId = actuatorsByEntity[actuator] ?: throw RuntimeException("Entity not registered: $actuator")
-        command.apply {
-            if (domain == null) domain = entityId.domain
-            serviceData?.entityId = entityId
-        }
-        hassApiCommandHistory[entityId] = command
-        // TODO: Reconnect if API is null
-        hassApi?.sendCommand(command)
-    }
 
     override fun connect() =
         connection.connect {
@@ -229,12 +198,4 @@ class HomeAssistantApiClientImpl(
             stateChangeEventSubscriber.subscribe()
             eventResponseConsumer.consumeBlocking()
         }
-}
-
-internal class MainScope : CoroutineScope {
-    private val dispatcher = MainDispatcherFactory.create()
-    private val job = Job()
-
-    override val coroutineContext: CoroutineContext
-        get() = dispatcher + job
 }
