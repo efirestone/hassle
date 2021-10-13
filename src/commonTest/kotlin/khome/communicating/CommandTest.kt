@@ -6,29 +6,28 @@ import kotlinx.coroutines.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ServiceCommandTest {
+class CommandTest {
     @Test
     fun playMedia() = runBlocking {
         val connection = TestHomeAssistantApiClient()
 
-        connection.callService2(
+        connection.send(
             PlayMediaServiceCommand(
+                EntityId.fromString("media_player.living_room"),
                 MediaContentId("content/id"),
-                EntityId.fromString("media_player.living_room")
             )
         )
 
         val json = """
         {
-            "type": "call_service",
-            "id": null,
             "domain": "media_player",
             "service": "play_media",
-            "service_data": {
-                "media_content_id": "content/id"
-            },
+            "type": "call_service",
             "target": {
                 "entity_id": "media_player.living_room"
+            },
+            "service_data": {
+                "media_content_id": "content/id"
             }
         }
         """.trimIndent()

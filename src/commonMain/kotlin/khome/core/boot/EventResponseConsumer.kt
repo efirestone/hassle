@@ -56,7 +56,7 @@ internal class EventResponseConsumer(
 
     private fun handleStateChangedResponse(frameText: Frame.Text) =
         mapFrameTextToResponse<StateChangedResponse>(frameText)
-            .takeIf { it.event.eventType == "state_changed" }
+            .takeIf { it.event.eventType == EventType.STATE_CHANGED }
             ?.let { stateChangedResponse ->
                 logger.d { "State change response: $stateChangedResponse" }
                 stateChangedResponse.event.data.newState.getOrNull()?.let { newState ->
@@ -73,10 +73,10 @@ internal class EventResponseConsumer(
 
     private fun handleEventResponse(frameText: Frame.Text) {
         mapFrameTextToResponse<EventResponse>(frameText)
-            .takeIf { EventType(it.event.eventType) in eventHandlerByEventType }
+            .takeIf { it.event.eventType in eventHandlerByEventType }
             ?.let { eventResponse ->
                 logger.d { "Event response: $eventResponse" }
-                eventHandlerByEventType[EventType(eventResponse.event.eventType)]
+                eventHandlerByEventType[eventResponse.event.eventType]
                     ?.invokeEventHandler(eventResponse.event.data)
                     ?: logger.w { "No event found for event type: ${eventResponse.event.eventType}" }
             }

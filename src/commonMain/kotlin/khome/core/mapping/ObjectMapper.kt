@@ -1,7 +1,6 @@
 package khome.core.mapping
 
 import co.touchlab.kermit.Kermit
-import khome.communicating.ServiceCommand
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
@@ -48,24 +47,6 @@ class ObjectMapper(
         }
     }
 
-    /**
-     * Convert a value that has a generic parameter into a JSON string.
-     */
-    @OptIn(ExperimentalSerializationApi::class)
-    @Suppress("UNCHECKED_CAST")
-    fun <Destination : Any> toJsonWithParameter(from: Destination, parameterType: KType): String {
-        val serializersModule = delegate.serializersModule
-        val parameterSerializer = serializersModule.serializer(parameterType)
-        val serializer = delegate.serializersModule.getContextual(
-            from::class,
-            listOf(parameterSerializer)
-        ) as KSerializer<Destination>
-        return delegate.encodeToString(
-            serializer = serializer,
-            value = from
-        )
-    }
-
     @OptIn(ExperimentalStdlibApi::class)
     inline fun <reified Target : Any> fromJson(json: String): Target = fromJson(json, typeOf<Target>())
     inline fun <reified Target : Any> fromJson(json: JsonElement): Target = fromJson(json, Target::class)
@@ -82,9 +63,6 @@ private fun makeJson(builder: SerializersModuleBuilder.() -> Unit = {}) =
         prettyPrint = true
         ignoreUnknownKeys = true
         serializersModule = SerializersModule {
-            contextual(ServiceCommand::class) { args ->
-                ServiceCommand.serializer(args[0])
-            }
             builder(this)
         }
     }

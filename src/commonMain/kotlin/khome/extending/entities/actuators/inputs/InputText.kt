@@ -1,8 +1,8 @@
 package khome.extending.entities.actuators.inputs
 
 import khome.HomeAssistantApiClient
-import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
+import khome.communicating.SetValueServiceCommand
 import khome.core.mapping.serializers.default.RegexSerializer
 import khome.entities.Attributes
 import khome.entities.State
@@ -19,13 +19,8 @@ typealias InputText = Actuator<InputTextState, InputTextAttributes>
 fun HomeAssistantApiClient.InputText(objectId: ObjectId): InputText =
     Actuator(
         EntityId.fromPair("input_text".domain to objectId),
-        ServiceCommandResolver { desiredState ->
-            ResolvedServiceCommand(
-                service = "set_value".service,
-                serviceData = SettableStateValueServiceData(
-                    desiredState.value
-                )
-            )
+        ServiceCommandResolver { entityId, desiredState ->
+            SetValueServiceCommand(entityId, desiredState.value)
         }
     )
 

@@ -1,13 +1,11 @@
 package khome.extending.entities.actuators.light
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DesiredServiceData
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Actuator
 import khome.extending.entities.Actuator
-import khome.values.ColorName
 import khome.values.ColorTemperature
 import khome.values.EntityId
 import khome.values.FriendlyName
@@ -37,6 +35,3 @@ data class LightAttributes(
     @SerialName("last_updated")
     override val lastUpdated: Instant
 ) : Attributes
-
-data class NamedColorServiceData(val color_name: ColorName) : DesiredServiceData()
-data class KelvinServiceData(val kelvin: ColorTemperature) : DesiredServiceData()

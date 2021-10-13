@@ -1,10 +1,8 @@
 package khome.extending.entities.actuators
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DesiredServiceData
-import khome.communicating.EntityIdOnlyServiceData
-import khome.communicating.ResolvedServiceCommand
-import khome.communicating.ServiceCommandResolver
+import khome.communicating.*
+//import khome.communicating.ResolvedServiceCommand
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Actuator
@@ -27,22 +25,13 @@ inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient
 fun HomeAssistantApiClient.PositionableCover(objectId: ObjectId): PositionableCover =
     Cover(
         objectId,
-        ServiceCommandResolver { state ->
+        ServiceCommandResolver { entityId, state ->
             when (state.value) {
                 PositionableCoverValue.OPEN -> state.currentPosition?.let { position ->
-                    ResolvedServiceCommand(
-                        service = "set_cover_position".service,
-                        serviceData = PositionableCoverServiceData(position)
-                    )
-                } ?: ResolvedServiceCommand(
-                    service = "open_cover".service,
-                    serviceData = EntityIdOnlyServiceData()
-                )
+                    SetCoverPositionServiceCommand(entityId, position)
+                } ?: OpenCoverServiceCommand(entityId)
 
-                PositionableCoverValue.CLOSED -> ResolvedServiceCommand(
-                    service = "close_cover".service,
-                    serviceData = EntityIdOnlyServiceData()
-                )
+                PositionableCoverValue.CLOSED -> CloseCoverServiceCommand(entityId)
             }
         }
     )
@@ -83,8 +72,6 @@ data class PositionableCoverAttributes(
     @SerialName("friendly_name")
     override val friendlyName: FriendlyName
 ) : Attributes
-
-data class PositionableCoverServiceData(val position: Position) : DesiredServiceData()
 
 val PositionableCover.isOpen
     get() = actualState.value == PositionableCoverValue.OPEN

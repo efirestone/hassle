@@ -1,10 +1,8 @@
 package khome.extending.entities.actuators.mediaplayer
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DesiredServiceData
-import khome.communicating.EntityIdOnlyServiceData
-import khome.communicating.ResolvedServiceCommand
-import khome.communicating.ServiceCommandResolver
+import khome.communicating.*
+import khome.communicating.MuteVolumeServiceCommand
 import khome.entities.Attributes
 import khome.entities.State
 import khome.extending.entities.SwitchableValue
@@ -21,42 +19,19 @@ typealias Television = MediaPlayer<TelevisionState, TelevisionAttributes>
 fun HomeAssistantApiClient.Television(objectId: ObjectId): Television =
     MediaPlayer(
         objectId,
-        ServiceCommandResolver { desiredState ->
+        ServiceCommandResolver { entityId, desiredState ->
             when (desiredState.value) {
                 SwitchableValue.ON -> {
                     desiredState.isVolumeMuted?.let { isMuted ->
-                        ResolvedServiceCommand(
-                            service = "volume_mute".service,
-                            serviceData = TelevisionDesiredServiceData(
-                                isVolumeMuted = isMuted
-                            )
-                        )
+                        MuteVolumeServiceCommand(entityId, isMuted)
                     } ?: desiredState.volumeLevel?.let { volumeLevel ->
-                        ResolvedServiceCommand(
-                            service = "volume_set".service,
-                            serviceData = TelevisionDesiredServiceData(
-                                volumeLevel = volumeLevel
-                            )
-                        )
+                        SetVolumeServiceCommand(entityId, volumeLevel)
                     } ?: desiredState.source?.let { source ->
-                        ResolvedServiceCommand(
-                            service = "volume_set".service,
-                            serviceData = TelevisionDesiredServiceData(
-                                source = source
-                            )
-                        )
-                    } ?: ResolvedServiceCommand(
-                        service = "turn_on".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
+                        SetMediaSourceServiceCommand(entityId, source)
+                    } ?: TurnOnServiceCommand(entityId)
                 }
 
-                SwitchableValue.OFF -> {
-                    ResolvedServiceCommand(
-                        service = "turn_off".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
-                }
+                SwitchableValue.OFF -> TurnOffServiceCommand(entityId)
 
                 SwitchableValue.UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
             }
@@ -91,11 +66,11 @@ data class TelevisionAttributes(
     override val lastUpdated: Instant
 ) : Attributes
 
-data class TelevisionDesiredServiceData(
-    val isVolumeMuted: Mute? = null,
-    val volumeLevel: VolumeLevel? = null,
-    val source: MediaSource? = null
-) : DesiredServiceData()
+//data class TelevisionDesiredServiceData(
+//    val isVolumeMuted: Mute? = null,
+//    val volumeLevel: VolumeLevel? = null,
+//    val source: MediaSource? = null
+//) : DesiredServiceData()
 
 val Television.isOn
     get() = actualState.value == SwitchableValue.ON

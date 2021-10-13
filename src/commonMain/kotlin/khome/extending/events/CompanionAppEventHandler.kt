@@ -2,13 +2,11 @@ package khome.extending.events
 
 import khome.HomeAssistantApiClient
 import khome.events.EventHandlerFunction
-import khome.extending.events.IosEventType.ACTION_FIRED
-import khome.extending.events.IosEventType.NOTIFICATION_ACTION_FIRED
 import khome.values.EventType
 import kotlinx.serialization.SerialName
 
 fun HomeAssistantApiClient.attachIosActionHandler(eventHandler: EventHandlerFunction<IosActionEventData>) =
-    attachEventHandler(ACTION_FIRED.eventType, eventHandler)
+    attachEventHandler(EventType.ACTION_FIRED, eventHandler)
 
 data class IosActionEventData(
     @SerialName("sourceDeviceID")
@@ -51,12 +49,12 @@ data class IosNotificationActionEventData<AD>(
 )
 
 fun <AD> HomeAssistantApiClient.attachIosNotificationActionHandler(eventHandler: EventHandlerFunction<IosNotificationActionEventData<AD>>) =
-    attachEventHandler(NOTIFICATION_ACTION_FIRED.eventType, eventHandler)
+    attachEventHandler(EventType.NOTIFICATION_ACTION_FIRED, eventHandler)
 
-internal enum class IosEventType(val value: String) {
-    ACTION_FIRED("ios.action_fired"),
-    NOTIFICATION_ACTION_FIRED("ios.notification_action_fired")
-}
+//internal enum class IosEventType(val value: String) {
+//    ACTION_FIRED("ios.action_fired"),
+//    NOTIFICATION_ACTION_FIRED("ios.notification_action_fired")
+//}
 
-internal val IosEventType.eventType
-    get() = EventType(this.value)
+//internal val IosEventType.eventType
+//    get() = EventType(this.value)

@@ -1,7 +1,6 @@
 package khome.entities.devices
 
 import khome.HomeAssistantApiClientImpl
-import khome.communicating.CommandDataWithEntityId
 import khome.communicating.ServiceCommand
 import khome.communicating.ServiceCommandResolver
 import khome.core.mapping.ObjectMapper
@@ -10,12 +9,10 @@ import khome.entities.Attributes
 import khome.entities.State
 import khome.errorHandling.ObserverExceptionHandler
 import khome.observability.*
-import khome.observability.ObservableDelegateNoInitial
-import khome.observability.Observer
-import khome.observability.ObserverImpl
-import khome.values.Service
+import khome.values.EntityId
 import kotlinx.serialization.json.JsonObject
 import kotlin.reflect.KClass
+import kotlin.reflect.KType
 
 /**
  * An Actuator holding entity state and attributes
@@ -26,6 +23,7 @@ import kotlin.reflect.KClass
  * @param A the type of the attributes object that represents all immutable attribute values of the entity. Has to implement the [Attributes] interface.
  */
 class Actuator<S : State<*>, A : Attributes>(
+    val entityId: EntityId,
     private val connection: HomeAssistantApiClientImpl,
     private val mapper: ObjectMapper,
     private val resolver: ServiceCommandResolver<S>,
@@ -62,15 +60,9 @@ class Actuator<S : State<*>, A : Attributes>(
      * The setter of this property will intercept the setting, and translates the new (desired) state
      * into a service command that mutates the state in home assistant.
      */
-    suspend fun setDesiredState(state: S?) {
-        state?.let { desiredState ->
-            val resolvedServiceCommand = resolver.resolve(desiredState)
-            ServiceCommand(
-                domain = resolvedServiceCommand.domain,
-                service = resolvedServiceCommand.service,
-                serviceData = resolvedServiceCommand.serviceData
-            ).also { connection.enqueueStateChange(this, it) }
-        }
+    suspend fun setDesiredState(state: S) {
+        val command = resolver.resolve(entityId, state)
+        connection.send(command)
     }
 
     fun trySetActualStateFromAny(newState: JsonObject) {
@@ -87,15 +79,11 @@ class Actuator<S : State<*>, A : Attributes>(
     /**
      * Sends a service command over the Websocket API to home assistant
      *
-     * @param service the name of the action/service to execute
-     * @param parameterBag the service parameter object. Has to inherit [CommandDataWithEntityId].
+     * @param command the command to send
+     * @param type the type of the command
      */
-    suspend fun callService(service: Service, parameterBag: CommandDataWithEntityId) {
-        ServiceCommand(
-            service = service,
-            serviceData = parameterBag
-        ).also { connection.enqueueStateChange(this, it) }
-    }
+//    suspend fun send(command: ServiceCommand, type: KType) = connection.send(command, type)
+    suspend fun send(command: ServiceCommand) = connection.send(command)
 
     override fun attachObserver(observer: ObserverFunction<Actuator<S, A>>): Switchable =
         ObserverImpl(

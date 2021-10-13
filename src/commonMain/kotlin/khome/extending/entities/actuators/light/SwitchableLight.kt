@@ -13,7 +13,7 @@ typealias SwitchableLight = Actuator<SwitchableState, LightAttributes>
 fun HomeAssistantApiClient.SwitchableLight(objectId: ObjectId): SwitchableLight =
     Light(
         objectId,
-        ServiceCommandResolver { desiredState ->
-            mapSwitchable(desiredState.value)
+        ServiceCommandResolver { entityId, desiredState ->
+            mapSwitchable(entityId, desiredState.value)
         }
     )

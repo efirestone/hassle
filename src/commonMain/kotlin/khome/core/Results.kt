@@ -1,6 +1,7 @@
 package khome.core
 
 import khome.values.EntityId
+import khome.values.EventType
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -23,7 +24,7 @@ internal data class StateChangedResponse(
 @Serializable
 internal data class StateChangedEventData(
     @SerialName("event_type")
-    override val eventType: String,
+    override val eventType: EventType,
     val data: StateChangedData,
     @SerialName("time_fired")
     override val timeFired: Instant,
@@ -39,7 +40,7 @@ internal data class StateChangedData(
 )
 
 interface EventDtoInterface {
-    val eventType: String
+    val eventType: EventType
     val timeFired: Instant
     val origin: String
 }
@@ -66,7 +67,7 @@ internal data class EventResponse(
 @Serializable
 internal data class Event(
     @SerialName("event_type")
-    override val eventType: String,
+    override val eventType: EventType,
     val data: JsonElement,
     @SerialName("time_fired")
     override val timeFired: Instant,
