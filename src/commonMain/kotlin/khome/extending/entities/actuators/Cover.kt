@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 typealias PositionableCover = Actuator<PositionableCoverState, PositionableCoverAttributes>
 
 @Suppress("FunctionName")
-inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Cover(
+internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Cover(
     objectId: ObjectId,
     serviceCommandResolver: ServiceCommandResolver<S>
 ): Actuator<S, A> = Actuator(EntityId.fromPair("cover".domain to objectId), serviceCommandResolver)

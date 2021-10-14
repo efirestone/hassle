@@ -1,6 +1,6 @@
 package khome.communicating
 
-import khome.TestHomeAssistantApiClient
+import khome.core.mapping.ObjectMapper
 import khome.values.*
 import kotlinx.coroutines.*
 import kotlin.test.Test
@@ -9,16 +9,14 @@ import kotlin.test.assertEquals
 class CommandTest {
     @Test
     fun playMedia() = runBlocking {
-        val connection = TestHomeAssistantApiClient()
-
-        connection.send(
-            PlayMediaServiceCommand(
-                EntityId.fromString("media_player.living_room"),
-                MediaContentId("content/id"),
-            )
+        val command = PlayMediaServiceCommand(
+            EntityId.fromString("media_player.living_room"),
+            MediaContentId("content/id"),
         )
 
-        val json = """
+        val json = ObjectMapper().toJson(command)
+
+        val expectedJson = """
         {
             "domain": "media_player",
             "service": "play_media",
@@ -31,6 +29,6 @@ class CommandTest {
             }
         }
         """.trimIndent()
-        assertEquals(json, connection.callServiceRequests.last())
+        assertEquals(expectedJson, json)
     }
 }

@@ -1,6 +1,7 @@
 package khome.extending.serviceCalls.notifications
 
 import khome.HomeAssistantApiClient
+import khome.HomeAssistantApiClientImpl
 import khome.communicating.SendNotificationServiceCommand
 import khome.values.Device
 import khome.values.EntityId
@@ -12,10 +13,10 @@ private const val REQUEST_LOCATION_UPDATE = "request_location_update"
 // - Public API
 
 suspend fun HomeAssistantApiClient.notifyMobileApp(device: Device, message: String, title: String? = null) =
-    send(SendNotificationServiceCommand(device, message, title))
+    (this as HomeAssistantApiClientImpl).send(SendNotificationServiceCommand(device, message, title))
 
 suspend fun HomeAssistantApiClient.notifyMobileApp(device: Device, messageBuilder: MobileNotificationData.() -> Unit) =
-    send(SendNotificationServiceCommand(device, messageBuilder = messageBuilder))
+    (this as HomeAssistantApiClientImpl).send(SendNotificationServiceCommand(device, messageBuilder = messageBuilder))
 
 suspend fun HomeAssistantApiClient.notifyMobileApp(vararg devices: Device, title: String, message: String) =
     devices.forEach { device -> notifyMobileApp(device, message, title) }

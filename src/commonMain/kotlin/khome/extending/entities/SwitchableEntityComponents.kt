@@ -38,7 +38,7 @@ data class DefaultAttributes(
     override val lastUpdated: Instant
 ) : Attributes
 
-fun mapSwitchable(entityId: EntityId, switchableValue: SwitchableValue) =
+internal fun mapSwitchable(entityId: EntityId, switchableValue: SwitchableValue) =
     when (switchableValue) {
         SwitchableValue.ON -> TurnOnServiceCommand(entityId)
         SwitchableValue.OFF -> TurnOffServiceCommand(entityId)

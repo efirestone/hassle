@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonElement
 // - Base Command
 
 @Serializable(Command.Companion::class)
-sealed class Command {
+internal sealed class Command {
     // Use a custom serializer so that we don't add an unnecessary class descriminator field into the JSON.
     companion object : JsonContentPolymorphicSerializer<Command>(Command::class) {
         override fun selectDeserializer(element: JsonElement): DeserializationStrategy<out Command> {
@@ -36,7 +36,7 @@ internal class SubscribeEventCommand(
 // - Service Command
 
 @Serializable
-sealed class ServiceCommand(
+internal sealed class ServiceCommand(
     var domain: Domain,
     var service: Service,
     val type: String = "call_service"
@@ -53,7 +53,7 @@ sealed class ServiceCommand(
 // - Basic Service Commands
 
 @Serializable
-class TurnOnServiceCommand(
+internal class TurnOnServiceCommand(
     val target: Target
 ) : ServiceCommand("light", "turn_on") {
     constructor(target: EntityId) : this(Target(target))
@@ -64,7 +64,7 @@ class TurnOnServiceCommand(
 }
 
 @Serializable
-class TurnOffServiceCommand(
+internal class TurnOffServiceCommand(
     val target: Target
 ) : ServiceCommand("light", "turn_off") {
     constructor(target: EntityId) : this(Target(target))
@@ -77,7 +77,7 @@ class TurnOffServiceCommand(
 // - Climate Service Commands
 
 @Serializable
-class SetHvacPresetModeServiceCommand(
+internal class SetHvacPresetModeServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -92,7 +92,7 @@ class SetHvacPresetModeServiceCommand(
 }
 
 @Serializable
-class SetTemperatureServiceCommand(
+internal class SetTemperatureServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -113,7 +113,7 @@ class SetTemperatureServiceCommand(
 // - Cover Service Commands
 
 @Serializable
-class SetCoverPositionServiceCommand(
+internal class SetCoverPositionServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -130,14 +130,14 @@ class SetCoverPositionServiceCommand(
 }
 
 @Serializable
-class OpenCoverServiceCommand(
+internal class OpenCoverServiceCommand(
     val target: Target
 ) : ServiceCommand("cover", "open_cover") {
     constructor(target: EntityId) : this(Target(target))
 }
 
 @Serializable
-class CloseCoverServiceCommand(
+internal class CloseCoverServiceCommand(
     val target: Target
 ) : ServiceCommand("cover", "close_cover") {
     constructor(target: EntityId) : this(Target(target))
@@ -146,7 +146,7 @@ class CloseCoverServiceCommand(
 // - Light Service Commands
 
 @Serializable
-class TurnOnLightServiceCommand(
+internal class TurnOnLightServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -173,7 +173,7 @@ class TurnOnLightServiceCommand(
 // - Input Service Commands
 
 @Serializable
-class SetDateTimeServiceCommand<DateType>(
+internal class SetDateTimeServiceCommand<DateType>(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData<DateType>
@@ -187,7 +187,7 @@ class SetDateTimeServiceCommand<DateType>(
 }
 
 @Serializable
-class SelectOptionServiceCommand(
+internal class SelectOptionServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -201,7 +201,7 @@ class SelectOptionServiceCommand(
 }
 
 @Serializable
-class SetValueServiceCommand<ValueType>(
+internal class SetValueServiceCommand<ValueType>(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData<ValueType>
@@ -221,7 +221,7 @@ class SetValueServiceCommand<ValueType>(
 // - Media PLayer Service Commands
 
 @Serializable
-class PlayMediaServiceCommand(
+internal class PlayMediaServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -239,14 +239,14 @@ class PlayMediaServiceCommand(
 }
 
 @Serializable
-class PauseMediaServiceCommand(
+internal class PauseMediaServiceCommand(
     val target: Target
 ) : ServiceCommand("media_player", "media_pause") {
     constructor(target: EntityId) : this(Target(target))
 }
 
 @Serializable
-class MuteVolumeServiceCommand(
+internal class MuteVolumeServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -261,7 +261,7 @@ class MuteVolumeServiceCommand(
 }
 
 @Serializable
-class SetVolumeServiceCommand(
+internal class SetVolumeServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -276,7 +276,7 @@ class SetVolumeServiceCommand(
 }
 
 @Serializable
-class SetSeekPositionServiceCommand(
+internal class SetSeekPositionServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -291,7 +291,7 @@ class SetSeekPositionServiceCommand(
 }
 
 @Serializable
-class SetMediaSourceServiceCommand(
+internal class SetMediaSourceServiceCommand(
     val target: Target,
     @SerialName("service_data")
     val serviceData: ServiceData
@@ -305,7 +305,7 @@ class SetMediaSourceServiceCommand(
 }
 
 @Serializable
-class ResumeMediaServiceCommand(
+internal class ResumeMediaServiceCommand(
     val target: Target
 ) : ServiceCommand("media_player", "media_play") {
     constructor(target: EntityId) : this(Target(target))
@@ -314,7 +314,7 @@ class ResumeMediaServiceCommand(
 // - Persistent Notification Service Commands
 
 @Serializable
-class CreatePersistentNotificationServiceCommand(
+internal class CreatePersistentNotificationServiceCommand(
     @SerialName("service_data")
     val serviceData: ServiceData
 ) : ServiceCommand("persistent_notification", "create") {
@@ -328,7 +328,7 @@ class CreatePersistentNotificationServiceCommand(
 }
 
 @Serializable
-class DismissPersistentNotificationServiceCommand(
+internal class DismissPersistentNotificationServiceCommand(
     @SerialName("service_data")
     val serviceData: ServiceData
 ) : ServiceCommand("persistent_notification", "dismiss") {
@@ -340,7 +340,7 @@ class DismissPersistentNotificationServiceCommand(
 }
 
 @Serializable
-class MarkReadPersistentNotificationServiceCommand(
+internal class MarkReadPersistentNotificationServiceCommand(
     @SerialName("service_data")
     val serviceData: ServiceData
 ) : ServiceCommand("persistent_notification", "mark_read") {
@@ -354,7 +354,7 @@ class MarkReadPersistentNotificationServiceCommand(
 // - Remote Notification Service Commands
 
 @Serializable
-class SendNotificationServiceCommand(
+internal class SendNotificationServiceCommand(
     @SerialName("service_data")
     val serviceData: ServiceData
 ) : ServiceCommand("notify", "device") {
