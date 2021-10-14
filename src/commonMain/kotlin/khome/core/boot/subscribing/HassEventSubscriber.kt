@@ -5,7 +5,6 @@ import khome.EventHandlerByEventType
 import khome.WebSocketSession
 import khome.communicating.HassApiClient
 import khome.communicating.SubscribeEventCommand
-import khome.communicating.sendCommand
 import khome.core.ResultResponse
 
 internal class HassEventSubscriber(
@@ -17,7 +16,7 @@ internal class HassEventSubscriber(
 
     suspend fun subscribe() {
         subscriptions.forEach { entry ->
-            SubscribeEventCommand(entry.key).also { command -> hassApi.sendCommand(command) }
+            SubscribeEventCommand(entry.key).also { command -> hassApi.send(command) }
             session.consumeSingleMessage<ResultResponse>()
                 .takeIf { resultResponse -> resultResponse.success }
                 ?.let { logger.i { "Subscribed to event: ${entry.key}" } }

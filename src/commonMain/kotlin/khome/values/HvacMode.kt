@@ -19,6 +19,3 @@ data class HvacMode(val value: String) {
         override fun serialize(encoder: Encoder, value: HvacMode) = encoder.encodeString(value.value)
     }
 }
-
-val String.hvacMode
-    get() = HvacMode(this)

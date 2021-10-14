@@ -2,33 +2,14 @@ package khome.extending.entities.actuators.mediaplayer
 
 import khome.HomeAssistantApiClient
 import khome.communicating.*
+import khome.communicating.MuteVolumeServiceCommand
 import khome.entities.Attributes
 import khome.entities.State
-import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue.IDLE
-import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue.OFF
-import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue.PAUSED
-import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue.PLAYING
-import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue.UNAVAILABLE
-import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue.UNKNOWN
+import khome.extending.entities.actuators.mediaplayer.MediaReceiverStateValue.*
 import khome.extending.entities.actuators.onStateValueChangedFrom
 import khome.extending.entities.actuators.stateValueChangedFrom
 import khome.observability.Switchable
-import khome.values.AlbumName
-import khome.values.AppId
-import khome.values.AppName
-import khome.values.Artist
-import khome.values.EntityPicture
-import khome.values.FriendlyName
-import khome.values.MediaContentId
-import khome.values.MediaContentType
-import khome.values.MediaDuration
-import khome.values.MediaPosition
-import khome.values.MediaTitle
-import khome.values.Mute
-import khome.values.ObjectId
-import khome.values.UserId
-import khome.values.VolumeLevel
-import khome.values.service
+import khome.values.*
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -39,89 +20,26 @@ typealias MediaReceiver = MediaPlayer<MediaReceiverState, MediaReceiverAttribute
 fun HomeAssistantApiClient.MediaReceiver(objectId: ObjectId): MediaReceiver =
     MediaPlayer(
         objectId,
-        ServiceCommandResolver { desiredState ->
+        ServiceCommandResolver { entityId, desiredState ->
             when (desiredState.value) {
-                IDLE -> {
-                    desiredState.isVolumeMuted?.let { isMuted ->
-                        ResolvedServiceCommand(
-                            service = "volume_mute".service,
-                            serviceData = MediaReceiverDesiredServiceData(
-                                isVolumeMuted = isMuted
-                            )
-                        )
-                    } ?: desiredState.volumeLevel?.let { volumeLevel ->
-                        ResolvedServiceCommand(
-                            service = "volume_set".service,
-                            serviceData = MediaReceiverDesiredServiceData(
-                                volumeLevel = volumeLevel
-                            )
-                        )
-                    } ?: ResolvedServiceCommand(
-                        service = "turn_on".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
-                }
+                IDLE ->
+                    desiredState.isVolumeMuted?.let { MuteVolumeServiceCommand(entityId, it) }
+                        ?: desiredState.volumeLevel?.let { SetVolumeServiceCommand(entityId, it) }
+                        ?: TurnOnServiceCommand(entityId)
 
                 PAUSED ->
-                    desiredState.volumeLevel?.let { volumeLevel ->
-                        ResolvedServiceCommand(
-                            service = "volume_set".service,
-                            serviceData = MediaReceiverDesiredServiceData(
-                                volumeLevel = volumeLevel
-                            )
-                        )
-                    } ?: desiredState.mediaPosition?.let { position ->
-                        ResolvedServiceCommand(
-                            service = "seek_position".service,
-                            serviceData = MediaReceiverDesiredServiceData(
-                                seekPosition = position
-                            )
-                        )
-                    } ?: desiredState.isVolumeMuted?.let { isMuted ->
-                        ResolvedServiceCommand(
-                            service = "volume_mute".service,
-                            serviceData = MediaReceiverDesiredServiceData(
-                                isVolumeMuted = isMuted
-                            )
-                        )
-                    } ?: ResolvedServiceCommand(
-                        service = "media_pause".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
+                    desiredState.volumeLevel?.let { SetVolumeServiceCommand(entityId, it) }
+                        ?: desiredState.mediaPosition?.let { SetSeekPositionServiceCommand(entityId, it) }
+                        ?: desiredState.isVolumeMuted?.let { MuteVolumeServiceCommand(entityId, it) }
+                        ?: PauseMediaServiceCommand(entityId)
 
                 PLAYING ->
-                    desiredState.mediaPosition?.let { position ->
-                        ResolvedServiceCommand(
-                            service = "seek_position".service,
-                            serviceData = MediaReceiverDesiredServiceData(
-                                seekPosition = position
-                            )
-                        )
-                    } ?: desiredState.isVolumeMuted?.let { isMuted ->
-                        ResolvedServiceCommand(
-                            service = "volume_mute".service,
-                            serviceData = MediaReceiverDesiredServiceData(
-                                isVolumeMuted = isMuted
-                            )
-                        )
-                    } ?: desiredState.volumeLevel?.let { volumeLevel ->
-                        ResolvedServiceCommand(
-                            service = "volume_set".service,
-                            serviceData = MediaReceiverDesiredServiceData(
-                                volumeLevel = volumeLevel
-                            )
-                        )
-                    } ?: ResolvedServiceCommand(
-                        service = "media_play".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
+                    desiredState.mediaPosition?.let { SetSeekPositionServiceCommand(entityId, it) }
+                        ?: desiredState.isVolumeMuted?.let { MuteVolumeServiceCommand(entityId, it) }
+                        ?: desiredState.volumeLevel?.let { SetVolumeServiceCommand(entityId, it) }
+                        ?: ResumeMediaServiceCommand(entityId)
 
-                OFF -> {
-                    ResolvedServiceCommand(
-                        service = "turn_off".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
-                }
+                OFF -> TurnOffServiceCommand(entityId)
 
                 UNKNOWN -> throw IllegalStateException("State cannot be changed to UNKNOWN")
                 UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
@@ -192,12 +110,6 @@ data class MediaReceiverAttributes(
     @SerialName("last_updated")
     override val lastUpdated: Instant
 ) : Attributes
-
-data class MediaReceiverDesiredServiceData(
-    val isVolumeMuted: Mute? = null,
-    val volumeLevel: VolumeLevel? = null,
-    val seekPosition: MediaPosition? = null
-) : DesiredServiceData()
 
 val MediaReceiver.isOff
     get() = actualState.value == OFF

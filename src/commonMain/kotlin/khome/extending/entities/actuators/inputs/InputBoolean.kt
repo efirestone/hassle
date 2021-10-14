@@ -23,8 +23,8 @@ typealias InputBoolean = Actuator<SwitchableState, InputBooleanAttributes>
 fun HomeAssistantApiClient.InputBoolean(objectId: ObjectId): InputBoolean =
     Actuator(
         EntityId.fromPair("input_boolean".domain to objectId),
-        ServiceCommandResolver { desiredState ->
-            mapSwitchable(desiredState.value)
+        ServiceCommandResolver { entityId, desiredState ->
+            mapSwitchable(entityId, desiredState.value)
         }
     )
 

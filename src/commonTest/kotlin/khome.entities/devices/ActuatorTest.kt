@@ -1,9 +1,8 @@
 package khome.entities.devices
 
 import io.fluidsonic.time.LocalTime
-import khome.communicating.EntityIdOnlyServiceData
-import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
+import khome.communicating.TurnOnServiceCommand
 import khome.core.boot.statehandling.flattenStateAttributes
 import khome.entities.Attributes
 import khome.entities.State
@@ -53,14 +52,11 @@ internal class ActuatorTest {
     @Test
     fun `actuator state response mapping is correct`() = withConnection {
         val sut = Actuator<ActuatorTestState, ActuatorTestAttributes>(
+            EntityId.fromString("actuator.test"),
             connection = this,
             mapper = mapper,
-            resolver = ServiceCommandResolver {
-                ResolvedServiceCommand(
-                    null,
-                    "turn_on".service,
-                    EntityIdOnlyServiceData()
-                )
+            resolver = ServiceCommandResolver { entityId, _ ->
+                TurnOnServiceCommand(entityId)
             },
             stateType = ActuatorTestState::class,
             attributesType = ActuatorTestAttributes::class
@@ -107,14 +103,11 @@ internal class ActuatorTest {
     @Test
     fun `actuator stores state and attributes youngest first`() = withConnection {
         val sut = Actuator<ActuatorTestState, ActuatorTestAttributes>(
+            EntityId.fromString("actuator.test"),
             connection = this,
             mapper = mapper,
-            resolver = ServiceCommandResolver {
-                ResolvedServiceCommand(
-                    null,
-                    "turn_on".service,
-                    EntityIdOnlyServiceData()
-                )
+            resolver = ServiceCommandResolver { entityId, _ ->
+                TurnOnServiceCommand(entityId)
             },
             stateType = ActuatorTestState::class,
             attributesType = ActuatorTestAttributes::class
@@ -606,14 +599,11 @@ internal class ActuatorTest {
         crossinline block: (Actuator<S, A>) -> Unit
     ) = withConnection {
         val sut = Actuator<S, A>(
+            EntityId.fromString("actuator.test"),
             connection = this,
             mapper = mapper,
-            resolver = ServiceCommandResolver {
-                ResolvedServiceCommand(
-                    null,
-                    "turn_on".service,
-                    EntityIdOnlyServiceData()
-                )
+            resolver = ServiceCommandResolver { entityId, _ ->
+                TurnOnServiceCommand(entityId)
             },
             stateType = S::class,
             attributesType = A::class

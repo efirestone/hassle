@@ -1,9 +1,8 @@
 package khome.extending.entities.actuators.inputs
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DesiredServiceData
-import khome.communicating.ResolvedServiceCommand
 import khome.communicating.ServiceCommandResolver
+import khome.communicating.SetDateTimeServiceCommand
 import khome.core.mapping.serializers.default.LocalDateTimeSerializer
 import khome.entities.Attributes
 import khome.entities.State
@@ -21,13 +20,8 @@ typealias InputDateTime = Actuator<InputDateTimeState, InputDateTimeAttributes>
 fun HomeAssistantApiClient.InputDateTime(objectId: ObjectId): InputDateTime =
     Actuator(
         EntityId.fromPair("input_datetime".domain to objectId),
-        ServiceCommandResolver { desiredState ->
-            ResolvedServiceCommand(
-                service = "set_datetime".service,
-                serviceData = InputDateTimeServiceData(
-                    desiredState.value
-                )
-            )
+        ServiceCommandResolver { entityId, desiredState ->
+            SetDateTimeServiceCommand(entityId, desiredState.value)
         }
     )
 
@@ -49,5 +43,3 @@ data class InputDateTimeAttributes(
     @SerialName("last_updated")
     override val lastUpdated: Instant
 ) : Attributes
-
-data class InputDateTimeServiceData(private val datetime: LocalDateTime) : DesiredServiceData()

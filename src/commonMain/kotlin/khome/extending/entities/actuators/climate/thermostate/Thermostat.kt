@@ -1,10 +1,7 @@
 package khome.extending.entities.actuators.climate.thermostate
 
 import khome.HomeAssistantApiClient
-import khome.communicating.DesiredServiceData
-import khome.communicating.EntityIdOnlyServiceData
-import khome.communicating.ResolvedServiceCommand
-import khome.communicating.ServiceCommandResolver
+import khome.communicating.*
 import khome.entities.Attributes
 import khome.entities.State
 import khome.entities.devices.Actuator
@@ -22,30 +19,19 @@ typealias Thermostat = Actuator<ThermostatState, ThermostatAttributes>
 fun HomeAssistantApiClient.Thermostat(objectId: ObjectId): Thermostat {
     return ClimateControl(
         objectId,
-        ServiceCommandResolver { desiredState ->
+        ServiceCommandResolver { entityId, desiredState ->
             when (desiredState.value) {
-                ThermostatStateValue.OFF -> {
-                    ResolvedServiceCommand(
-                        service = "turn_off".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
-                }
-
+                ThermostatStateValue.OFF -> TurnOffServiceCommand(entityId)
                 ThermostatStateValue.HEAT -> {
                     desiredState.temperature?.let { temperature ->
-                        ResolvedServiceCommand(
-                            service = "set_temperature".service,
-                            serviceData = ThermostatServiceData(temperature, hvacMode = "heat".hvacMode)
+                        SetTemperatureServiceCommand(
+                            entityId,
+                            temperature,
+                            hvacMode = HvacMode("heat")
                         )
                     } ?: (if (desiredState.presetMode.isNone) null else desiredState.presetMode)?.let { preset ->
-                        ResolvedServiceCommand(
-                            service = "set_preset_mode".service,
-                            serviceData = ThermostatServiceData(presetMode = preset)
-                        )
-                    } ?: ResolvedServiceCommand(
-                        service = "turn_on".service,
-                        serviceData = EntityIdOnlyServiceData()
-                    )
+                        SetHvacPresetModeServiceCommand(entityId, preset)
+                    } ?: TurnOnServiceCommand(entityId)
                 }
             }
         }
@@ -79,12 +65,6 @@ enum class ThermostatStateValue {
     OFF
 }
 
-data class ThermostatServiceData(
-    val temperature: Temperature? = null,
-    val presetMode: PresetMode? = null,
-    val hvacMode: HvacMode? = null
-) : DesiredServiceData()
-
 val Thermostat.isHeating
     get() = actualState.value == ThermostatStateValue.HEAT
 
@@ -94,21 +74,15 @@ val Thermostat.isOn
 val Thermostat.isOff
     get() = actualState == ThermostatState(ThermostatStateValue.OFF)
 
-suspend fun Thermostat.turnOff() {
-    setDesiredState(ThermostatState(ThermostatStateValue.OFF))
-}
+suspend fun Thermostat.turnOff() = setDesiredState(ThermostatState(ThermostatStateValue.OFF))
 
-suspend fun Thermostat.turnOn() {
-    setDesiredState(ThermostatState(ThermostatStateValue.HEAT))
-}
+suspend fun Thermostat.turnOn() = setDesiredState(ThermostatState(ThermostatStateValue.HEAT))
 
-suspend fun Thermostat.setPreset(preset: PresetMode) {
+suspend fun Thermostat.setPreset(preset: PresetMode) =
     setDesiredState(ThermostatState(ThermostatStateValue.HEAT, presetMode = preset))
-}
 
-suspend fun Thermostat.setTargetTemperature(temperature: Temperature) {
+suspend fun Thermostat.setTargetTemperature(temperature: Temperature) =
     setDesiredState(ThermostatState(ThermostatStateValue.HEAT, temperature = temperature))
-}
 
 suspend fun Thermostat.turnOnBoost() = setPreset("boost".presetMode)
 

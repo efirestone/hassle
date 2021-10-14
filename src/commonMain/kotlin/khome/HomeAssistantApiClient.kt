@@ -1,6 +1,6 @@
 package khome
 
-import khome.communicating.ServiceCommand2
+import khome.communicating.Command
 import khome.communicating.ServiceCommandResolver
 import khome.entities.Attributes
 import khome.entities.State
@@ -9,13 +9,9 @@ import khome.entities.devices.Sensor
 import khome.errorHandling.ErrorResponseData
 import khome.events.EventHandlerFunction
 import khome.observability.Switchable
-import khome.values.Domain
 import khome.values.EntityId
 import khome.values.EventType
-import khome.values.Service
 import kotlin.reflect.KClass
-import kotlin.reflect.KType
-import kotlin.reflect.typeOf
 
 /**
  * The client object for interacting with the Home Assistant WebSocket API.
@@ -92,7 +88,7 @@ interface HomeAssistantApiClient {
      * Emits a home assistant event with optional event data.
      *
      * @param eventType the type of event to emit.
-     * @param eventData the data to be send with the event (optional).
+     * @param eventData the data to be sent with the event (optional).
      */
     suspend fun emitEvent(eventType: String, eventData: Any? = null)
 
@@ -106,26 +102,7 @@ interface HomeAssistantApiClient {
     /**
      * Sends a service command to home assistant.
      *
-     * @param domain the name of the service domain
-     * @param service the name of the service to call
-     * @param parameterBag the parameters to be send with the command
-     * @param parameterBagType the type of the parameterBag
+     * @param command the command to send
      */
-    suspend fun <PB : Any> callService(
-        domain: Domain,
-        service: Service,
-        parameterBag: PB,
-        parameterBagType: KType
-    )
-
-    suspend fun callService2(
-        command: ServiceCommand2
-    )
+    suspend fun send(command: Command)
 }
-
-@OptIn(ExperimentalStdlibApi::class)
-suspend inline fun <reified PB : Any> HomeAssistantApiClient.callService(
-    domain: Domain,
-    service: Service,
-    parameterBag: PB
-) = callService(domain, service, parameterBag, typeOf<PB>())

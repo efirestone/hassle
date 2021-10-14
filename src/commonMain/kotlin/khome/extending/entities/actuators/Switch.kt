@@ -22,8 +22,8 @@ typealias PowerSwitch = Switch<PowerSwitchAttributes>
 inline fun <reified A : Attributes> HomeAssistantApiClient.Switch(objectId: ObjectId): Switch<A> =
     Actuator(
         EntityId.fromPair("switch".domain to objectId),
-        ServiceCommandResolver { switchableState ->
-            mapSwitchable(switchableState.value)
+        ServiceCommandResolver { entityId, switchableState ->
+            mapSwitchable(entityId, switchableState.value)
         }
     )
 
