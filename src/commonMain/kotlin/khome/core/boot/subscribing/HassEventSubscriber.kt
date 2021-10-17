@@ -16,7 +16,7 @@ internal class HassEventSubscriber(
 
     suspend fun subscribe() {
         subscriptions.forEach { entry ->
-            SubscribeEventCommand(entry.key).also { command -> hassApi.send(command) }
+            SubscribeEventCommand(eventType = entry.key).also { command -> hassApi.send(command) }
             session.consumeSingleMessage<ResultResponse>()
                 .takeIf { resultResponse -> resultResponse.success }
                 ?.let { logger.i { "Subscribed to event: ${entry.key}" } }

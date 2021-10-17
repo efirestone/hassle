@@ -9,7 +9,8 @@ import kotlinx.serialization.json.JsonObject
 
 @Serializable
 internal data class ResolverResponse(
-    val id: Int,
+    // The ID may be null if the command was (incorrectly) sent with a null ID.
+    val id: Int?,
     val type: ResponseType
 )
 

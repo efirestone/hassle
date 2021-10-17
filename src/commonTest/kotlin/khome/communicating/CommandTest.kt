@@ -11,13 +11,16 @@ class CommandTest {
     fun playMedia() = runBlocking {
         val command = PlayMediaServiceCommand(
             EntityId.fromString("media_player.living_room"),
+            MediaContentType.MOVIE,
             MediaContentId("content/id"),
         )
+        command.id = 1
 
         val json = ObjectMapper().toJson(command)
 
         val expectedJson = """
         {
+            "id": 1,
             "domain": "media_player",
             "service": "play_media",
             "type": "call_service",
@@ -25,6 +28,7 @@ class CommandTest {
                 "entity_id": "media_player.living_room"
             },
             "service_data": {
+                "media_content_type": "MOVIE",
                 "media_content_id": "content/id"
             }
         }

@@ -2,17 +2,17 @@ package khome.communicating
 
 import khome.extending.serviceCalls.notifications.MobileNotificationData
 import khome.values.*
-import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonContentPolymorphicSerializer
-import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
 
 // - Base Command
 
 @Serializable(Command.Companion::class)
-internal sealed class Command {
-    // Use a custom serializer so that we don't add an unnecessary class descriminator field into the JSON.
+internal sealed class Command(
+    // The generated serializer won't include this ID unless we also include it
+    // in our subclasses, hence the "open" modifier.
+    open var id: Int? = null
+) {
     companion object : JsonContentPolymorphicSerializer<Command>(Command::class) {
         override fun selectDeserializer(element: JsonElement): DeserializationStrategy<out Command> {
             // We don't support deserializing commands (only serializing them),
@@ -21,33 +21,35 @@ internal sealed class Command {
         }
     }
 
-    var id: Int? = null
+    constructor() : this(null)
 }
 
 // - Basic Commands
 
 @Serializable
 internal class SubscribeEventCommand(
+    override var id: Int? = null,
     @SerialName("event_type")
     val eventType: EventType,
     val type: String = "subscribe_events"
-) : Command()
+) : Command(id)
 
 // - Service Command
 
 @Serializable
 internal sealed class ServiceCommand(
+    override var id: Int? = null,
     var domain: Domain,
     var service: Service,
     val type: String = "call_service"
-) : Command() {
+) : Command(id) {
     @Serializable
     class Target(
         @SerialName("entity_id")
         val entityId: EntityId
     )
 
-    constructor(domain: String, service: String) : this(Domain(domain), Service(service))
+    constructor(domain: String, service: String) : this(null, Domain(domain), Service(service))
 }
 
 // - Basic Service Commands
@@ -228,13 +230,15 @@ internal class PlayMediaServiceCommand(
 ) : ServiceCommand("media_player", "play_media") {
     @Serializable
     class ServiceData(
+        @SerialName("media_content_type")
+        val mediaContentType: MediaContentType,
         @SerialName("media_content_id")
         val mediaContentId: MediaContentId
     )
 
-    constructor(target: EntityId, mediaContentId: MediaContentId) : this(
+    constructor(target: EntityId, mediaContentType: MediaContentType, mediaContentId: MediaContentId) : this(
         Target(target),
-        ServiceData(mediaContentId)
+        ServiceData(mediaContentType, mediaContentId)
     )
 }
 
