@@ -230,13 +230,15 @@ internal class PlayMediaServiceCommand(
 ) : ServiceCommand("media_player", "play_media") {
     @Serializable
     class ServiceData(
+        @SerialName("media_content_type")
+        val mediaContentType: MediaContentType,
         @SerialName("media_content_id")
         val mediaContentId: MediaContentId
     )
 
-    constructor(target: EntityId, mediaContentId: MediaContentId) : this(
+    constructor(target: EntityId, mediaContentType: MediaContentType, mediaContentId: MediaContentId) : this(
         Target(target),
-        ServiceData(mediaContentId)
+        ServiceData(mediaContentType, mediaContentId)
     )
 }
 

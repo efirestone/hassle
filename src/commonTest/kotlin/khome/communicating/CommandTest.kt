@@ -11,6 +11,7 @@ class CommandTest {
     fun playMedia() = runBlocking {
         val command = PlayMediaServiceCommand(
             EntityId.fromString("media_player.living_room"),
+            MediaContentType.MOVIE,
             MediaContentId("content/id"),
         )
         command.id = 1
@@ -27,6 +28,7 @@ class CommandTest {
                 "entity_id": "media_player.living_room"
             },
             "service_data": {
+                "media_content_type": "MOVIE",
                 "media_content_id": "content/id"
             }
         }
