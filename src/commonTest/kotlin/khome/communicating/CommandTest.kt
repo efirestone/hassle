@@ -13,11 +13,13 @@ class CommandTest {
             EntityId.fromString("media_player.living_room"),
             MediaContentId("content/id"),
         )
+        command.id = 1
 
         val json = ObjectMapper().toJson(command)
 
         val expectedJson = """
         {
+            "id": 1,
             "domain": "media_player",
             "service": "play_media",
             "type": "call_service",
