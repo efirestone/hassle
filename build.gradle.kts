@@ -18,7 +18,7 @@ plugins {
     `maven-publish`
 }
 
-group = "com.dennisschroeder"
+group = "com.codellyrandom.hassemble"
 version = "0.1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
@@ -101,7 +101,7 @@ publishing {
 }
 
 tasks.create<Delete>("cleanDokka") {
-    delete = setOf("$rootDir/docs/khome")
+    delete = setOf("$rootDir/docs/${rootProject.name}")
 }
 
 tasks.withType<Test> {
