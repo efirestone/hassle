@@ -30,13 +30,13 @@ class Sensor<S : State<*>, A : Attributes>(
     private val observers: MutableList<Observer<Sensor<S, A>>> = mutableListOf()
 
     /**
-     * Represents the current attributes of the entity in Khome.
+     * Represents the current attributes of the sensor entity.
      */
     override lateinit var attributes: A
     private val _history = CircularArray<StateAndAttributes<S, A>>(10)
 
     /**
-     * Represents the current state object of the entity in Khome.
+     * Represents the current state of the sensor entity.
      */
     var measurement: S by ObservableDelegateNoInitial(this, observers, _history)
 

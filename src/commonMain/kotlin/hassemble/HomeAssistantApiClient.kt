@@ -18,7 +18,7 @@ interface HomeAssistantApiClient {
     var observerExceptionHandler: (Throwable) -> Unit
 
     /**
-     * Attaches an [EventHandlerFunction] to Khome and starts the home assistant event subscription.
+     * Attaches an [EventHandlerFunction] to the API client and starts the Home Assistant event subscription.
      */
     fun <ED> attachEventHandler(
         eventType: EventType,
@@ -36,7 +36,7 @@ interface HomeAssistantApiClient {
     fun setEventHandlerExceptionHandler(f: (Throwable) -> Unit)
 
     /**
-     * Emits a home assistant event with optional event data.
+     * Emits a Home Assistant event with optional event data.
      *
      * @param eventType the type of event to emit.
      * @param eventData the data to be sent with the event (optional).
@@ -44,7 +44,7 @@ interface HomeAssistantApiClient {
     suspend fun emitEvent(eventType: String, eventData: Any? = null)
 
     /**
-     * Attaches an error response handler to Khome.
+     * Attaches an error response handler to the API client.
      *
      * @param errorResponseHandler the handler to be attached.
      */

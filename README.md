@@ -1,135 +1,123 @@
 
-![GitHub Actions status](https://github.com/dennisschroeder/khome/workflows/Latest%20push/badge.svg)
+![GitHub Actions status](https://github.com/efirestone/hassemble/workflows/Latest%20push/badge.svg)
 ![LINE](https://img.shields.io/badge/line--coverage-31%25-red.svg)
-[![](https://jitpack.io/v/dennisschroeder/khome.svg)](https://jitpack.io/#dennisschroeder/khome)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codellyrandom.hassemble/hassemble/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codellyrandom.hassemble/hassemble)
 
-# Khome
+# Hassemble
 
-Khome is a smart home automation library for **Home Assistant**, written in Kotlin. It enables you to write your own **Home Assistant** automation applications, that can observe state changes, listen to events, and much more.
-Khome was written with safeness in mind. That means we wrote Khome with a fail first approach. See more about this in the ["Safety's first Section"](docs/Safety'sFirst.md).
+Hassemble is a smart home automation library for [**Home Assistant**](https://www.home-assistant.io), written in Kotlin.
+It allows your application or service to interact with Home Assistant, such as to observe state changes, listen to
+events, send commands, and much more. Hassemble establishes a background WebSocket connection to Home Assistant, and 
+aims to be resilient to network connectivity issues when possible.
 
-Simple Example:
+To connect to your Home Assistant server:
+
 ```kotlin
-val KHOME = khomeApplication()
+val credentials = Credentials(
+    name = "Home Assistant",
+    host = "homeassistant.myserver.com",
+    port = 8123,
+    accessToken = "access_token_obtained_from_home_assistant",
+    isSecure = false // true for HTTPS/WSS
+)
 
-val LivingRoomMotion = KHOME.LuminanceSensor("livingRoom_motion".objectId)
-val LivingRoomMainLight = KHOME.RGBWLight("livingRoom_main_light".objectId)
+val client = homeAssistantApiClient(credentials)
 
-fun main() {
-    LivingRoomMotion.attachObserver { //this: Sensor<SwitchableState,MotionSensorAttributes>
-        if (measurement.value == SwitchableValue.ON) {
-            LivingRoomMainLight.desiredState = RGBWLightState(ON, colorTemp = 5000.kelvin)
-        }
-    }
+client.connect()
+```
 
-    KHOME.runBlocking()
+Hassemble provides predefined factory functions, data classes, and observers for all of the common entity types.
+
+In the following example we'll observe the motion sensor in the living room, and when motion is detected we'll turn on
+the living room light with a 5000K color temperature.
+
+```kotlin
+val client = homeAssistantApiClient(...)
+client.connect()
+
+val motionSensor = client.MotionSensor(
+    EntityId.fromString(ObjectId("living_room_motion"))
+)
+val light = client.RGBWLight(ObjectId("living_room_main_light"))
+
+motionSensor.onMotionAlarm { //this: MotionSensor
+    light.setColorTemperature(5000.kelvin)
 }
 ```
 
-In this little example, we observed the motion sensor in the living room and when the sensors motion alarm turns to on, we change the state of the main light in the living room to ON.
-As you can see here, Khome encourages you to think in states rather than services you have to call. This is less error-prone and helps the developer to stay in the mindset of states. This distinguishes Khome from most other automation libraries.
-
-Khome comes with a lot of predefined factory functions, data classes, observers and more for generic entity types.
-To achieve the same result than shown above, we can also use Khomes higher-level API which lets you write concise code with ease.
-
-```kotlin
-val KHOME = khomeApplication()
-
-val LivingRoomMotion = KHOME.LuminanceSensor("livingRoom_motion".objectId)
-val LivingRoomMainLight = KHOME.SwitchableLight("livingRoom_main_light".objectId)
-
-fun main() {
-    LivingRoomMotion.onMotionAlarm { //this: MotionSensor
-        LivingRoomMainLight.setColorTemperature(5000.kelvin)
-    }
-
-    KHOME.runBlocking()
-}
-```
+Hassemble abstracts away the lower level service calls and state observation and encourages you to think in states
+instead. This is less error-prone and hopefully easier to understand.
 
 ## Home Assistant
  
 HA is an open-source home-automation platform written in Python 3 that puts local control and privacy first. Powered by
-a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.
+a worldwide community of tinkerers and DIY enthusiasts.
 
-If you're not already familiar with Home Assistant, you find all you need on the [Getting Started page](https://www.home-assistant.io/getting-started/).
-
-## If you are from...
-
-#### ... the Kotlin World:
-Since Home Assistant is written in Python 3, you may ask yourself if you need to write Python code on the Home Assistant
-side. But you don't have to. All you need to do is configuring it via `.yaml` files and/or the user interface. But you need to install and run it on your own server. There is plenty of information and tutorials on the web to support you with that. [Google](https://google.com)
-will help you. Also, there is a [Discord channel](https://discordapp.com/invite/c5DvZ4e) to get in touch easily with the community.
-
-#### ... the Python World:
-Yes, you need to learn Kotlin. It is definitely worth a try. In my opinion, it is worth even more. But that's a different story. Probably the fastest way for you to get into Kotlin is the [Kotlin for Python Introduction](https://kotlinlang.org/docs/tutorials/kotlin-for-py/introduction.html)
-from the official Kotlin documentation. Here is a list of the most important [Kotlin online resources](https://kotlinlang.org/community/#kotlin-online-resources).
+If you're not already familiar with Home Assistant, you'll find all you need on the
+[Getting Started page](https://www.home-assistant.io/getting-started/).
 
 ## Installation
 
 #### Home Assistant
-Further information on this topic is available on the official [Home Assistant Documentation](https://www.home-assistant.io/getting-started/) page.
+Further information on this topic is available on the official
+[Home Assistant Documentation](https://www.home-assistant.io/getting-started/) page.
 
-#### Khome
-For now, you can use [Jitpack](http://jitpack.io) to install Khome locally. Just add the following lines to your `build.gradle` or maven file.
+#### Hassemble
+Hassemble is available from Maven Central. Add the following lines to your `build.gradle.kts`:
 
-#### Gradle
-```groovy
+```kotlin
 repositories {
     // ...
-    maven { url "https://jitpack.io" }
+    mavenCentral()
 }
 ```
-```groovy
+```kotlin
 dependencies {
     // ...
-    implementation 'com.github.dennisschroeder:khome:${replace with a version}'
+    implementation("com.codellyrandom.hassemble:hassemble:${replace with a version}")
 }
-```
-
-#### Maven
-```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-```xml
-<dependency>
-        <groupId>com.github.dennisschroeder</groupId>
-        <artifactId>khome</artifactId>
-        <version>${replace with a version}</version>
-</dependency>
-
 ```
 
 ## Documentation
 
-Khome has no opinion on how you want to run your application, what other libraries or pattern you choose, or what else is best for what you like to build. All Khome needs is a Kotlin environment to run properly.
+Hassemble has no opinion on how you want to run your application, what other libraries or pattern you choose, or what
+else is best for what you like to build. All Hassemble needs is a Kotlin environment to run properly.
 
-Again, if you are new to Kotlin, you might check out [Getting Started with IntelliJ IDEA](https://kotlinlang.org/docs/tutorials/getting-started.html)
-or [Working with the Command Line Compiler](https://kotlinlang.org/docs/tutorials/command-line.html).
-I recommend using Kotlin with Intellij IDEA to get started. It's the best way to get into it. You can download the free [Community Edition](http://www.jetbrains.com/idea/download/index.html) from JetBrains.
+If you want to make modifications or enhancements to Hassemble, the IntelliJ IDEA by JetBrains is your best bet. The
+[Community Edition](http://www.jetbrains.com/idea/download/index.html) is free and should provide what you need.
 
-### Working with Khome
+## Q&A
+
+**Q: Can I use Hassemble to write my Home Assistant automations?**
+
+A: You definitely could, although Hassemble was really designed to let your Kotlin service or application interact with
+Home Assistant. You could wrap your Hassemble logic in a small program that spins the run loop in order to continue 
+listening for events. You also might look at [Khome](https://github.com/dennisschroeder/khome), which was designed more 
+directly for this purpose.
+
+**Q: Why Kotlin?**
+
+A: Kotlin's a great, modern, language. It's also compatible with other languages such as Objective-C (and by extension
+Swift) and JavaScript via [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html).
+
+**Q: So is Hassemble compatible with Kotlin Multiplatform?**
+
+A: Sort of. Hassemble uses only multiplatform-compatible libraries, and therefore compiles for all platforms, but it 
+doesn't actually work with iOS because Ktor, the networking library used by Hassemble, [doesn't yet support WebSocket
+connections](https://github.com/ktorio/ktor/issues/1894). Once that support is in place the aim is to get Hassemble
+working for iOS as well.
+
+It's quite possible that Hassemble works when transpiled to JavaScript, but this hasn't been tested.
+
+### Working with Hassemble
 - [Quick start](docs/Quickstart.md)
 - [Sensors, Actuators and Observers](docs/SensorsAndActuators.md)
-- [Home Assistant Events](docs/HomeAssistantEvents.md) (coming soon)
 - [Predefined entity types](docs/PredefinedEntityTypes.md) (to be finished)
 - [Build entity types from scratch](docs/BuildEntitiesFromScratch.md) (coming soon)
 - [Notifications API](docs/NotificationApi.md)
-- [Safety's first](docs/Safety'sFirst.md)
+- [Safety's first](docs/SafetyFirst.md)
 
 
 ## Credits
-Even though the idea to build Khome and the implementation was made by [me](https://github.com/dennisschroeder), you'll find the word "we" quite often in the documentation.
-That is because I had the pleasure to work with [Tobias Hermann](https://github.com/Dobiasd) on this project who served me as a sparring partner by challenging my ideas and design decisions, 
-introducing new ideas and designs, reviewing some parts of the code, and an overall consultant in the field of software engineering. So using I in the documentation would
-just be incorrect.
-
-Therefore, a special thank goes out to [Tobias](https://github.com/Dobiasd). 
-
-Check out his awesome work, especially [frugally-deep](https://github.com/Dobiasd/frugally-deep), [functionalPlus](https://github.com/Dobiasd/FunctionalPlus), and his [thoughts on programming](https://github.com/Dobiasd/articles).
-Oh and leave a star or two ;-). 
+Hassemble was forked from [Khome](https://github.com/dennisschroeder/khome), and a huge thank you goes out to 
+[dennisschroeder](https://github.com/dennisschroeder) and the contributors to that project.   

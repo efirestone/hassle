@@ -94,7 +94,6 @@ $dokka.location:hassemble.core/EventDtoInterface///PointingToDeclaration/hassem
 $dokka.location:hassemble.core/EventDtoInterface/eventType/#/PointingToDeclaration/hassemble/hassemble.core/-event-dto-interface/event-type.html
 $dokka.location:hassemble.core/EventDtoInterface/origin/#/PointingToDeclaration/hassemble/hassemble.core/-event-dto-interface/origin.html
 $dokka.location:hassemble.core/EventDtoInterface/timeFired/#/PointingToDeclaration/hassemble/hassemble.core/-event-dto-interface/time-fired.html
-$dokka.location:hassemble.core/KhomeDispatchers///PointingToDeclaration/hassemble/hassemble.core/-khome-dispatchers/index.html
 $dokka.location:hassemble.coroutines////PointingToDeclaration/hassemble/hassemble.coroutines/index.html
 $dokka.location:hassemble.coroutines/MainDispatcherFactory///PointingToDeclaration/hassemble/hassemble.coroutines/-main-dispatcher-factory/index.html
 $dokka.location:hassemble.coroutines/MainDispatcherFactory/create/#/PointingToDeclaration/hassemble/hassemble.coroutines/-main-dispatcher-factory/create.html

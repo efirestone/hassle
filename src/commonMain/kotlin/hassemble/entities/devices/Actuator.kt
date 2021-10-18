@@ -16,10 +16,12 @@ import kotlin.reflect.KClass
 /**
  * An Actuator holding entity state and attributes
  *
- * In Khome, the Actuator is the mutable representation of an entity in home assistant.
+ * An Actuator is the mutable representation of an entity in Home Assistant.
  *
- * @param S the type of the state object that represents all mutable state values of the entity. Has to implement the [State] interface.
- * @param A the type of the attributes object that represents all immutable attribute values of the entity. Has to implement the [Attributes] interface.
+ * @param S the type of the state object that represents all mutable state values of the entity.
+ * Has to implement the [State] interface.
+ * @param A the type of the attributes object that represents all immutable attribute values of the entity.
+ * Has to implement the [Attributes] interface.
  */
 class Actuator<S : State<*>, A : Attributes> internal constructor(
     val entityId: EntityId,
@@ -32,7 +34,7 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
     private val observers: MutableList<Observer<Actuator<S, A>>> = mutableListOf()
 
     /**
-     * Represents the current attributes of the entity in Khome
+     * Represents the current attributes of the entity.
      * Holds all state attributes that can not directly be mutated.
      */
     override lateinit var attributes: A
@@ -40,7 +42,7 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
     private val _history = CircularArray<StateAndAttributes<S, A>>(10)
 
     /**
-     * Represents the current state object of the entity in Khome.
+     * Represents the current state of the entity.
      * Holds all state values that can be mutated directly.
      */
     var actualState: S by ObservableDelegateNoInitial(this, observers, _history)
