@@ -6,47 +6,43 @@ The main difference is the mutability of the state in an actuator. Or the immuta
 Observers, on the other hand, get attached to both and execute a user-defined action, whenever a state change occurs.
 
 ## Sensor
-A Sensor in Khome consists of the **observable state** and **attributes**. Since sensors usually measure something,
-the state is called "measurement" in Khome.
+A Sensor in Hassemble consists of the **observable state** and **attributes**. Since sensors usually measure something,
+the state is called "measurement" in Hassemble.
 
 A sensor fulfills 2 purposes:
 
 1. Observes its state changes and executes a user-defined action attached to it
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
 
-val BedRoomTemperature = KHOME.TemperatureSensor("bedroom_temperature".objectId)
+val bedRoomTemperature = client.TemperatureSensor(ObjectId("bedroom_temperature"))
 
-fun main() {
-    BedRoomTemperature.attachObserver { snapshot, _ ->
-        // gets executed every time a state change occurs
-        // attribute change also triggers a state change
-    }
-
-    KHOME.runBlocking()
+bedRoomTemperature.attachObserver { snapshot, _ ->
+    // gets executed every time a state change occurs
+    // attribute change also triggers a state change
 }
+
+client.connect()
 ```
 
 2. Source of information
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
+client.connect()
 
-val BedRoomTemperature = KHOME.TemperatureSensor("bedroom_temperature".objectId)
+val bedRoomTemperature = client.TemperatureSensor(ObjectId("bedroom_temperature"))
 
-fun main() {
-    if (BedRoomTemperature.measurement.value > 30.0) {
-        // ...
-    }
-
-    KHOME.runBlocking()
+if (bedRoomTemperature.measurement.value > 30.0) {
+    // ...
 }
 ```
-See more about Sensors in the [source code](../src/commonMain/kotlin/khome/entities/devices/Sensor.kt) or [kdocs](https://dennisschroeder.github.io/khome/khome/khome.entities.devices/-sensor/index.html).
+See more about Sensors in the [source code](../src/commonMain/kotlin/hassemble/entities/devices/Sensor.kt) or [kdocs](https://efirestone.github.io/hassemble/hassemble/hassemble.entities.devices/-sensor/index.html).
 
 ## Actuator
-An Actuator in Khome consists of the **state**, the **attributes**, an **observable** property and a service command resolver.
+
+An Actuator in Hassemble consists of the **state**, the **attributes**, an **observable** property and a service command resolver.
 In an Actuator, the observable property is the one who holds the state. Since Actuators can mutate their state, not directly
 in your application, but over home assistant, we need to differentiate between the actual state and the desired state.
 
@@ -54,63 +50,55 @@ Most home automation libraries require you to call a service to mutate the state
 This can be quite cumbersome and error-prone since it requires you to resolve the matching service
 name and parameters, that does the desired mutation for you, every time it is needed.
 
-Khome, therefore, lets you stay in the mindset of states.
+Hassemble, therefore, lets you stay in the mindset of states.
 
 An actuator fulfills 3 purposes:
 
 1. Observes its state changes and executes a user-defined action attached to it
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
+client.connect()
 
-val BedRoomCoverOne = KHOME.PositionableCover("bedroom_cover_1".objectId)
+val bedRoomCoverOne = client.PositionableCover(ObjectId("bedroom_cover_1"))
 
-fun main() {
-    BedRoomCoverOne.attachObserver {
-       // gets executed every time a state change occurs
-       // attribute change also triggers a state change
-    }
-
-    KHOME.runBlocking()
+bedRoomCoverOne.attachObserver {
+    // gets executed every time a state change occurs
+    // attribute change also triggers a state change
 }
 ```
 
 2. Source of information
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
+client.connect()
 
-val BedRoomCoverOne = KHOME.PositionableCover("bedroom_cover_1".objectId)
+val bedRoomCoverOne = client.PositionableCover(ObjectId("bedroom_cover_1"))
 
-fun main() {
-    if (BedRoomCoverOne.actualState.position > 30) {
-        // ...
-    }
-
-    KHOME.runBlocking()
+if (bedRoomCoverOne.actualState.position > 30) {
+    // ...
 }
 ```
 
 3. Mutate state
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
+client.connect()
 
-val Sun = KHOME.Sun()
-val BedRoomCoverOne = KHOME.PositionableCover("bedroom_cover_1".objectId)
+val sun = client.Sun()
+val bedRoomCoverOne = client.PositionableCover(ObjectId("bedroom_cover_1"))
 
-fun main() {
-    Sun.attachObserver { //this:Sensor<SunState,SunAttributes>
-        if (measurement.value == ABOVE_HORIZON) {
-            BedRoomCoverOne.desiredState = CoverState(value = OPEN, currentPosition = 50 )
-        }
+sun.attachObserver { //this:Sensor<SunState,SunAttributes>
+    if (measurement.value == ABOVE_HORIZON) {
+        bedRoomCoverOne.desiredState = CoverState(value = OPEN, currentPosition = 50)
     }
-
-    KHOME.runBlocking()
 }
 ```
 
-Under the hood, home assistant still offers a [service based API](https://developers.home-assistant.io/docs/api/websocket/#calling-a-service). Therefore, Khome resolves the matching service call from the desired state.
+Under the hood, home assistant still offers a [service based API](https://developers.home-assistant.io/docs/api/websocket/#calling-a-service).
+Therefore, Hassemble resolves the matching service call from the desired state.
 To learn more about this, read the [Service-Command-Resolver](./SensorsAndActuators.md#service-command-resolver) Section.
 
 We are aware of the fact, that there are reasons to call a service instead of setting a desired state. We detected two reasons. First, some of you might feel more
@@ -118,35 +106,34 @@ We are aware of the fact, that there are reasons to call a service instead of se
 comfortable calling services (still we encourage you to at least try out the desired state version). Secondly, home assistant offers some functionality that does affect the entity without
 setting the state or attribute value directly. And some services do not affect the entity at all.
 
-Therefore, an Actuator has the [`::callService`](https://dennisschroeder.github.io/khome/khome/khome.entities.devices/-actuator/call-service.html) method.
+Therefore, an Actuator has the [`::callService`](https://efirestone.github.io/hassemble/hassemble/hassemble.entities.devices/-actuator/call-service.html) method.
 
 The following example showcases this. We will build a cover lock. When the lock is active, every time the cover is changing its position, we call the [`stop_cover`](https://www.home-assistant.io/integrations/cover/)
 service from the cover domain in home assistant, to prevent opening/closing.
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
+client.connect()
 
-val CoverLock = KHOME.InputBoolean("cover_lock".objectId)
-val BedRoomCoverOne = KHOME.PositionableCover("bedroom_cover_1".objectId)
+val coverLock = client.InputBoolean(ObjectId("cover_lock"))
+val bedRoomCoverOne = client.PositionableCover(ObjectId("bedroom_cover_1"))
 
-fun main() {
-    BedRoomCoverOne.attachObserver { // this: Actuator<CoverState,PositionalCoverAttributes>
-        if (attributes.working == YES && CoverLock.actualState.value == ON) {
-            BedRoomCoverOne.callService("stop_cover".service)
-        }
+bedRoomCoverOne.attachObserver { // this: Actuator<CoverState,PositionalCoverAttributes>
+    if (attributes.working == YES && coverLock.actualState.value == ON) {
+        bedRoomCoverOne.callService(Service("stop_cover"))
     }
-
-    KHOME.runBlocking()
 }
 ```
 
-See more about Actuators in the [source code](../src/commonMain/kotlin/khome/entities/devices/Actuator.kt) or [kdocs](https://dennisschroeder.github.io/khome/khome/khome.entities.devices/-actuator/index.html).
+See more about Actuators in the [source code](../src/commonMain/kotlin/hassemble/entities/devices/Actuator.kt) or [kdocs](https://efirestone.github.io/hassemble/hassemble/hassemble.entities.devices/-actuator/index.html).
 
 
 ### Service command resolver
-Since home assistant is awaiting a [service call](https://developers.home-assistant.io/docs/api/websocket/#calling-a-service), and we only want to think in states, somebody needs to
-translate between those different concepts. It's the responsibility of the service command resolver. Basically it is a just a [factory function](../src/commonMain/kotlin/khome/communicating/ServiceCommandResolver.kt), that you pass an lambda
-which has access to the desired state and returns a [ResolvedServiceCommand](../src/commonMain/kotlin/khome/communicating/ServiceCommandResolver.kt) instance.
+Since Home Assistant is awaiting a [service call](https://developers.home-assistant.io/docs/api/websocket/#calling-a-service),
+and we only want to think in states, somebody needs to translate between those different concepts. It's the
+responsibility of the service command resolver. Basically it is a just a
+[factory function](../src/commonMain/kotlin/hassemble/communicating/ServiceCommandResolver.kt), that you pass a lambda
+which has access to the desired state and returns a [ResolvedServiceCommand](../src/commonMain/kotlin/hassemble/communicating/ServiceCommandResolver.kt) instance.
 
 Let's take a look at a simple example from the InputBoolean entity:
 
@@ -154,11 +141,11 @@ Let's take a look at a simple example from the InputBoolean entity:
 ServiceCommandResolver { desiredState ->
     when (desiredState.value) {
             SwitchableValue.ON -> DefaultResolvedServiceCommand(
-                service = "turn_on".service,
+                service = Service("turn_on"),
                 serviceData = EntityIdOnlyServiceData()
             )
             SwitchableValue.OFF -> DefaultResolvedServiceCommand(
-                service = "turn_off".service,
+                service = Service("turn_off"),
                 serviceData = EntityIdOnlyServiceData()
             )
         }
@@ -169,8 +156,10 @@ Ok, let's have a deeper look at all the elements involved:
 
 #### desiredState
 The desired state is the same type then the actual state in an actuator.
-In this case, it's type is [SwitchableState](../src/commonMain/kotlin/khome/extending/DeviceStates.kt) and the state value is an enum [SwitchableValue](../src/commonMain/kotlin/khome/extending/StateValueTypes.kt)
-which has two options: ON and OFF .
+In this case, it's type is [SwitchableState](../src/commonMain/kotlin/hassemble/extending/DeviceStates.kt) and the
+state value is an enum [SwitchableValue](../src/commonMain/kotlin/hassemble/extending/StateValueTypes.kt) which has two
+options: ON and OFF.
+
 ```kotlin
 data class SwitchableState(
     override val value: SwitchableValue
@@ -178,7 +167,7 @@ data class SwitchableState(
 ```
 
 #### DefaultResolvedServiceCommand
-Last, but not least, the output of our `ServiceCommandResolver` is a [`DefaultResolvedServiceCommand`](../src/commonMain/kotlin/khome/communicating/ServiceCommandResolver.kt).
+Last, but not least, the output of our `ServiceCommandResolver` is a [`DefaultResolvedServiceCommand`](../src/commonMain/kotlin/hassemble/communicating/ServiceCommandResolver.kt).
 ```kotlin
 data class DefaultResolvedServiceCommand(
     override val service: Service,
@@ -191,10 +180,10 @@ A class, that later gets mapped to a ServiceCommand which then gets serialized a
 2. What `serviceData` (parameters) should be attached to the call?
 
 In our example, we need two different services `TURN_ON` and `TURN_OFF` and as a parameter, we need to tell home assistant which entity to be turned on/off.
-This can be achieved using `EntityIdOnlyServiceData`, which is part of Khomes toolbox and should be used when no other parameters have to be sent to home assistant.
-Khome will attach the entity id to the service data for you. When you want to build your own serviceData class, make sure to use the `abstract DesiredServiceData` class.
+This can be achieved using `EntityIdOnlyServiceData`, which is part of Hassemble's toolbox and should be used when no other parameters have to be sent to home assistant.
+Hassemble will attach the entity id to the service data for you. When you want to build your own serviceData class, make sure to use the `abstract DesiredServiceData` class.
 
-A more advanced example from the [DimmableLight](../src/commonMain/kotlin/khome/extending/actuators/Light.kt) entity might also help to better understand the purpose of the
+A more advanced example from the [DimmableLight](../src/commonMain/kotlin/hassemble/extending/actuators/Light.kt) entity might also help to better understand the purpose of the
 `ServiceCommandResolver`:
 
 ```kotlin
@@ -227,7 +216,8 @@ ServiceCommandResolver { desiredState ->
 ```
 
 ## Observer
-The heart of Khome is the ability to observe state changes. The Sensor, as already mentioned above, has an observable property named measurement.
+
+The heart of Hassemble is the ability to observe state changes. The Sensor, as already mentioned above, has an observable property named measurement.
 The Actuators pendant gets called actualState.
 
 To execute an action every time a state has changed, you can create and attach an Observer to the entity you like to observe.
@@ -238,7 +228,7 @@ SomeCover.attachObserver { // this: Actuator<CoverState,PositionalCoverAttribute
 }
 ```
 
-An Observer is bound to a specific type of Sensor or Actuator since Khome injects a reference to it as a [receiver of the observer function literal](https://kotlinlang.org/docs/reference/lambdas.html#function-literals-with-receiver).
+An Observer is bound to a specific type of Sensor or Actuator since Hassemble injects a reference to it as a [receiver of the observer function literal](https://kotlinlang.org/docs/reference/lambdas.html#function-literals-with-receiver).
 Inside the body of the function literal, the receiver object passed to a call becomes an implicit this, so that you can access the members of that receiver object without any additional qualifiers,
 or access the receiver object using a this expression.
 
@@ -306,7 +296,7 @@ to its position that was before, which was stored in the history of the living r
 
 ### Take over control
 
-Inside the observer, we passed you a reference to itself as a [Switchable](https://dennisschroeder.github.io/khome/khome/khome.observability/-switchable/index.html) which gives you the ability to enable/disable the observer action.
+Inside the observer, we passed you a reference to itself as a [Switchable](https://efirestone.github.io/hassemble/hassemble/hassemble.observability/-switchable/index.html) which gives you the ability to enable/disable the observer action.
 Since it is the only parameter available in your function literal, it is available as "it", or you can name it whatever you like.
 
 Let's take a look at an example:

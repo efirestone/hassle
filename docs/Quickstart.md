@@ -2,24 +2,18 @@
 
 #### Initialization & Configuration
 
-Before you can start your Khome application, you need to initialize and configure it. Here you have two choices to do so:
+Before you can start using Hassemble in your application, you need to initialize and configure it:
 
-1. The functional way
 ```kotlin
-khomeApplication { //this: Khome
-    configure { //this: Configuration
-        host = "localhost"
-        port = 8123
-        accessToken = "Your super secret token"
+val client = homeAssistantApiClient(
+    Credentials(
+        name = "Home Assistant",
+        host = "localhost",
+        port = 8123,
+        accessToken = "Your super secret token",
         secure = false
-     }
-}
-```
-
-2. Set environment variables <br>
-Alternatively, you can use env variables to configure home.
-```.env
-HOST=192.169.178.101
+    )
+)
 ```
 
 ##### Required Parameters
@@ -40,14 +34,13 @@ HOST=192.169.178.101
 #### Connect to the web socket API
 
 ```kotlin
-val KHOME = khomeApplication()
-
-fun main() {
-    //...
-    KHOME.runBlocking()
-}
+val client = homeAssistantApiClient(...)
+        
+client.connect()
 ```
-By calling the `KhomeApplication::runBlocking` method, you establish a connection to the Home-Assistant WebSocket API and run the start sequences like authentication, entity registration validation, and so on.
+
+By calling the `HomeAssistantApiClient::connect` method, you establish a connection to the Home-Assistant WebSocket API
+and run the start sequences like authentication, entity registration validation, and so on.
 When all went as supposed, you should see the following output in your console. 
 
 ```bash
@@ -63,56 +56,59 @@ When all went as supposed, you should see the following output in your console.
 
 ## Start writing your home automation application
 
-Basically, a Khome application is a collection of observers attached to some entities. For your convenience, Khome comes with a lot of predefined entity types. 
-For most uses cases, [here is all you need](PredefinedEntityTypes.md) to build your application. Since home assistant evolves rapidly and has the ability to be extended with custom integrations,
-it comes along with a low-level API to build your own entities, based on your needs. You find more on that topic in the [Build your own entities](BuildEntitiesFromScratch.md) section.
+Basically, a Hassemble client is a collection of observers attached to some entities. For your convenience, Hassemble
+comes with a lot of predefined entity types. For most uses cases, [here is all you need](PredefinedEntityTypes.md) to
+build your application. Since Home Assistant evolves rapidly and has the ability to be extended with custom integrations,
+it comes along with a low-level API to build your own entities, based on your needs. You find more on that topic in the
+[Build your own entities](BuildEntitiesFromScratch.md) section.
 
-The following examples to get you off and running are based on the [predefined entity types](PredefinedEntityTypes.md) and the [notification API](NotificationApi.md) provided by Khome.
-For a deeper understanding of Khome's capabilities, we encourage you to read the [Sensors, Actuators, and Observer](SensorsAndActuators.md) section.
+The following examples to get you off and running are based on the [predefined entity types](PredefinedEntityTypes.md)
+and the [notification API](NotificationApi.md) provided by Hassemble.
+For a deeper understanding of Hassemble's capabilities, we encourage you to read the
+[Sensors, Actuators, and Observer](SensorsAndActuators.md) section.
 
 ### Lower complexity
 
 1. Turn on a light, when a motion sensor detects movement, and the sun is below horizon.
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
 
-val HallwayLight = KHOME.DimmableLight("hallway_main".objectId)
-val HallwayMotionSensor = KHOME.MotionSensor("hallway".objectId)
-val Sun = KHOME.Sun()
+val hallwayLight = client.DimmableLight(ObjectId("hallway_main"))
+val hallwayMotionSensor = client.MotionSensor(ObjectId("hallway"))
+val sun = client.Sun()
 
-fun main() {
-    HallwayMotionSensor.attacheObserver {
-        if (Sun.measurement.value == SunValue.BELOW_HORIZON) {
-            when(measurement.value) {
-                ON -> HallwayLight.turnOn()
-                OFF -> HallwayLight.turnOff()
-            }
+hallwayMotionSensor.attachObserver {
+    if (Sun.measurement.value == SunValue.BELOW_HORIZON) {
+        when(measurement.value) {
+            ON -> HallwayLight.turnOn()
+            OFF -> HallwayLight.turnOff()
         }
     }
-    KHOME.runBlocking()
 }
+
+client.connect()
 ```
 
 2. Iterate over a list of covers and set them to a specific position when the sun has risen.
 
 ```kotlin
-val KHOME = khomeApplication()
-val Sun = KHOME.Sun()
-val BedRoomCovers = listOf(
-    KHOME.PositionableCover("bedroom_one".objectId),
-    KHOME.PositionableCover("bedroom_two".objectId),
-    KHOME.PositionableCover("bedroom_three".objectId),
-    KHOME.PositionableCover("bedroom_four".objectId),
+val client = homeAssistantApiClient(...)
+val sun = client.Sun()
+val bedRoomCovers = listOf(
+    client.PositionableCover(ObjectId("bedroom_one")),
+    client.PositionableCover(ObjectId("bedroom_two")),
+    client.PositionableCover(ObjectId("bedroom_three")),
+    client.PositionableCover(ObjectId("bedroom_four")),
 )
 
-fun main() {
-    Sun.onSunrise {
-        for (cover in BedRoomCovers) {
-            cover.desiredState = CoverState(value = CoverValue.OPEN, position = 60)
-        }
-    }   
+sun.onSunrise {
+    for (cover in BedRoomCovers) {
+        cover.desiredState = CoverState(value = CoverValue.OPEN, position = 60)
+    }
 }
+
+client.connect()
 ```
 
 ### Intermediate complexity
@@ -120,31 +116,31 @@ fun main() {
 1. Send a notification to your mobile app when door sensor reports "door open" at night.
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
 
-val GardenShedDoor = KHOME.ContactSensor("garden_shed".objectId)
-val LateNight = KHOME.DayTime("late_night".objectId)
+val gardenShedDoor = client.ContactSensor(ObjectId("garden_shed"))
+val lateNight = client.DayTime(ObjectId("late_night"))
 
 enum class MobilePhone {
     MY_PHONE
 }
 
-fun main() {
-    GardenShedDoor.attachObserver {
-        if (LateNight.measurement.value == SwitchableValue.ON &&
-            history[1].state.value == ContactValue.CLOSED &&
-            measurement.value == ContactValue.OPEN
-        ) {
-           KHOME.notifyMobileApp(MobilePhone.MY_PHONE) {
-                title = "INTRUDER ALARM"
-                message = "Garden shed door opened"
-                data {
-                    sound(critical = 1, volume = 1.0)
-                }        
-           }
+gardenShedDoor.attachObserver {
+    if (lateNight.measurement.value == SwitchableValue.ON &&
+        history[1].state.value == ContactValue.CLOSED &&
+        measurement.value == ContactValue.OPEN
+    ) {
+        client.notifyMobileApp(MobilePhone.MY_PHONE) {
+            title = "INTRUDER ALARM"
+            message = "Garden shed door opened"
+            data {
+                sound(critical = 1, volume = 1.0)
+            }
         }
     }
 }
+
+client.connect()
 ```
 
 ### Higher complexity
@@ -153,35 +149,35 @@ fun main() {
 The previous positions get stored in a state store and when the tv got turned off, the covers get reset to the former positions.
 
 ```kotlin
-val KHOME = khomeApplication()
+val client = homeAssistantApiClient(...)
 
-val TelevisionLivingroom = KHOME.Television("tv_livingroom".objectId)
-val ResetStateHistory = mutableMapOf<Cover,CoverState>()
+val televisionLivingRoom = client.Television(ObjectId("tv_livingroom"))
+val resetStateHistory = mutableMapOf<Cover,CoverState>()
 
 val televisionWatchingCoverPosition = 
-    KHOME.InputNumber("television_watching_cover_position".objectId).actualState.toInt()
+    client.InputNumber(ObjectId("television_watching_cover_position")).actualState.toInt()
 val defaultCoverPosition = 75
 
-val LivingRoomCovers = listOf(
-    KHOME.PositionableCover("livingroom_one".objectId),
-    KHOME.PositionableCover("livingroom_two".objectId),
-    KHOME.PositionableCover("livingroom_three".objectId)
+val livingRoomCovers = listOf(
+    client.PositionableCover(ObjectId("livingroom_one")),
+    client.PositionableCover(ObjectId("livingroom_two")),
+    client.PositionableCover(ObjectId("livingroom_three"))
 )
 
-fun main() {
-    TelevisionLivingroom.attachObserver {
-        if (turnedOn) {
-            for (cover in LivingRoomCovers) {
-                ResetStateHistory[cover] = cover.actualState
-                cover.setCoverPosition(televisionWatchingCoverPosition)
-            }
+televisionLivingroom.attachObserver {
+    if (turnedOn) {
+        for (cover in livingRoomCovers) {
+            resetStateHistory[cover] = cover.actualState
+            cover.setCoverPosition(televisionWatchingCoverPosition)
         }
-        
-        if (turnedOff) {
-            for (cover in LivingRoomCovers) {
-                cover.desiredState = ResetStateHistory[cover] ?: CoverState(CoverValue.OPEN, defaultCoverPosition)
-            }
+    }
+
+    if (turnedOff) {
+        for (cover in livingRoomCovers) {
+            cover.desiredState = resetStateHistory[cover] ?: CoverState(CoverValue.OPEN, defaultCoverPosition)
         }
-    }   
+    }
 }
+
+client.connect()
 ```

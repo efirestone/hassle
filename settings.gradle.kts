@@ -1,1 +1,1 @@
-rootProject.name = "khome"
+rootProject.name = "hassemble"
