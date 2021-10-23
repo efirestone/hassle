@@ -1,15 +1,18 @@
+import com.vanniktech.maven.publish.JavadocJar.Dokka
+import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
 
-val assertVersion: String by project
 val kermitVersion: String by project
 val ktorVersion: String by project
-val mockkVersion: String by project
 
-val artifactGroup = "com.codellyrandom.hassemble"
-val artifactVersion = "0.1.0"
-
-group = artifactGroup
-version = artifactVersion
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.5.31")
+        classpath("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
+    }
+}
 
 plugins {
     kotlin("multiplatform") version "1.5.31"
@@ -17,13 +20,16 @@ plugins {
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
     id("de.jansauer.printcoverage") version "2.0.0"
     id("io.gitlab.arturbosch.detekt") version "1.9.1"
-    id("org.jetbrains.dokka") version "1.5.30"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
-    id("jacoco")
-    id("java-library")
-    id("maven-publish")
-    id("signing")
+    jacoco
+    `java-library`
 }
+
+// The vanniktech publishing plugin depends on Dokka being in the classpath
+// and that doesn't seem to be possible with the `plugins` block, so we need
+// to use the older-style `buildscript.dependencies.classpath` and `apply` method.
+apply(plugin = "com.vanniktech.maven.publish")
+apply(plugin = "org.jetbrains.dokka")
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
@@ -90,71 +96,13 @@ kotlin {
     }
 }
 
-defaultTasks("dokkaHtml")
-
-val srcsJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets["main"].allSource)
-}
-
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
-publishing {
-    publications {
-        publications.withType<MavenPublication> {
-            groupId = artifactGroup
-            artifactId = "hassemble"
-            version = artifactVersion
-
-            // Stub javadoc.jar artifact
-            artifact(javadocJar.get())
-
-            pom {
-                name.set("Hassemble")
-                description.set("Interact with your Home Assistant server using Kotlin.")
-                url.set("https://github.com/efirestone/hassemble")
-                licenses {
-                    license {
-                        name.set("MIT")
-                        url.set("https://opensource.org/licenses/MIT")
-                    }
-                }
-                developers {
-                    developer {
-                        id.set("efirestone")
-                        name.set("Eric Firestone")
-                    }
-                }
-                scm {
-                    url.set("https://github.com/efirestone/hassemble")
-                    connection.set("scm:git:https://github.com/efirestone/hassemble.git")
-                    developerConnection.set("scm:git:ssh://git@github.com:efirestone/hassemble.git")
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            // Once published, visit https://s01.oss.sonatype.org/#stagingRepositories to release the artifact.
-            val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
-            val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
-            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
-            credentials {
-                this.username = properties["nexusUsername"] as String
-                this.password = properties["nexusPassword"] as String
-            }
-        }
-    }
-}
-
-signing {
-    sign(publishing.publications)
-}
-
 tasks.create<Delete>("cleanDokka") {
     delete = setOf("$rootDir/docs/${rootProject.name}")
+}
+
+tasks.withType<DokkaTask>().configureEach {
+    dependsOn("cleanDokka")
+    outputDirectory.set(File("$rootDir/docs"))
 }
 
 tasks {
@@ -166,10 +114,6 @@ tasks {
             printCoverage,
             generateJacocoBadge
         )
-    }
-    dokkaHtml {
-        dependsOn("cleanDokka")
-        outputDirectory.set(File("$rootDir/docs"))
     }
     jacocoTestReport {
         val coverageSourceDirs = arrayOf(
@@ -191,6 +135,12 @@ tasks {
             html.required.set(true)
         }
     }
+}
+
+configure<MavenPublishBaseExtension> {
+    configure(
+        KotlinMultiplatform(javadocJar = Dokka("dokkaHtml"))
+    )
 }
 
 detekt {
