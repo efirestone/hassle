@@ -8,7 +8,7 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializable
+@Serializable(VolumeLevel.Companion::class)
 data class VolumeLevel(val value: Double) {
     override fun toString(): String = value.toString()
 
