@@ -6,8 +6,8 @@ The main difference is the mutability of the state in an actuator. Or the immuta
 Observers, on the other hand, get attached to both and execute a user-defined action, whenever a state change occurs.
 
 ## Sensor
-A Sensor in Hassemble consists of the **observable state** and **attributes**. Since sensors usually measure something,
-the state is called "measurement" in Hassemble.
+A Sensor in Hassle consists of the **observable state** and **attributes**. Since sensors usually measure something,
+the state is called "measurement" in Hassle.
 
 A sensor fulfills 2 purposes:
 
@@ -38,11 +38,12 @@ if (bedRoomTemperature.measurement.value > 30.0) {
     // ...
 }
 ```
-See more about Sensors in the [source code](../src/commonMain/kotlin/hassemble/entities/devices/Sensor.kt) or [kdocs](https://efirestone.github.io/hassemble/hassemble/hassemble.entities.devices/-sensor/index.html).
+See more about Sensors in the [source code](../src/commonMain/kotlin/com/codellyrandom/hassle/entities/devices/Sensor.kt)
+or [kdocs](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.entities.devices/-sensor/index.html).
 
 ## Actuator
 
-An Actuator in Hassemble consists of the **state**, the **attributes**, an **observable** property and a service command resolver.
+An Actuator in Hassle consists of the **state**, the **attributes**, an **observable** property and a service command resolver.
 In an Actuator, the observable property is the one who holds the state. Since Actuators can mutate their state, not directly
 in your application, but over home assistant, we need to differentiate between the actual state and the desired state.
 
@@ -50,7 +51,7 @@ Most home automation libraries require you to call a service to mutate the state
 This can be quite cumbersome and error-prone since it requires you to resolve the matching service
 name and parameters, that does the desired mutation for you, every time it is needed.
 
-Hassemble, therefore, lets you stay in the mindset of states.
+Hassle, therefore, lets you stay in the mindset of states.
 
 An actuator fulfills 3 purposes:
 
@@ -98,7 +99,7 @@ sun.attachObserver { //this:Sensor<SunState,SunAttributes>
 ```
 
 Under the hood, home assistant still offers a [service based API](https://developers.home-assistant.io/docs/api/websocket/#calling-a-service).
-Therefore, Hassemble resolves the matching service call from the desired state.
+Therefore, Hassle resolves the matching service call from the desired state.
 To learn more about this, read the [Service-Command-Resolver](./SensorsAndActuators.md#service-command-resolver) Section.
 
 We are aware of the fact, that there are reasons to call a service instead of setting a desired state. We detected two reasons. First, some of you might feel more
@@ -106,7 +107,7 @@ We are aware of the fact, that there are reasons to call a service instead of se
 comfortable calling services (still we encourage you to at least try out the desired state version). Secondly, home assistant offers some functionality that does affect the entity without
 setting the state or attribute value directly. And some services do not affect the entity at all.
 
-Therefore, an Actuator has the [`::callService`](https://efirestone.github.io/hassemble/hassemble/hassemble.entities.devices/-actuator/call-service.html) method.
+Therefore, an Actuator has the [`::callService`](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.entities.devices/-actuator/call-service.html) method.
 
 The following example showcases this. We will build a cover lock. When the lock is active, every time the cover is changing its position, we call the [`stop_cover`](https://www.home-assistant.io/integrations/cover/)
 service from the cover domain in home assistant, to prevent opening/closing.
@@ -125,15 +126,15 @@ bedRoomCoverOne.attachObserver { // this: Actuator<CoverState,PositionalCoverAtt
 }
 ```
 
-See more about Actuators in the [source code](../src/commonMain/kotlin/hassemble/entities/devices/Actuator.kt) or [kdocs](https://efirestone.github.io/hassemble/hassemble/hassemble.entities.devices/-actuator/index.html).
+See more about Actuators in the [source code](../src/commonMain/kotlin/com/codellyrandom/hassle/entities/devices/Actuator.kt) or [kdocs](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.entities.devices/-actuator/index.html).
 
 
 ### Service command resolver
 Since Home Assistant is awaiting a [service call](https://developers.home-assistant.io/docs/api/websocket/#calling-a-service),
 and we only want to think in states, somebody needs to translate between those different concepts. It's the
 responsibility of the service command resolver. Basically it is a just a
-[factory function](../src/commonMain/kotlin/hassemble/communicating/ServiceCommandResolver.kt), that you pass a lambda
-which has access to the desired state and returns a [ResolvedServiceCommand](../src/commonMain/kotlin/hassemble/communicating/ServiceCommandResolver.kt) instance.
+[factory function](../src/commonMain/kotlin/com/codellyrandom/hassle/communicating/ServiceCommandResolver.kt), that you pass a lambda
+which has access to the desired state and returns a [ResolvedServiceCommand](../src/commonMain/kotlin/com/codellyrandom/hassle/communicating/ServiceCommandResolver.kt) instance.
 
 Let's take a look at a simple example from the InputBoolean entity:
 
@@ -156,8 +157,8 @@ Ok, let's have a deeper look at all the elements involved:
 
 #### desiredState
 The desired state is the same type then the actual state in an actuator.
-In this case, it's type is [SwitchableState](../src/commonMain/kotlin/hassemble/extending/DeviceStates.kt) and the
-state value is an enum [SwitchableValue](../src/commonMain/kotlin/hassemble/extending/StateValueTypes.kt) which has two
+In this case, it's type is [SwitchableState](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/DeviceStates.kt) and the
+state value is an enum [SwitchableValue](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/StateValueTypes.kt) which has two
 options: ON and OFF.
 
 ```kotlin
@@ -167,7 +168,7 @@ data class SwitchableState(
 ```
 
 #### DefaultResolvedServiceCommand
-Last, but not least, the output of our `ServiceCommandResolver` is a [`DefaultResolvedServiceCommand`](../src/commonMain/kotlin/hassemble/communicating/ServiceCommandResolver.kt).
+Last, but not least, the output of our `ServiceCommandResolver` is a [`DefaultResolvedServiceCommand`](../src/commonMain/kotlin/com/codellyrandom/hassle/communicating/ServiceCommandResolver.kt).
 ```kotlin
 data class DefaultResolvedServiceCommand(
     override val service: Service,
@@ -180,10 +181,10 @@ A class, that later gets mapped to a ServiceCommand which then gets serialized a
 2. What `serviceData` (parameters) should be attached to the call?
 
 In our example, we need two different services `TURN_ON` and `TURN_OFF` and as a parameter, we need to tell home assistant which entity to be turned on/off.
-This can be achieved using `EntityIdOnlyServiceData`, which is part of Hassemble's toolbox and should be used when no other parameters have to be sent to home assistant.
-Hassemble will attach the entity id to the service data for you. When you want to build your own serviceData class, make sure to use the `abstract DesiredServiceData` class.
+This can be achieved using `EntityIdOnlyServiceData`, which is part of Hassle's toolbox and should be used when no other parameters have to be sent to home assistant.
+Hassle will attach the entity id to the service data for you. When you want to build your own serviceData class, make sure to use the `abstract DesiredServiceData` class.
 
-A more advanced example from the [DimmableLight](../src/commonMain/kotlin/hassemble/extending/actuators/Light.kt) entity might also help to better understand the purpose of the
+A more advanced example from the [DimmableLight](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/actuators/Light.kt) entity might also help to better understand the purpose of the
 `ServiceCommandResolver`:
 
 ```kotlin
@@ -217,7 +218,7 @@ ServiceCommandResolver { desiredState ->
 
 ## Observer
 
-The heart of Hassemble is the ability to observe state changes. The Sensor, as already mentioned above, has an observable property named measurement.
+The heart of Hassle is the ability to observe state changes. The Sensor, as already mentioned above, has an observable property named measurement.
 The Actuators pendant gets called actualState.
 
 To execute an action every time a state has changed, you can create and attach an Observer to the entity you like to observe.
@@ -228,7 +229,7 @@ SomeCover.attachObserver { // this: Actuator<CoverState,PositionalCoverAttribute
 }
 ```
 
-An Observer is bound to a specific type of Sensor or Actuator since Hassemble injects a reference to it as a [receiver of the observer function literal](https://kotlinlang.org/docs/reference/lambdas.html#function-literals-with-receiver).
+An Observer is bound to a specific type of Sensor or Actuator since Hassle injects a reference to it as a [receiver of the observer function literal](https://kotlinlang.org/docs/reference/lambdas.html#function-literals-with-receiver).
 Inside the body of the function literal, the receiver object passed to a call becomes an implicit this, so that you can access the members of that receiver object without any additional qualifiers,
 or access the receiver object using a this expression.
 
@@ -296,7 +297,7 @@ to its position that was before, which was stored in the history of the living r
 
 ### Take over control
 
-Inside the observer, we passed you a reference to itself as a [Switchable](https://efirestone.github.io/hassemble/hassemble/hassemble.observability/-switchable/index.html) which gives you the ability to enable/disable the observer action.
+Inside the observer, we passed you a reference to itself as a [Switchable](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.observability/-switchable/index.html) which gives you the ability to enable/disable the observer action.
 Since it is the only parameter available in your function literal, it is available as "it", or you can name it whatever you like.
 
 Let's take a look at an example:

@@ -1,8 +1,8 @@
 ## Thank you
-First of all, thanks for contribution. We really appreciate your time to make Hassemble better.
+First of all, thanks for contribution. We really appreciate your time to make Hassle better.
 
 ## Conventional commits
-Hassemble uses Conventional Commits. This [specification](https://www.conventionalcommits.org/en/v1.0.0/#specification) is a lightweight convention on top of commit messages.
+Hassle uses Conventional Commits. This [specification](https://www.conventionalcommits.org/en/v1.0.0/#specification) is a lightweight convention on top of commit messages.
 It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of.
 This convention dovetails with [SemVer](https://semver.org/), by describing the features, fixes, and breaking changes made in commit messages.
 
@@ -17,7 +17,7 @@ Check out these [examples](https://www.conventionalcommits.org/en/v1.0.0/#exampl
 
 ## Types of changes
 
-What types of changes does your code introduce to Hassemble?
+What types of changes does your code introduce to Hassle?
 _Put an `x` in the boxes that apply_
 
 - [ ] Bugfix (non-breaking change which fixes an issue)

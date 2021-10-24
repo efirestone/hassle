@@ -1,4 +1,4 @@
-package hassemble.core.boot.servicestore
+package com.codellyrandom.hassle.core.boot.servicestore
 
 /**
  * Creates a ConcurrentHashMap on JVM and regular HashMap on other platforms.

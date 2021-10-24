@@ -2,7 +2,7 @@
 
 #### Initialization & Configuration
 
-Before you can start using Hassemble in your application, you need to initialize and configure it:
+Before you can start using Hassle in your application, you need to initialize and configure it:
 
 ```kotlin
 val client = homeAssistantApiClient(
@@ -56,15 +56,15 @@ When all went as supposed, you should see the following output in your console.
 
 ## Start writing your home automation application
 
-Basically, a Hassemble client is a collection of observers attached to some entities. For your convenience, Hassemble
+Basically, a Hassle client is a collection of observers attached to some entities. For your convenience, Hassle
 comes with a lot of predefined entity types. For most uses cases, [here is all you need](PredefinedEntityTypes.md) to
 build your application. Since Home Assistant evolves rapidly and has the ability to be extended with custom integrations,
 it comes along with a low-level API to build your own entities, based on your needs. You find more on that topic in the
 [Build your own entities](BuildEntitiesFromScratch.md) section.
 
 The following examples to get you off and running are based on the [predefined entity types](PredefinedEntityTypes.md)
-and the [notification API](NotificationApi.md) provided by Hassemble.
-For a deeper understanding of Hassemble's capabilities, we encourage you to read the
+and the [notification API](NotificationApi.md) provided by Hassle.
+For a deeper understanding of Hassle's capabilities, we encourage you to read the
 [Sensors, Actuators, and Observer](SensorsAndActuators.md) section.
 
 ### Lower complexity
