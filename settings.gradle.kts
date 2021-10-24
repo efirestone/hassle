@@ -1,1 +1,1 @@
-rootProject.name = "hassemble"
+rootProject.name = "hassle"

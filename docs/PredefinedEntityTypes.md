@@ -1,12 +1,12 @@
 # Predefined components
 
-For your convenience, Hassemble comes with a lot of predefined factory functions, data classes, observers and more for
+For your convenience, Hassle comes with a lot of predefined factory functions, data classes, observers and more for
 generic entity types.
 
 ## Helpers
 
 Helpers in home assistant are part of the [automation integrations](https://www.home-assistant.io/integrations/#automation).
-Some of those are represented as entities, therefore you can use them in Hassemble.
+Some of those are represented as entities, therefore you can use them in Hassle.
 
 ### Input Boolean
 
@@ -15,10 +15,10 @@ used within conditions of automation. See [home assistant documentation](https:/
 
 | Element    | Name | Sourcecode | KDocs |
 |------------|------|------------|-------|
-| Factory    | HomeAssistantApiClient::InputBoolean   |  [Link](../src/commonMain/kotlin/hassemble/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://efirestone.github.io/hassemble/hassemble/hassemble.extending.actuators/-input-boolean.html)      |
-| State      | SwitchableState     |  [Link](../src/commonMain/kotlin/hassemble/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassemble/hassemble/hassemble.extending/-switchable-state/index.html)      |
-| StateValue | SwitchableStateValue | [Link](../src/commonMain/kotlin/hassemble/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassemble/hassemble/hassemble.extending/-switchable-value/index.html)      |
-| Attributes | InputBooleanAttributes    |  [Link](../src/commonMain/kotlin/hassemble/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://efirestone.github.io/hassemble/hassemble/hassemble.extending/-input-boolean-attributes/index.html)      |
+| Factory    | HomeAssistantApiClient::InputBoolean   |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending.actuators/-input-boolean.html)      |
+| State      | SwitchableState     |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-switchable-state/index.html)      |
+| StateValue | SwitchableStateValue | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-switchable-value/index.html)      |
+| Attributes | InputBooleanAttributes    |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-boolean-attributes/index.html)      |
 
 Example:
 
@@ -100,10 +100,10 @@ These state events can be utilized as automation triggers as well. See [home ass
 
 | Element    | Name | Sourcecode | KDocs |
 |------------|------|------------|-------|
-| Factory    | HomeAssistantApiClient::InputNumber   |  [Link](../src/commonMain/kotlin/hassemble/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://efirestone.github.io/hassemble/hassemble/hassemble.extending.actuators/-input-number.html)      |
-| State      | InputNumberState     |  [Link](../src/commonMain/kotlin/hassemble/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassemble/hassemble/hassemble.extending/-input-number-state/index.html)      |
+| Factory    | HomeAssistantApiClient::InputNumber   |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending.actuators/-input-number.html)      |
+| State      | InputNumberState     |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-number-state/index.html)      |
 | StateValue | Double | - | -      |
-| Attributes | InputNumberAttributes    |  [Link](../src/commonMain/kotlin/hassemble/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://efirestone.github.io/hassemble/hassemble/hassemble.extending/-input-number-attributes/index.html)      |
+| Attributes | InputNumberAttributes    |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-number-attributes/index.html)      |
 
 Example:
 

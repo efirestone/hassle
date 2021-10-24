@@ -1,13 +1,13 @@
 
-![GitHub Actions status](https://github.com/efirestone/hassemble/workflows/Latest%20push/badge.svg)
+![GitHub Actions status](https://github.com/efirestone/hassle/workflows/Latest%20push/badge.svg)
 ![LINE](https://img.shields.io/badge/line--coverage-31%25-red.svg)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codellyrandom.hassemble/hassemble/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codellyrandom.hassemble/hassemble)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codellyrandom.hassle/hassle/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codellyrandom.hassle/hassle)
 
-# Hassemble
+# Hassle
 
-Hassemble is a smart home automation library for [**Home Assistant**](https://www.home-assistant.io), written in Kotlin.
+Hassle is a smart home automation library for [**Home Assistant**](https://www.home-assistant.io), written in Kotlin.
 It allows your application or service to interact with Home Assistant, such as to observe state changes, listen to
-events, send commands, and much more. Hassemble establishes a background WebSocket connection to Home Assistant, and 
+events, send commands, and much more. Hassle establishes a background WebSocket connection to Home Assistant, and 
 aims to be resilient to network connectivity issues when possible.
 
 To connect to your Home Assistant server:
@@ -26,7 +26,7 @@ val client = homeAssistantApiClient(credentials)
 client.connect()
 ```
 
-Hassemble provides predefined factory functions, data classes, and observers for all of the common entity types.
+Hassle provides predefined factory functions, data classes, and observers for all of the common entity types.
 
 In the following example we'll observe the motion sensor in the living room, and when motion is detected we'll turn on
 the living room light with a 5000K color temperature.
@@ -45,7 +45,7 @@ motionSensor.onMotionAlarm { //this: MotionSensor
 }
 ```
 
-Hassemble abstracts away the lower level service calls and state observation and encourages you to think in states
+Hassle abstracts away the lower level service calls and state observation and encourages you to think in states
 instead. This is less error-prone and hopefully easier to understand.
 
 ## Home Assistant
@@ -62,8 +62,8 @@ If you're not already familiar with Home Assistant, you'll find all you need on 
 Further information on this topic is available on the official
 [Home Assistant Documentation](https://www.home-assistant.io/getting-started/) page.
 
-#### Hassemble
-Hassemble is available from Maven Central. Add the following lines to your `build.gradle.kts`:
+#### Hassle
+Hassle is available from Maven Central. Add the following lines to your `build.gradle.kts`:
 
 ```kotlin
 repositories {
@@ -74,24 +74,24 @@ repositories {
 ```kotlin
 dependencies {
     // ...
-    implementation("com.codellyrandom.hassemble:hassemble:${replace with a version}")
+    implementation("com.codellyrandom.hassle:hassle:${replace with a version}")
 }
 ```
 
 ## Documentation
 
-Hassemble has no opinion on how you want to run your application, what other libraries or pattern you choose, or what
-else is best for what you like to build. All Hassemble needs is a Kotlin environment to run properly.
+Hassle has no opinion on how you want to run your application, what other libraries or pattern you choose, or what
+else is best for what you like to build. All Hassle needs is a Kotlin environment to run properly.
 
-If you want to make modifications or enhancements to Hassemble, the IntelliJ IDEA by JetBrains is your best bet. The
+If you want to make modifications or enhancements to Hassle, the IntelliJ IDEA by JetBrains is your best bet. The
 [Community Edition](http://www.jetbrains.com/idea/download/index.html) is free and should provide what you need.
 
 ## Q&A
 
-**Q: Can I use Hassemble to write my Home Assistant automations?**
+**Q: Can I use Hassle to write my Home Assistant automations?**
 
-A: You definitely could, although Hassemble was really designed to let your Kotlin service or application interact with
-Home Assistant. You could wrap your Hassemble logic in a small program that spins the run loop in order to continue 
+A: You definitely could, although Hassle was really designed to let your Kotlin service or application interact with
+Home Assistant. You could wrap your Hassle logic in a small program that spins the run loop in order to continue 
 listening for events. You also might look at [Khome](https://github.com/dennisschroeder/khome), which was designed more 
 directly for this purpose.
 
@@ -100,16 +100,16 @@ directly for this purpose.
 A: Kotlin's a great, modern, language. It's also compatible with other languages such as Objective-C (and by extension
 Swift) and JavaScript via [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html).
 
-**Q: So is Hassemble compatible with Kotlin Multiplatform?**
+**Q: So is Hassle compatible with Kotlin Multiplatform?**
 
-A: Sort of. Hassemble uses only multiplatform-compatible libraries, and therefore compiles for all platforms, but it 
-doesn't actually work with iOS because Ktor, the networking library used by Hassemble, [doesn't yet support WebSocket
-connections](https://github.com/ktorio/ktor/issues/1894). Once that support is in place the aim is to get Hassemble
+A: Sort of. Hassle uses only multiplatform-compatible libraries, and therefore compiles for all platforms, but it 
+doesn't actually work with iOS because Ktor, the networking library used by Hassle, [doesn't yet support WebSocket
+connections](https://github.com/ktorio/ktor/issues/1894). Once that support is in place the aim is to get Hassle
 working for iOS as well.
 
-It's quite possible that Hassemble works when transpiled to JavaScript, but this hasn't been tested.
+It's quite possible that Hassle works when transpiled to JavaScript, but this hasn't been tested.
 
-### Working with Hassemble
+### Working with Hassle
 - [Quick start](docs/Quickstart.md)
 - [Sensors, Actuators and Observers](docs/SensorsAndActuators.md)
 - [Predefined entity types](docs/PredefinedEntityTypes.md) (to be finished)
@@ -119,5 +119,5 @@ It's quite possible that Hassemble works when transpiled to JavaScript, but this
 
 
 ## Credits
-Hassemble was forked from [Khome](https://github.com/dennisschroeder/khome), and a huge thank you goes out to 
+Hassle was forked from [Khome](https://github.com/dennisschroeder/khome), and a huge thank you goes out to 
 [dennisschroeder](https://github.com/dennisschroeder) and the contributors to that project.   

@@ -3,7 +3,7 @@
 Home Assistant has a powerful notification integration that serves a lot of 
 [notification platforms](https://www.home-assistant.io/integrations#notifications) like Discord, Telegram, Slack,
 Facebook-Messenger, SMTP, SMS, the companion app for iOS and Android and much more.
-Hassemble supports a variety of these notification platforms and the following list will even grow in the future. 
+Hassle supports a variety of these notification platforms and the following list will even grow in the future. 
 
 ## Persistent Notifications
 
@@ -49,8 +49,8 @@ This does not delete the notification but visually dismisses it in the
 
 Home Assistant comes with the so-called [companion app](https://companion.home-assistant.io/) for iOS and Android.
 Besides various other awesome features, it lets you receive
-[push notifications](https://companion.home-assistant.io/docs/notifications/notifications-basic) send via Home Assistant. 
-Hassemble supports mobile phone notifications with the `HomeAssistantApiClient::notifyMobileApp` method which comes in 3
+[push notifications](https://companion.home-assistant.io/docs/notifications/notifications-basic) send via Home Assistant.
+Hassle supports mobile phone notifications with the `HomeAssistantApiClient::notifyMobileApp` method which comes in 3
 different flavors (signatures).
 
 ```kotlin
@@ -192,7 +192,7 @@ with action buttons to lock or unlock your front door.
 
 Check out all the details at the [companion app documentation](https://companion.home-assistant.io/docs/notifications/actionable-notifications)
 
-An actionable notification in Hassemble just looks like this:
+An actionable notification in Hassle just looks like this:
 
 ```kotlin
 client.notifyMobileApp(MobilePhones.MY_DEVICE.device) {
@@ -210,7 +210,7 @@ client.notifyMobileApp(MobilePhones.MY_DEVICE.device) {
 The important part here is the `category` which has to match the push categories configuration configured in Home 
 Assistant's configuration.yaml. When an action is selected an event named `ios.notification_action_fired` for iOS and 
 `mobile_app_notification_action` for Android will be emitted on the Home Assistant event bus.
-You can subscribe to this event in Hassemble and process the event data to bring those actions into life.
+You can subscribe to this event in Hassle and process the event data to bring those actions into life.
 
 ### Request location updates
 
@@ -223,7 +223,7 @@ client.requestLocationUpdate(MobilePhones.MY_DEVICE)
 ```
 
 **DANGER** <br>
-While it is possible to create an automation in Hassemble to call this service regularly to update sensors, this is not 
+While it is possible to create an automation in Hassle to call this service regularly to update sensors, this is not 
 recommended as doing this too frequently may have a negative impact on your device's battery life and health.
 
 ### By the way
