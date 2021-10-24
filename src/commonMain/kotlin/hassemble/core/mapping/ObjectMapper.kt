@@ -15,10 +15,18 @@ class ObjectMapper(
     private val logger: Kermit = Kermit()
 ) {
     @OptIn(ExperimentalSerializationApi::class, InternalSerializationApi::class)
-    fun <Target : Any> fromJson(json: JsonElement, type: KClass<Target>): Target = delegate.decodeFromJsonElement(
-        deserializer = type.serializer(),
-        element = json
-    )
+    fun <Target : Any> fromJson(json: JsonElement, type: KClass<Target>): Target {
+        try {
+            return delegate.decodeFromJsonElement(
+                deserializer = type.serializer(),
+                element = json
+            )
+        } catch (e: Throwable) {
+            logger.e(e) { "Exception converting from JSON" }
+            throw e
+        }
+    }
+
     @OptIn(ExperimentalSerializationApi::class)
     @Suppress("UNCHECKED_CAST")
     fun <Target : Any> fromJson(json: String, type: KType): Target {
