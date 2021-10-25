@@ -2,8 +2,6 @@ package com.codellyrandom.hassle
 
 import co.touchlab.kermit.Kermit
 import com.codellyrandom.hassle.communicating.Command
-import com.codellyrandom.hassle.communicating.HassApiClient
-import com.codellyrandom.hassle.communicating.HassApiClientImpl
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.core.Credentials
 import com.codellyrandom.hassle.core.boot.EventResponseConsumer
@@ -29,6 +27,9 @@ import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.client.utils.*
+import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.CoroutineScope
 import kotlin.collections.set
 import kotlin.reflect.KClass
@@ -39,6 +40,8 @@ internal typealias ActuatorsByApiName = MutableMap<EntityId, Actuator<*, *>>
 internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
 internal typealias HassApiCommandHistory = MutableMap<EntityId, Command>
+
+internal val CALLER_ID = atomic(0)
 
 fun homeAssistantApiClient(credentials: Credentials, coroutineScope: CoroutineScope): HomeAssistantApiClient =
     HomeAssistantApiClientImpl(credentials, coroutineScope)
@@ -55,6 +58,7 @@ internal class HomeAssistantApiClientImpl(
         coroutineScope,
         mapper
     )
+
     private val httpClient = HttpClient(CIO) {
         install(JsonFeature) {
             serializer = KotlinxSerializer(
@@ -72,7 +76,8 @@ internal class HomeAssistantApiClientImpl(
             header("Content-Type", "application/json")
         }
     }
-    private var hassApi: HassApiClient? = null
+
+    private var session: WebSocketSession? = null
 
     private val sensorsByApiName: SensorsByApiName = mutableMapOf()
     private val actuatorsByApiName: ActuatorsByApiName = mutableMapOf()
@@ -161,8 +166,10 @@ internal class HomeAssistantApiClientImpl(
     }
 
     override suspend fun emitEvent(eventType: String, eventData: Any?) {
-        // TODO: Reconnect if API is null
-        hassApi!!.emitEvent(eventType, eventData)
+        httpClient.post<HttpResponse> {
+            url { encodedPath = "/api/events/$eventType" }
+            body = eventData ?: EmptyContent
+        }
     }
 
     override fun setErrorResponseHandler(errorResponseHandler: (ErrorResponseData) -> Unit) {
@@ -170,13 +177,18 @@ internal class HomeAssistantApiClientImpl(
     }
 
     /**
-     * Sends a service command to home assistant.
+     * Tell a Home Assistant service to perform a command.
      *
      * @param command the command to send
      */
     internal suspend fun send(command: Command) {
-        // TODO: Reconnect if no session available
-        hassApi?.send(command)
+        command.id = CALLER_ID.incrementAndGet() // has to be called within single thread to prevent race conditions
+        println("Set ID for $command")
+        mapper.toJson(command).let { serializedCommand ->
+            // TODO: Reconnect if session is missing
+            session!!.callWebSocketApi(serializedCommand)
+                .also { logger.i { "Called hass api with message: $serializedCommand" } }
+        }
     }
 
     private fun registerSensor(entityId: EntityId, sensor: Sensor<*, *>) {
@@ -197,15 +209,14 @@ internal class HomeAssistantApiClientImpl(
 
     override fun connect() =
         connection.connect {
-            val hassApi = HassApiClientImpl(this, mapper, httpClient)
-            this@HomeAssistantApiClientImpl.hassApi = hassApi
+            this@HomeAssistantApiClientImpl.session = this
             val serviceStore = ServiceStoreImpl()
             val authenticator = Authenticator(this, credentials)
             val serviceStoreInitializer = ServiceStoreInitializer(this, serviceStore)
             val hassEventSubscriber = HassEventSubscriber(
                 this,
                 eventSubscriptionsByEventType,
-                hassApi
+                this@HomeAssistantApiClientImpl
             )
 
             val entityStateInitializer = EntityStateInitializer(
