@@ -1,8 +1,8 @@
 package com.codellyrandom.hassle.core.boot.servicestore
 
 import co.touchlab.kermit.Kermit
+import com.codellyrandom.hassle.CALLER_ID
 import com.codellyrandom.hassle.WebSocketSession
-import com.codellyrandom.hassle.communicating.CALLER_ID
 
 internal class ServiceStoreInitializer(
     private val session: WebSocketSession,

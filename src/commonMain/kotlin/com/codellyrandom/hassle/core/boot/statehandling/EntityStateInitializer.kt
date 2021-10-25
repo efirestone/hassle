@@ -1,8 +1,8 @@
 package com.codellyrandom.hassle.core.boot.statehandling
 
 import co.touchlab.kermit.Kermit
+import com.codellyrandom.hassle.CALLER_ID
 import com.codellyrandom.hassle.WebSocketSession
-import com.codellyrandom.hassle.communicating.CALLER_ID
 import com.codellyrandom.hassle.entities.ActuatorStateUpdater
 import com.codellyrandom.hassle.entities.EntityRegistrationValidation
 import com.codellyrandom.hassle.entities.SensorStateUpdater
