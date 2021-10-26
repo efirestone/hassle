@@ -1,8 +1,9 @@
 package com.codellyrandom.hassle.core.boot.statehandling
 
 import co.touchlab.kermit.Kermit
-import com.codellyrandom.hassle.CALLER_ID
+import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.WebSocketSession
+import com.codellyrandom.hassle.communicating.GetStatesCommand
 import com.codellyrandom.hassle.entities.ActuatorStateUpdater
 import com.codellyrandom.hassle.entities.EntityRegistrationValidation
 import com.codellyrandom.hassle.entities.SensorStateUpdater
@@ -11,6 +12,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 
 internal class EntityStateInitializer(
+    private val apiClient: HomeAssistantApiClientImpl,
     private val session: WebSocketSession,
     private val sensorStateUpdater: SensorStateUpdater,
     private val actuatorStateUpdater: ActuatorStateUpdater,
@@ -18,10 +20,8 @@ internal class EntityStateInitializer(
 ) {
 
     private val logger = Kermit()
-    private val id
-        get() = CALLER_ID.incrementAndGet()
 
-    private val statesRequest = StatesRequest(id)
+    private val statesRequest = GetStatesCommand()
 
     suspend fun initialize() {
         sendStatesRequest()
@@ -29,11 +29,9 @@ internal class EntityStateInitializer(
         setInitialEntityState(consumeStatesResponse())
     }
 
-    private suspend fun sendStatesRequest() =
-        session.callWebSocketApi(statesRequest)
+    private suspend fun sendStatesRequest() = apiClient.send(statesRequest)
 
-    private suspend fun consumeStatesResponse() =
-        session.consumeSingleMessage<StatesResponse>()
+    private suspend fun consumeStatesResponse() = session.consumeSingleMessage<StatesResponse>()
 
     private fun setInitialEntityState(stateResponse: StatesResponse) {
         if (stateResponse.success) {

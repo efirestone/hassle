@@ -1,16 +1,17 @@
 package com.codellyrandom.hassle.core.boot.servicestore
 
 import co.touchlab.kermit.Kermit
-import com.codellyrandom.hassle.CALLER_ID
+import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.WebSocketSession
+import com.codellyrandom.hassle.communicating.GetServicesCommand
 
 internal class ServiceStoreInitializer(
+    private val apiClient: HomeAssistantApiClientImpl,
     private val session: WebSocketSession,
     private val serviceStore: ServiceStore
 ) {
     private val logger = Kermit()
-    private val servicesRequest =
-        ServicesRequest(CALLER_ID.incrementAndGet())
+    private val getServicesCommand = GetServicesCommand()
 
     suspend fun initialize() {
         sendServicesRequest()
@@ -22,7 +23,7 @@ internal class ServiceStoreInitializer(
         session.consumeSingleMessage<ServicesResponse>()
 
     private suspend fun sendServicesRequest() =
-        session.callWebSocketApi(servicesRequest)
+        apiClient.send(getServicesCommand)
 
     private fun storeServices(servicesResponse: ServicesResponse) =
         servicesResponse.let { response ->
