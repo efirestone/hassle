@@ -4,7 +4,7 @@ import co.touchlab.kermit.Kermit
 import com.codellyrandom.hassle.EventHandlerByEventType
 import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.WebSocketSession
-import com.codellyrandom.hassle.communicating.SubscribeEventCommand
+import com.codellyrandom.hassle.communicating.SubscribeEventsCommand
 import com.codellyrandom.hassle.core.ResultResponse
 
 internal class HassEventSubscriber(
@@ -16,7 +16,7 @@ internal class HassEventSubscriber(
 
     suspend fun subscribe() {
         subscriptions.forEach { entry ->
-            SubscribeEventCommand(eventType = entry.key).also { command -> apiClient.send(command) }
+            SubscribeEventsCommand(eventType = entry.key).also { command -> apiClient.send(command) }
             session.consumeSingleMessage<ResultResponse>()
                 .takeIf { resultResponse -> resultResponse.success }
                 ?.let { logger.i { "Subscribed to event: ${entry.key}" } }

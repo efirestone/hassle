@@ -41,8 +41,6 @@ internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
 internal typealias HassApiCommandHistory = MutableMap<EntityId, Command>
 
-internal val CALLER_ID = atomic(0)
-
 fun homeAssistantApiClient(credentials: Credentials, coroutineScope: CoroutineScope): HomeAssistantApiClient =
     HomeAssistantApiClientImpl(credentials, coroutineScope)
 
@@ -77,6 +75,7 @@ internal class HomeAssistantApiClientImpl(
         }
     }
 
+    private val commandId = atomic(0)
     private var session: WebSocketSession? = null
 
     private val sensorsByApiName: SensorsByApiName = mutableMapOf()
@@ -182,8 +181,7 @@ internal class HomeAssistantApiClientImpl(
      * @param command the command to send
      */
     internal suspend fun send(command: Command) {
-        command.id = CALLER_ID.incrementAndGet() // has to be called within single thread to prevent race conditions
-        println("Set ID for $command")
+        command.id = commandId.incrementAndGet() // has to be called within single thread to prevent race conditions
         mapper.toJson(command).let { serializedCommand ->
             // TODO: Reconnect if session is missing
             session!!.callWebSocketApi(serializedCommand)
@@ -212,7 +210,11 @@ internal class HomeAssistantApiClientImpl(
             this@HomeAssistantApiClientImpl.session = this
             val serviceStore = ServiceStoreImpl()
             val authenticator = Authenticator(this, credentials)
-            val serviceStoreInitializer = ServiceStoreInitializer(this, serviceStore)
+            val serviceStoreInitializer = ServiceStoreInitializer(
+                this@HomeAssistantApiClientImpl,
+                this,
+                serviceStore
+            )
             val hassEventSubscriber = HassEventSubscriber(
                 this,
                 eventSubscriptionsByEventType,
@@ -220,13 +222,17 @@ internal class HomeAssistantApiClientImpl(
             )
 
             val entityStateInitializer = EntityStateInitializer(
+                this@HomeAssistantApiClientImpl,
                 this,
                 SensorStateUpdater(sensorsByApiName),
                 ActuatorStateUpdater(actuatorsByApiName),
                 EntityRegistrationValidation(actuatorsByApiName, sensorsByApiName)
             )
 
-            val stateChangeEventSubscriber = StateChangeEventSubscriber(this)
+            val stateChangeEventSubscriber = StateChangeEventSubscriber(
+                this@HomeAssistantApiClientImpl,
+                this
+            )
             val eventResponseConsumer = EventResponseConsumer(
                 this,
                 mapper,

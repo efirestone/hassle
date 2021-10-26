@@ -1,17 +1,18 @@
 package com.codellyrandom.hassle.core.boot
 
 import co.touchlab.kermit.Kermit
-import com.codellyrandom.hassle.CALLER_ID
+import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.WebSocketSession
+import com.codellyrandom.hassle.communicating.SubscribeEventsCommand
 import com.codellyrandom.hassle.core.ResultResponse
+import com.codellyrandom.hassle.values.EventType
 
 internal class StateChangeEventSubscriber(
+    private val apiClient: HomeAssistantApiClientImpl,
     private val session: WebSocketSession
 ) {
 
     private val logger = Kermit()
-    private val id
-        get() = CALLER_ID.incrementAndGet()
 
     suspend fun subscribe() {
         sendEventListenerRequest()
@@ -23,11 +24,10 @@ internal class StateChangeEventSubscriber(
         }
     }
 
-    private val eventListenerRequest =
-        EventListeningRequest(id = id, eventType = "state_changed")
+    private val subscribeEventsCommand = SubscribeEventsCommand(eventType = EventType("state_changed"))
 
     private suspend fun sendEventListenerRequest() =
-        session.callWebSocketApi(eventListenerRequest)
+        apiClient.send(subscribeEventsCommand)
 
     private suspend fun consumeResultResponse() =
         session.consumeSingleMessage<ResultResponse>()

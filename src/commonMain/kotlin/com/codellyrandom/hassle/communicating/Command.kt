@@ -27,11 +27,23 @@ internal sealed class Command(
 // - Basic Commands
 
 @Serializable
-internal class SubscribeEventCommand(
+internal class SubscribeEventsCommand(
     override var id: Int? = null,
     @SerialName("event_type")
     val eventType: EventType,
     val type: String = "subscribe_events"
+) : Command(id)
+
+@Serializable
+internal class GetStatesCommand(
+    override var id: Int? = null,
+    val type: String = "get_states"
+) : Command(id)
+
+@Serializable
+internal class GetServicesCommand(
+    override var id: Int? = null,
+    val type: String = "get_services"
 ) : Command(id)
 
 // - Service Command

@@ -20,12 +20,6 @@ $dokka.location:com.codellyrandom.hassle.core.boot.statehandling/StatesResponse/
 $dokka.location:com.codellyrandom.hassle.core.boot.statehandling/StatesResponse/result/#/PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot.statehandling/-states-response/result.html
 $dokka.location:com.codellyrandom.hassle.core.boot.statehandling/StatesResponse/success/#/PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot.statehandling/-states-response/success.html
 $dokka.location:com.codellyrandom.hassle.core.boot.statehandling/StatesResponse/type/#/PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot.statehandling/-states-response/type.html
-$dokka.location:com.codellyrandom.hassle.core.boot////PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot/index.html
-$dokka.location:com.codellyrandom.hassle.core.boot/EventListeningRequest///PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot/-event-listening-request/index.html
-$dokka.location:com.codellyrandom.hassle.core.boot/EventListeningRequest/EventListeningRequest/#kotlin.Int#kotlin.String#kotlin.String/PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot/-event-listening-request/-event-listening-request.html
-$dokka.location:com.codellyrandom.hassle.core.boot/EventListeningRequest/eventType/#/PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot/-event-listening-request/event-type.html
-$dokka.location:com.codellyrandom.hassle.core.boot/EventListeningRequest/id/#/PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot/-event-listening-request/id.html
-$dokka.location:com.codellyrandom.hassle.core.boot/EventListeningRequest/type/#/PointingToDeclaration/hassle/com.codellyrandom.hassle.core.boot/-event-listening-request/type.html
 $dokka.location:com.codellyrandom.hassle.core.clients////PointingToDeclaration/hassle/com.codellyrandom.hassle.core.clients/index.html
 $dokka.location:com.codellyrandom.hassle.core.clients/WebSocketClient///PointingToDeclaration/hassle/com.codellyrandom.hassle.core.clients/-web-socket-client/index.html
 $dokka.location:com.codellyrandom.hassle.core.clients/WebSocketClient/WebSocketClient/#io.ktor.client.HttpClient/PointingToDeclaration/hassle/com.codellyrandom.hassle.core.clients/-web-socket-client/-web-socket-client.html
@@ -1052,7 +1046,6 @@ $dokka.location:com.codellyrandom.hassle/HomeAssistantApiClient/setErrorResponse
 $dokka.location:com.codellyrandom.hassle/HomeAssistantApiClient/setEventHandlerExceptionHandler/#kotlin.Function1[kotlin.Throwable,kotlin.Unit]/PointingToDeclaration/hassle/com.codellyrandom.hassle/-home-assistant-api-client/set-event-handler-exception-handler.html
 com.codellyrandom.hassle
 com.codellyrandom.hassle.core
-com.codellyrandom.hassle.core.boot
 com.codellyrandom.hassle.core.boot.servicestore
 com.codellyrandom.hassle.core.boot.statehandling
 com.codellyrandom.hassle.core.clients
