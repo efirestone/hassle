@@ -12,8 +12,21 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v1
 
-      - name: Run tests and lint the code
-        run: ./gradlew --no-daemon clean check
+      - name: Run tests, lint, and generate documentation
+        # Skip nativeTest for now. We support building for multiplatform, but won't support
+        # deploying to iOS (native) will be supported once the new Kotlin/Native memory and
+        # threading model is released.
+        run: ./gradlew --no-daemon clean check dokkaHtml -x nativeTest
+
+      - name: Push artifacts to Maven
+        # This will fail if this version has already been published.
+        run: ./gradlew --no-daemon --no-parallel publish
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
+
+      - name: Finalize and publish Maven release
+        run: ./gradlew closeAndReleaseRepository
 
       - name: Create Github Release
         uses: codfish/semantic-release-action@v1
