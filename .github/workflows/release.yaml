@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  release:
+  MavenRelease:
     runs-on: macos-latest
 
     steps:
@@ -28,7 +28,17 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
 
       - name: Finalize and publish Maven release
-        run: ./gradlew closeAndReleaseRepository
+        run: ./gradlew --no-daemon closeAndReleaseRepository
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
+
+  GitHubRelease:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v1
 
       - name: Create Github Release
         uses: codfish/semantic-release-action@v1
