@@ -1,15 +1,22 @@
-name: On new merge into main
+name: Maven Release
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["GitHub Release"]
+    types: 
+      - completed
+
 jobs:
-  MavenRelease:
+  # Publish a Maven release
+  release:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v1
+      - name: Check out release tag
+        uses: actions/checkout@v2
+
+      - name: Read version tag
+        id: get_version
+        uses: battila7/get-version-action@v2
 
       - name: Run tests, lint, and generate documentation
         # Skip nativeTest for now. We support building for multiplatform, but won't support
@@ -26,22 +33,10 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          VERSION: ${{ steps.get_version.outputs.version-without-v }}
 
       - name: Finalize and publish Maven release
         run: ./gradlew --no-daemon closeAndReleaseRepository
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
-
-  GitHubRelease:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout main
-        uses: actions/checkout@v1
-
-      - name: Create Github Release
-        uses: codfish/semantic-release-action@v1
-        id: semantic
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
