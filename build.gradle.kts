@@ -138,6 +138,7 @@ tasks {
 }
 
 configure<MavenPublishBaseExtension> {
+    version = System.getenv("VERSION")
     configure(
         KotlinMultiplatform(javadocJar = Dokka("dokkaHtml"))
     )
