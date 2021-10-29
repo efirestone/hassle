@@ -23,7 +23,7 @@ jobs:
         # Skip nativeTest for now. We support building for multiplatform, but won't support
         # deploying to iOS (native) will be supported once the new Kotlin/Native memory and
         # threading model is released.
-        run: ./gradlew --no-daemon clean check dokkaHtml -x nativeTest
+        run: ./gradlew --no-daemon clean check -x nativeTest
 
       # Error out if any files were left dirty as the result of running the above.
       - name: Check for dirty files

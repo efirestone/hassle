@@ -97,12 +97,11 @@ kotlin {
 }
 
 tasks.create<Delete>("cleanDokka") {
-    delete = setOf("$rootDir/docs/${rootProject.name}")
+    delete = setOf("$buildDir/dokka")
 }
 
 tasks.withType<DokkaTask>().configureEach {
     dependsOn("cleanDokka")
-    outputDirectory.set(File("$rootDir/docs"))
 }
 
 tasks {
