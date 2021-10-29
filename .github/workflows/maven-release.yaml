@@ -18,7 +18,7 @@ jobs:
         id: get_version
         uses: battila7/get-version-action@v2
 
-      - run: echo Version ${{ steps.get_version.outputs.version-without-v }}
+      - run: echo Found version ${{ steps.get_version.outputs.version-without-v }}
 
       # If the GitHub release didn't happen for some reason then the `release` tag won't get
       # re-tagged with a version tag. If there's no tag then we don't want to do a Maven release.
