@@ -11,7 +11,7 @@ Check out these [examples](https://www.conventionalcommits.org/en/v1.0.0/#exampl
 ### Why we use Conventional Commits
 - Automatically generating CHANGELOGs.
 - Automatically determining a semantic version bump (based on the types of commits landed).
-- Communicating the nature of changes to teammates adn the public.
+- Communicating the nature of changes to teammates and the public.
 - Triggering build and publish processes.
 - Making it easier for you to contribute to our project, by allowing you to explore a more structured commit history.
 
