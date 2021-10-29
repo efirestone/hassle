@@ -1,9 +1,8 @@
 name: Maven Release
 on:
-  workflow_run:
-    workflows: ["GitHub Release"]
-    types: 
-      - completed
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
 
 jobs:
   # Publish a Maven release
@@ -17,13 +16,6 @@ jobs:
       - name: Read version tag
         id: get_version
         uses: battila7/get-version-action@v2
-
-      - run: echo Found version ${{ steps.get_version.outputs.version-without-v }}
-
-      # If the GitHub release didn't happen for some reason then the `release` tag won't get
-      # re-tagged with a version tag. If there's no tag then we don't want to do a Maven release.
-      - if: steps.get_version.outputs.is-semver != true
-        run: echo "No version tag found. Aborting release process." && exit 1
 
       - name: Run tests, lint, and generate documentation
         # Skip nativeTest for now. We support building for multiplatform, but won't support
