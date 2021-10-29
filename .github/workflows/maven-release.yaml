@@ -1,8 +1,12 @@
 name: Maven Release
 on:
-  push:
-    tags:
-      - v[0-9]+.[0-9]+.[0-9]+
+  # Trigger this workflow when the other workflow finishes.
+  # Note that we can't trigger directly on pushing the version tag due to
+  # this: https://github.community/t/triggering-a-new-workflow-from-another-workflow/16250
+  workflow_run:
+    workflows: ["GitHub Release"]
+    types:
+      - completed
 
 jobs:
   # Publish a Maven release
@@ -12,27 +16,28 @@ jobs:
     steps:
       - name: Check out release tag
         uses: actions/checkout@v2
+        with:
+          # Required due to the way Git works
+          # Without this the action won't be able to find the correct tags
+          fetch-depth: 0
 
+      # This will fail if this commit is not tagged with a version
       - name: Read version tag
-        id: get_version
-        uses: battila7/get-version-action@v2
+        id: versiontag
+        uses: efirestone/get-version-tag-action@v1.0.0
 
-      - name: Run tests and lint
+      - name: Push artifacts to Maven
         # Skip nativeTest for now. We support building for multiplatform, but won't support
         # deploying to iOS (native) will be supported once the new Kotlin/Native memory and
         # threading model is released.
-        run: ./gradlew --no-daemon clean check -x nativeTest
-
-      - name: Push artifacts to Maven
-        # This will fail if this version has already been published.
-        run: ./gradlew --no-daemon --no-parallel publish
+        run: ./gradlew --no-daemon --no-parallel clean check -x nativeTest publish
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
-          VERSION: ${{ steps.get_version.outputs.version-without-v }}
+          VERSION: ${{ steps.versiontag.outputs.version }}
 
       - name: Finalize and publish Maven release
         run: ./gradlew --no-daemon closeAndReleaseRepository
