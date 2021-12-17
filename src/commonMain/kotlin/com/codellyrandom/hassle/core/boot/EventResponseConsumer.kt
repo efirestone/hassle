@@ -1,6 +1,7 @@
 package com.codellyrandom.hassle.core.boot
 
-import co.touchlab.kermit.Kermit
+import co.touchlab.kermit.Logger
+import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.EventHandlerByEventType
 import com.codellyrandom.hassle.WebSocketSession
 import com.codellyrandom.hassle.core.*
@@ -27,7 +28,7 @@ internal class EventResponseConsumer(
     private val eventHandlerByEventType: EventHandlerByEventType,
     private val errorResponseHandler: (ErrorResponseData) -> Unit
 ) {
-    private val logger = Kermit()
+    private val logger = Logger(config = LoggerConfig.default)
 
     suspend fun consumeBlocking() = coroutineScope {
         session.consumeEachMappedToResponse { response, frameText ->

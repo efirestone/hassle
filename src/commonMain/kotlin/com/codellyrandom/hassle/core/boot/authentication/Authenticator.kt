@@ -1,6 +1,7 @@
 package com.codellyrandom.hassle.core.boot.authentication
 
-import co.touchlab.kermit.Kermit
+import co.touchlab.kermit.Logger
+import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.WebSocketSession
 import com.codellyrandom.hassle.core.Credentials
 
@@ -28,7 +29,7 @@ internal class Authenticator(
                 }
             }
 
-    private val logger = Kermit()
+    private val logger = Logger(config = LoggerConfig.default)
     private val authRequest =
         AuthRequest(accessToken = credentials.accessToken)
 

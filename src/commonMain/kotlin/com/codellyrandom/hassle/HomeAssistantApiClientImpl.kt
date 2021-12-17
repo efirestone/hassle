@@ -1,6 +1,7 @@
 package com.codellyrandom.hassle
 
-import co.touchlab.kermit.Kermit
+import co.touchlab.kermit.Logger
+import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.communicating.Command
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.core.Credentials
@@ -49,7 +50,7 @@ internal class HomeAssistantApiClientImpl(
     coroutineScope: CoroutineScope,
 ) : HomeAssistantApiClient {
 
-    private val logger = Kermit()
+    private val logger = Logger(config = LoggerConfig.default)
     val mapper: ObjectMapper = ObjectMapper()
     private val connection: Connection = Connection(
         credentials,
