@@ -80,6 +80,8 @@ dependencies {
 
 ## Documentation
 
+The API documentation for Hassle is available [here](https://efirestone.github.io/hassle/).
+
 Hassle has no opinion on how you want to run your application, what other libraries or pattern you choose, or what
 else is best for what you like to build. All Hassle needs is a Kotlin environment to run properly.
 
