@@ -179,14 +179,17 @@ internal class HomeAssistantApiClientImpl(
      * Tell a Home Assistant service to perform a command.
      *
      * @param command the command to send
+     * @return The ID of the command that was sent.
      */
-    internal suspend fun send(command: Command) {
-        command.id = commandId.incrementAndGet() // has to be called within single thread to prevent race conditions
-        mapper.toJson(command).let { serializedCommand ->
+    internal suspend fun send(command: Command): Int {
+        val id = commandId.incrementAndGet()
+        val commandWithId = command.copy(id) // has to be called within single thread to prevent race conditions
+        mapper.toJson(commandWithId).let { serializedCommand ->
             // TODO: Reconnect if session is missing
             session!!.callWebSocketApi(serializedCommand)
                 .also { logger.i { "Called hass api with message: $serializedCommand" } }
         }
+        return id
     }
 
     private fun registerSensor(entityId: EntityId, sensor: Sensor<*, *>) {

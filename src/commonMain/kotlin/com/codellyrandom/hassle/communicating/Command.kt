@@ -22,6 +22,8 @@ internal sealed class Command(
     }
 
     constructor() : this(null)
+
+    abstract fun copy(id: Int? = this.id): Command
 }
 
 // - Basic Commands
@@ -32,19 +34,25 @@ internal class SubscribeEventsCommand(
     @SerialName("event_type")
     val eventType: EventType,
     val type: String = "subscribe_events"
-) : Command(id)
+) : Command(id) {
+    override fun copy(id: Int?) = SubscribeEventsCommand(id = id, eventType = eventType, type = type)
+}
 
 @Serializable
 internal class GetStatesCommand(
     override var id: Int? = null,
     val type: String = "get_states"
-) : Command(id)
+) : Command(id) {
+    override fun copy(id: Int?) = GetStatesCommand(id = id, type = type)
+}
 
 @Serializable
 internal class GetServicesCommand(
     override var id: Int? = null,
     val type: String = "get_services"
-) : Command(id)
+) : Command(id) {
+    override fun copy(id: Int?) = GetServicesCommand(id = id, type = type)
+}
 
 // - Service Command
 
@@ -75,6 +83,8 @@ internal class TurnOnServiceCommand(
     init {
         this.domain = target.entityId.domain
     }
+
+    override fun copy(id: Int?) = TurnOnServiceCommand(target = target).also { it.id = id }
 }
 
 @Serializable
@@ -86,6 +96,8 @@ internal class TurnOffServiceCommand(
     init {
         this.domain = target.entityId.domain
     }
+
+    override fun copy(id: Int?) = TurnOffServiceCommand(target = target).also { it.id = id }
 }
 
 // - Climate Service Commands
@@ -103,6 +115,9 @@ internal class SetHvacPresetModeServiceCommand(
     )
 
     constructor(target: EntityId, presetMode: PresetMode) : this(Target(target), ServiceData(presetMode))
+
+    override fun copy(id: Int?) = SetHvacPresetModeServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -122,6 +137,9 @@ internal class SetTemperatureServiceCommand(
         Target(target),
         ServiceData(temperature, hvacMode)
     )
+
+    override fun copy(id: Int?) = SetTemperatureServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 // - Cover Service Commands
@@ -141,6 +159,9 @@ internal class SetCoverPositionServiceCommand(
         Target(target),
         ServiceData(position)
     )
+
+    override fun copy(id: Int?) = SetCoverPositionServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -148,6 +169,8 @@ internal class OpenCoverServiceCommand(
     val target: Target
 ) : ServiceCommand("cover", "open_cover") {
     constructor(target: EntityId) : this(Target(target))
+
+    override fun copy(id: Int?) = OpenCoverServiceCommand(target = target).also { it.id = id }
 }
 
 @Serializable
@@ -155,6 +178,8 @@ internal class CloseCoverServiceCommand(
     val target: Target
 ) : ServiceCommand("cover", "close_cover") {
     constructor(target: EntityId) : this(Target(target))
+
+    override fun copy(id: Int?) = CloseCoverServiceCommand(target = target).also { it.id = id }
 }
 
 // - Light Service Commands
@@ -182,6 +207,9 @@ internal class TurnOnLightServiceCommand(
     )
 
     constructor(target: EntityId, serviceData: ServiceData) : this(Target(target), serviceData)
+
+    override fun copy(id: Int?) = TurnOnLightServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 // - Input Service Commands
@@ -198,6 +226,9 @@ internal class SetDateTimeServiceCommand<DateType>(
     )
 
     constructor(target: EntityId, date: DateType) : this(Target(target), ServiceData(date))
+
+    override fun copy(id: Int?) = SetDateTimeServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -212,6 +243,9 @@ internal class SelectOptionServiceCommand(
     )
 
     constructor(target: EntityId, option: Option) : this(Target(target), ServiceData(option))
+
+    override fun copy(id: Int?) = SelectOptionServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -230,6 +264,8 @@ internal class SetValueServiceCommand<ValueType>(
     init {
         this.domain = target.entityId.domain
     }
+
+    override fun copy(id: Int?) = SetValueServiceCommand(target = target, serviceData = serviceData).also { it.id = id }
 }
 
 // - Media PLayer Service Commands
@@ -252,6 +288,9 @@ internal class PlayMediaServiceCommand(
         Target(target),
         ServiceData(mediaContentType, mediaContentId)
     )
+
+    override fun copy(id: Int?) = PlayMediaServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -259,6 +298,8 @@ internal class PauseMediaServiceCommand(
     val target: Target
 ) : ServiceCommand("media_player", "media_pause") {
     constructor(target: EntityId) : this(Target(target))
+
+    override fun copy(id: Int?) = PauseMediaServiceCommand(target = target).also { it.id = id }
 }
 
 @Serializable
@@ -274,6 +315,9 @@ internal class MuteVolumeServiceCommand(
     )
 
     constructor(target: EntityId, isMuted: Mute) : this(Target(target), ServiceData(isMuted))
+
+    override fun copy(id: Int?) = MuteVolumeServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -289,6 +333,9 @@ internal class SetVolumeServiceCommand(
     )
 
     constructor(target: EntityId, volumeLevel: VolumeLevel) : this(Target(target), ServiceData(volumeLevel))
+
+    override fun copy(id: Int?) = SetVolumeServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -304,6 +351,9 @@ internal class SetSeekPositionServiceCommand(
     )
 
     constructor(target: EntityId, seekPosition: MediaPosition) : this(Target(target), ServiceData(seekPosition))
+
+    override fun copy(id: Int?) = SetSeekPositionServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -318,6 +368,9 @@ internal class SetMediaSourceServiceCommand(
     )
 
     constructor(target: EntityId, source: MediaSource) : this(Target(target), ServiceData(source))
+
+    override fun copy(id: Int?) = SetMediaSourceServiceCommand(target = target, serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -325,6 +378,8 @@ internal class ResumeMediaServiceCommand(
     val target: Target
 ) : ServiceCommand("media_player", "media_play") {
     constructor(target: EntityId) : this(Target(target))
+
+    override fun copy(id: Int?) = ResumeMediaServiceCommand(target = target).also { it.id = id }
 }
 
 // - Persistent Notification Service Commands
@@ -341,6 +396,9 @@ internal class CreatePersistentNotificationServiceCommand(
         @SerialName("notification_id")
         val notificationId: String?
     )
+
+    override fun copy(id: Int?) = CreatePersistentNotificationServiceCommand(serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -353,6 +411,9 @@ internal class DismissPersistentNotificationServiceCommand(
         @SerialName("notification_id")
         val notificationId: String
     )
+
+    override fun copy(id: Int?) = DismissPersistentNotificationServiceCommand(serviceData = serviceData)
+        .also { it.id = id }
 }
 
 @Serializable
@@ -365,6 +426,9 @@ internal class MarkReadPersistentNotificationServiceCommand(
         @SerialName("notification_id")
         val notificationId: String
     )
+
+    override fun copy(id: Int?) = MarkReadPersistentNotificationServiceCommand(serviceData = serviceData)
+        .also { it.id = id }
 }
 
 // - Remote Notification Service Commands
@@ -389,4 +453,7 @@ internal class SendNotificationServiceCommand(
     ) : this(ServiceData(title, message, messageBuilder?.let { MobileNotificationData().apply(it) })) {
         this.service = Service.fromDevice(device)
     }
+
+    override fun copy(id: Int?) = SendNotificationServiceCommand(serviceData = serviceData)
+        .also { it.id = id }
 }
