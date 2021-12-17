@@ -15,7 +15,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version "1.5.31"
+    kotlin("multiplatform") version "1.6.0"
     kotlin("plugin.serialization") version "1.5.0"
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
     id("de.jansauer.printcoverage") version "2.0.0"
