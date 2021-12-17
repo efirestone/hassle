@@ -209,7 +209,12 @@ internal class HomeAssistantApiClientImpl(
         EventSubscription<ED>(this, mapper, eventDataType).also { eventSubscriptionsByEventType[eventType] = it }
 
     override fun connect() =
-        connection.connect {
+        connection.connect c@{
+            if (this@HomeAssistantApiClientImpl.session != null) {
+                // We already have a session, or are connecting
+                return@c
+            }
+
             this@HomeAssistantApiClientImpl.session = this
             val serviceStore = ServiceStoreImpl()
             val authenticator = Authenticator(this, credentials)
