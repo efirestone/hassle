@@ -1,6 +1,7 @@
 package com.codellyrandom.hassle.core.boot.statehandling
 
-import co.touchlab.kermit.Kermit
+import co.touchlab.kermit.Logger
+import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.WebSocketSession
 import com.codellyrandom.hassle.communicating.GetStatesCommand
@@ -19,7 +20,7 @@ internal class EntityStateInitializer(
     private val entityRegistrationValidation: EntityRegistrationValidation
 ) {
 
-    private val logger = Kermit()
+    private val logger = Logger(config = LoggerConfig.default)
 
     private val statesRequest = GetStatesCommand()
 

@@ -1,6 +1,7 @@
 package com.codellyrandom.hassle
 
-import co.touchlab.kermit.Kermit
+import co.touchlab.kermit.Logger
+import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.core.Credentials
 import com.codellyrandom.hassle.core.clients.WebSocketClient
 import com.codellyrandom.hassle.core.mapping.ObjectMapper
@@ -17,7 +18,7 @@ internal class Connection(
     private val objectMapper: ObjectMapper,
     private val httpClient: WebSocketClient = WebSocketClient(HttpClient(CIO).config { install(WebSockets) })
 ) {
-    private val logger = Kermit()
+    private val logger = Logger(config = LoggerConfig.default)
 
     private val method = HttpMethod.Get
     private val path = "/api/websocket"
