@@ -65,7 +65,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:atomicfu:0.17.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC3")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
                 implementation("org.slf4j:slf4j-simple:1.7.32")
                 api("co.touchlab:kermit:$kermitVersion")
