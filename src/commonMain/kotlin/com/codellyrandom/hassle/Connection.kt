@@ -1,7 +1,5 @@
 package com.codellyrandom.hassle
 
-import co.touchlab.kermit.Logger
-import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.core.Credentials
 import com.codellyrandom.hassle.core.clients.WebSocketClient
 import com.codellyrandom.hassle.core.mapping.ObjectMapper
@@ -16,10 +14,9 @@ internal class Connection(
     private val credentials: Credentials,
     private val coroutineScope: CoroutineScope,
     private val objectMapper: ObjectMapper,
+    private val exceptionHandler: (Throwable) -> Unit,
     private val httpClient: WebSocketClient = WebSocketClient(HttpClient(CIO).config { install(WebSockets) })
 ) {
-    private val logger = Logger(config = LoggerConfig.default)
-
     private val method = HttpMethod.Get
     private val path = "/api/websocket"
 
@@ -48,10 +45,8 @@ internal class Connection(
                         }
                     )
                 }
-//        } catch (exception: ConnectException) {
-//            logger.e(exception) { "Could not establish a connection to your Home Assistant instance." }
-            } catch (exception: RuntimeException) {
-                logger.e(exception) { "Could not connect to Home Assistant due to: ${exception.message}" }
+            } catch (exception: Throwable) {
+                exceptionHandler(exception)
             }
         }
     }

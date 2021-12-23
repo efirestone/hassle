@@ -55,7 +55,8 @@ internal class HomeAssistantApiClientImpl(
     private val connection: Connection = Connection(
         credentials,
         coroutineScope,
-        mapper
+        mapper,
+        { connectionExceptionHandler(it) }
     )
 
     private val httpClient = HttpClient(CIO) {
@@ -85,6 +86,10 @@ internal class HomeAssistantApiClientImpl(
     private val hassApiCommandHistory: HassApiCommandHistory = mutableMapOf()
 
     private val eventSubscriptionsByEventType: EventHandlerByEventType = mutableMapOf()
+
+    override var connectionExceptionHandler: (Throwable) -> Unit = { exception ->
+        logger.e(exception) { "Caught exception while connecting" }
+    }
 
     override var observerExceptionHandler: (Throwable) -> Unit = { exception ->
         logger.e(exception) { "Caught exception in observer" }

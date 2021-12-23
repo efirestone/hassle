@@ -10,6 +10,14 @@ import kotlin.reflect.KClass
  * The client object for interacting with the Home Assistant WebSocket API.
  */
 interface HomeAssistantApiClient {
+
+    /**
+     * The action that gets executed when an exception occurs while connecting to Home Assistant.
+     *
+     * A default handler is provided by the main implementation of this interface.
+     */
+    var connectionExceptionHandler: (Throwable) -> Unit
+
     /**
      * The action that gets executed when the observer action executes with an exception.
      *
