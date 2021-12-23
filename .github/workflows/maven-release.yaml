@@ -4,7 +4,8 @@ on:
   # Note that we can't trigger directly on pushing the version tag due to
   # this: https://github.community/t/triggering-a-new-workflow-from-another-workflow/16250
   workflow_run:
-    workflows: ["GitHub Release"]
+    workflows:
+      - GitHub Release
     types:
       - completed
 
@@ -13,6 +14,7 @@ jobs:
   release:
     runs-on: macos-latest
 
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Check out release tag
         uses: actions/checkout@v2
