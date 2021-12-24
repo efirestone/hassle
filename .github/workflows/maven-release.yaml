@@ -6,6 +6,8 @@ on:
   workflow_run:
     workflows:
       - GitHub Release
+    branches:
+      - release
     types:
       - completed
 
