@@ -2,24 +2,28 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>com.codellyrandom.hassle.extending.entities.sensors.binary</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><link href="../../styles/prism.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../index.html">hassle</a></div>
+      <div>0.1.14</div>
+      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
       <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="hassle::com.codellyrandom.hassle.extending.entities.sensors.binary////PointingToDeclaration//788909594">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../index.html">hassle</a>/<a href="index.html">com.codellyrandom.hassle.extending.entities.sensors.binary</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
+        <div class="main-content" id="content" pageIds="hassle::com.codellyrandom.hassle.extending.entities.sensors.binary////PointingToDeclaration//788909594">
+          <div class="breadcrumbs"><a href="../../index.html">hassle</a>/<a href="index.html">com.codellyrandom.hassle.extending.entities.sensors.binary</a></div>
           <div class="cover ">
             <h1 class="cover"><span><span>Package</span></span> <span>com.</span><wbr></wbr><span>codellyrandom.</span><wbr></wbr><span>hassle.</span><wbr></wbr><span>extending.</span><wbr></wbr><span>entities.</span><wbr></wbr><span>sensors.</span><wbr></wbr><span>binary</span></h1>
           </div>
@@ -30,136 +34,120 @@
               <div class="table" data-togglable="Types"><a data-name="-611243492%2FClasslikes%2F788909594" anchor-label="ContactAttributes" id="-611243492%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-contact-attributes/index.html"><span>Contact</span><wbr></wbr><span><span>Attributes</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-611243492%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-contact-attributes/index.html"><span>Contact</span><wbr></wbr><span><span>Attributes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-611243492%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">data class <a href="-contact-attributes/index.html">ContactAttributes</a>(userId: <a href="../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a>?, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, friendlyName: <a href="../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a>) : <a href="../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-contact-attributes/index.html">ContactAttributes</a><span class="token punctuation">(</span>userId<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a><span class="token operator">?</span><span class="token punctuation">, </span>lastChanged<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>lastUpdated<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>friendlyName<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a><span class="token punctuation">)</span> : <a href="../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-141105639%2FClasslikes%2F788909594" anchor-label="ContactSensor" id="-141105639%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-141105639%2FClasslikes%2F788909594"><span>Contact</span><wbr></wbr><span><span>Sensor</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-141105639%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="index.html#-141105639%2FClasslikes%2F788909594"><span>Contact</span><wbr></wbr><span><span>Sensor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-141105639%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">typealias <a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a> = <a href="../com.codellyrandom.hassle.entities.devices/-sensor/index.html">Sensor</a>&lt;<a href="-contact-state/index.html">ContactState</a>, <a href="-contact-attributes/index.html">ContactAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="token operator"> = </span><a href="../com.codellyrandom.hassle.entities.devices/-sensor/index.html">Sensor</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-contact-state/index.html">ContactState</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="-contact-attributes/index.html">ContactAttributes</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="1750774814%2FClasslikes%2F788909594" anchor-label="ContactState" id="1750774814%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-contact-state/index.html"><span>Contact</span><wbr></wbr><span><span>State</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750774814%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-contact-state/index.html"><span>Contact</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750774814%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">data class <a href="-contact-state/index.html">ContactState</a>(value: <a href="-contact-state-value/index.html">ContactStateValue</a>) : <a href="../com.codellyrandom.hassle.entities/-state/index.html">State</a>&lt;<a href="-contact-state-value/index.html">ContactStateValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-contact-state/index.html">ContactState</a><span class="token punctuation">(</span>value<span class="token operator">: </span><a href="-contact-state-value/index.html">ContactStateValue</a><span class="token punctuation">)</span> : <a href="../com.codellyrandom.hassle.entities/-state/index.html">State</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-contact-state-value/index.html">ContactStateValue</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="786001971%2FClasslikes%2F788909594" anchor-label="ContactStateValue" id="786001971%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-contact-state-value/index.html"><span>Contact</span><wbr></wbr><span>State</span><wbr></wbr><span><span>Value</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="786001971%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-contact-state-value/index.html"><span>Contact</span><wbr></wbr><span>State</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="786001971%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">enum <a href="-contact-state-value/index.html">ContactStateValue</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-contact-state-value/index.html">ContactStateValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-contact-state-value/index.html">ContactStateValue</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-contact-state-value/index.html">ContactStateValue</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="1298736618%2FClasslikes%2F788909594" anchor-label="DayTime" id="1298736618%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#1298736618%2FClasslikes%2F788909594"><span>Day</span><wbr></wbr><span><span>Time</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1298736618%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="index.html#1298736618%2FClasslikes%2F788909594"><span>Day</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1298736618%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">typealias <a href="index.html#1298736618%2FClasslikes%2F788909594">DayTime</a> = <a href="../com.codellyrandom.hassle.entities.devices/-sensor/index.html">Sensor</a>&lt;<a href="../com.codellyrandom.hassle.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="-day-time-attributes/index.html">DayTimeAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="index.html#1298736618%2FClasslikes%2F788909594">DayTime</a><span class="token operator"> = </span><a href="../com.codellyrandom.hassle.entities.devices/-sensor/index.html">Sensor</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.extending.entities/-switchable-state/index.html">SwitchableState</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="-day-time-attributes/index.html">DayTimeAttributes</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-808627949%2FClasslikes%2F788909594" anchor-label="DayTimeAttributes" id="-808627949%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-day-time-attributes/index.html"><span>Day</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Attributes</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-808627949%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-day-time-attributes/index.html"><span>Day</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Attributes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-808627949%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">data class <a href="-day-time-attributes/index.html">DayTimeAttributes</a>(after: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, before: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, nextUpdate: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, userId: <a href="../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a>?, friendlyName: <a href="../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a>, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>) : <a href="../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-day-time-attributes/index.html">DayTimeAttributes</a><span class="token punctuation">(</span>after<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>before<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>nextUpdate<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>userId<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a><span class="token operator">?</span><span class="token punctuation">, </span>friendlyName<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a><span class="token punctuation">, </span>lastChanged<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>lastUpdated<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">)</span> : <a href="../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-68657601%2FClasslikes%2F788909594" anchor-label="MotionSensor" id="-68657601%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-68657601%2FClasslikes%2F788909594"><span>Motion</span><wbr></wbr><span><span>Sensor</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-68657601%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="index.html#-68657601%2FClasslikes%2F788909594"><span>Motion</span><wbr></wbr><span><span>Sensor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-68657601%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">typealias <a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a> = <a href="../com.codellyrandom.hassle.entities.devices/-sensor/index.html">Sensor</a>&lt;<a href="../com.codellyrandom.hassle.extending.entities/-switchable-state/index.html">SwitchableState</a>, <a href="-motion-sensor-attributes/index.html">MotionSensorAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a><span class="token operator"> = </span><a href="../com.codellyrandom.hassle.entities.devices/-sensor/index.html">Sensor</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.extending.entities/-switchable-state/index.html">SwitchableState</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="-motion-sensor-attributes/index.html">MotionSensorAttributes</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="580248360%2FClasslikes%2F788909594" anchor-label="MotionSensorAttributes" id="580248360%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-motion-sensor-attributes/index.html"><span>Motion</span><wbr></wbr><span>Sensor</span><wbr></wbr><span><span>Attributes</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="580248360%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-motion-sensor-attributes/index.html"><span>Motion</span><wbr></wbr><span>Sensor</span><wbr></wbr><span><span>Attributes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="580248360%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">data class <a href="-motion-sensor-attributes/index.html">MotionSensorAttributes</a>(userId: <a href="../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a>?, friendlyName: <a href="../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a>, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>) : <a href="../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-motion-sensor-attributes/index.html">MotionSensorAttributes</a><span class="token punctuation">(</span>userId<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a><span class="token operator">?</span><span class="token punctuation">, </span>friendlyName<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a><span class="token punctuation">, </span>lastChanged<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>lastUpdated<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">)</span> : <a href="../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -168,119 +156,105 @@
               <div class="table" data-togglable="Functions"><a data-name="529072172%2FFunctions%2F788909594" anchor-label="ContactSensor" id="529072172%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-contact-sensor.html"><span>Contact</span><wbr></wbr><span><span>Sensor</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="529072172%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-contact-sensor.html"><span>Contact</span><wbr></wbr><span><span>Sensor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="529072172%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">fun <a href="../com.codellyrandom.hassle/-home-assistant-api-client/index.html">HomeAssistantApiClient</a>.<a href="-contact-sensor.html">ContactSensor</a>(objectId: <a href="../com.codellyrandom.hassle.values/-object-id/index.html">ObjectId</a>): <a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="../com.codellyrandom.hassle/-home-assistant-api-client/index.html">HomeAssistantApiClient</a><span class="token punctuation">.</span><a href="-contact-sensor.html"><span class="token function">ContactSensor</span></a><span class="token punctuation">(</span>objectId<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-object-id/index.html">ObjectId</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-679376645%2FFunctions%2F788909594" anchor-label="DayTime" id="-679376645%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-day-time.html"><span>Day</span><wbr></wbr><span><span>Time</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-679376645%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-day-time.html"><span>Day</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-679376645%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">fun <a href="../com.codellyrandom.hassle/-home-assistant-api-client/index.html">HomeAssistantApiClient</a>.<a href="-day-time.html">DayTime</a>(objectId: <a href="../com.codellyrandom.hassle.values/-object-id/index.html">ObjectId</a>): <a href="index.html#1298736618%2FClasslikes%2F788909594">DayTime</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="../com.codellyrandom.hassle/-home-assistant-api-client/index.html">HomeAssistantApiClient</a><span class="token punctuation">.</span><a href="-day-time.html"><span class="token function">DayTime</span></a><span class="token punctuation">(</span>objectId<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-object-id/index.html">ObjectId</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html#1298736618%2FClasslikes%2F788909594">DayTime</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="353950652%2FFunctions%2F788909594" anchor-label="MotionSensor" id="353950652%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-motion-sensor.html"><span>Motion</span><wbr></wbr><span><span>Sensor</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="353950652%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-motion-sensor.html"><span>Motion</span><wbr></wbr><span><span>Sensor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="353950652%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">fun <a href="../com.codellyrandom.hassle/-home-assistant-api-client/index.html">HomeAssistantApiClient</a>.<a href="-motion-sensor.html">MotionSensor</a>(objectId: <a href="../com.codellyrandom.hassle.values/-object-id/index.html">ObjectId</a>): <a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="../com.codellyrandom.hassle/-home-assistant-api-client/index.html">HomeAssistantApiClient</a><span class="token punctuation">.</span><a href="-motion-sensor.html"><span class="token function">MotionSensor</span></a><span class="token punctuation">(</span>objectId<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-object-id/index.html">ObjectId</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-1048908754%2FFunctions%2F788909594" anchor-label="onClosed" id="-1048908754%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="on-closed.html"><span>on</span><wbr></wbr><span><span>Closed</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1048908754%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="on-closed.html"><span>on</span><wbr></wbr><span><span>Closed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1048908754%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">inline fun <a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a>.<a href="on-closed.html">onClosed</a>(crossinline f: <a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a>.(<a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="token punctuation">.</span><a href="on-closed.html"><span class="token function">onClosed</span></a><span class="token punctuation">(</span><span class="token keyword">crossinline </span>f<span class="token operator">: </span><span class="token keyword"></span><a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="2121401261%2FFunctions%2F788909594" anchor-label="onMotionAlarm" id="2121401261%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="on-motion-alarm.html"><span>on</span><wbr></wbr><span>Motion</span><wbr></wbr><span><span>Alarm</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2121401261%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="on-motion-alarm.html"><span>on</span><wbr></wbr><span>Motion</span><wbr></wbr><span><span>Alarm</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2121401261%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">inline fun <a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a>.<a href="on-motion-alarm.html">onMotionAlarm</a>(crossinline f: <a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a>.(<a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a><span class="token punctuation">.</span><a href="on-motion-alarm.html"><span class="token function">onMotionAlarm</span></a><span class="token punctuation">(</span><span class="token keyword">crossinline </span>f<span class="token operator">: </span><span class="token keyword"></span><a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-2040224161%2FFunctions%2F788909594" anchor-label="onMotionAlarmCleared" id="-2040224161%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="on-motion-alarm-cleared.html"><span>on</span><wbr></wbr><span>Motion</span><wbr></wbr><span>Alarm</span><wbr></wbr><span><span>Cleared</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2040224161%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="on-motion-alarm-cleared.html"><span>on</span><wbr></wbr><span>Motion</span><wbr></wbr><span>Alarm</span><wbr></wbr><span><span>Cleared</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2040224161%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">inline fun <a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a>.<a href="on-motion-alarm-cleared.html">onMotionAlarmCleared</a>(crossinline f: <a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a>.(<a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a><span class="token punctuation">.</span><a href="on-motion-alarm-cleared.html"><span class="token function">onMotionAlarmCleared</span></a><span class="token punctuation">(</span><span class="token keyword">crossinline </span>f<span class="token operator">: </span><span class="token keyword"></span><a href="index.html#-68657601%2FClasslikes%2F788909594">MotionSensor</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="855818577%2FFunctions%2F788909594" anchor-label="onOpened" id="855818577%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="on-opened.html"><span>on</span><wbr></wbr><span><span>Opened</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="855818577%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="on-opened.html"><span>on</span><wbr></wbr><span><span>Opened</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="855818577%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">inline fun <a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a>.<a href="on-opened.html">onOpened</a>(crossinline f: <a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a>.(<a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="token punctuation">.</span><a href="on-opened.html"><span class="token function">onOpened</span></a><span class="token punctuation">(</span><span class="token keyword">crossinline </span>f<span class="token operator">: </span><span class="token keyword"></span><a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -289,12 +263,14 @@
               <div class="table" data-togglable="Properties"><a data-name="1261290484%2FProperties%2F788909594" anchor-label="isClosed" id="1261290484%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="is-closed.html">isClosed</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1261290484%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="is-closed.html">isClosed</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1261290484%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1261290484%2FProperties%2F788909594" anchor-label="isClosed" id="1261290484%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a>.<a href="is-closed.html">isClosed</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1261290484%2FProperties%2F788909594" anchor-label="isClosed" id="1261290484%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="token punctuation">.</span><a href="is-closed.html">isClosed</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -302,12 +278,14 @@
 <a data-name="-944039530%2FProperties%2F788909594" anchor-label="isOpen" id="-944039530%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="is-open.html">isOpen</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-944039530%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="is-open.html">isOpen</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-944039530%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-944039530%2FProperties%2F788909594" anchor-label="isOpen" id="-944039530%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a>.<a href="is-open.html">isOpen</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-944039530%2FProperties%2F788909594" anchor-label="isOpen" id="-944039530%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-141105639%2FClasslikes%2F788909594">ContactSensor</a><span class="token punctuation">.</span><a href="is-open.html">isOpen</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -316,7 +294,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>

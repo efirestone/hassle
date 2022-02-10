@@ -2,45 +2,51 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>State</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../index.html">hassle</a></div>
+      <div>0.1.14</div>
+      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
       <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="hassle::com.codellyrandom.hassle.entities/State///PointingToDeclaration//788909594">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../index.html">hassle</a>/<a href="../index.html">com.codellyrandom.hassle.entities</a>/<a href="index.html">State</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
+        <div class="main-content" id="content" pageIds="hassle::com.codellyrandom.hassle.entities/State///PointingToDeclaration//788909594">
+          <div class="breadcrumbs"><a href="../../../index.html">hassle</a>/<a href="../index.html">com.codellyrandom.hassle.entities</a>/<a href="index.html">State</a></div>
           <div class="cover ">
             <h1 class="cover"><span><span>State</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">interface <a href="index.html">State</a>&lt;<a href="index.html">T</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The State interface</p><p class="paragraph">Defines the minimum structure of a valid state object.</p></div></div>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">State</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The State interface</p><p class="paragraph">Defines the minimum structure of a valid state object.</p></div></div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
             <div class="tabs-section-body">
               <h2 class="">Parameters</h2>
               <div data-togglable="Parameters">
-                <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><span><span>T</span></span></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">the type of the actual state value.</p></div></div></div></div></div></div></div></div></div>
+                <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span><span>T</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">the type of the actual state value.</p></div></div></div></div></div></div></div></div></div>
               </div>
               <h2 class="">Properties</h2>
               <div class="table" data-togglable="Properties"><a data-name="721792040%2FProperties%2F788909594" anchor-label="value" id="721792040%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="value.html">value</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="721792040%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="value.html">value</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="721792040%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="721792040%2FProperties%2F788909594" anchor-label="value" id="721792040%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">abstract val <a href="value.html">value</a>: <a href="index.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="721792040%2FProperties%2F788909594" anchor-label="value" id="721792040%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="value.html">value</a><span class="token operator">: </span><a href="index.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -50,7 +56,9 @@
               <div class="table" data-togglable="Inheritors"><a data-name="-1426230394%2FInheritors%2F788909594" anchor-label="SwitchableState" id="-1426230394%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities/-switchable-state/index.html">SwitchableState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1426230394%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities/-switchable-state/index.html">SwitchableState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1426230394%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -59,7 +67,9 @@
 <a data-name="-1507916248%2FInheritors%2F788909594" anchor-label="PositionableCoverState" id="-1507916248%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators/-positionable-cover-state/index.html">PositionableCoverState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1507916248%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators/-positionable-cover-state/index.html">PositionableCoverState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1507916248%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -68,7 +78,9 @@
 <a data-name="1195052620%2FInheritors%2F788909594" anchor-label="ThermostatState" id="1195052620%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.climate.thermostate/-thermostat-state/index.html">ThermostatState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1195052620%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.climate.thermostate/-thermostat-state/index.html">ThermostatState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1195052620%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -77,7 +89,9 @@
 <a data-name="1422703997%2FInheritors%2F788909594" anchor-label="InputDateState" id="1422703997%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-date-state/index.html">InputDateState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1422703997%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-date-state/index.html">InputDateState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1422703997%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -86,7 +100,9 @@
 <a data-name="1604768042%2FInheritors%2F788909594" anchor-label="InputDateTimeState" id="1604768042%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-date-time-state/index.html">InputDateTimeState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1604768042%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-date-time-state/index.html">InputDateTimeState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1604768042%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -95,7 +111,9 @@
 <a data-name="-467105768%2FInheritors%2F788909594" anchor-label="InputNumberState" id="-467105768%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-number-state/index.html">InputNumberState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-467105768%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-number-state/index.html">InputNumberState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-467105768%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -104,7 +122,9 @@
 <a data-name="296822411%2FInheritors%2F788909594" anchor-label="InputSelectState" id="296822411%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-select-state/index.html">InputSelectState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="296822411%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-select-state/index.html">InputSelectState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="296822411%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -113,7 +133,9 @@
 <a data-name="2022484668%2FInheritors%2F788909594" anchor-label="InputTextState" id="2022484668%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-text-state/index.html">InputTextState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2022484668%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-text-state/index.html">InputTextState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2022484668%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -122,7 +144,9 @@
 <a data-name="1546985564%2FInheritors%2F788909594" anchor-label="InputTimeState" id="1546985564%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-time-state/index.html">InputTimeState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1546985564%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.inputs/-input-time-state/index.html">InputTimeState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1546985564%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -131,7 +155,9 @@
 <a data-name="-265115277%2FInheritors%2F788909594" anchor-label="DimmableLightState" id="-265115277%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.light/-dimmable-light-state/index.html">DimmableLightState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-265115277%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.light/-dimmable-light-state/index.html">DimmableLightState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-265115277%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -140,7 +166,9 @@
 <a data-name="-1306369107%2FInheritors%2F788909594" anchor-label="RGBLightState" id="-1306369107%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.light/-r-g-b-light-state/index.html">RGBLightState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1306369107%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.light/-r-g-b-light-state/index.html">RGBLightState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1306369107%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -149,7 +177,9 @@
 <a data-name="-1901438424%2FInheritors%2F788909594" anchor-label="RGBWLightState" id="-1901438424%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.light/-r-g-b-w-light-state/index.html">RGBWLightState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1901438424%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.light/-r-g-b-w-light-state/index.html">RGBWLightState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1901438424%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -158,7 +188,9 @@
 <a data-name="-840615362%2FInheritors%2F788909594" anchor-label="MediaReceiverState" id="-840615362%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.mediaplayer/-media-receiver-state/index.html">MediaReceiverState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-840615362%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.mediaplayer/-media-receiver-state/index.html">MediaReceiverState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-840615362%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -167,7 +199,9 @@
 <a data-name="721854119%2FInheritors%2F788909594" anchor-label="TelevisionState" id="721854119%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.actuators.mediaplayer/-television-state/index.html">TelevisionState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="721854119%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.actuators.mediaplayer/-television-state/index.html">TelevisionState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="721854119%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -176,7 +210,9 @@
 <a data-name="182595147%2FInheritors%2F788909594" anchor-label="LuminanceState" id="182595147%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.sensors/-luminance-state/index.html">LuminanceState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="182595147%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.sensors/-luminance-state/index.html">LuminanceState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="182595147%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -185,7 +221,9 @@
 <a data-name="1716805602%2FInheritors%2F788909594" anchor-label="PersonState" id="1716805602%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.sensors/-person-state/index.html">PersonState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1716805602%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.sensors/-person-state/index.html">PersonState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1716805602%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -194,7 +232,9 @@
 <a data-name="-153637153%2FInheritors%2F788909594" anchor-label="SunState" id="-153637153%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.sensors/-sun-state/index.html">SunState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-153637153%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.sensors/-sun-state/index.html">SunState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-153637153%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -203,7 +243,9 @@
 <a data-name="1750774814%2FInheritors%2F788909594" anchor-label="ContactState" id="1750774814%2FInheritors%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../../com.codellyrandom.hassle.extending.entities.sensors.binary/-contact-state/index.html">ContactState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750774814%2FInheritors%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="../../com.codellyrandom.hassle.extending.entities.sensors.binary/-contact-state/index.html">ContactState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750774814%2FInheritors%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
@@ -213,7 +255,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>

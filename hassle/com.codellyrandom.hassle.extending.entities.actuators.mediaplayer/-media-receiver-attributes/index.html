@@ -2,27 +2,31 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>MediaReceiverAttributes</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../index.html">hassle</a></div>
+      <div>0.1.14</div>
+      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
       <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="hassle::com.codellyrandom.hassle.extending.entities.actuators.mediaplayer/MediaReceiverAttributes///PointingToDeclaration//788909594">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../index.html">hassle</a>/<a href="../index.html">com.codellyrandom.hassle.extending.entities.actuators.mediaplayer</a>/<a href="index.html">MediaReceiverAttributes</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
+        <div class="main-content" id="content" pageIds="hassle::com.codellyrandom.hassle.extending.entities.actuators.mediaplayer/MediaReceiverAttributes///PointingToDeclaration//788909594">
+          <div class="breadcrumbs"><a href="../../../index.html">hassle</a>/<a href="../index.html">com.codellyrandom.hassle.extending.entities.actuators.mediaplayer</a>/<a href="index.html">MediaReceiverAttributes</a></div>
           <div class="cover ">
             <h1 class="cover"><span>Media</span><wbr></wbr><span>Receiver</span><wbr></wbr><span><span>Attributes</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">data class <a href="index.html">MediaReceiverAttributes</a>(mediaContentId: <a href="../../com.codellyrandom.hassle.values/-media-content-id/index.html">MediaContentId</a>?, mediaTitle: <a href="../../com.codellyrandom.hassle.values/-media-title/index.html">MediaTitle</a>?, mediaArtist: <a href="../../com.codellyrandom.hassle.values/-artist/index.html">Artist</a>?, mediaAlbumName: <a href="../../com.codellyrandom.hassle.values/-album-name/index.html">AlbumName</a>?, mediaContentType: <a href="../../com.codellyrandom.hassle.values/-media-content-type/index.html">MediaContentType</a>?, mediaDuration: <a href="../../com.codellyrandom.hassle.values/-media-duration/index.html">MediaDuration</a>?, mediaPositionUpdatedAt: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>?, appId: <a href="../../com.codellyrandom.hassle.values/-app-id/index.html">AppId</a>?, appName: <a href="../../com.codellyrandom.hassle.values/-app-name/index.html">AppName</a>?, entityPicture: <a href="../../com.codellyrandom.hassle.values/-entity-picture/index.html">EntityPicture</a>?, userId: <a href="../../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a>?, friendlyName: <a href="../../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a>, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>) : <a href="../../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">MediaReceiverAttributes</a><span class="token punctuation">(</span>mediaContentId<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-media-content-id/index.html">MediaContentId</a><span class="token operator">?</span><span class="token punctuation">, </span>mediaTitle<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-media-title/index.html">MediaTitle</a><span class="token operator">?</span><span class="token punctuation">, </span>mediaArtist<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-artist/index.html">Artist</a><span class="token operator">?</span><span class="token punctuation">, </span>mediaAlbumName<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-album-name/index.html">AlbumName</a><span class="token operator">?</span><span class="token punctuation">, </span>mediaContentType<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-media-content-type/index.html">MediaContentType</a><span class="token operator">?</span><span class="token punctuation">, </span>mediaDuration<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-media-duration/index.html">MediaDuration</a><span class="token operator">?</span><span class="token punctuation">, </span>mediaPositionUpdatedAt<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token operator">?</span><span class="token punctuation">, </span>appId<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-app-id/index.html">AppId</a><span class="token operator">?</span><span class="token punctuation">, </span>appName<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-app-name/index.html">AppName</a><span class="token operator">?</span><span class="token punctuation">, </span>entityPicture<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-entity-picture/index.html">EntityPicture</a><span class="token operator">?</span><span class="token punctuation">, </span>userId<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a><span class="token operator">?</span><span class="token punctuation">, </span>friendlyName<span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a><span class="token punctuation">, </span>lastChanged<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>lastUpdated<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">)</span> : <a href="../../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Properties">Properties</button></div>
@@ -31,12 +35,14 @@
               <div class="table" data-togglable="Properties"><a data-name="867843483%2FProperties%2F788909594" anchor-label="appId" id="867843483%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="app-id.html">appId</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="867843483%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="app-id.html">appId</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="867843483%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="867843483%2FProperties%2F788909594" anchor-label="appId" id="867843483%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="app-id.html">appId</a>: <a href="../../com.codellyrandom.hassle.values/-app-id/index.html">AppId</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="867843483%2FProperties%2F788909594" anchor-label="appId" id="867843483%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="app-id.html">appId</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-app-id/index.html">AppId</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -44,12 +50,14 @@
 <a data-name="1675201515%2FProperties%2F788909594" anchor-label="appName" id="1675201515%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="app-name.html">appName</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1675201515%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="app-name.html">appName</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1675201515%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1675201515%2FProperties%2F788909594" anchor-label="appName" id="1675201515%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="app-name.html">appName</a>: <a href="../../com.codellyrandom.hassle.values/-app-name/index.html">AppName</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1675201515%2FProperties%2F788909594" anchor-label="appName" id="1675201515%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="app-name.html">appName</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-app-name/index.html">AppName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -57,12 +65,14 @@
 <a data-name="1884611580%2FProperties%2F788909594" anchor-label="entityPicture" id="1884611580%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="entity-picture.html">entityPicture</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1884611580%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="entity-picture.html">entityPicture</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1884611580%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1884611580%2FProperties%2F788909594" anchor-label="entityPicture" id="1884611580%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="entity-picture.html">entityPicture</a>: <a href="../../com.codellyrandom.hassle.values/-entity-picture/index.html">EntityPicture</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1884611580%2FProperties%2F788909594" anchor-label="entityPicture" id="1884611580%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="entity-picture.html">entityPicture</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-entity-picture/index.html">EntityPicture</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -70,12 +80,14 @@
 <a data-name="436393965%2FProperties%2F788909594" anchor-label="friendlyName" id="436393965%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="friendly-name.html">friendlyName</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="436393965%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="friendly-name.html">friendlyName</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="436393965%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="436393965%2FProperties%2F788909594" anchor-label="friendlyName" id="436393965%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">open override val <a href="friendly-name.html">friendlyName</a>: <a href="../../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="436393965%2FProperties%2F788909594" anchor-label="friendlyName" id="436393965%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="friendly-name.html">friendlyName</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -83,12 +95,14 @@
 <a data-name="973033529%2FProperties%2F788909594" anchor-label="lastChanged" id="973033529%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="last-changed.html">lastChanged</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="973033529%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="last-changed.html">lastChanged</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="973033529%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="973033529%2FProperties%2F788909594" anchor-label="lastChanged" id="973033529%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">open override val <a href="last-changed.html">lastChanged</a>: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="973033529%2FProperties%2F788909594" anchor-label="lastChanged" id="973033529%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="last-changed.html">lastChanged</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -96,12 +110,14 @@
 <a data-name="-1740711918%2FProperties%2F788909594" anchor-label="lastUpdated" id="-1740711918%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="last-updated.html">lastUpdated</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1740711918%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="last-updated.html">lastUpdated</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1740711918%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-1740711918%2FProperties%2F788909594" anchor-label="lastUpdated" id="-1740711918%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">open override val <a href="last-updated.html">lastUpdated</a>: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-1740711918%2FProperties%2F788909594" anchor-label="lastUpdated" id="-1740711918%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="last-updated.html">lastUpdated</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -109,12 +125,14 @@
 <a data-name="2109833773%2FProperties%2F788909594" anchor-label="mediaAlbumName" id="2109833773%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="media-album-name.html">mediaAlbumName</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2109833773%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="media-album-name.html">mediaAlbumName</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2109833773%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="2109833773%2FProperties%2F788909594" anchor-label="mediaAlbumName" id="2109833773%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="media-album-name.html">mediaAlbumName</a>: <a href="../../com.codellyrandom.hassle.values/-album-name/index.html">AlbumName</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="2109833773%2FProperties%2F788909594" anchor-label="mediaAlbumName" id="2109833773%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="media-album-name.html">mediaAlbumName</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-album-name/index.html">AlbumName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -122,12 +140,14 @@
 <a data-name="934140876%2FProperties%2F788909594" anchor-label="mediaArtist" id="934140876%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="media-artist.html">mediaArtist</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="934140876%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="media-artist.html">mediaArtist</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="934140876%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="934140876%2FProperties%2F788909594" anchor-label="mediaArtist" id="934140876%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="media-artist.html">mediaArtist</a>: <a href="../../com.codellyrandom.hassle.values/-artist/index.html">Artist</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="934140876%2FProperties%2F788909594" anchor-label="mediaArtist" id="934140876%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="media-artist.html">mediaArtist</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-artist/index.html">Artist</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -135,12 +155,14 @@
 <a data-name="-1312979565%2FProperties%2F788909594" anchor-label="mediaContentId" id="-1312979565%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="media-content-id.html">mediaContentId</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1312979565%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="media-content-id.html">mediaContentId</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1312979565%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-1312979565%2FProperties%2F788909594" anchor-label="mediaContentId" id="-1312979565%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="media-content-id.html">mediaContentId</a>: <a href="../../com.codellyrandom.hassle.values/-media-content-id/index.html">MediaContentId</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-1312979565%2FProperties%2F788909594" anchor-label="mediaContentId" id="-1312979565%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="media-content-id.html">mediaContentId</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-media-content-id/index.html">MediaContentId</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -148,12 +170,14 @@
 <a data-name="-1516899308%2FProperties%2F788909594" anchor-label="mediaContentType" id="-1516899308%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="media-content-type.html">mediaContentType</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1516899308%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="media-content-type.html">mediaContentType</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1516899308%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-1516899308%2FProperties%2F788909594" anchor-label="mediaContentType" id="-1516899308%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="media-content-type.html">mediaContentType</a>: <a href="../../com.codellyrandom.hassle.values/-media-content-type/index.html">MediaContentType</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-1516899308%2FProperties%2F788909594" anchor-label="mediaContentType" id="-1516899308%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="media-content-type.html">mediaContentType</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-media-content-type/index.html">MediaContentType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -161,12 +185,14 @@
 <a data-name="1941809311%2FProperties%2F788909594" anchor-label="mediaDuration" id="1941809311%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="media-duration.html">mediaDuration</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1941809311%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="media-duration.html">mediaDuration</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1941809311%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1941809311%2FProperties%2F788909594" anchor-label="mediaDuration" id="1941809311%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="media-duration.html">mediaDuration</a>: <a href="../../com.codellyrandom.hassle.values/-media-duration/index.html">MediaDuration</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1941809311%2FProperties%2F788909594" anchor-label="mediaDuration" id="1941809311%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="media-duration.html">mediaDuration</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-media-duration/index.html">MediaDuration</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -174,12 +200,14 @@
 <a data-name="383978754%2FProperties%2F788909594" anchor-label="mediaPositionUpdatedAt" id="383978754%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="media-position-updated-at.html">mediaPositionUpdatedAt</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="383978754%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="media-position-updated-at.html">mediaPositionUpdatedAt</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="383978754%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="383978754%2FProperties%2F788909594" anchor-label="mediaPositionUpdatedAt" id="383978754%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="media-position-updated-at.html">mediaPositionUpdatedAt</a>: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="383978754%2FProperties%2F788909594" anchor-label="mediaPositionUpdatedAt" id="383978754%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="media-position-updated-at.html">mediaPositionUpdatedAt</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -187,12 +215,14 @@
 <a data-name="1116873775%2FProperties%2F788909594" anchor-label="mediaTitle" id="1116873775%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="media-title.html">mediaTitle</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1116873775%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="media-title.html">mediaTitle</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1116873775%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1116873775%2FProperties%2F788909594" anchor-label="mediaTitle" id="1116873775%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="media-title.html">mediaTitle</a>: <a href="../../com.codellyrandom.hassle.values/-media-title/index.html">MediaTitle</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="1116873775%2FProperties%2F788909594" anchor-label="mediaTitle" id="1116873775%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="media-title.html">mediaTitle</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-media-title/index.html">MediaTitle</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -200,12 +230,14 @@
 <a data-name="-387908099%2FProperties%2F788909594" anchor-label="userId" id="-387908099%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="user-id.html">userId</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-387908099%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="user-id.html">userId</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-387908099%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-387908099%2FProperties%2F788909594" anchor-label="userId" id="-387908099%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">open override val <a href="user-id.html">userId</a>: <a href="../../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-387908099%2FProperties%2F788909594" anchor-label="userId" id="-387908099%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="user-id.html">userId</a><span class="token operator">: </span><a href="../../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -214,7 +246,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>

@@ -2,24 +2,28 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>com.codellyrandom.hassle.extending.entities.actuators.climate.thermostate</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><link href="../../styles/prism.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../index.html">hassle</a></div>
+      <div>0.1.14</div>
+      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
       <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="hassle::com.codellyrandom.hassle.extending.entities.actuators.climate.thermostate////PointingToDeclaration//788909594">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../index.html">hassle</a>/<a href="index.html">com.codellyrandom.hassle.extending.entities.actuators.climate.thermostate</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
+        <div class="main-content" id="content" pageIds="hassle::com.codellyrandom.hassle.extending.entities.actuators.climate.thermostate////PointingToDeclaration//788909594">
+          <div class="breadcrumbs"><a href="../../index.html">hassle</a>/<a href="index.html">com.codellyrandom.hassle.extending.entities.actuators.climate.thermostate</a></div>
           <div class="cover ">
             <h1 class="cover"><span><span>Package</span></span> <span>com.</span><wbr></wbr><span>codellyrandom.</span><wbr></wbr><span>hassle.</span><wbr></wbr><span>extending.</span><wbr></wbr><span>entities.</span><wbr></wbr><span>actuators.</span><wbr></wbr><span>climate.</span><wbr></wbr><span><span>thermostate</span></span></h1>
           </div>
@@ -30,68 +34,60 @@
               <div class="table" data-togglable="Types"><a data-name="-1460828347%2FClasslikes%2F788909594" anchor-label="Thermostat" id="-1460828347%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-1460828347%2FClasslikes%2F788909594"><span><span>Thermostat</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1460828347%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="index.html#-1460828347%2FClasslikes%2F788909594"><span><span>Thermostat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1460828347%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">typealias <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a> = <a href="../com.codellyrandom.hassle.entities.devices/-actuator/index.html">Actuator</a>&lt;<a href="-thermostat-state/index.html">ThermostatState</a>, <a href="-thermostat-attributes/index.html">ThermostatAttributes</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token operator"> = </span><a href="../com.codellyrandom.hassle.entities.devices/-actuator/index.html">Actuator</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-thermostat-state/index.html">ThermostatState</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="-thermostat-attributes/index.html">ThermostatAttributes</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="727186606%2FClasslikes%2F788909594" anchor-label="ThermostatAttributes" id="727186606%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-thermostat-attributes/index.html"><span>Thermostat</span><wbr></wbr><span><span>Attributes</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="727186606%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-thermostat-attributes/index.html"><span>Thermostat</span><wbr></wbr><span><span>Attributes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="727186606%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">data class <a href="-thermostat-attributes/index.html">ThermostatAttributes</a>(hvacModes: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../com.codellyrandom.hassle.values/-hvac-mode/index.html">HvacMode</a>&gt;, presetModes: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../com.codellyrandom.hassle.values/-preset-mode/index.html">PresetMode</a>&gt;, currentTemperature: <a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a>, minTemp: <a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a>, maxTemp: <a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a>, friendlyName: <a href="../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a>, lastChanged: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, lastUpdated: <span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span>, userId: <a href="../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a>?) : <a href="../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-thermostat-attributes/index.html">ThermostatAttributes</a><span class="token punctuation">(</span>hvacModes<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.values/-hvac-mode/index.html">HvacMode</a><span class="token operator">&gt;</span><span class="token punctuation">, </span>presetModes<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.values/-preset-mode/index.html">PresetMode</a><span class="token operator">&gt;</span><span class="token punctuation">, </span>currentTemperature<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a><span class="token punctuation">, </span>minTemp<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a><span class="token punctuation">, </span>maxTemp<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a><span class="token punctuation">, </span>friendlyName<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-friendly-name/index.html">FriendlyName</a><span class="token punctuation">, </span>lastChanged<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>lastUpdated<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span>userId<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-user-id/index.html">UserId</a><span class="token operator">?</span><span class="token punctuation">)</span> : <a href="../com.codellyrandom.hassle.entities/-attributes/index.html">Attributes</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="1195052620%2FClasslikes%2F788909594" anchor-label="ThermostatState" id="1195052620%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-thermostat-state/index.html"><span>Thermostat</span><wbr></wbr><span><span>State</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1195052620%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-thermostat-state/index.html"><span>Thermostat</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1195052620%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">data class <a href="-thermostat-state/index.html">ThermostatState</a>(value: <a href="-thermostat-state-value/index.html">ThermostatStateValue</a>, temperature: <a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a>?, presetMode: <a href="../com.codellyrandom.hassle.values/-preset-mode/index.html">PresetMode</a>) : <a href="../com.codellyrandom.hassle.entities/-state/index.html">State</a>&lt;<a href="-thermostat-state-value/index.html">ThermostatStateValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-thermostat-state/index.html">ThermostatState</a><span class="token punctuation">(</span>value<span class="token operator">: </span><a href="-thermostat-state-value/index.html">ThermostatStateValue</a><span class="token punctuation">, </span>temperature<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a><span class="token operator">?</span><span class="token punctuation">, </span>presetMode<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-preset-mode/index.html">PresetMode</a><span class="token punctuation">)</span> : <a href="../com.codellyrandom.hassle.entities/-state/index.html">State</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-thermostat-state-value/index.html">ThermostatStateValue</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="2124432069%2FClasslikes%2F788909594" anchor-label="ThermostatStateValue" id="2124432069%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-thermostat-state-value/index.html"><span>Thermostat</span><wbr></wbr><span>State</span><wbr></wbr><span><span>Value</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2124432069%2FClasslikes%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-thermostat-state-value/index.html"><span>Thermostat</span><wbr></wbr><span>State</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2124432069%2FClasslikes%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">enum <a href="-thermostat-state-value/index.html">ThermostatStateValue</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-thermostat-state-value/index.html">ThermostatStateValue</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-thermostat-state-value/index.html">ThermostatStateValue</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-thermostat-state-value/index.html">ThermostatStateValue</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -100,136 +96,120 @@
               <div class="table" data-togglable="Functions"><a data-name="438938586%2FFunctions%2F788909594" anchor-label="onTurnedOff" id="438938586%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="on-turned-off.html"><span>on</span><wbr></wbr><span>Turned</span><wbr></wbr><span><span>Off</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="438938586%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="on-turned-off.html"><span>on</span><wbr></wbr><span>Turned</span><wbr></wbr><span><span>Off</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="438938586%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">fun <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="on-turned-off.html">onTurnedOff</a>(f: <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.(<a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="on-turned-off.html"><span class="token function">onTurnedOff</span></a><span class="token punctuation">(</span>f<span class="token operator">: </span><span class="token keyword"></span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-1324889824%2FFunctions%2F788909594" anchor-label="onTurnedOn" id="-1324889824%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="on-turned-on.html"><span>on</span><wbr></wbr><span>Turned</span><wbr></wbr><span><span>On</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1324889824%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="on-turned-on.html"><span>on</span><wbr></wbr><span>Turned</span><wbr></wbr><span><span>On</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1324889824%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">fun <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="on-turned-on.html">onTurnedOn</a>(f: <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.(<a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="on-turned-on.html"><span class="token function">onTurnedOn</span></a><span class="token punctuation">(</span>f<span class="token operator">: </span><span class="token keyword"></span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="../com.codellyrandom.hassle.observability/-switchable/index.html">Switchable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-330231719%2FFunctions%2F788909594" anchor-label="setPreset" id="-330231719%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="set-preset.html"><span>set</span><wbr></wbr><span><span>Preset</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-330231719%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="set-preset.html"><span>set</span><wbr></wbr><span><span>Preset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-330231719%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">suspend fun <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="set-preset.html">setPreset</a>(preset: <a href="../com.codellyrandom.hassle.values/-preset-mode/index.html">PresetMode</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="set-preset.html"><span class="token function">setPreset</span></a><span class="token punctuation">(</span>preset<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-preset-mode/index.html">PresetMode</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="1755355559%2FFunctions%2F788909594" anchor-label="setTargetTemperature" id="1755355559%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="set-target-temperature.html"><span>set</span><wbr></wbr><span>Target</span><wbr></wbr><span><span>Temperature</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1755355559%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="set-target-temperature.html"><span>set</span><wbr></wbr><span>Target</span><wbr></wbr><span><span>Temperature</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1755355559%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">suspend fun <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="set-target-temperature.html">setTargetTemperature</a>(temperature: <a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="set-target-temperature.html"><span class="token function">setTargetTemperature</span></a><span class="token punctuation">(</span>temperature<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-temperature/index.html">Temperature</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-814911440%2FFunctions%2F788909594" anchor-label="Thermostat" id="-814911440%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-thermostat.html"><span><span>Thermostat</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-814911440%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-thermostat.html"><span><span>Thermostat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-814911440%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">fun <a href="../com.codellyrandom.hassle/-home-assistant-api-client/index.html">HomeAssistantApiClient</a>.<a href="-thermostat.html">Thermostat</a>(objectId: <a href="../com.codellyrandom.hassle.values/-object-id/index.html">ObjectId</a>): <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="../com.codellyrandom.hassle/-home-assistant-api-client/index.html">HomeAssistantApiClient</a><span class="token punctuation">.</span><a href="-thermostat.html"><span class="token function">Thermostat</span></a><span class="token punctuation">(</span>objectId<span class="token operator">: </span><a href="../com.codellyrandom.hassle.values/-object-id/index.html">ObjectId</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-1702133690%2FFunctions%2F788909594" anchor-label="turnOff" id="-1702133690%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="turn-off.html"><span>turn</span><wbr></wbr><span><span>Off</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1702133690%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="turn-off.html"><span>turn</span><wbr></wbr><span><span>Off</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1702133690%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">suspend fun <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="turn-off.html">turnOff</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="turn-off.html"><span class="token function">turnOff</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="-899035000%2FFunctions%2F788909594" anchor-label="turnOn" id="-899035000%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="turn-on.html"><span>turn</span><wbr></wbr><span><span>On</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-899035000%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="turn-on.html"><span>turn</span><wbr></wbr><span><span>On</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-899035000%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">suspend fun <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="turn-on.html">turnOn</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="turn-on.html"><span class="token function">turnOn</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 <a data-name="125458001%2FFunctions%2F788909594" anchor-label="turnOnBoost" id="125458001%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="turn-on-boost.html"><span>turn</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Boost</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="125458001%2FFunctions%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="turn-on-boost.html"><span>turn</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Boost</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="125458001%2FFunctions%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace">suspend fun <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="turn-on-boost.html">turnOnBoost</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="turn-on-boost.html"><span class="token function">turnOnBoost</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -238,12 +218,14 @@
               <div class="table" data-togglable="Properties"><a data-name="109551568%2FProperties%2F788909594" anchor-label="isHeating" id="109551568%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="is-heating.html">isHeating</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="109551568%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="is-heating.html">isHeating</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="109551568%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="109551568%2FProperties%2F788909594" anchor-label="isHeating" id="109551568%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="is-heating.html">isHeating</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="109551568%2FProperties%2F788909594" anchor-label="isHeating" id="109551568%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="is-heating.html">isHeating</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -251,12 +233,14 @@
 <a data-name="-2053894541%2FProperties%2F788909594" anchor-label="isOff" id="-2053894541%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="is-off.html">isOff</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2053894541%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="is-off.html">isOff</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2053894541%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-2053894541%2FProperties%2F788909594" anchor-label="isOff" id="-2053894541%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="is-off.html">isOff</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-2053894541%2FProperties%2F788909594" anchor-label="isOff" id="-2053894541%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="is-off.html">isOff</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -264,12 +248,14 @@
 <a data-name="-1741666117%2FProperties%2F788909594" anchor-label="isOn" id="-1741666117%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="is-on.html">isOn</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1741666117%2FProperties%2F788909594"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="is-on.html">isOn</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1741666117%2FProperties%2F788909594"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-1741666117%2FProperties%2F788909594" anchor-label="isOn" id="-1741666117%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace">val <a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a>.<a href="is-on.html">isOn</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><a data-name="-1741666117%2FProperties%2F788909594" anchor-label="isOn" id="-1741666117%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1460828347%2FClasslikes%2F788909594">Thermostat</a><span class="token punctuation">.</span><a href="is-on.html">isOn</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -278,7 +264,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>
