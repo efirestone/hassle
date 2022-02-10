@@ -9,14 +9,14 @@ val ktorVersion: String by project
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.5.31")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.6.10")
         classpath("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
     }
 }
 
 plugins {
-    kotlin("multiplatform") version "1.6.0"
-    kotlin("plugin.serialization") version "1.5.0"
+    kotlin("multiplatform") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
     id("de.jansauer.printcoverage") version "2.0.0"
     id("io.gitlab.arturbosch.detekt") version "1.9.1"
@@ -60,13 +60,14 @@ kotlin {
                 implementation(kotlin("stdlib-common"))
                 // kotlinx.datetime doesn't include LocalTime yet, so supplement it
                 // https://github.com/Kotlin/kotlinx-datetime/issues/57
-                implementation("io.fluidsonic.time:fluid-time:0.14.0")
-                implementation("io.ktor:ktor-client-cio:$ktorVersion")
+                implementation("io.fluidsonic.time:fluid-time:0.15.0")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+                implementation("io.ktor:ktor-client-websockets:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:atomicfu:0.17.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
                 implementation("org.slf4j:slf4j-simple:1.7.32")
                 api("co.touchlab:kermit:$kermitVersion")
                 api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
@@ -79,8 +80,7 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-client-cio-jvm:$ktorVersion")
             }
         }
         val jvmTest by getting

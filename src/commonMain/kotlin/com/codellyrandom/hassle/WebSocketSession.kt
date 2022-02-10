@@ -1,8 +1,8 @@
 package com.codellyrandom.hassle
 
 import com.codellyrandom.hassle.core.mapping.ObjectMapper
-import io.ktor.client.features.websocket.*
-import io.ktor.http.cio.websocket.*
+import io.ktor.client.plugins.websocket.*
+import io.ktor.websocket.*
 
 internal class WebSocketSession(
     delegate: DefaultClientWebSocketSession,
