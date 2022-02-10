@@ -23,13 +23,11 @@ import com.codellyrandom.hassle.observability.Switchable
 import com.codellyrandom.hassle.values.EntityId
 import com.codellyrandom.hassle.values.EventType
 import io.ktor.client.*
-import io.ktor.client.engine.cio.*
-import io.ktor.client.features.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
+import io.ktor.client.plugins.*
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import io.ktor.client.utils.*
+import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.CoroutineScope
 import kotlin.collections.set
@@ -59,9 +57,9 @@ internal class HomeAssistantApiClientImpl(
         { connectionExceptionHandler(it) }
     )
 
-    private val httpClient = HttpClient(CIO) {
-        install(JsonFeature) {
-            serializer = KotlinxSerializer(
+    private val httpClient = HttpClient {
+        install(ContentNegotiation) {
+            json(
                 SerializationJson {
                     isLenient = true
                     ignoreUnknownKeys = true
@@ -171,9 +169,9 @@ internal class HomeAssistantApiClientImpl(
     }
 
     override suspend fun emitEvent(eventType: String, eventData: Any?) {
-        httpClient.post<HttpResponse> {
-            url { encodedPath = "/api/events/$eventType" }
-            body = eventData ?: EmptyContent
+        httpClient.post {
+            url.encodedPath = "/api/events/$eventType"
+            setBody(eventData ?: EmptyContent)
         }
     }
 

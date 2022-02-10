@@ -12,8 +12,7 @@ import com.codellyrandom.hassle.entities.SensorStateUpdater
 import com.codellyrandom.hassle.errorHandling.ErrorResponseData
 import com.codellyrandom.hassle.errorHandling.ErrorResponseHandlerImpl
 import com.codellyrandom.hassle.values.EventType
-import io.ktor.http.cio.websocket.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import io.ktor.websocket.*
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.coroutineScope
 import kotlinx.serialization.json.JsonElement
@@ -48,7 +47,6 @@ internal class EventResponseConsumer(
     private inline fun <reified Response> mapFrameTextToResponse(frameText: Frame.Text): Response =
         objectMapper.fromJson(frameText.readText())
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     private suspend inline fun WebSocketSession.consumeEachMappedToResponse(action: (ResolverResponse, Frame.Text) -> Unit) =
         incoming.consumeEach { frame ->
             (frame as? Frame.Text)?.let { frameText -> action(mapFrameTextToResponse(frameText), frameText) }
