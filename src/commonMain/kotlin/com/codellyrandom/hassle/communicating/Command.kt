@@ -14,7 +14,7 @@ internal sealed class Command(
     open var id: Int? = null
 ) {
     companion object : JsonContentPolymorphicSerializer<Command>(Command::class) {
-        override fun selectDeserializer(element: JsonElement): DeserializationStrategy<out Command> {
+        override fun selectDeserializer(element: JsonElement): DeserializationStrategy<Command> {
             // We don't support deserializing commands (only serializing them),
             // so we don't care about mapping JSON elements back to deserializers.
             throw IllegalStateException("Commands do not support deserialization")
