@@ -2,8 +2,11 @@ package com.codellyrandom.hassle.communicating
 
 import com.codellyrandom.hassle.extending.serviceCalls.notifications.MobileNotificationData
 import com.codellyrandom.hassle.values.*
-import kotlinx.serialization.*
-import kotlinx.serialization.json.*
+import kotlinx.serialization.DeserializationStrategy
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonContentPolymorphicSerializer
+import kotlinx.serialization.json.JsonElement
 
 // - Base Command
 
