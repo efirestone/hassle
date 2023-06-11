@@ -28,10 +28,10 @@ data class HSColor(val hue: Double, val saturation: Double) {
         )
 
         override fun deserialize(decoder: Decoder): HSColor {
-            decoder.decodeStructure(ListSerializer(Double.serializer()).descriptor) {
+            return decoder.decodeStructure(ListSerializer(Double.serializer()).descriptor) {
                 val hue = decodeDoubleElement(hueDescriptor, 0)
                 val saturation = decodeDoubleElement(saturationDescriptor, 1)
-                return HSColor(hue, saturation)
+                HSColor(hue, saturation)
             }
         }
 

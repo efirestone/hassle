@@ -29,11 +29,11 @@ data class RGBColor(val red: Int, val green: Int, val blue: Int) {
         )
 
         override fun deserialize(decoder: Decoder): RGBColor {
-            decoder.decodeStructure(ListSerializer(Int.serializer()).descriptor) {
+            return decoder.decodeStructure(ListSerializer(Int.serializer()).descriptor) {
                 val red = decodeIntElement(redDescriptor, 0)
                 val green = decodeIntElement(greenDescriptor, 1)
                 val blue = decodeIntElement(blueDescriptor, 2)
-                return RGBColor(red, green, blue)
+                RGBColor(red, green, blue)
             }
         }
 
