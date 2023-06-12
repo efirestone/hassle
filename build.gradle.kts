@@ -1,5 +1,3 @@
-import com.vanniktech.maven.publish.JavadocJar.Dokka
-import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
@@ -9,8 +7,8 @@ val ktorVersion: String by project
 
 buildscript {
     dependencies {
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.6.10")
-        classpath("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.8.20")
+        classpath("com.vanniktech:gradle-maven-publish-plugin:0.25.2")
     }
 }
 
@@ -138,9 +136,6 @@ tasks {
 
 configure<MavenPublishBaseExtension> {
     version = System.getenv("VERSION")
-    configure(
-        KotlinMultiplatform(javadocJar = Dokka("dokkaHtml"))
-    )
 }
 
 detekt {
