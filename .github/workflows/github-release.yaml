@@ -17,6 +17,6 @@ jobs:
       # with the new version number, like `refs/tag/v1.2.3`. This tag will then
       # be used to create the Maven release.
       - name: Create Github Release
-        uses: cycjimmy/semantic-release-action@v2
+        uses: cycjimmy/semantic-release-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
