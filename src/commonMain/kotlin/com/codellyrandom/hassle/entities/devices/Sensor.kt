@@ -14,7 +14,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlin.reflect.KClass
 
 /**
- * An Sensor holding entity state and attributes
+ * A Sensor holding entity state and attributes
  *
  * In Hassle, the Sensor is the immutable representation of an entity in home assistant.
  *

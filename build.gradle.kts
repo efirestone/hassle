@@ -15,8 +15,8 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version "1.6.10"
-    kotlin("plugin.serialization") version "1.6.10"
+    kotlin("multiplatform") version "1.8.22"
+    kotlin("plugin.serialization") version "1.8.22"
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
     id("de.jansauer.printcoverage") version "2.0.0"
     id("io.gitlab.arturbosch.detekt") version "1.9.1"
@@ -42,7 +42,7 @@ kotlin {
     jvm {
         compilations.all {
             kotlinOptions {
-                freeCompilerArgs = listOf("-Xjsr305=strict", "-Xopt-in=kotlin.RequiresOptIn")
+                freeCompilerArgs = listOf("-Xjsr305=strict", "-opt-in=kotlin.RequiresOptIn")
                 jvmTarget = "1.8"
             }
         }
@@ -163,9 +163,9 @@ printcoverage {
 
 val compileKotlinNative: KotlinNativeCompile by tasks
 compileKotlinNative.apply {
-    kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
+    kotlinOptions.freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
 }
 val compileTestKotlinNative: KotlinNativeCompile by tasks
 compileTestKotlinNative.apply {
-    kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
+    kotlinOptions.freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
 }

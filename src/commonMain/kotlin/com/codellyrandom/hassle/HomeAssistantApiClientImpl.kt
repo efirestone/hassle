@@ -24,6 +24,7 @@ import com.codellyrandom.hassle.values.EntityId
 import com.codellyrandom.hassle.values.EventType
 import io.ktor.client.*
 import io.ktor.client.plugins.*
+import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.client.utils.*
 import io.ktor.http.*
@@ -97,7 +98,7 @@ internal class HomeAssistantApiClientImpl(
         logger.e(exception) { "Caught exception in event handler" }
     }
 
-    var errorResponseHandlerFunction: (ErrorResponseData) -> Unit = { errorResponseData ->
+    private var errorResponseHandlerFunction: (ErrorResponseData) -> Unit = { errorResponseData ->
         logger.e { "CommandId: ${errorResponseData.commandId} - errorCode: ${errorResponseData.errorResponse.code} | message: ${errorResponseData.errorResponse.message}" }
     }
 

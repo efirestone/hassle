@@ -26,10 +26,10 @@ data class XYColor(val x: Double, val y: Double) {
         )
 
         override fun deserialize(decoder: Decoder): XYColor {
-            decoder.decodeStructure(ListSerializer(Double.serializer()).descriptor) {
+            return decoder.decodeStructure(ListSerializer(Double.serializer()).descriptor) {
                 val x = decodeDoubleElement(xDescriptor, 0)
                 val y = decodeDoubleElement(yDescriptor, 1)
-                return XYColor(x, y)
+                XYColor(x, y)
             }
         }
 
