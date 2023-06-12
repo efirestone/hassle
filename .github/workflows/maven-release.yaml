@@ -28,7 +28,7 @@ jobs:
       # This will fail if this commit is not tagged with a version
       - name: Read version tag
         id: versiontag
-        uses: efirestone/get-version-tag-action@v1.0.0
+        uses: efirestone/get-version-tag-action@v1.1.0
 
       - name: Push artifacts to Maven
         # Skip nativeTest for now. We support building for multiplatform, but won't support
