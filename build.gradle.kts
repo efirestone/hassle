@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
 
@@ -8,7 +7,7 @@ val ktorVersion: String by project
 buildscript {
     dependencies {
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.8.20")
-        classpath("com.vanniktech:gradle-maven-publish-plugin:0.25.2")
+//        classpath("com.vanniktech:gradle-maven-publish-plugin:0.25.2")
     }
 }
 
@@ -17,6 +16,7 @@ plugins {
     kotlin("plugin.serialization") version "1.8.22"
     id("com.github.dawnwords.jacoco.badge") version "0.2.0"
     id("de.jansauer.printcoverage") version "2.0.0"
+    id("com.vanniktech.maven.publish") version "0.25.2"
     id("io.gitlab.arturbosch.detekt") version "1.9.1"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
     jacoco
@@ -134,8 +134,12 @@ tasks {
     }
 }
 
-configure<MavenPublishBaseExtension> {
+mavenPublishing {
+    // If any issues arise with publishing, check here:
+    // https://s01.oss.sonatype.org/#stagingRepositories
     version = System.getenv("VERSION")
+
+    signAllPublications()
 }
 
 detekt {
