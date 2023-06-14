@@ -30,6 +30,12 @@ jobs:
         id: versiontag
         uses: efirestone/get-version-tag-action@v1
 
+      - name: Set Java Version
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Push artifacts to Maven
         # Skip nativeTest for now. We support building for multiplatform, but won't support
         # deploying to iOS (native) will be supported once the new Kotlin/Native memory and
