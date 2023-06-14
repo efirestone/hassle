@@ -13,11 +13,9 @@ import com.codellyrandom.hassle.values.EntityId
  * Base factories
  */
 
-@Suppress("FunctionName")
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Sensor(id: EntityId): Sensor<S, A> =
     (this as HomeAssistantApiClientImpl).Sensor(id, S::class, A::class)
 
-@Suppress("FunctionName")
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Actuator(
     id: EntityId,
     serviceCommandResolver: ServiceCommandResolver<S>

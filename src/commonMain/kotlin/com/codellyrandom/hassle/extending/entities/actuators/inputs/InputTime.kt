@@ -16,7 +16,6 @@ import kotlinx.serialization.Serializable
 
 typealias InputTime = Actuator<InputTimeState, InputTimeAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.InputTime(objectId: ObjectId): InputTime =
     Actuator(
         EntityId.fromPair("input_datetime".domain to objectId),

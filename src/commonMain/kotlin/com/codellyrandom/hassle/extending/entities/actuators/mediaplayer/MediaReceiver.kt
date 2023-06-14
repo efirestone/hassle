@@ -17,11 +17,9 @@ import kotlinx.serialization.Serializable
 
 typealias MediaReceiver = MediaPlayer<MediaReceiverState, MediaReceiverAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.MediaReceiver(objectId: ObjectId): MediaReceiver =
     MediaReceiver(EntityId(Domain("media_player"), objectId))
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.MediaReceiver(entityId: EntityId): MediaReceiver =
     Actuator(
         entityId,

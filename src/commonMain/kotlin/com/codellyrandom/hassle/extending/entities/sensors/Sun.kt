@@ -20,7 +20,6 @@ import kotlinx.serialization.Serializable
 
 typealias Sun = Sensor<SunState, SunAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.Sun(): Sun =
     Sensor(EntityId.fromPair("sun".domain to "sun".objectId))
 
@@ -40,25 +39,37 @@ enum class SunValue {
 data class SunAttributes(
     @SerialName("next_dawn")
     val nextDawn: Instant,
+
     @SerialName("next_dusk")
     val nextDusk: Instant,
+
     @SerialName("next_midnight")
     val nextMidnight: Instant,
+
     @SerialName("next_noon")
     val nextNoon: Instant,
+
     @SerialName("next_rising")
     val nextRising: Instant,
+
     @SerialName("next_setting")
     val nextSetting: Instant,
+
     val elevation: Elevation,
+
     val azimuth: Azimuth,
+
     val rising: Rising,
+
     @SerialName("user_id")
     override val userId: UserId?,
+
     @SerialName("last_changed")
     override val lastChanged: Instant,
+
     @SerialName("last_updated")
     override val lastUpdated: Instant,
+
     @SerialName("friendly_name")
     override val friendlyName: FriendlyName
 ) : Attributes

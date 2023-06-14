@@ -14,7 +14,6 @@ import kotlinx.serialization.Serializable
 
 typealias LuminanceSensor = Sensor<LuminanceState, LuminanceAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.LuminanceSensor(objectId: ObjectId): LuminanceSensor = Sensor(objectId)
 
 @Serializable

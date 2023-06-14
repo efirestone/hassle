@@ -20,7 +20,6 @@ import kotlinx.serialization.Serializable
 
 typealias Person = Sensor<PersonState, PersonAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.Person(objectId: ObjectId): Person =
     Sensor(EntityId.fromPair("person".domain to objectId))
 

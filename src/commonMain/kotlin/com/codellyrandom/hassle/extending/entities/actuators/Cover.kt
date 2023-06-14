@@ -20,7 +20,6 @@ internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistant
     serviceCommandResolver: ServiceCommandResolver<S>
 ): Actuator<S, A> = Actuator(EntityId.fromPair("cover".domain to objectId), serviceCommandResolver)
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.PositionableCover(objectId: ObjectId): PositionableCover =
     Cover(
         objectId,

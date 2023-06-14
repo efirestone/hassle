@@ -11,7 +11,6 @@ import com.codellyrandom.hassle.values.*
 
 typealias RGBWLight = Actuator<RGBWLightState, LightAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.RGBWLight(objectId: ObjectId): RGBWLight =
     Light(
         objectId,

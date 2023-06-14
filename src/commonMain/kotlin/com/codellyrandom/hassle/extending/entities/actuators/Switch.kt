@@ -18,7 +18,6 @@ import kotlinx.datetime.Instant
 typealias Switch<reified A> = Actuator<SwitchableState, A>
 typealias PowerSwitch = Switch<PowerSwitchAttributes>
 
-@Suppress("FunctionName")
 internal inline fun <reified A : Attributes> HomeAssistantApiClient.Switch(objectId: ObjectId): Switch<A> =
     Actuator(
         EntityId.fromPair("switch".domain to objectId),

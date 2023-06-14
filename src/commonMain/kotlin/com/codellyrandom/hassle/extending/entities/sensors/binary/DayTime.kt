@@ -13,7 +13,6 @@ import kotlinx.serialization.Serializable
 
 typealias DayTime = Sensor<SwitchableState, DayTimeAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.DayTime(objectId: ObjectId): DayTime = BinarySensor(objectId)
 
 @Serializable

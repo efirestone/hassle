@@ -1,4 +1,4 @@
-package com.codellyrandom.hassle.extending.entities.actuators.climate.thermostate
+package com.codellyrandom.hassle.extending.entities.actuators.climate.thermostat
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.*
@@ -15,7 +15,6 @@ import kotlinx.serialization.Serializable
 
 typealias Thermostat = Actuator<ThermostatState, ThermostatAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.Thermostat(objectId: ObjectId): Thermostat {
     return ClimateControl(
         objectId,

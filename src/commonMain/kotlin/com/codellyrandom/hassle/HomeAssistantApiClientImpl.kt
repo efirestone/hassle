@@ -115,7 +115,6 @@ internal class HomeAssistantApiClientImpl(
      *
      * @return [Sensor]
      */
-    @Suppress("FunctionName")
     fun <S : State<*>, A : Attributes> Sensor(
         id: EntityId,
         stateType: KClass<*>,
@@ -138,7 +137,6 @@ internal class HomeAssistantApiClientImpl(
      *
      * @return [Actuator]
      */
-    @Suppress("FunctionName")
     fun <S : State<*>, A : Attributes> Actuator(
         id: EntityId,
         stateType: KClass<*>,
