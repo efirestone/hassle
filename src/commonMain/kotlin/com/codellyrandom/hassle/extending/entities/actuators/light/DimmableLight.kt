@@ -12,7 +12,6 @@ import com.codellyrandom.hassle.values.ObjectId
 
 typealias DimmableLight = Actuator<DimmableLightState, LightAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.DimmableLight(objectId: ObjectId): DimmableLight =
     Light(
         objectId,

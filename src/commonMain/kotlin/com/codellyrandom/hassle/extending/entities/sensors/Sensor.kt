@@ -12,7 +12,6 @@ import com.codellyrandom.hassle.values.EntityId
 import com.codellyrandom.hassle.values.ObjectId
 import com.codellyrandom.hassle.values.domain
 
-@Suppress("FunctionName")
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Sensor(objectId: ObjectId): Sensor<S, A> =
     Sensor(EntityId.fromPair("sensor".domain to objectId))
 

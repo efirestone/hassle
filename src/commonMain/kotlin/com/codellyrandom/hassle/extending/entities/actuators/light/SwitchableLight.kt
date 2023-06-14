@@ -9,7 +9,6 @@ import com.codellyrandom.hassle.values.ObjectId
 
 typealias SwitchableLight = Actuator<SwitchableState, LightAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.SwitchableLight(objectId: ObjectId): SwitchableLight =
     Light(
         objectId,

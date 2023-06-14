@@ -12,7 +12,6 @@ import com.codellyrandom.hassle.values.domain
 
 typealias MediaPlayer<S, A> = Actuator<S, A>
 
-@Suppress("FunctionName")
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.MediaPlayer(
     objectId: ObjectId,
     serviceCommandResolver: ServiceCommandResolver<S>

@@ -14,7 +14,6 @@ import kotlinx.serialization.Serializable
 
 typealias InputSelect = Actuator<InputSelectState, InputSelectAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.InputSelect(objectId: ObjectId): InputSelect =
     Actuator(
         EntityId.fromPair("input_select".domain to objectId),

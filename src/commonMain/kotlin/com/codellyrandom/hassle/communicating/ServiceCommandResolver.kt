@@ -5,7 +5,6 @@ import com.codellyrandom.hassle.values.EntityId
 
 internal typealias ServiceCommandResolverFunction<S> = (EntityId, S) -> ServiceCommand
 
-@Suppress("FunctionName")
 internal fun <S : State<*>> ServiceCommandResolver(resolverFunction: ServiceCommandResolverFunction<S>): ServiceCommandResolver<S> =
     ServiceCommandResolverImpl(resolverFunction)
 

@@ -15,7 +15,6 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Suppress("FunctionName")
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Light(
     objectId: ObjectId,
     serviceCommandResolver: ServiceCommandResolver<S>

@@ -19,7 +19,6 @@ import kotlinx.serialization.Serializable
 
 typealias InputBoolean = Actuator<SwitchableState, InputBooleanAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.InputBoolean(objectId: ObjectId): InputBoolean =
     Actuator(
         EntityId.fromPair("input_boolean".domain to objectId),

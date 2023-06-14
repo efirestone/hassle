@@ -15,7 +15,6 @@ import kotlinx.serialization.Serializable
 
 typealias InputText = Actuator<InputTextState, InputTextAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.InputText(objectId: ObjectId): InputText =
     Actuator(
         EntityId.fromPair("input_text".domain to objectId),

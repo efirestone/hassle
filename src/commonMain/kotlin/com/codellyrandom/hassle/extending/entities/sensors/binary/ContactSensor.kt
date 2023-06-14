@@ -16,7 +16,6 @@ import kotlinx.serialization.Serializable
 
 typealias ContactSensor = Sensor<ContactState, ContactAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.ContactSensor(objectId: ObjectId): ContactSensor = Sensor(objectId)
 
 @Serializable

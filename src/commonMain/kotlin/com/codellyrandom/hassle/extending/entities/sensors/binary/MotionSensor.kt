@@ -16,7 +16,6 @@ import kotlinx.serialization.Serializable
 
 typealias MotionSensor = Sensor<SwitchableState, MotionSensorAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.MotionSensor(objectId: ObjectId): MotionSensor = BinarySensor(objectId)
 
 @Serializable

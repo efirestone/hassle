@@ -13,7 +13,6 @@ import kotlinx.serialization.Serializable
 
 typealias RGBLight = Actuator<RGBLightState, LightAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.RGBLight(objectId: ObjectId): RGBLight =
     Light(
         objectId,

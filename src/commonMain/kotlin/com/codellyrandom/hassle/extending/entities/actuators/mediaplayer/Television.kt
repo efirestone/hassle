@@ -15,7 +15,6 @@ import kotlinx.serialization.Serializable
 
 typealias Television = MediaPlayer<TelevisionState, TelevisionAttributes>
 
-@Suppress("FunctionName")
 fun HomeAssistantApiClient.Television(objectId: ObjectId): Television =
     MediaPlayer(
         objectId,
