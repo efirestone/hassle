@@ -88,6 +88,32 @@ else is best for what you like to build. All Hassle needs is a Kotlin environmen
 If you want to make modifications or enhancements to Hassle, the IntelliJ IDEA by JetBrains is your best bet. The
 [Community Edition](http://www.jetbrains.com/idea/download/index.html) is free and should provide what you need.
 
+# Releases
+
+To create a new release:
+
+1. Tag the SHA that you want to release with the version number, starting with "v", such as
+
+```
+git tag "v1.0.0"
+```
+
+2. Push the tag
+
+```
+git push --tags
+```
+
+3. Reset the `release` branch to the new tag:
+
+```
+git checkout release
+git reset --hard "v1.0.0"
+git push
+```
+
+GitHub Actions will take care of creating and publishing a new release.
+
 ## Q&A
 
 **Q: Can I use Hassle to write my Home Assistant automations?**
