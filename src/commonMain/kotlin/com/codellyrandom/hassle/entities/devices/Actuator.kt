@@ -28,8 +28,8 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
     private val connection: HomeAssistantApiClientImpl,
     private val mapper: ObjectMapper,
     private val resolver: ServiceCommandResolver<S>,
-    private val stateType: KClass<*>,
-    private val attributesType: KClass<*>
+    private val stateType: KClass<S>,
+    private val attributesType: KClass<A>
 ) : Observable<Actuator<S, A>>, WithHistory<StateAndAttributes<S, A>>, WithAttributes<A> {
     private val observers: MutableList<Observer<Actuator<S, A>>> = mutableListOf()
 
@@ -67,14 +67,12 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
     }
 
     fun trySetActualStateFromAny(newState: JsonObject) {
-        @Suppress("UNCHECKED_CAST")
-        actualState = mapper.fromJson(newState, stateType) as S
+        actualState = mapper.fromJson(newState, stateType)
         checkNotNull(actualState.value) { "State value shall not be null. Please check your State definition  " }
     }
 
     fun trySetAttributesFromAny(newAttributes: JsonObject) {
-        @Suppress("UNCHECKED_CAST")
-        attributes = mapper.fromJson(newAttributes, attributesType) as A
+        attributes = mapper.fromJson(newAttributes, attributesType)
     }
 
     /**

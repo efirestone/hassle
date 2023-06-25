@@ -20,8 +20,8 @@ internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistant
 // A non-reified interface that external callers can use to create their own custom sensor implementations.
 fun <S : State<*>, A : Attributes> HomeAssistantApiClient.Sensor(
     id: EntityId,
-    stateType: KClass<*>,
-    attributesType: KClass<*>
+    stateType: KClass<S>,
+    attributesType: KClass<A>
 ): Sensor<S, A> =
     (this as HomeAssistantApiClientImpl).Sensor(id, stateType, attributesType)
 
