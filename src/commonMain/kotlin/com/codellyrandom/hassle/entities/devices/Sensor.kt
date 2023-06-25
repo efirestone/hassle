@@ -7,9 +7,6 @@ import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.errorHandling.ObserverExceptionHandler
 import com.codellyrandom.hassle.observability.*
-import com.codellyrandom.hassle.observability.ObservableDelegateNoInitial
-import com.codellyrandom.hassle.observability.Observer
-import com.codellyrandom.hassle.observability.ObserverImpl
 import kotlinx.serialization.json.JsonObject
 import kotlin.reflect.KClass
 
@@ -24,8 +21,8 @@ import kotlin.reflect.KClass
 class Sensor<S : State<*>, A : Attributes>(
     private val connection: HomeAssistantApiClient,
     private val mapper: ObjectMapper,
-    private val stateType: KClass<*>,
-    private val attributesType: KClass<*>
+    private val stateType: KClass<S>,
+    private val attributesType: KClass<A>
 ) : Observable<Sensor<S, A>>, WithHistory<StateAndAttributes<S, A>>, WithAttributes<A> {
     private val observers: MutableList<Observer<Sensor<S, A>>> = mutableListOf()
 
@@ -56,13 +53,11 @@ class Sensor<S : State<*>, A : Attributes>(
         ).also { observers.add(it) }
 
     fun trySetActualStateFromAny(newState: JsonObject) {
-        @Suppress("UNCHECKED_CAST")
-        measurement = mapper.fromJson(newState, stateType) as S
+        measurement = mapper.fromJson(newState, stateType)
         checkNotNull(measurement.value) { "State value shall not be null. Please check your State definition " }
     }
 
     fun trySetAttributesFromAny(newAttributes: JsonObject) {
-        @Suppress("UNCHECKED_CAST")
-        attributes = mapper.fromJson(newAttributes, attributesType) as A
+        attributes = mapper.fromJson(newAttributes, attributesType)
     }
 }

@@ -117,10 +117,10 @@ internal class HomeAssistantApiClientImpl(
      */
     fun <S : State<*>, A : Attributes> Sensor(
         id: EntityId,
-        stateType: KClass<*>,
-        attributesType: KClass<*>
+        stateType: KClass<S>,
+        attributesType: KClass<A>
     ): Sensor<S, A> =
-        Sensor<S, A>(this, mapper, stateType, attributesType)
+        Sensor(this, mapper, stateType, attributesType)
             .also { registerSensor(id, it) }
 
     /**
@@ -139,8 +139,8 @@ internal class HomeAssistantApiClientImpl(
      */
     fun <S : State<*>, A : Attributes> Actuator(
         id: EntityId,
-        stateType: KClass<*>,
-        attributesType: KClass<*>,
+        stateType: KClass<S>,
+        attributesType: KClass<A>,
         serviceCommandResolver: ServiceCommandResolver<S>
     ): Actuator<S, A> =
         Actuator<S, A>(
