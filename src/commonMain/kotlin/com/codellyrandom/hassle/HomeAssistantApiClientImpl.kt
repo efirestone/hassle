@@ -115,7 +115,7 @@ internal class HomeAssistantApiClientImpl(
      *
      * @return [Sensor]
      */
-    fun <S : State<*>, A : Attributes> Sensor(
+    override fun <S : State<*>, A : Attributes> Sensor(
         id: EntityId,
         stateType: KClass<S>,
         attributesType: KClass<A>
@@ -143,7 +143,7 @@ internal class HomeAssistantApiClientImpl(
         attributesType: KClass<A>,
         serviceCommandResolver: ServiceCommandResolver<S>
     ): Actuator<S, A> =
-        Actuator<S, A>(
+        Actuator(
             id,
             this,
             mapper,

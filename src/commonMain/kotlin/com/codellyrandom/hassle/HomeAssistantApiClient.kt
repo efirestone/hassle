@@ -1,8 +1,12 @@
 package com.codellyrandom.hassle
 
+import com.codellyrandom.hassle.entities.Attributes
+import com.codellyrandom.hassle.entities.State
+import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.errorHandling.ErrorResponseData
 import com.codellyrandom.hassle.events.EventHandlerFunction
 import com.codellyrandom.hassle.observability.Switchable
+import com.codellyrandom.hassle.values.EntityId
 import com.codellyrandom.hassle.values.EventType
 import kotlin.reflect.KClass
 
@@ -57,4 +61,11 @@ interface HomeAssistantApiClient {
      * @param errorResponseHandler the handler to be attached.
      */
     fun setErrorResponseHandler(errorResponseHandler: (ErrorResponseData) -> Unit)
+
+    // A non-reified interface that external callers can use to create their own custom sensor implementations.
+    fun <S : State<*>, A : Attributes> Sensor(
+        id: EntityId,
+        stateType: KClass<S>,
+        attributesType: KClass<A>
+    ): Sensor<S, A>
 }

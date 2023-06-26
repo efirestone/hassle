@@ -8,22 +8,13 @@ import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.values.EntityId
-import kotlin.reflect.KClass
 
 /**
  * Base factories
  */
 
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Sensor(id: EntityId): Sensor<S, A> =
-    (this as HomeAssistantApiClientImpl).Sensor(id, S::class, A::class)
-
-// A non-reified interface that external callers can use to create their own custom sensor implementations.
-fun <S : State<*>, A : Attributes> HomeAssistantApiClient.Sensor(
-    id: EntityId,
-    stateType: KClass<S>,
-    attributesType: KClass<A>
-): Sensor<S, A> =
-    (this as HomeAssistantApiClientImpl).Sensor(id, stateType, attributesType)
+    Sensor(id, S::class, A::class)
 
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Actuator(
     id: EntityId,
