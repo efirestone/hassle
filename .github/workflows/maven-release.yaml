@@ -24,6 +24,7 @@ jobs:
           # Required due to the way Git works
           # Without this the action won't be able to find the correct tags
           fetch-depth: 0
+          ref: release
 
       # This will fail if this commit is not tagged with a version
       - name: Read version tag
