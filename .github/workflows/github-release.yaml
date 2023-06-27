@@ -11,12 +11,14 @@ jobs:
 
     steps:
       - name: Check out release tag
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Bumps the version number, creates a GitHub release, and tags this branch
       # with the new version number, like `refs/tag/v1.2.3`. This tag will then
       # be used to create the Maven release.
       - name: Create Github Release
         uses: cycjimmy/semantic-release-action@v3
+        with:
+          branch: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
