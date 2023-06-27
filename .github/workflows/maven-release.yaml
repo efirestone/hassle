@@ -29,6 +29,8 @@ jobs:
       - name: Read version tag
         id: versiontag
         uses: efirestone/get-version-tag-action@v1
+      - run: echo ${{ steps.versiontag.outputs.version }}
+      - run: echo ${{ steps.versiontag.outputs.version-without-v }}
 
       - name: Set Java Version
         uses: actions/setup-java@v3
