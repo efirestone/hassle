@@ -90,7 +90,15 @@ If you want to make modifications or enhancements to Hassle, the IntelliJ IDEA b
 
 # Releases
 
-To create a new release:
+To create a new patch release:
+
+```
+git checkout release
+git reset --hard origin/main
+git push
+```
+
+To create a new release with a specific release number:
 
 1. Tag the SHA that you want to release with the version number, starting with "v", such as
 
