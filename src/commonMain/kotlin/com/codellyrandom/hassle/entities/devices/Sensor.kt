@@ -2,7 +2,6 @@ package com.codellyrandom.hassle.entities.devices
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.core.mapping.ObjectMapper
-import com.codellyrandom.hassle.core.observing.CircularArray
 import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.errorHandling.ObserverExceptionHandler
@@ -23,22 +22,31 @@ class Sensor<S : State<*>, A : Attributes>(
     private val mapper: ObjectMapper,
     private val stateType: KClass<S>,
     private val attributesType: KClass<A>
-) : Observable<Sensor<S, A>>, WithHistory<StateAndAttributes<S, A>>, WithAttributes<A> {
+) : Observable<Sensor<S, A>> {
     private val observers: MutableList<Observer<Sensor<S, A>>> = mutableListOf()
+    private val stateAndAttributesWithHistory = StateAndAttributesWithHistory<S, A>()
+    private var dirty = false
 
     /**
      * Represents the current attributes of the sensor entity.
      */
-    override lateinit var attributes: A
-    private val _history = CircularArray<StateAndAttributes<S, A>>(10)
+    var attributes: A
+        get() { return stateAndAttributesWithHistory.attributes }
+        set(newValue) { stateAndAttributesWithHistory.attributes = newValue }
 
     /**
      * Represents the current state of the sensor entity.
      */
-    var measurement: S by ObservableDelegateNoInitial(this, observers, _history)
+    var measurement: S
+        get() = stateAndAttributesWithHistory.state
+        set(value) {
+            stateAndAttributesWithHistory.state = value
+            if (dirty) observers.forEach { it.update(this) }
+            dirty = true
+        }
 
-    override val history: List<StateAndAttributes<S, A>>
-        get() = _history.toList()
+    val history: List<StateAndAttributes<S, A>>
+        get() = stateAndAttributesWithHistory.history.toList()
 
     /**
      * Number of observers attached to the sensor.

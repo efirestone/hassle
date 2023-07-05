@@ -4,7 +4,6 @@ import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.communicating.ServiceCommand
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.core.mapping.ObjectMapper
-import com.codellyrandom.hassle.core.observing.CircularArray
 import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.errorHandling.ObserverExceptionHandler
@@ -30,25 +29,33 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
     private val resolver: ServiceCommandResolver<S>,
     private val stateType: KClass<S>,
     private val attributesType: KClass<A>
-) : Observable<Actuator<S, A>>, WithHistory<StateAndAttributes<S, A>>, WithAttributes<A> {
+) : Observable<Actuator<S, A>> {
     private val observers: MutableList<Observer<Actuator<S, A>>> = mutableListOf()
+    private val stateAndAttributesWithHistory = StateAndAttributesWithHistory<S, A>()
+    private var dirty = false
 
     /**
      * Represents the current attributes of the entity.
      * Holds all state attributes that can not directly be mutated.
      */
-    override lateinit var attributes: A
-
-    private val _history = CircularArray<StateAndAttributes<S, A>>(10)
+    var attributes: A
+        get() { return stateAndAttributesWithHistory.attributes }
+        set(newValue) { stateAndAttributesWithHistory.attributes = newValue }
 
     /**
      * Represents the current state of the entity.
      * Holds all state values that can be mutated directly.
      */
-    var actualState: S by ObservableDelegateNoInitial(this, observers, _history)
+    var actualState: S
+        get() = stateAndAttributesWithHistory.state
+        set(value) {
+            stateAndAttributesWithHistory.state = value
+            if (dirty) observers.forEach { it.update(this) }
+            dirty = true
+        }
 
-    override val history: List<StateAndAttributes<S, A>>
-        get() = _history.toList()
+    val history: List<StateAndAttributes<S, A>>
+        get() = stateAndAttributesWithHistory.history.toList()
 
     /**
      * Number of observers attached to the actuator.

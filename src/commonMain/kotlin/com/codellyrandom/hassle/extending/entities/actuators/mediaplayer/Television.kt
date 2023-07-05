@@ -2,7 +2,6 @@ package com.codellyrandom.hassle.extending.entities.actuators.mediaplayer
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.*
-import com.codellyrandom.hassle.communicating.MuteVolumeServiceCommand
 import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.extending.entities.SwitchableValue
