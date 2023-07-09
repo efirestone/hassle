@@ -11,7 +11,7 @@ import com.codellyrandom.hassle.core.ResultResponse
 internal class HassEventSubscriber(
     private val session: WebSocketSession,
     private val subscriptions: EventHandlerByEventType,
-    private val apiClient: HomeAssistantApiClientImpl
+    private val apiClient: HomeAssistantApiClientImpl,
 ) {
     private val logger = Logger(config = LoggerConfig.default)
 

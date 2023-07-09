@@ -6,7 +6,7 @@ import io.ktor.websocket.*
 
 internal class WebSocketSession(
     delegate: DefaultClientWebSocketSession,
-    val objectMapper: ObjectMapper
+    val objectMapper: ObjectMapper,
 ) : ClientWebSocketSession by delegate {
     suspend fun callWebSocketApi(message: String) = send(message)
 

@@ -17,7 +17,7 @@ typealias PositionableCover = Actuator<PositionableCoverState, PositionableCover
 @Suppress("FunctionName")
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Cover(
     objectId: ObjectId,
-    serviceCommandResolver: ServiceCommandResolver<S>
+    serviceCommandResolver: ServiceCommandResolver<S>,
 ): Actuator<S, A> = Actuator(EntityId.fromPair("cover".domain to objectId), serviceCommandResolver)
 
 fun HomeAssistantApiClient.PositionableCover(objectId: ObjectId): PositionableCover =
@@ -31,13 +31,13 @@ fun HomeAssistantApiClient.PositionableCover(objectId: ObjectId): PositionableCo
 
                 PositionableCoverValue.CLOSED -> CloseCoverServiceCommand(entityId)
             }
-        }
+        },
     )
 
 @Serializable
 data class PositionableCoverState(
     override val value: PositionableCoverValue,
-    val currentPosition: Position? = null
+    val currentPosition: Position? = null,
 ) : State<PositionableCoverValue>
 
 @Serializable
@@ -46,7 +46,7 @@ enum class PositionableCoverValue {
     OPEN,
 
     @SerialName("closed")
-    CLOSED
+    CLOSED,
 }
 
 @Serializable
@@ -55,7 +55,7 @@ enum class Working {
     YES,
 
     @SerialName("No")
-    NO
+    NO,
 }
 
 @Serializable
@@ -68,7 +68,7 @@ data class PositionableCoverAttributes(
     @SerialName("last_updated")
     override val lastUpdated: Instant,
     @SerialName("friendly_name")
-    override val friendlyName: FriendlyName
+    override val friendlyName: FriendlyName,
 ) : Attributes
 
 val PositionableCover.isOpen

@@ -8,5 +8,5 @@ class StatesResponse(
     val id: Int,
     val type: String,
     val success: Boolean,
-    val result: Array<JsonObject>
+    val result: Array<JsonObject>,
 )

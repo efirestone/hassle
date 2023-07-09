@@ -25,7 +25,7 @@ internal class EventResponseConsumer(
     private val sensorStateUpdater: SensorStateUpdater,
     private val actuatorStateUpdater: ActuatorStateUpdater,
     private val eventHandlerByEventType: EventHandlerByEventType,
-    private val errorResponseHandler: (ErrorResponseData) -> Unit
+    private val errorResponseHandler: (ErrorResponseData) -> Unit,
 ) {
     private val logger = Logger(config = LoggerConfig.default)
 
@@ -61,11 +61,11 @@ internal class EventResponseConsumer(
                 stateChangedResponse.event.data.newState.getOrNull()?.let { newState ->
                     sensorStateUpdater(
                         flattenStateAttributes(newState.jsonObject),
-                        stateChangedResponse.event.data.entityId
+                        stateChangedResponse.event.data.entityId,
                     )
                     actuatorStateUpdater(
                         flattenStateAttributes(newState.jsonObject),
-                        stateChangedResponse.event.data.entityId
+                        stateChangedResponse.event.data.entityId,
                     )
                 }
             }
@@ -93,8 +93,8 @@ internal class EventResponseConsumer(
                 ErrorResponseHandlerImpl(errorResponseHandler).handle(
                     ErrorResponseData(
                         commandId = resultResponse.id,
-                        errorResponse = resultResponse.error!!
-                    )
+                        errorResponse = resultResponse.error!!,
+                    ),
                 )
             }
 

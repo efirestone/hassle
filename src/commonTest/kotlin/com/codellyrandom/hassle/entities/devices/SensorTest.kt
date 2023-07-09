@@ -185,13 +185,13 @@ internal class SensorTest {
 
     private inline fun <reified S : State<*>, reified A : Attributes> sensor(
         json: String,
-        crossinline block: (Sensor<S, A>) -> Unit
+        crossinline block: (Sensor<S, A>) -> Unit,
     ) = withConnection {
-        val sut = Sensor<S, A>(
+        val sut = Sensor(
             connection = this,
             mapper = mapper,
             stateType = S::class,
-            attributesType = A::class
+            attributesType = A::class,
         )
 
         val stateAsJsonObject = mapper.fromJson<JsonObject>(json)

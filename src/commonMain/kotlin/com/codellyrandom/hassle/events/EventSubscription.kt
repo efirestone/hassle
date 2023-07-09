@@ -10,14 +10,14 @@ import kotlin.reflect.KClass
 internal class EventSubscription<ED>(
     private val connection: HomeAssistantApiClientImpl,
     private val mapper: ObjectMapper,
-    private val eventDataType: KClass<*>
+    private val eventDataType: KClass<*>,
 ) {
     private val eventHandler: MutableList<EventHandler<ED>> = mutableListOf()
 
     fun attachEventHandler(handler: EventHandlerFunction<ED>): Switchable =
         EventHandlerImpl(
             handler,
-            EventHandlerExceptionHandler(connection.eventHandlerExceptionHandlerFunction)
+            EventHandlerExceptionHandler(connection.eventHandlerExceptionHandlerFunction),
         ).also { eventHandler.add(it) }
 
     @Suppress("UNCHECKED_CAST")

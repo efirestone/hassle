@@ -12,7 +12,7 @@ interface EventHandler<EventData> {
 
 internal class EventHandlerImpl<EventData>(
     private val f: EventHandlerFunction<EventData>,
-    private val exceptionHandler: EventHandlerExceptionHandler
+    private val exceptionHandler: EventHandlerExceptionHandler,
 ) : EventHandler<EventData>, Switchable {
 
     private val enabled = atomic(true)

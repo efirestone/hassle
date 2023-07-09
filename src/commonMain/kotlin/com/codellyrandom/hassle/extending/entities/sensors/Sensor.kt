@@ -29,24 +29,26 @@ val Sensor<SwitchableState, *>.isOff
 
 inline fun <S : State<*>, A : Attributes, SV> Sensor<S, A>.onMeasurementValueChangedFrom(
     values: Pair<SV, SV>,
-    crossinline f: Sensor<S, A>.(Switchable) -> Unit
+    crossinline f: Sensor<S, A>.(Switchable) -> Unit,
 ) = attachObserver {
-    if (measurementValueChangedFrom(values))
+    if (measurementValueChangedFrom(values)) {
         f(this, it)
+    }
 }
 
 inline fun <S : State<*>, A : Attributes, SV> Sensor<S, A>.onMeasurementValueChangedFrom(
     values: Triple<SV, SV, SV>,
-    crossinline f: Sensor<S, A>.(Switchable) -> Unit
+    crossinline f: Sensor<S, A>.(Switchable) -> Unit,
 ) = attachObserver {
-    if (measurementValueChangedFrom(values))
+    if (measurementValueChangedFrom(values)) {
         f(this, it)
+    }
 }
 
 inline fun <A : Attributes> Sensor<SwitchableState, A>.onTurnedOn(
-    crossinline f: Sensor<SwitchableState, A>.(Switchable) -> Unit
+    crossinline f: Sensor<SwitchableState, A>.(Switchable) -> Unit,
 ) = onMeasurementValueChangedFrom(SwitchableValue.OFF to SwitchableValue.ON, f)
 
 inline fun <A : Attributes> Sensor<SwitchableState, A>.onTurnedOff(
-    crossinline f: Sensor<SwitchableState, A>.(Switchable) -> Unit
+    crossinline f: Sensor<SwitchableState, A>.(Switchable) -> Unit,
 ) = onMeasurementValueChangedFrom(SwitchableValue.ON to SwitchableValue.OFF, f)

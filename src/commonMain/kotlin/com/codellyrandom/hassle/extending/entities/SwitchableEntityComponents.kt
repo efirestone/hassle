@@ -23,7 +23,7 @@ enum class SwitchableValue {
     OFF,
 
     @SerialName("unavailable")
-    UNAVAILABLE
+    UNAVAILABLE,
 }
 
 @Serializable
@@ -35,7 +35,7 @@ data class DefaultAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes
 
 internal fun mapSwitchable(entityId: EntityId, switchableValue: SwitchableValue) =

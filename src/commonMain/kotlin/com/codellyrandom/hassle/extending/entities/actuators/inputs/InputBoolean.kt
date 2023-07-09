@@ -24,7 +24,7 @@ fun HomeAssistantApiClient.InputBoolean(objectId: ObjectId): InputBoolean =
         EntityId.fromPair("input_boolean".domain to objectId),
         ServiceCommandResolver { entityId, desiredState ->
             mapSwitchable(entityId, desiredState.value)
-        }
+        },
     )
 
 @Serializable
@@ -38,5 +38,5 @@ data class InputBooleanAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes

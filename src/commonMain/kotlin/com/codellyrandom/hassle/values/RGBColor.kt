@@ -25,7 +25,7 @@ data class RGBColor(val red: Int, val green: Int, val blue: Int) {
             StructureKind.LIST,
             redDescriptor,
             greenDescriptor,
-            blueDescriptor
+            blueDescriptor,
         )
 
         override fun deserialize(decoder: Decoder): RGBColor {

@@ -21,7 +21,7 @@ class Sensor<S : State<*>, A : Attributes>(
     private val connection: HomeAssistantApiClient,
     private val mapper: ObjectMapper,
     private val stateType: KClass<S>,
-    private val attributesType: KClass<A>
+    private val attributesType: KClass<A>,
 ) : Observable<Sensor<S, A>> {
     private val observers: MutableList<Observer<Sensor<S, A>>> = mutableListOf()
     private val stateAndAttributesWithHistory = StateAndAttributesWithHistory<S, A>()
@@ -57,7 +57,7 @@ class Sensor<S : State<*>, A : Attributes>(
     override fun attachObserver(observer: ObserverFunction<Sensor<S, A>>): Switchable =
         ObserverImpl(
             observer,
-            ObserverExceptionHandler(connection.observerExceptionHandler)
+            ObserverExceptionHandler(connection.observerExceptionHandler),
         ).also { observers.add(it) }
 
     fun trySetActualStateFromAny(newState: JsonObject) {

@@ -21,13 +21,13 @@ fun HomeAssistantApiClient.InputDateTime(objectId: ObjectId): InputDateTime =
         EntityId.fromPair("input_datetime".domain to objectId),
         ServiceCommandResolver { entityId, desiredState ->
             SetDateTimeServiceCommand(entityId, desiredState.value)
-        }
+        },
     )
 
 @Serializable
 data class InputDateTimeState(
     @Serializable(LocalDateTimeSerializer::class)
-    override val value: LocalDateTime
+    override val value: LocalDateTime,
 ) : State<LocalDateTime>
 
 @Serializable
@@ -40,5 +40,5 @@ data class InputDateTimeAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes

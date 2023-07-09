@@ -14,5 +14,5 @@ fun HomeAssistantApiClient.SwitchableLight(objectId: ObjectId): SwitchableLight 
         objectId,
         ServiceCommandResolver { entityId, desiredState ->
             mapSwitchable(entityId, desiredState.value)
-        }
+        },
     )

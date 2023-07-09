@@ -10,7 +10,7 @@ import com.codellyrandom.hassle.values.EventType
 
 internal class StateChangeEventSubscriber(
     private val apiClient: HomeAssistantApiClientImpl,
-    private val session: WebSocketSession
+    private val session: WebSocketSession,
 ) {
 
     private val logger = Logger(config = LoggerConfig.default)

@@ -20,7 +20,7 @@ fun HomeAssistantApiClient.InputDate(objectId: ObjectId): InputDate =
         EntityId.fromPair("input_datetime".domain to objectId),
         ServiceCommandResolver { entityId, desiredState ->
             SetDateTimeServiceCommand(entityId, desiredState.value)
-        }
+        },
     )
 
 @Serializable
@@ -36,5 +36,5 @@ data class InputDateAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes

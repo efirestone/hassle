@@ -17,7 +17,7 @@ internal class EntityStateInitializer(
     private val session: WebSocketSession,
     private val sensorStateUpdater: SensorStateUpdater,
     private val actuatorStateUpdater: ActuatorStateUpdater,
-    private val entityRegistrationValidation: EntityRegistrationValidation
+    private val entityRegistrationValidation: EntityRegistrationValidation,
 ) {
 
     private val logger = Logger(config = LoggerConfig.default)
@@ -55,7 +55,7 @@ internal fun flattenStateAttributes(stateResponse: JsonObject): JsonObject {
             "value" to stateResponse["state"]!!,
             "last_updated" to stateResponse["last_updated"]!!,
             "last_changed" to stateResponse["last_changed"]!!,
-            "user_id" to stateResponse["context"]!!.jsonObject["user_id"]!!
-        ).plus(attributesAsJsonObject.toMap())
+            "user_id" to stateResponse["context"]!!.jsonObject["user_id"]!!,
+        ).plus(attributesAsJsonObject.toMap()),
     )
 }

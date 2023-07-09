@@ -20,7 +20,7 @@ fun HomeAssistantApiClient.InputText(objectId: ObjectId): InputText =
         EntityId.fromPair("input_text".domain to objectId),
         ServiceCommandResolver { entityId, desiredState ->
             SetValueServiceCommand(entityId, desiredState.value)
-        }
+        },
     )
 
 @Serializable
@@ -41,5 +41,5 @@ data class InputTextAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes

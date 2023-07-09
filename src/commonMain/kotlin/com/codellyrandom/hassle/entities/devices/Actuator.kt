@@ -28,7 +28,7 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
     private val mapper: ObjectMapper,
     private val resolver: ServiceCommandResolver<S>,
     private val stateType: KClass<S>,
-    private val attributesType: KClass<A>
+    private val attributesType: KClass<A>,
 ) : Observable<Actuator<S, A>> {
     private val observers: MutableList<Observer<Actuator<S, A>>> = mutableListOf()
     private val stateAndAttributesWithHistory = StateAndAttributesWithHistory<S, A>()
@@ -92,6 +92,6 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
     override fun attachObserver(observer: ObserverFunction<Actuator<S, A>>): Switchable =
         ObserverImpl(
             observer,
-            ObserverExceptionHandler(connection.observerExceptionHandler)
+            ObserverExceptionHandler(connection.observerExceptionHandler),
         ).also { observers.add(it) }
 }

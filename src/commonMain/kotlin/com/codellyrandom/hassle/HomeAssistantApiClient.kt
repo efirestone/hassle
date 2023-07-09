@@ -35,7 +35,7 @@ interface HomeAssistantApiClient {
     fun <ED> attachEventHandler(
         eventType: EventType,
         eventDataType: KClass<*>,
-        eventHandler: EventHandlerFunction<ED>
+        eventHandler: EventHandlerFunction<ED>,
     ): Switchable
 
     fun connect()
@@ -66,6 +66,6 @@ interface HomeAssistantApiClient {
     fun <S : State<*>, A : Attributes> Sensor(
         id: EntityId,
         stateType: KClass<S>,
-        attributesType: KClass<A>
+        attributesType: KClass<A>,
     ): Sensor<S, A>
 }

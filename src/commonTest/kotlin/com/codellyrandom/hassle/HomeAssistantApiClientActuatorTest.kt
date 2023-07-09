@@ -15,19 +15,19 @@ internal class HomeAssistantApiClientActuatorTest {
         override val userId: UserId?,
         override val lastChanged: Instant,
         override val lastUpdated: Instant,
-        override val friendlyName: FriendlyName
+        override val friendlyName: FriendlyName,
     ) : Attributes
 
     @Test
     fun `assert actuator factory creates new Actuator instance`() = withConnection {
         val actuator =
-            Actuator<ActuatorState, ActuatorAttributes>(
+            Actuator(
                 EntityId.fromString("light.some_light"),
                 ActuatorState::class,
                 ActuatorAttributes::class,
                 ServiceCommandResolver { entityId, _ ->
                     TurnOnServiceCommand(entityId)
-                }
+                },
             )
 
         assert(actuator is Actuator<ActuatorState, ActuatorAttributes>)

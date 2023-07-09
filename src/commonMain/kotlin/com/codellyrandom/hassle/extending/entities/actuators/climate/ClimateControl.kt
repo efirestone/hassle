@@ -13,5 +13,5 @@ import com.codellyrandom.hassle.values.domain
 @Suppress("FunctionName")
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.ClimateControl(
     objectId: ObjectId,
-    serviceCommandResolver: ServiceCommandResolver<S>
+    serviceCommandResolver: ServiceCommandResolver<S>,
 ): Actuator<S, A> = Actuator(EntityId.fromPair("climate".domain to objectId), serviceCommandResolver)

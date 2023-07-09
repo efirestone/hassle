@@ -55,7 +55,7 @@ internal class HomeAssistantApiClientImpl(
         credentials,
         coroutineScope,
         mapper,
-        { connectionExceptionHandler(it) }
+        { connectionExceptionHandler(it) },
     )
 
     private val httpClient = HttpClient {
@@ -64,7 +64,7 @@ internal class HomeAssistantApiClientImpl(
                 SerializationJson {
                     isLenient = true
                     ignoreUnknownKeys = true
-                }
+                },
             )
         }
 
@@ -118,7 +118,7 @@ internal class HomeAssistantApiClientImpl(
     override fun <S : State<*>, A : Attributes> Sensor(
         id: EntityId,
         stateType: KClass<S>,
-        attributesType: KClass<A>
+        attributesType: KClass<A>,
     ): Sensor<S, A> =
         Sensor(this, mapper, stateType, attributesType)
             .also { registerSensor(id, it) }
@@ -141,7 +141,7 @@ internal class HomeAssistantApiClientImpl(
         id: EntityId,
         stateType: KClass<S>,
         attributesType: KClass<A>,
-        serviceCommandResolver: ServiceCommandResolver<S>
+        serviceCommandResolver: ServiceCommandResolver<S>,
     ): Actuator<S, A> =
         Actuator(
             id,
@@ -149,17 +149,17 @@ internal class HomeAssistantApiClientImpl(
             mapper,
             serviceCommandResolver,
             stateType,
-            attributesType
+            attributesType,
         ).also { registerActuator(id, it) }
 
     @Suppress("UNCHECKED_CAST")
     override fun <ED> attachEventHandler(
         eventType: EventType,
         eventDataType: KClass<*>,
-        eventHandler: EventHandlerFunction<ED>
+        eventHandler: EventHandlerFunction<ED>,
     ): Switchable =
         eventSubscriptionsByEventType[eventType]?.attachEventHandler(
-            eventHandler as EventHandlerFunction<Any?>
+            eventHandler as EventHandlerFunction<Any?>,
         )
             ?: registerEventSubscription<ED>(eventType, eventDataType).attachEventHandler(eventHandler)
 
@@ -224,12 +224,12 @@ internal class HomeAssistantApiClientImpl(
             val serviceStoreInitializer = ServiceStoreInitializer(
                 this@HomeAssistantApiClientImpl,
                 this,
-                serviceStore
+                serviceStore,
             )
             val hassEventSubscriber = HassEventSubscriber(
                 this,
                 eventSubscriptionsByEventType,
-                this@HomeAssistantApiClientImpl
+                this@HomeAssistantApiClientImpl,
             )
 
             val entityStateInitializer = EntityStateInitializer(
@@ -237,12 +237,12 @@ internal class HomeAssistantApiClientImpl(
                 this,
                 SensorStateUpdater(sensorsByApiName),
                 ActuatorStateUpdater(actuatorsByApiName),
-                EntityRegistrationValidation(actuatorsByApiName, sensorsByApiName)
+                EntityRegistrationValidation(actuatorsByApiName, sensorsByApiName),
             )
 
             val stateChangeEventSubscriber = StateChangeEventSubscriber(
                 this@HomeAssistantApiClientImpl,
-                this
+                this,
             )
             val eventResponseConsumer = EventResponseConsumer(
                 this,
@@ -250,7 +250,7 @@ internal class HomeAssistantApiClientImpl(
                 SensorStateUpdater(sensorsByApiName),
                 ActuatorStateUpdater(actuatorsByApiName),
                 eventSubscriptionsByEventType,
-                errorResponseHandlerFunction
+                errorResponseHandlerFunction,
             )
 
             authenticator.authenticate()

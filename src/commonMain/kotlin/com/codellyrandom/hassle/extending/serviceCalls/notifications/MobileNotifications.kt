@@ -53,7 +53,7 @@ class MobileNotificationData {
         attachment = AttachmentData(
             url = url,
             contentType = contentType,
-            hideThumbnail = hideThumbnail
+            hideThumbnail = hideThumbnail,
         )
     }
 }
@@ -64,7 +64,7 @@ data class AttachmentData(
     @SerialName("content-type")
     val contentType: String?,
     @SerialName("hide-thumbnail")
-    val hideThumbnail: Boolean?
+    val hideThumbnail: Boolean?,
 )
 
 @Serializable
@@ -84,7 +84,7 @@ class PushData {
 data class SoundData(
     var name: String,
     var critical: Int?,
-    var volume: Double?
+    var volume: Double?,
 )
 
 // https://companion.home-assistant.io/docs/notifications/dynamic-content/#map
@@ -107,11 +107,11 @@ data class MapActionData(
     @SerialName("shows_traffic")
     var showsTraffic: Boolean? = null,
     @SerialName("shows_users_location")
-    var showsUsersLocation: Boolean? = null
+    var showsUsersLocation: Boolean? = null,
 )
 
 @Serializable
 data class ApnsHeaders(
     @SerialName("apns-collapse-id")
-    var id: String? = null
+    var id: String? = null,
 )

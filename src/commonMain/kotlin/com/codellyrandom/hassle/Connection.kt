@@ -14,7 +14,7 @@ internal class Connection(
     private val coroutineScope: CoroutineScope,
     private val objectMapper: ObjectMapper,
     private val exceptionHandler: (Throwable) -> Unit,
-    private val httpClient: WebSocketClient = WebSocketClient(HttpClient().config { install(WebSockets) })
+    private val httpClient: WebSocketClient = WebSocketClient(HttpClient().config { install(WebSockets) }),
 ) {
     private val method = HttpMethod.Get
     private val path = "/api/websocket"
@@ -32,7 +32,7 @@ internal class Connection(
                         path = path,
                         block = {
                             block(WebSocketSession(this, objectMapper))
-                        }
+                        },
                     )
                     false -> httpClient.webSocket(
                         method = method,
@@ -41,7 +41,7 @@ internal class Connection(
                         path = path,
                         block = {
                             block(WebSocketSession(this, objectMapper))
-                        }
+                        },
                     )
                 }
             } catch (exception: Throwable) {

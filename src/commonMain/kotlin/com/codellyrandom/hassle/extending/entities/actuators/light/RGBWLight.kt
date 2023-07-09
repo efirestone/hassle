@@ -44,7 +44,7 @@ fun HomeAssistantApiClient.RGBWLight(objectId: ObjectId): RGBWLight =
 
                 SwitchableValue.UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
             }
-        }
+        },
     )
 
 data class RGBWLightState(
@@ -53,7 +53,7 @@ data class RGBWLightState(
     val hsColor: HSColor? = null,
     val rgbColor: RGBColor? = null,
     val xyColor: XYColor? = null,
-    val colorTemp: ColorTemperature? = null
+    val colorTemp: ColorTemperature? = null,
 ) : State<SwitchableValue>
 
 val RGBWLight.isOn
@@ -84,8 +84,8 @@ suspend fun RGBWLight.setColor(name: ColorName) =
     send(
         TurnOnLightServiceCommand(
             entityId,
-            TurnOnLightServiceCommand.ServiceData(colorName = name)
-        )
+            TurnOnLightServiceCommand.ServiceData(colorName = name),
+        ),
     )
 
 fun RGBWLight.onTurnedOn(f: RGBWLight.(Switchable) -> Unit) =

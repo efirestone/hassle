@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Light(
     objectId: ObjectId,
-    serviceCommandResolver: ServiceCommandResolver<S>
+    serviceCommandResolver: ServiceCommandResolver<S>,
 ): Actuator<S, A> = Actuator(EntityId.fromPair("light".domain to objectId), serviceCommandResolver)
 
 @Serializable
@@ -27,5 +27,5 @@ data class LightAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes

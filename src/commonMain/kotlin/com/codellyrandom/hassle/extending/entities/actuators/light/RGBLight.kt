@@ -24,29 +24,29 @@ fun HomeAssistantApiClient.RGBLight(objectId: ObjectId): RGBLight =
                     desiredState.hsColor?.let {
                         TurnOnLightServiceCommand(
                             entityId,
-                            TurnOnLightServiceCommand.ServiceData(hsColor = it)
+                            TurnOnLightServiceCommand.ServiceData(hsColor = it),
                         )
                     } ?: desiredState.rgbColor?.let {
                         TurnOnLightServiceCommand(
                             entityId,
-                            TurnOnLightServiceCommand.ServiceData(rgbColor = it)
+                            TurnOnLightServiceCommand.ServiceData(rgbColor = it),
                         )
                     } ?: desiredState.brightness?.let {
                         TurnOnLightServiceCommand(
                             entityId,
-                            TurnOnLightServiceCommand.ServiceData(brightness = it)
+                            TurnOnLightServiceCommand.ServiceData(brightness = it),
                         )
                     } ?: desiredState.xyColor?.let {
                         TurnOnLightServiceCommand(
                             entityId,
-                            TurnOnLightServiceCommand.ServiceData(xyColor = it)
+                            TurnOnLightServiceCommand.ServiceData(xyColor = it),
                         )
                     } ?: TurnOnServiceCommand(entityId)
                 }
 
                 SwitchableValue.UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
             }
-        }
+        },
     )
 
 @Serializable
@@ -58,7 +58,7 @@ data class RGBLightState(
     @SerialName("rgb_color")
     val rgbColor: RGBColor? = null,
     @SerialName("xy_color")
-    val xyColor: XYColor? = null
+    val xyColor: XYColor? = null,
 ) : State<SwitchableValue>
 
 val RGBLight.isOn

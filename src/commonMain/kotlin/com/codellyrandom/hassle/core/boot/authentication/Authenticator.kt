@@ -7,7 +7,7 @@ import com.codellyrandom.hassle.core.Credentials
 
 internal class Authenticator(
     private val session: WebSocketSession,
-    credentials: Credentials
+    credentials: Credentials,
 ) {
 
     suspend fun authenticate() =

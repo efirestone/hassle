@@ -1,6 +1,6 @@
 package com.codellyrandom.hassle.core.boot.servicestore
 
-import java.util.concurrent.*
+import java.util.concurrent.ConcurrentHashMap
 
 /**
  * Creates a ConcurrentHashMap on JVM and regular HashMap on other platforms.

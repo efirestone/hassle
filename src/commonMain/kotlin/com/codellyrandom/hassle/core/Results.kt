@@ -11,14 +11,14 @@ import kotlinx.serialization.json.JsonObject
 internal data class ResolverResponse(
     // The ID may be null if the command was (incorrectly) sent with a null ID.
     val id: Int?,
-    val type: ResponseType
+    val type: ResponseType,
 )
 
 @Serializable
 internal data class StateChangedResponse(
     val id: Int,
     val type: ResponseType,
-    val event: StateChangedEventData
+    val event: StateChangedEventData,
 )
 
 @Serializable
@@ -28,7 +28,7 @@ internal data class StateChangedEventData(
     val data: StateChangedData,
     @SerialName("time_fired")
     override val timeFired: Instant,
-    override val origin: String
+    override val origin: String,
 ) : EventDtoInterface
 
 @Serializable
@@ -36,7 +36,7 @@ internal data class StateChangedData(
     @SerialName("entity_id")
     val entityId: EntityId,
     @SerialName("new_state")
-    val newState: JsonElement
+    val newState: JsonElement,
 )
 
 interface EventDtoInterface {
@@ -54,14 +54,14 @@ internal data class StateResponse(
     val state: JsonObject,
     val attributes: JsonElement,
     @SerialName("last_updated")
-    val lastUpdated: Instant
+    val lastUpdated: Instant,
 )
 
 @Serializable
 internal data class EventResponse(
     val id: Int,
     val type: ResponseType,
-    val event: Event
+    val event: Event,
 )
 
 @Serializable
@@ -71,7 +71,7 @@ internal data class Event(
     val data: JsonElement,
     @SerialName("time_fired")
     override val timeFired: Instant,
-    override val origin: String
+    override val origin: String,
 ) : EventDtoInterface
 
 @Serializable
@@ -80,7 +80,7 @@ internal data class ResultResponse(
     val type: String,
     val success: Boolean,
     val error: ErrorResponse? = null,
-    val result: JsonObject? = null
+    val result: JsonObject? = null,
 )
 
 @Serializable
@@ -89,5 +89,5 @@ internal enum class ResponseType {
     EVENT,
 
     @SerialName("result")
-    RESULT
+    RESULT,
 }

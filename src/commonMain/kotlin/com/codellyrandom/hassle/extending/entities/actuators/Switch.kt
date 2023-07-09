@@ -23,7 +23,7 @@ internal inline fun <reified A : Attributes> HomeAssistantApiClient.Switch(objec
         EntityId.fromPair("switch".domain to objectId),
         ServiceCommandResolver { entityId, switchableState ->
             mapSwitchable(entityId, switchableState.value)
-        }
+        },
     )
 
 @Suppress("FunctionName")
@@ -34,5 +34,5 @@ data class PowerSwitchAttributes(
     override val userId: UserId?,
     override val friendlyName: FriendlyName,
     override val lastChanged: Instant,
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes
