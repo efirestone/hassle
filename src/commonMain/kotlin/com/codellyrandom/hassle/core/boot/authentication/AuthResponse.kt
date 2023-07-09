@@ -8,5 +8,5 @@ internal data class AuthResponse(
     val type: String,
     val message: String? = null,
     @SerialName("ha_version")
-    val haVersion: String
+    val haVersion: String,
 )

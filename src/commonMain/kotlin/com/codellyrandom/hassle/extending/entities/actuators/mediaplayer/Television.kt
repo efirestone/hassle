@@ -33,7 +33,7 @@ fun HomeAssistantApiClient.Television(objectId: ObjectId): Television =
 
                 SwitchableValue.UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
             }
-        }
+        },
     )
 
 @Serializable
@@ -43,7 +43,7 @@ data class TelevisionState(
     val volumeLevel: VolumeLevel? = null,
     @SerialName("is_volume_muted")
     val isVolumeMuted: Mute? = null,
-    val source: MediaSource? = null
+    val source: MediaSource? = null,
 ) : State<SwitchableValue>
 
 @Serializable
@@ -61,7 +61,7 @@ data class TelevisionAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes
 
 val Television.isOn

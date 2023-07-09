@@ -8,7 +8,7 @@ import com.codellyrandom.hassle.values.EntityId
 
 internal class EntityRegistrationValidation(
     private val actuatorsByApiName: ActuatorsByApiName,
-    private val sensorsByApiName: SensorsByApiName
+    private val sensorsByApiName: SensorsByApiName,
 ) {
     private val logger = Logger(config = LoggerConfig.default)
 

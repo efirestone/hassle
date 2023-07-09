@@ -19,7 +19,7 @@ fun HomeAssistantApiClient.DimmableLight(objectId: ObjectId): DimmableLight =
             desiredState.brightness?.let { brightness ->
                 TurnOnLightServiceCommand(
                     entityId,
-                    TurnOnLightServiceCommand.ServiceData(brightness = brightness)
+                    TurnOnLightServiceCommand.ServiceData(brightness = brightness),
                 )
             } ?: when (desiredState.value) {
                 SwitchableValue.OFF -> TurnOffServiceCommand(entityId)
@@ -27,7 +27,7 @@ fun HomeAssistantApiClient.DimmableLight(objectId: ObjectId): DimmableLight =
 
                 SwitchableValue.UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
             }
-        }
+        },
     )
 
 data class DimmableLightState(override val value: SwitchableValue, val brightness: Brightness? = null) : State<SwitchableValue>
@@ -52,12 +52,14 @@ suspend fun DimmableLight.setBrightness(level: Brightness) {
 
 fun DimmableLight.onTurnedOn(f: DimmableLight.(Switchable) -> Unit) =
     attachObserver {
-        if (stateValueChangedFrom(SwitchableValue.OFF to SwitchableValue.ON))
+        if (stateValueChangedFrom(SwitchableValue.OFF to SwitchableValue.ON)) {
             f(this, it)
+        }
     }
 
 fun DimmableLight.onTurnedOff(f: DimmableLight.(Switchable) -> Unit) =
     attachObserver {
-        if (stateValueChangedFrom(SwitchableValue.ON to SwitchableValue.OFF))
+        if (stateValueChangedFrom(SwitchableValue.ON to SwitchableValue.OFF)) {
             f(this, it)
+        }
     }

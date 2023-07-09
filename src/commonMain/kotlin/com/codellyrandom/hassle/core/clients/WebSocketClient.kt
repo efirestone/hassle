@@ -12,14 +12,14 @@ class WebSocketClient(delegate: HttpClient) {
         host: String,
         port: Int,
         path: String,
-        block: suspend DefaultClientWebSocketSession.() -> Unit
+        block: suspend DefaultClientWebSocketSession.() -> Unit,
     ) =
         client.wss(
             method = method,
             host = host,
             port = port,
             path = path,
-            block = block
+            block = block,
         )
 
     suspend fun webSocket(
@@ -27,13 +27,13 @@ class WebSocketClient(delegate: HttpClient) {
         host: String,
         port: Int,
         path: String,
-        block: suspend DefaultClientWebSocketSession.() -> Unit
+        block: suspend DefaultClientWebSocketSession.() -> Unit,
     ) =
         client.ws(
             method = method,
             host = host,
             port = port,
             path = path,
-            block = block
+            block = block,
         )
 }

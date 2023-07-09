@@ -27,7 +27,7 @@ data class IosActionEventData(
     val sourceDevicePermanentID: String,
 
     @SerialName("triggerSource")
-    val triggerSource: String
+    val triggerSource: String,
 )
 
 data class IosNotificationActionEventData<AD>(
@@ -47,7 +47,7 @@ data class IosNotificationActionEventData<AD>(
     val textInput: String?,
 
     @SerialName("action_data")
-    val actionData: AD?
+    val actionData: AD?,
 )
 
 fun <AD> HomeAssistantApiClient.attachIosNotificationActionHandler(eventHandler: EventHandlerFunction<IosNotificationActionEventData<AD>>) =
@@ -55,7 +55,7 @@ fun <AD> HomeAssistantApiClient.attachIosNotificationActionHandler(eventHandler:
 
 internal enum class IosEventType(val value: String) {
     ACTION_FIRED("ios.action_fired"),
-    NOTIFICATION_ACTION_FIRED("ios.notification_action_fired")
+    NOTIFICATION_ACTION_FIRED("ios.notification_action_fired"),
 }
 
 internal val IosEventType.eventType

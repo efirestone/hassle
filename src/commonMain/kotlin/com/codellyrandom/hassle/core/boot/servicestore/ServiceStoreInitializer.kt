@@ -9,7 +9,7 @@ import com.codellyrandom.hassle.communicating.GetServicesCommand
 internal class ServiceStoreInitializer(
     private val apiClient: HomeAssistantApiClientImpl,
     private val session: WebSocketSession,
-    private val serviceStore: ServiceStore
+    private val serviceStore: ServiceStore,
 ) {
     private val logger = Logger(config = LoggerConfig.default)
     private val getServicesCommand = GetServicesCommand()

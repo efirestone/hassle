@@ -5,5 +5,5 @@ data class Credentials(
     var host: String,
     var port: Int,
     var accessToken: String,
-    var isSecure: Boolean
+    var isSecure: Boolean,
 )

@@ -1,6 +1,6 @@
 
 ![GitHub Actions status](https://github.com/efirestone/hassle/workflows/Latest%20push/badge.svg)
-![LINE](https://img.shields.io/badge/line--coverage-31%25-red.svg)
+![LINE](https://img.shields.io/badge/line--coverage-31.33%25-red.svg)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codellyrandom.hassle/hassle/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.codellyrandom.hassle/hassle)
 
 # Hassle

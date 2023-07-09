@@ -7,5 +7,5 @@ import com.codellyrandom.hassle.values.EventType
 
 inline fun <reified ED> HomeAssistantApiClient.attachEventHandler(
     eventType: EventType,
-    noinline eventHandler: EventHandlerFunction<ED>
+    noinline eventHandler: EventHandlerFunction<ED>,
 ): Switchable = attachEventHandler(eventType, ED::class, eventHandler)

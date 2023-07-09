@@ -26,21 +26,21 @@ fun HomeAssistantApiClient.Thermostat(objectId: ObjectId): Thermostat {
                         SetTemperatureServiceCommand(
                             entityId,
                             temperature,
-                            hvacMode = HvacMode("heat")
+                            hvacMode = HvacMode("heat"),
                         )
                     } ?: (if (desiredState.presetMode.isNone) null else desiredState.presetMode)?.let { preset ->
                         SetHvacPresetModeServiceCommand(entityId, preset)
                     } ?: TurnOnServiceCommand(entityId)
                 }
             }
-        }
+        },
     )
 }
 
 data class ThermostatState(
     override val value: ThermostatStateValue,
     val temperature: Temperature? = null,
-    val presetMode: PresetMode = "none".presetMode
+    val presetMode: PresetMode = "none".presetMode,
 ) : State<ThermostatStateValue>
 
 data class ThermostatAttributes(
@@ -52,7 +52,7 @@ data class ThermostatAttributes(
     override val friendlyName: FriendlyName,
     override val lastChanged: Instant,
     override val lastUpdated: Instant,
-    override val userId: UserId?
+    override val userId: UserId?,
 ) : Attributes
 
 @Serializable
@@ -61,7 +61,7 @@ enum class ThermostatStateValue {
     HEAT,
 
     @SerialName("off")
-    OFF
+    OFF,
 }
 
 val Thermostat.isHeating

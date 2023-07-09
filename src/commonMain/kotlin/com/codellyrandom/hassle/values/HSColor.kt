@@ -24,7 +24,7 @@ data class HSColor(val hue: Double, val saturation: Double) {
             "HSColor",
             StructureKind.LIST,
             hueDescriptor,
-            saturationDescriptor
+            saturationDescriptor,
         )
 
         override fun deserialize(decoder: Decoder): HSColor {

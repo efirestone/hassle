@@ -30,7 +30,7 @@ data class LuminanceAttributes(
     @SerialName("last_updated")
     override val lastUpdated: Instant,
     @SerialName("friendly_name")
-    override val friendlyName: FriendlyName
+    override val friendlyName: FriendlyName,
 ) : Attributes
 
 fun LuminanceSensor.isBrighterThan(value: Double) = measurement.value > value

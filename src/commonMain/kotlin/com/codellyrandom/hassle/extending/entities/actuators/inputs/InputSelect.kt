@@ -19,7 +19,7 @@ fun HomeAssistantApiClient.InputSelect(objectId: ObjectId): InputSelect =
         EntityId.fromPair("input_select".domain to objectId),
         ServiceCommandResolver { entityId, desiredState ->
             SelectOptionServiceCommand(entityId, desiredState.value)
-        }
+        },
     )
 
 @Serializable
@@ -33,7 +33,7 @@ data class InputSelectAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes
 
 @Serializable

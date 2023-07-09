@@ -46,12 +46,12 @@ internal class ActuatorTest {
         @SerialName("last_updated")
         override val lastUpdated: Instant,
         @SerialName("friendly_name")
-        override val friendlyName: FriendlyName
+        override val friendlyName: FriendlyName,
     ) : Attributes
 
     @Test
     fun `actuator state response mapping is correct`() = withConnection {
-        val sut = Actuator<ActuatorTestState, ActuatorTestAttributes>(
+        val sut = Actuator(
             EntityId.fromString("actuator.test"),
             connection = this,
             mapper = mapper,
@@ -59,7 +59,7 @@ internal class ActuatorTest {
                 TurnOnServiceCommand(entityId)
             },
             stateType = ActuatorTestState::class,
-            attributesType = ActuatorTestAttributes::class
+            attributesType = ActuatorTestAttributes::class,
         )
 
         assertFailsWith<IllegalStateException> {
@@ -102,7 +102,7 @@ internal class ActuatorTest {
 
     @Test
     fun `actuator stores state and attributes youngest first`() = withConnection {
-        val sut = Actuator<ActuatorTestState, ActuatorTestAttributes>(
+        val sut = Actuator(
             EntityId.fromString("actuator.test"),
             connection = this,
             mapper = mapper,
@@ -110,7 +110,7 @@ internal class ActuatorTest {
                 TurnOnServiceCommand(entityId)
             },
             stateType = ActuatorTestState::class,
-            attributesType = ActuatorTestAttributes::class
+            attributesType = ActuatorTestAttributes::class,
         )
 
         val firstTestState =
@@ -385,7 +385,7 @@ internal class ActuatorTest {
                     Option("Visitors with kids"),
                     Option("Home Alone"),
                 ),
-                actuator.attributes.options
+                actuator.attributes.options,
             )
         }
     }
@@ -528,7 +528,7 @@ internal class ActuatorTest {
             assertNull(actuator.attributes.appName)
             assertEquals(
                 EntityPicture("/api/media_player_proxy/media_player.plex_plex_for_apple_tv_play_room?token=abcd1234&cache=4321dcba"),
-                actuator.attributes.entityPicture
+                actuator.attributes.entityPicture,
             )
             assertNull(actuator.attributes.mediaAlbumName)
             assertNull(actuator.attributes.mediaArtist)
@@ -596,7 +596,7 @@ internal class ActuatorTest {
 
     private inline fun <reified S : State<*>, reified A : Attributes> actuator(
         json: String,
-        crossinline block: (Actuator<S, A>) -> Unit
+        crossinline block: (Actuator<S, A>) -> Unit,
     ) = withConnection {
         val sut = Actuator<S, A>(
             EntityId.fromString("actuator.test"),
@@ -606,7 +606,7 @@ internal class ActuatorTest {
                 TurnOnServiceCommand(entityId)
             },
             stateType = S::class,
-            attributesType = A::class
+            attributesType = A::class,
         )
 
         val stateAsJsonObject = mapper.fromJson<JsonObject>(json)

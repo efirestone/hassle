@@ -15,26 +15,27 @@ import kotlin.reflect.typeOf
 
 class ObjectMapper(
     private val delegate: Json = makeJson(),
-    private val logger: Logger = Logger(config = LoggerConfig.default)
+    private val logger: Logger = Logger(config = LoggerConfig.default),
 ) {
     @OptIn(InternalSerializationApi::class)
     fun <Target : Any> fromJson(json: JsonElement, type: KClass<Target>): Target {
         try {
             return delegate.decodeFromJsonElement(
                 deserializer = type.serializer(),
-                element = json
+                element = json,
             )
         } catch (e: Throwable) {
             logger.e(e) { "Exception converting from JSON" }
             throw e
         }
     }
+
     @Suppress("UNCHECKED_CAST")
     fun <Target : Any> fromJson(json: String, type: KType): Target {
         try {
             return delegate.decodeFromString(
                 deserializer = delegate.serializersModule.serializer(type) as KSerializer<Target>,
-                string = json
+                string = json,
             )
         } catch (e: Throwable) {
             logger.e(e) { "Exception converting from JSON" }
@@ -47,7 +48,7 @@ class ObjectMapper(
         try {
             return delegate.encodeToString(
                 serializer = delegate.serializersModule.serializer(type) as KSerializer<Destination>,
-                value = from
+                value = from,
             )
         } catch (e: Throwable) {
             logger.e(e) { "Exception converting to JSON" }

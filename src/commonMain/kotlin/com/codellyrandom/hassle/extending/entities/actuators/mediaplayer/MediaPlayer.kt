@@ -14,5 +14,5 @@ typealias MediaPlayer<S, A> = Actuator<S, A>
 
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.MediaPlayer(
     objectId: ObjectId,
-    serviceCommandResolver: ServiceCommandResolver<S>
+    serviceCommandResolver: ServiceCommandResolver<S>,
 ): MediaPlayer<S, A> = Actuator(EntityId.fromPair("media_player".domain to objectId), serviceCommandResolver)

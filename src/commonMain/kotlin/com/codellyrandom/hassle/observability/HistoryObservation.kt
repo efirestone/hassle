@@ -18,5 +18,5 @@ internal class StateAndAttributesWithHistory<S : State<*>, A : Attributes> {
 
 class StateAndAttributes<S, A>(
     val state: S,
-    val attributes: A
+    val attributes: A,
 )

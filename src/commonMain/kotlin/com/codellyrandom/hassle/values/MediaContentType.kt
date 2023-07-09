@@ -16,7 +16,8 @@ enum class MediaContentType {
     VIDEO,
     EPISODE,
     CHANNEL,
-    PLAYLIST;
+    PLAYLIST,
+    ;
 
     companion object : KSerializer<MediaContentType> {
         override val descriptor: SerialDescriptor =

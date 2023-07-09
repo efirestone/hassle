@@ -18,6 +18,6 @@ internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistant
 
 internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Actuator(
     id: EntityId,
-    serviceCommandResolver: ServiceCommandResolver<S>
+    serviceCommandResolver: ServiceCommandResolver<S>,
 ): Actuator<S, A> =
     (this as HomeAssistantApiClientImpl).Actuator(id, S::class, A::class, serviceCommandResolver)

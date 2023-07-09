@@ -32,7 +32,7 @@ enum class SunValue {
     ABOVE_HORIZON,
 
     @SerialName("below_horizon")
-    BELOW_HORIZON
+    BELOW_HORIZON,
 }
 
 @Serializable
@@ -71,7 +71,7 @@ data class SunAttributes(
     override val lastUpdated: Instant,
 
     @SerialName("friendly_name")
-    override val friendlyName: FriendlyName
+    override val friendlyName: FriendlyName,
 ) : Attributes
 
 val Sun.isAboveHorizon

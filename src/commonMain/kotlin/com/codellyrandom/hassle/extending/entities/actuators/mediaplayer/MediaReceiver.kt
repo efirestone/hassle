@@ -47,7 +47,7 @@ fun HomeAssistantApiClient.MediaReceiver(entityId: EntityId): MediaReceiver =
                 UNKNOWN -> throw IllegalStateException("State cannot be changed to UNKNOWN")
                 UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
             }
-        }
+        },
     )
 
 @Serializable
@@ -58,7 +58,7 @@ data class MediaReceiverState(
     @SerialName("is_volume_muted")
     val isVolumeMuted: Mute? = null,
     @SerialName("media_position")
-    val mediaPosition: MediaPosition? = null
+    val mediaPosition: MediaPosition? = null,
 ) : State<MediaReceiverStateValue>
 
 @Serializable
@@ -79,7 +79,7 @@ enum class MediaReceiverStateValue {
     PLAYING,
 
     @SerialName("paused")
-    PAUSED
+    PAUSED,
 }
 
 @Serializable
@@ -111,7 +111,7 @@ data class MediaReceiverAttributes(
     @SerialName("last_changed")
     override val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant
+    override val lastUpdated: Instant,
 ) : Attributes
 
 val MediaReceiver.isOff
@@ -141,8 +141,9 @@ suspend fun MediaReceiver.play(contentType: MediaContentType, contentId: MediaCo
 suspend fun MediaReceiver.pause() = setDesiredState(MediaReceiverState(value = PAUSED))
 
 suspend fun MediaReceiver.setVolumeTo(level: VolumeLevel) {
-    if (actualState.value == UNAVAILABLE || actualState.value == OFF)
+    if (actualState.value == UNAVAILABLE || actualState.value == OFF) {
         throw RuntimeException("Volume can not be set when MediaReceiver is ${actualState.value}")
+    }
 
     setDesiredState(MediaReceiverState(value = actualState.value, volumeLevel = level))
 }

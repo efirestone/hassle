@@ -7,18 +7,17 @@ val ktorVersion: String by project
 buildscript {
     dependencies {
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.8.20")
-//        classpath("com.vanniktech:gradle-maven-publish-plugin:0.25.2")
     }
 }
 
 plugins {
-    kotlin("multiplatform") version "1.8.22"
-    kotlin("plugin.serialization") version "1.8.22"
-    id("com.github.dawnwords.jacoco.badge") version "0.2.0"
+    kotlin("multiplatform") version "1.9.0"
+    kotlin("plugin.serialization") version "1.9.0"
+    id("com.github.dawnwords.jacoco.badge") version "0.2.4"
     id("de.jansauer.printcoverage") version "2.0.0"
-    id("com.vanniktech.maven.publish") version "0.25.2"
-    id("io.gitlab.arturbosch.detekt") version "1.9.1"
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+    id("com.vanniktech.maven.publish") version "0.25.3"
+    id("io.gitlab.arturbosch.detekt") version "1.23.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
     jacoco
     `java-library`
 }
@@ -109,13 +108,13 @@ tasks {
             jacocoTestReport,
             jacocoTestCoverageVerification,
             printCoverage,
-            generateJacocoBadge
+            generateJacocoBadge,
         )
     }
     jacocoTestReport {
         val coverageSourceDirs = arrayOf(
             "$rootDir/src/commonMain",
-            "$rootDir/src/jvmMain"
+            "$rootDir/src/jvmMain",
         )
 
         val classFiles = "$buildDir/classes/kotlin/jvm/"
@@ -143,16 +142,15 @@ mavenPublishing {
 }
 
 detekt {
-    input = files("$projectDir/src/main/kotlin")
-    config = files("$projectDir/config/detekt-config.yml")
+    config.setFrom("$projectDir/config/detekt-config.yml")
 }
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.10"
 }
 
 ktlint {
-    version.set("0.42.1")
+    version.set("0.50.0")
     ignoreFailures.set(false)
 }
 

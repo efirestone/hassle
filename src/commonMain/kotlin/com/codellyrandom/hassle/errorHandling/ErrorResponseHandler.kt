@@ -13,7 +13,7 @@ import com.codellyrandom.hassle.events.EventHandler
 data class ErrorResponseData(val commandId: Int, val errorResponse: ErrorResponse)
 
 internal class ErrorResponseHandlerImpl(
-    private val f: (ErrorResponseData) -> Unit
+    private val f: (ErrorResponseData) -> Unit,
 ) : EventHandler<ErrorResponseData> {
     override fun handle(eventData: ErrorResponseData) {
         f(eventData)

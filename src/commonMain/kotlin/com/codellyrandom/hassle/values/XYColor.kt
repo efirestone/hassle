@@ -22,7 +22,7 @@ data class XYColor(val x: Double, val y: Double) {
             "XYColor",
             StructureKind.LIST,
             xDescriptor,
-            yDescriptor
+            yDescriptor,
         )
 
         override fun deserialize(decoder: Decoder): XYColor {
