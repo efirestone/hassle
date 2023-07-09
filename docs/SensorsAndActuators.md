@@ -77,7 +77,7 @@ client.connect()
 
 val bedRoomCoverOne = client.PositionableCover(ObjectId("bedroom_cover_1"))
 
-if (bedRoomCoverOne.actualState.position > 30) {
+if (bedRoomCoverOne.state.position > 30) {
     // ...
 }
 ```
@@ -93,7 +93,7 @@ val bedRoomCoverOne = client.PositionableCover(ObjectId("bedroom_cover_1"))
 
 sun.attachObserver { //this:Sensor<SunState,SunAttributes>
     if (measurement.value == ABOVE_HORIZON) {
-        bedRoomCoverOne.desiredState = CoverState(value = OPEN, currentPosition = 50)
+        bedRoomCoverOne.setDesiredState(PositionalCoverSettableState(value = OPEN, currentPosition = 50))
     }
 }
 ```
@@ -120,7 +120,7 @@ val coverLock = client.InputBoolean(ObjectId("cover_lock"))
 val bedRoomCoverOne = client.PositionableCover(ObjectId("bedroom_cover_1"))
 
 bedRoomCoverOne.attachObserver { // this: Actuator<CoverState,PositionalCoverAttributes>
-    if (attributes.working == YES && coverLock.actualState.value == ON) {
+    if (attributes.working == YES && coverLock.state.value == ON) {
         bedRoomCoverOne.callService(Service("stop_cover"))
     }
 }
@@ -155,9 +155,9 @@ ServiceCommandResolver { desiredState ->
 
 Ok, let's have a deeper look at all the elements involved:
 
-#### desiredState
-The desired state is the same type then the actual state in an actuator.
-In this case, it's type is [SwitchableState](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/DeviceStates.kt) and the
+#### state
+The desired state is the same type as the actual state in an actuator.
+In this example, its state type is `SwitchableState` and the
 state value is an enum [SwitchableValue](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/StateValueTypes.kt) which has two
 options: ON and OFF.
 
@@ -218,8 +218,8 @@ ServiceCommandResolver { desiredState ->
 
 ## Observer
 
-The heart of Hassle is the ability to observe state changes. The Sensor, as already mentioned above, has an observable property named measurement.
-The Actuators pendant gets called actualState.
+The heart of Hassle is the ability to observe state changes. The Sensor, as already mentioned above, has an observable property named `state`.
+The Actuators pendant gets called `state`.
 
 To execute an action every time a state has changed, you can create and attach an Observer to the entity you like to observe.
 
@@ -235,7 +235,7 @@ or access the receiver object using a this expression.
 
 This behavior is similar to [extension functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions), which also allow you to access the members of the receiver object inside the body of the function.
 
-With the Sensor or Actuator as an implicit this you get access to the current state (measurement or actualState) the history of its states and attributes. The history stores the youngest 10 states and attributes combinations, 
+With the Sensor or Actuator as an implicit this you get access to the current state and the history of its state. The history stores the youngest 10 states,
 where index 0 is the current and index 10 would be the 10th youngest entry in the history.
 
 ### Constraints
@@ -256,25 +256,25 @@ using the current state and the history data.
 Let's take a look at some examples to show you the idea behind snapshot data and constraints:
 
 ```kotlin
-InputBoolean.attachObserver { //this: Actuator<SwitchableState,InputBooleanAttributes>
-    if (actualState.value == SwitchableValue.ON) {
+InputBoolean.attachObserver { //this: Actuator<InputBooleanState,SwitchableSettableState>
+    if (state.value == SwitchableValue.ON) {
         //...
     }
 }
 ```
 
 ```kotlin
-DimmableLight.attachObserver { //this: Actuator<DimmableLightState,DimmableLightAttributes>
+DimmableLight.attachObserver { //this: Actuator<DimmableLightState,DimmableLightSettableState>
     if (
             history[1].state.value == SwitchableValue.OFF &&
-            actualState.value == SwitchableValue.ON
+            state.value == SwitchableValue.ON
         ) { /*..*/ }
 }
 ```
 
 ```kotlin
-PositionalCover.attachObserver { //this: Actuator<CoverState,PositionalCoverAttributes>
-    if (snapshot.attributes.working) {
+PositionalCover.attachObserver { //this: Actuator<PositionableCoverState,PositionableCoverSettableState>
+    if (snapshot.working) {
         //..
     }
 }
@@ -282,9 +282,9 @@ PositionalCover.attachObserver { //this: Actuator<CoverState,PositionalCoverAttr
 Another practical usage of the history snapshot is to set an entity state to a former value taken from the history.
 
  ```kotlin
-TvTime.attachObserver { //this: Actuator<SwitchableState,InputBooleanAttributes>
-     if (TvTime.actualState.value == SwitchableValue.OFF) {
-         LivingRoomCover.desiredState = LivingRoomCover.history[1].state
+TvTime.attachObserver { //this: Actuator<InputBooleanState,SwitchableSettableState>
+     if (TvTime.state.value == SwitchableValue.OFF) {
+         LivingRoomCover.setDesiredState(LivingRoomCover.history[1].state)
      }
  }
  ```
@@ -314,13 +314,13 @@ we see in this example:
 
 ```kotlin
 val luminanceSwitchable: Switchable = LuminanceSensor.attachObserver {
-    if (actualState.value < 5.0) {
-        Light.desiredState = SwitchableState(ON)
+    if (state.value < 5.0) {
+        Light.setDesiredState(SwitchableState(ON))
     }
 }
 
 InputBoolean.attacheObserver {
-    when(actualState.value) {
+    when(state.value) {
         ON -> luminanceSwitchable.enable()
         OFF -> luminanceSwitchable.disable()
     }

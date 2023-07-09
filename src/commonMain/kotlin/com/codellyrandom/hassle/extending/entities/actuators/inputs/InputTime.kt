@@ -4,7 +4,6 @@ import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.communicating.SetDateTimeServiceCommand
 import com.codellyrandom.hassle.core.mapping.serializers.default.LocalTimeSerializer
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.Actuator
@@ -14,7 +13,7 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias InputTime = Actuator<InputTimeState, InputTimeAttributes>
+typealias InputTime = Actuator<InputTimeState, InputTimeSettableState>
 
 fun HomeAssistantApiClient.InputTime(objectId: ObjectId): InputTime =
     Actuator(
@@ -25,20 +24,20 @@ fun HomeAssistantApiClient.InputTime(objectId: ObjectId): InputTime =
     )
 
 @Serializable
-data class InputTimeState(
+class InputTimeState(
     @Serializable(LocalTimeSerializer::class)
     override val value: LocalTime,
-) : State<LocalTime>
-
-@Serializable
-data class InputTimeAttributes(
     val editable: Boolean,
     @SerialName("user_id")
-    override val userId: UserId?,
+    val userId: UserId?,
     @SerialName("friendly_name")
-    override val friendlyName: FriendlyName,
+    val friendlyName: FriendlyName,
     @SerialName("last_changed")
-    override val lastChanged: Instant,
+    val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant,
-) : Attributes
+    val lastUpdated: Instant,
+) : State<LocalTime>
+
+data class InputTimeSettableState(
+    val value: LocalTime,
+)

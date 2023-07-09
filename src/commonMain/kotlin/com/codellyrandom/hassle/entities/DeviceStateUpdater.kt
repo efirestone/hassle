@@ -12,8 +12,7 @@ internal class ActuatorStateUpdater(private val actuatorsByApiName: ActuatorsByA
 
     operator fun invoke(newActualState: JsonObject, entityId: EntityId) {
         actuatorsByApiName[entityId]?.let { entity ->
-            entity.trySetAttributesFromAny(newAttributes = newActualState)
-            entity.trySetActualStateFromAny(newState = newActualState)
+            entity.trySetStateFromAny(newState = newActualState)
             logger.d { "Updated state for entity: $entityId with: $newActualState" }
         }
     }
@@ -24,8 +23,7 @@ internal class SensorStateUpdater(private val sensorsByApiName: SensorsByApiName
 
     operator fun invoke(newActualState: JsonObject, entityId: EntityId) {
         sensorsByApiName[entityId]?.let { entity ->
-            entity.trySetAttributesFromAny(newAttributes = newActualState)
-            entity.trySetActualStateFromAny(newState = newActualState)
+            entity.trySetStateFromAny(newState = newActualState)
             logger.d { "Updated state for entity: $entityId with: $newActualState" }
         }
     }

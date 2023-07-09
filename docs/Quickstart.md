@@ -104,7 +104,7 @@ val bedRoomCovers = listOf(
 
 sun.onSunrise {
     for (cover in BedRoomCovers) {
-        cover.desiredState = CoverState(value = CoverValue.OPEN, position = 60)
+        cover.setDesiredState(PositionalCoverSettableState(value = CoverValue.OPEN, position = 60))
     }
 }
 
@@ -155,7 +155,7 @@ val televisionLivingRoom = client.Television(ObjectId("tv_livingroom"))
 val resetStateHistory = mutableMapOf<Cover,CoverState>()
 
 val televisionWatchingCoverPosition = 
-    client.InputNumber(ObjectId("television_watching_cover_position")).actualState.toInt()
+    client.InputNumber(ObjectId("television_watching_cover_position")).state.toInt()
 val defaultCoverPosition = 75
 
 val livingRoomCovers = listOf(
@@ -167,14 +167,14 @@ val livingRoomCovers = listOf(
 televisionLivingroom.attachObserver {
     if (turnedOn) {
         for (cover in livingRoomCovers) {
-            resetStateHistory[cover] = cover.actualState
+            resetStateHistory[cover] = cover.state
             cover.setCoverPosition(televisionWatchingCoverPosition)
         }
     }
 
     if (turnedOff) {
         for (cover in livingRoomCovers) {
-            cover.desiredState = resetStateHistory[cover] ?: CoverState(CoverValue.OPEN, defaultCoverPosition)
+            cover.setDesiredState(resetStateHistory[cover] ?: CoverState(CoverValue.OPEN, defaultCoverPosition))
         }
     }
 }

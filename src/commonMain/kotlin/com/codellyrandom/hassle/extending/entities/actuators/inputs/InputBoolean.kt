@@ -2,22 +2,18 @@ package com.codellyrandom.hassle.extending.entities.actuators.inputs
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
-import com.codellyrandom.hassle.entities.Attributes
+import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.Actuator
-import com.codellyrandom.hassle.extending.entities.SwitchableState
+import com.codellyrandom.hassle.extending.entities.SwitchableSettableState
+import com.codellyrandom.hassle.extending.entities.SwitchableValue
 import com.codellyrandom.hassle.extending.entities.mapSwitchable
-import com.codellyrandom.hassle.values.EntityId
-import com.codellyrandom.hassle.values.FriendlyName
-import com.codellyrandom.hassle.values.Icon
-import com.codellyrandom.hassle.values.ObjectId
-import com.codellyrandom.hassle.values.UserId
-import com.codellyrandom.hassle.values.domain
+import com.codellyrandom.hassle.values.*
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias InputBoolean = Actuator<SwitchableState, InputBooleanAttributes>
+typealias InputBoolean = Actuator<InputBooleanState, SwitchableSettableState>
 
 fun HomeAssistantApiClient.InputBoolean(objectId: ObjectId): InputBoolean =
     Actuator(
@@ -28,15 +24,16 @@ fun HomeAssistantApiClient.InputBoolean(objectId: ObjectId): InputBoolean =
     )
 
 @Serializable
-data class InputBooleanAttributes(
+class InputBooleanState(
+    override val value: SwitchableValue,
     val editable: Boolean,
     val icon: Icon,
     @SerialName("user_id")
-    override val userId: UserId?,
+    val userId: UserId?,
     @SerialName("friendly_name")
-    override val friendlyName: FriendlyName,
+    val friendlyName: FriendlyName,
     @SerialName("last_changed")
-    override val lastChanged: Instant,
+    val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant,
-) : Attributes
+    val lastUpdated: Instant,
+) : State<SwitchableValue>

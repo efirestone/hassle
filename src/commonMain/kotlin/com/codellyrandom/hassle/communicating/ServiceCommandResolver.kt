@@ -1,11 +1,10 @@
 package com.codellyrandom.hassle.communicating
 
-import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.values.EntityId
 
 internal typealias ServiceCommandResolverFunction<S> = (EntityId, S) -> ServiceCommand
 
-internal fun <S : State<*>> ServiceCommandResolver(resolverFunction: ServiceCommandResolverFunction<S>): ServiceCommandResolver<S> =
+internal fun <S : Any> ServiceCommandResolver(resolverFunction: ServiceCommandResolverFunction<S>): ServiceCommandResolver<S> =
     ServiceCommandResolverImpl(resolverFunction)
 
 internal interface ServiceCommandResolver<S> {

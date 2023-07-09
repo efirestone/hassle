@@ -4,7 +4,6 @@ import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.communicating.ServiceCommand
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.core.mapping.ObjectMapper
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.errorHandling.ObserverExceptionHandler
 import com.codellyrandom.hassle.observability.*
@@ -19,43 +18,32 @@ import kotlin.reflect.KClass
  *
  * @param S the type of the state object that represents all mutable state values of the entity.
  * Has to implement the [State] interface.
- * @param A the type of the attributes object that represents all immutable attribute values of the entity.
- * Has to implement the [Attributes] interface.
  */
-class Actuator<S : State<*>, A : Attributes> internal constructor(
+class Actuator<S : State<*>, Settable : Any> internal constructor(
     val entityId: EntityId,
     private val connection: HomeAssistantApiClientImpl,
     private val mapper: ObjectMapper,
-    private val resolver: ServiceCommandResolver<S>,
+    private val resolver: ServiceCommandResolver<Settable>,
     private val stateType: KClass<S>,
-    private val attributesType: KClass<A>,
-) : Observable<Actuator<S, A>> {
-    private val observers: MutableList<Observer<Actuator<S, A>>> = mutableListOf()
-    private val stateAndAttributesWithHistory = StateAndAttributesWithHistory<S, A>()
+) : Observable<Actuator<S, Settable>> {
+    private val observers: MutableList<Observer<Actuator<S, Settable>>> = mutableListOf()
+    private val stateWithHistory = History<S>()
     private var dirty = false
-
-    /**
-     * Represents the current attributes of the entity.
-     * Holds all state attributes that can not directly be mutated.
-     */
-    var attributes: A
-        get() { return stateAndAttributesWithHistory.attributes }
-        set(newValue) { stateAndAttributesWithHistory.attributes = newValue }
 
     /**
      * Represents the current state of the entity.
      * Holds all state values that can be mutated directly.
      */
-    var actualState: S
-        get() = stateAndAttributesWithHistory.state
+    var state: S
+        get() = stateWithHistory.state
         set(value) {
-            stateAndAttributesWithHistory.state = value
+            stateWithHistory.state = value
             if (dirty) observers.forEach { it.update(this) }
             dirty = true
         }
 
-    val history: List<StateAndAttributes<S, A>>
-        get() = stateAndAttributesWithHistory.history.toList()
+    val history: List<S>
+        get() = stateWithHistory.history.toList()
 
     /**
      * Number of observers attached to the actuator.
@@ -68,18 +56,14 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
      * The setter of this property will intercept the setting, and translates the new (desired) state
      * into a service command that mutates the state in home assistant.
      */
-    suspend fun setDesiredState(state: S) {
-        val command = resolver.resolve(entityId, state)
+    suspend fun setDesiredState(settableState: Settable) {
+        val command = resolver.resolve(entityId, settableState)
         connection.send(command)
     }
 
-    fun trySetActualStateFromAny(newState: JsonObject) {
-        actualState = mapper.fromJson(newState, stateType)
-        checkNotNull(actualState.value) { "State value shall not be null. Please check your State definition  " }
-    }
-
-    fun trySetAttributesFromAny(newAttributes: JsonObject) {
-        attributes = mapper.fromJson(newAttributes, attributesType)
+    fun trySetStateFromAny(newState: JsonObject) {
+        state = mapper.fromJson(newState, stateType)
+        checkNotNull(state.value) { "State value shall not be null. Please check your State definition  " }
     }
 
     /**
@@ -89,7 +73,7 @@ class Actuator<S : State<*>, A : Attributes> internal constructor(
      */
     internal suspend fun send(command: ServiceCommand) = connection.send(command)
 
-    override fun attachObserver(observer: ObserverFunction<Actuator<S, A>>): Switchable =
+    override fun attachObserver(observer: ObserverFunction<Actuator<S, Settable>>): Switchable =
         ObserverImpl(
             observer,
             ObserverExceptionHandler(connection.observerExceptionHandler),

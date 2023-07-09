@@ -35,7 +35,7 @@ import kotlin.collections.set
 import kotlin.reflect.KClass
 import kotlinx.serialization.json.Json as SerializationJson
 
-internal typealias SensorsByApiName = MutableMap<EntityId, Sensor<*, *>>
+internal typealias SensorsByApiName = MutableMap<EntityId, Sensor<*>>
 internal typealias ActuatorsByApiName = MutableMap<EntityId, Actuator<*, *>>
 internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
@@ -108,19 +108,16 @@ internal class HomeAssistantApiClientImpl(
      * Creates a fresh instance of a sensor entity.
      *
      * @param S the type of the state that represents all state values of the entity. Has to implement the [State] interface.
-     * @param A the type of the attributes that represents all attribute values of the entity. Has to implement the [Attributes] interface.
      * @param id the corresponding [EntityId] for the sensor.
      * @param stateType the type param [S] as [KClass].
-     * @param attributesType the type param [A] as [KClass].
      *
      * @return [Sensor]
      */
-    override fun <S : State<*>, A : Attributes> Sensor(
+    override fun <S : State<*>> Sensor(
         id: EntityId,
         stateType: KClass<S>,
-        attributesType: KClass<A>,
-    ): Sensor<S, A> =
-        Sensor(this, mapper, stateType, attributesType)
+    ): Sensor<S> =
+        Sensor(this, mapper, stateType)
             .also { registerSensor(id, it) }
 
     /**
@@ -129,27 +126,23 @@ internal class HomeAssistantApiClientImpl(
      * Creates a fresh instance of a actuator entity.
      *
      * @param S the type of the state that represents all state values of the entity. Has to implement the [State] interface.
-     * @param A the type of the attributes that represents all attribute values of the entity. Has to implement the [Attributes] interface.
      * @param id the corresponding [EntityId] for the sensor.
      * @param stateType the type param [S] as [KClass].
-     * @param attributesType the type param [A] as [KClass].
      * @param serviceCommandResolver the serviceCommandResolver instance. @See [ServiceCommandResolver] for more.
      *
      * @return [Actuator]
      */
-    fun <S : State<*>, A : Attributes> Actuator(
+    fun <S : State<*>, Settable : Any> Actuator(
         id: EntityId,
         stateType: KClass<S>,
-        attributesType: KClass<A>,
-        serviceCommandResolver: ServiceCommandResolver<S>,
-    ): Actuator<S, A> =
+        serviceCommandResolver: ServiceCommandResolver<Settable>,
+    ): Actuator<S, Settable> =
         Actuator(
             id,
             this,
             mapper,
             serviceCommandResolver,
             stateType,
-            attributesType,
         ).also { registerActuator(id, it) }
 
     @Suppress("UNCHECKED_CAST")
@@ -195,7 +188,7 @@ internal class HomeAssistantApiClientImpl(
         return id
     }
 
-    private fun registerSensor(entityId: EntityId, sensor: Sensor<*, *>) {
+    private fun registerSensor(entityId: EntityId, sensor: Sensor<*>) {
         check(!sensorsByApiName.containsKey(entityId)) { "Sensor with id: $entityId already exists." }
         sensorsByApiName[entityId] = sensor
         logger.i { "Registered Sensor with id: $entityId" }

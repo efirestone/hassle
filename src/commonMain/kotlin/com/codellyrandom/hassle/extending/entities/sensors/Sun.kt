@@ -1,42 +1,24 @@
 package com.codellyrandom.hassle.extending.entities.sensors
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.extending.entities.Sensor
 import com.codellyrandom.hassle.observability.Switchable
-import com.codellyrandom.hassle.values.Azimuth
-import com.codellyrandom.hassle.values.Elevation
-import com.codellyrandom.hassle.values.EntityId
-import com.codellyrandom.hassle.values.FriendlyName
-import com.codellyrandom.hassle.values.Rising
-import com.codellyrandom.hassle.values.UserId
-import com.codellyrandom.hassle.values.domain
-import com.codellyrandom.hassle.values.objectId
+import com.codellyrandom.hassle.values.*
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias Sun = Sensor<SunState, SunAttributes>
+typealias Sun = Sensor<SunState>
 
 fun HomeAssistantApiClient.Sun(): Sun =
     Sensor(EntityId.fromPair("sun".domain to "sun".objectId))
 
 @Serializable
-data class SunState(override val value: SunValue) : State<SunValue>
+class SunState(
+    override val value: SunValue,
 
-@Serializable
-enum class SunValue {
-    @SerialName("above_horizon")
-    ABOVE_HORIZON,
-
-    @SerialName("below_horizon")
-    BELOW_HORIZON,
-}
-
-@Serializable
-data class SunAttributes(
     @SerialName("next_dawn")
     val nextDawn: Instant,
 
@@ -62,26 +44,35 @@ data class SunAttributes(
     val rising: Rising,
 
     @SerialName("user_id")
-    override val userId: UserId?,
+    val userId: UserId?,
 
     @SerialName("last_changed")
-    override val lastChanged: Instant,
+    val lastChanged: Instant,
 
     @SerialName("last_updated")
-    override val lastUpdated: Instant,
+    val lastUpdated: Instant,
 
     @SerialName("friendly_name")
-    override val friendlyName: FriendlyName,
-) : Attributes
+    val friendlyName: FriendlyName,
+) : State<SunValue>
+
+@Serializable
+enum class SunValue {
+    @SerialName("above_horizon")
+    ABOVE_HORIZON,
+
+    @SerialName("below_horizon")
+    BELOW_HORIZON,
+}
 
 val Sun.isAboveHorizon
-    get() = measurement.value == SunValue.ABOVE_HORIZON
+    get() = state.value == SunValue.ABOVE_HORIZON
 
 val Sun.isBelowHorizon
-    get() = measurement.value == SunValue.BELOW_HORIZON
+    get() = state.value == SunValue.BELOW_HORIZON
 
 val Sun.isRising
-    get() = attributes.rising == Rising.TRUE
+    get() = state.rising == Rising.TRUE
 
 fun Sun.onSunrise(f: Sun.(Switchable) -> Unit) =
     onMeasurementValueChangedFrom(SunValue.BELOW_HORIZON to SunValue.ABOVE_HORIZON, f)

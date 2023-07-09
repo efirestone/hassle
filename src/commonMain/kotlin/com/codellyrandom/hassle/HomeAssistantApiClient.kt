@@ -1,6 +1,5 @@
 package com.codellyrandom.hassle
 
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.errorHandling.ErrorResponseData
@@ -63,9 +62,8 @@ interface HomeAssistantApiClient {
     fun setErrorResponseHandler(errorResponseHandler: (ErrorResponseData) -> Unit)
 
     // A non-reified interface that external callers can use to create their own custom sensor implementations.
-    fun <S : State<*>, A : Attributes> Sensor(
+    fun <S : State<*>> Sensor(
         id: EntityId,
         stateType: KClass<S>,
-        attributesType: KClass<A>,
-    ): Sensor<S, A>
+    ): Sensor<S>
 }

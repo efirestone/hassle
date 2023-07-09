@@ -1,8 +1,10 @@
 package com.codellyrandom.hassle.extending.entities.actuators
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
-import com.codellyrandom.hassle.communicating.*
-import com.codellyrandom.hassle.entities.Attributes
+import com.codellyrandom.hassle.communicating.CloseCoverServiceCommand
+import com.codellyrandom.hassle.communicating.OpenCoverServiceCommand
+import com.codellyrandom.hassle.communicating.ServiceCommandResolver
+import com.codellyrandom.hassle.communicating.SetCoverPositionServiceCommand
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.Actuator
@@ -12,13 +14,13 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias PositionableCover = Actuator<PositionableCoverState, PositionableCoverAttributes>
+typealias PositionableCover = Actuator<PositionableCoverState, PositionableCoverSettableState>
 
 @Suppress("FunctionName")
-internal inline fun <reified S : State<*>, reified A : Attributes> HomeAssistantApiClient.Cover(
+internal fun HomeAssistantApiClient.Cover(
     objectId: ObjectId,
-    serviceCommandResolver: ServiceCommandResolver<S>,
-): Actuator<S, A> = Actuator(EntityId.fromPair("cover".domain to objectId), serviceCommandResolver)
+    serviceCommandResolver: ServiceCommandResolver<PositionableCoverSettableState>,
+): PositionableCover = Actuator(EntityId.fromPair("cover".domain to objectId), serviceCommandResolver)
 
 fun HomeAssistantApiClient.PositionableCover(objectId: ObjectId): PositionableCover =
     Cover(
@@ -35,10 +37,26 @@ fun HomeAssistantApiClient.PositionableCover(objectId: ObjectId): PositionableCo
     )
 
 @Serializable
-data class PositionableCoverState(
+class PositionableCoverState(
     override val value: PositionableCoverValue,
+    @SerialName("current_position")
     val currentPosition: Position? = null,
+
+    val working: Working,
+    @SerialName("user_id")
+    val userId: UserId?,
+    @SerialName("last_changed")
+    val lastChanged: Instant,
+    @SerialName("last_updated")
+    val lastUpdated: Instant,
+    @SerialName("friendly_name")
+    val friendlyName: FriendlyName,
 ) : State<PositionableCoverValue>
+
+data class PositionableCoverSettableState(
+    val value: PositionableCoverValue,
+    val currentPosition: Position? = null,
+)
 
 @Serializable
 enum class PositionableCoverValue {
@@ -58,44 +76,31 @@ enum class Working {
     NO,
 }
 
-@Serializable
-data class PositionableCoverAttributes(
-    val working: Working,
-    @SerialName("user_id")
-    override val userId: UserId?,
-    @SerialName("last_changed")
-    override val lastChanged: Instant,
-    @SerialName("last_updated")
-    override val lastUpdated: Instant,
-    @SerialName("friendly_name")
-    override val friendlyName: FriendlyName,
-) : Attributes
-
 val PositionableCover.isOpen
-    get() = actualState.value == PositionableCoverValue.OPEN
+    get() = state.value == PositionableCoverValue.OPEN
 
 val PositionableCover.isClosed
-    get() = actualState.value == PositionableCoverValue.CLOSED
+    get() = state.value == PositionableCoverValue.CLOSED
 
 val PositionableCover.isWorking
-    get() = attributes.working == Working.YES
+    get() = state.working == Working.YES
 
 suspend fun PositionableCover.open() {
-    setDesiredState(PositionableCoverState(PositionableCoverValue.OPEN))
+    setDesiredState(PositionableCoverSettableState(PositionableCoverValue.OPEN))
 }
 
 suspend fun PositionableCover.close() {
-    setDesiredState(PositionableCoverState(PositionableCoverValue.CLOSED))
+    setDesiredState(PositionableCoverSettableState(PositionableCoverValue.CLOSED))
 }
 
 suspend fun PositionableCover.setCoverPosition(position: Position) {
-    setDesiredState(PositionableCoverState(PositionableCoverValue.OPEN, position))
+    setDesiredState(PositionableCoverSettableState(PositionableCoverValue.OPEN, position))
 }
 
 fun PositionableCover.onStartedWorking(f: PositionableCover.() -> Unit) =
     attachObserver {
-        if (history[1].attributes.working == Working.NO &&
-            attributes.working == Working.YES
+        if (history[1].working == Working.NO &&
+            state.working == Working.YES
         ) {
             f(this)
         }
@@ -103,8 +108,8 @@ fun PositionableCover.onStartedWorking(f: PositionableCover.() -> Unit) =
 
 fun PositionableCover.onStoppedWorking(f: PositionableCover.() -> Unit) =
     attachObserver {
-        if (history[1].attributes.working == Working.YES &&
-            attributes.working == Working.NO
+        if (history[1].working == Working.YES &&
+            state.working == Working.NO
         ) {
             f(this)
         }
