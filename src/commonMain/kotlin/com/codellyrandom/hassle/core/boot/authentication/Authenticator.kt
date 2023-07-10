@@ -33,11 +33,10 @@ internal class Authenticator(
     private val authRequest =
         AuthRequest(accessToken = credentials.accessToken)
 
-    private suspend fun consumeInitialResponse() =
-        session.consumeSingleMessage<InitialResponse>()
+    private suspend fun consumeInitialResponse() = session.consumeInitialMessage<InitialResponse>()
 
     private suspend fun consumeAuthenticationResponse() =
-        session.consumeSingleMessage<AuthResponse>()
+        session.consumeInitialMessage<AuthResponse>()
 
     private suspend fun sendAuthenticationMessage() =
         try {
