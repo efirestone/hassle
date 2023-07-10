@@ -1,7 +1,6 @@
 package com.codellyrandom.hassle.extending.entities.sensors.binary
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.extending.entities.sensors.Sensor
@@ -14,12 +13,22 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias ContactSensor = Sensor<ContactState, ContactAttributes>
+typealias ContactSensor = Sensor<ContactState>
 
 fun HomeAssistantApiClient.ContactSensor(objectId: ObjectId): ContactSensor = Sensor(objectId)
 
 @Serializable
-data class ContactState(override val value: ContactStateValue) : State<ContactStateValue>
+class ContactState(
+    override val value: ContactStateValue,
+    @SerialName("user_id")
+    val userId: UserId?,
+    @SerialName("last_changed")
+    val lastChanged: Instant,
+    @SerialName("last_updated")
+    val lastUpdated: Instant,
+    @SerialName("friendly_name")
+    val friendlyName: FriendlyName,
+) : State<ContactStateValue>
 
 @Serializable
 enum class ContactStateValue {
@@ -30,23 +39,11 @@ enum class ContactStateValue {
     CLOSED,
 }
 
-@Serializable
-data class ContactAttributes(
-    @SerialName("user_id")
-    override val userId: UserId?,
-    @SerialName("last_changed")
-    override val lastChanged: Instant,
-    @SerialName("last_updated")
-    override val lastUpdated: Instant,
-    @SerialName("friendly_name")
-    override val friendlyName: FriendlyName,
-) : Attributes
-
 val ContactSensor.isOpen
-    get() = measurement.value == ContactStateValue.OPEN
+    get() = state.value == ContactStateValue.OPEN
 
 val ContactSensor.isClosed
-    get() = measurement.value == ContactStateValue.CLOSED
+    get() = state.value == ContactStateValue.CLOSED
 
 inline fun ContactSensor.onOpened(crossinline f: ContactSensor.(Switchable) -> Unit) =
     onMeasurementValueChangedFrom(ContactStateValue.CLOSED to ContactStateValue.OPEN, f)

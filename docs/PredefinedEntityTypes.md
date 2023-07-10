@@ -13,12 +13,12 @@ Some of those are represented as entities, therefore you can use them in Hassle.
 The input_boolean integration allows the user to define boolean values that can be controlled via the frontend and can be 
 used within conditions of automation. See [home assistant documentation](https://www.home-assistant.io/integrations/input_boolean/) for more.
 
-| Element    | Name | Sourcecode | KDocs |
-|------------|------|------------|-------|
-| Factory    | HomeAssistantApiClient::InputBoolean   |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending.actuators/-input-boolean.html)      |
-| State      | SwitchableState     |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-switchable-state/index.html)      |
-| StateValue | SwitchableStateValue | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-switchable-value/index.html)      |
-| Attributes | InputBooleanAttributes    |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-boolean-attributes/index.html)      |
+| Element    | Name                                 | Source                                                                                                        | KDocs                                                                                                                      |
+|------------|--------------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Factory    | HomeAssistantApiClient::InputBoolean | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending.actuators/-input-boolean.html)        |
+| State      | SwitchableState                      | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt)    | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-switchable-state/index.html)         |
+| StateValue | SwitchableValue                      | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt)    | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-switchable-value/index.html)         |
+| Attributes | InputBooleanAttributes               | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputBoolean.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-boolean-attributes/index.html) |
 
 Example:
 
@@ -26,8 +26,8 @@ Example:
 val client = homeAssistantApiClient(...)
 val sleepMode: InputBoolean = client.InputBoolean(ObjectId("sleep_mode"))
 
-sleepMode.attachObserver { //this:Actuator<SwitchableState,InputBooleanAttributes>
-    if (actualState.value = SwitchableValue.ON) {
+sleepMode.attachObserver { //this:Actuator<InputBooleanState,SwitchableSettableState>
+    if (state.value == SwitchableValue.ON) {
         //... turn off lights, close covers, activate the alarm, etc.
     }
 }
@@ -38,25 +38,25 @@ sleepMode.attachObserver { //this:Actuator<SwitchableState,InputBooleanAttribute
 ##### isOn
 
 ```kotlin 
-val Actuator<SwitchableState, *>.isOn
+val <S : State<SwitchableValue>> Actuator<S, *>.isOn
 ```
 
-Is true when the actual state value is equal to `SwitchableStateValue.ON`.
+Is true when the actual state value is equal to `SwitchableValue.ON`.
 
 ##### isOff
 
 ```kotlin 
-val Actuator<SwitchableState, *>.isOff
+val <S : State<SwitchableValue>> Actuator<S, *>.isOff
 ```
 
-Is true when the actual state value is equal to `SwitchableStateValue.OFF`.
+Is true when the actual state value is equal to `SwitchableValue.OFF`.
 
 #### Methods
 
 ##### turnOn()
 
 ```kotlin
-fun <A : Attributes> Actuator<SwitchableState, A>.turnOn() 
+suspend fun Actuator<*, SwitchableSettableState>.turnOn()
 ```
 
 Since in Home Assistant InputBoolean states are ON and OFF, you can "turn on" the InputBoolean-Helper by calling this method resulting in
@@ -65,7 +65,7 @@ a state change.
 ##### turnOff()
 
 ```kotlin
-fun <A : Attributes> Actuator<SwitchableState, A>.turnOff() 
+suspend fun Actuator<*, SwitchableSettableState>.turnOff()
 ```
 
 Since in Home Assistant InputBoolean states are ON and OFF, you can "turn off" the InputBoolean-Helper by calling this method.
@@ -73,8 +73,8 @@ Since in Home Assistant InputBoolean states are ON and OFF, you can "turn off" t
 ##### onTurnedOn {...}
 
 ```kotlin 
-inline fun <A : Attributes> Actuator<SwitchableState, A>.onTurnedOn(
-    crossinline f: Actuator<SwitchableState, A>.(Switchable) -> Unit
+inline fun <S : State<SwitchableValue>> Actuator<S, *>.onTurnedOn(
+    crossinline f: Actuator<S, *>.(Switchable) -> Unit,
 )
 ```
 
@@ -84,8 +84,8 @@ Inside the lambda you have access to all properties and members of your entity.
 ##### onTurnedOff {...}
 
 ```kotlin 
-inline fun <A : Attributes> Actuator<SwitchableState, A>.onTurnedOff(
-    crossinline f: Actuator<SwitchableState, A>.(Switchable) -> Unit
+inline fun <S : State<SwitchableValue>> Actuator<S, *>.onTurnedOff(
+    crossinline f: Actuator<S, *>.(Switchable) -> Unit,
 )
 ```
 
@@ -98,12 +98,12 @@ The input_number integration allows the user to define values that can be contro
 The frontend can display a slider, or a numeric input box. Changes to the slider or numeric input box generate state events. 
 These state events can be utilized as automation triggers as well. See [home assistant documentation](https://www.home-assistant.io/integrations/input_number/) for more.
 
-| Element    | Name | Sourcecode | KDocs |
-|------------|------|------------|-------|
-| Factory    | HomeAssistantApiClient::InputNumber   |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending.actuators/-input-number.html)      |
-| State      | InputNumberState     |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-number-state/index.html)      |
-| StateValue | Double | - | -      |
-| Attributes | InputNumberAttributes    |  [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-number-attributes/index.html)      |
+| Element       | Name                                | Source                                                                                                       | KDocs                                                                                                                     |
+|---------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| Factory       | HomeAssistantApiClient::InputNumber | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending.actuators/-input-number.html)        |
+| State         | InputNumberState                    | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/SwitchableEntityComponents.kt)   | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-number-state/index.html)      |
+| StateValue    | Double                              | -                                                                                                            | -                                                                                                                         |
+| SettableState | InputNumberSettableState            | [Link](../src/commonMain/kotlin/com/codellyrandom/hassle/extending/entities/actuators/inputs/InputNumber.kt) | [Link](https://efirestone.github.io/hassle/hassle/com.codellyrandom.hassle.extending/-input-number-attributes/index.html) |
 
 Example:
 
@@ -113,7 +113,7 @@ val maxVolume: InputNumber = client.InputNumber(ObjectId("max_volume"))
 val googleHomeKitchen: MediaReceiver = client.MediaReceiver(ObjectId("google_home_kitchen"))
 
 googleHomeKitchen.attachObserver { //this:Actuator<InputNumberState, InputNumberAttributes>
-    if (actualState.value <= 10.0) {
+    if (state.value <= 10.0) {
         //... turn off lights, close covers, activate the alarm, etc.
     }
 }

@@ -3,7 +3,6 @@ package com.codellyrandom.hassle.extending.entities.actuators.inputs
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.SelectOptionServiceCommand
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.Actuator
@@ -12,7 +11,7 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias InputSelect = Actuator<InputSelectState, InputSelectAttributes>
+typealias InputSelect = Actuator<InputSelectState, InputSelectSettableState>
 
 fun HomeAssistantApiClient.InputSelect(objectId: ObjectId): InputSelect =
     Actuator(
@@ -23,18 +22,18 @@ fun HomeAssistantApiClient.InputSelect(objectId: ObjectId): InputSelect =
     )
 
 @Serializable
-data class InputSelectAttributes(
+class InputSelectState(
+    override val value: Option,
     val options: List<Option>,
     val editable: Boolean,
     @SerialName("user_id")
-    override val userId: UserId?,
+    val userId: UserId?,
     @SerialName("friendly_name")
-    override val friendlyName: FriendlyName? = null,
+    val friendlyName: FriendlyName? = null,
     @SerialName("last_changed")
-    override val lastChanged: Instant,
+    val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant,
-) : Attributes
+    val lastUpdated: Instant,
+) : State<Option>
 
-@Serializable
-data class InputSelectState(override val value: Option) : State<Option>
+data class InputSelectSettableState(val value: Option)

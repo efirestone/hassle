@@ -2,7 +2,6 @@ package com.codellyrandom.hassle
 
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.communicating.TurnOnServiceCommand
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.values.*
@@ -10,13 +9,16 @@ import kotlinx.datetime.Instant
 import kotlin.test.Test
 
 internal class HomeAssistantApiClientActuatorTest {
-    data class ActuatorState(override val value: String) : State<String>
-    data class ActuatorAttributes(
-        override val userId: UserId?,
-        override val lastChanged: Instant,
-        override val lastUpdated: Instant,
-        override val friendlyName: FriendlyName,
-    ) : Attributes
+    class ActuatorState(
+        override val value: String,
+        val userId: UserId?,
+        val lastChanged: Instant,
+        val lastUpdated: Instant,
+        val friendlyName: FriendlyName,
+    ) : State<String>
+    data class ActuatorSettableState(
+        val value: String,
+    )
 
     @Test
     fun `assert actuator factory creates new Actuator instance`() = withConnection {
@@ -24,12 +26,11 @@ internal class HomeAssistantApiClientActuatorTest {
             Actuator(
                 EntityId.fromString("light.some_light"),
                 ActuatorState::class,
-                ActuatorAttributes::class,
-                ServiceCommandResolver { entityId, _ ->
+                ServiceCommandResolver<ActuatorSettableState> { entityId, _ ->
                     TurnOnServiceCommand(entityId)
                 },
             )
 
-        assert(actuator is Actuator<ActuatorState, ActuatorAttributes>)
+        assert(actuator is Actuator<ActuatorState, ActuatorSettableState>)
     }
 }

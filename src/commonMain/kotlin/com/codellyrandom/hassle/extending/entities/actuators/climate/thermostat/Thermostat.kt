@@ -2,10 +2,10 @@ package com.codellyrandom.hassle.extending.entities.actuators.climate.thermostat
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.*
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.actuators.climate.ClimateControl
+import com.codellyrandom.hassle.extending.entities.actuators.climate.thermostat.ThermostatStateValue.*
 import com.codellyrandom.hassle.extending.entities.actuators.onStateValueChangedFrom
 import com.codellyrandom.hassle.observability.Switchable
 import com.codellyrandom.hassle.values.*
@@ -13,15 +13,15 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias Thermostat = Actuator<ThermostatState, ThermostatAttributes>
+typealias Thermostat = Actuator<ThermostatState, ThermostatSettableState>
 
 fun HomeAssistantApiClient.Thermostat(objectId: ObjectId): Thermostat {
     return ClimateControl(
         objectId,
         ServiceCommandResolver { entityId, desiredState ->
             when (desiredState.value) {
-                ThermostatStateValue.OFF -> TurnOffServiceCommand(entityId)
-                ThermostatStateValue.HEAT -> {
+                OFF -> TurnOffServiceCommand(entityId)
+                HEAT -> {
                     desiredState.temperature?.let { temperature ->
                         SetTemperatureServiceCommand(
                             entityId,
@@ -37,23 +37,38 @@ fun HomeAssistantApiClient.Thermostat(objectId: ObjectId): Thermostat {
     )
 }
 
-data class ThermostatState(
+@Serializable
+class ThermostatState(
     override val value: ThermostatStateValue,
     val temperature: Temperature? = null,
+    @SerialName("preset_mode")
     val presetMode: PresetMode = "none".presetMode,
+    @SerialName("hvac_modes")
+    val hvacModes: List<HvacMode>,
+    @SerialName("preset_modes")
+    val presetModes: List<PresetMode>,
+    @SerialName("current_temperature")
+    val currentTemperature: Temperature,
+    @SerialName("min_temp")
+    val minTemp: Temperature,
+    @SerialName("max_temp")
+    val maxTemp: Temperature,
+    @SerialName("friendly_name")
+    val friendlyName: FriendlyName,
+    @SerialName("last_changed")
+    val lastChanged: Instant,
+    @SerialName("last_updated")
+    val lastUpdated: Instant,
+    @SerialName("user_id")
+    val userId: UserId?,
 ) : State<ThermostatStateValue>
 
-data class ThermostatAttributes(
-    val hvacModes: List<HvacMode>,
-    val presetModes: List<PresetMode>,
-    val currentTemperature: Temperature,
-    val minTemp: Temperature,
-    val maxTemp: Temperature,
-    override val friendlyName: FriendlyName,
-    override val lastChanged: Instant,
-    override val lastUpdated: Instant,
-    override val userId: UserId?,
-) : Attributes
+data class ThermostatSettableState(
+    val value: ThermostatStateValue,
+    val temperature: Temperature? = null,
+    @SerialName("preset_mode")
+    val presetMode: PresetMode = "none".presetMode,
+)
 
 @Serializable
 enum class ThermostatStateValue {
@@ -65,28 +80,28 @@ enum class ThermostatStateValue {
 }
 
 val Thermostat.isHeating
-    get() = actualState.value == ThermostatStateValue.HEAT
+    get() = state.value == HEAT
 
 val Thermostat.isOn
     get() = isHeating
 
 val Thermostat.isOff
-    get() = actualState == ThermostatState(ThermostatStateValue.OFF)
+    get() = state.value == OFF
 
-suspend fun Thermostat.turnOff() = setDesiredState(ThermostatState(ThermostatStateValue.OFF))
+suspend fun Thermostat.turnOff() = setDesiredState(ThermostatSettableState(OFF))
 
-suspend fun Thermostat.turnOn() = setDesiredState(ThermostatState(ThermostatStateValue.HEAT))
+suspend fun Thermostat.turnOn() = setDesiredState(ThermostatSettableState(HEAT))
 
 suspend fun Thermostat.setPreset(preset: PresetMode) =
-    setDesiredState(ThermostatState(ThermostatStateValue.HEAT, presetMode = preset))
+    setDesiredState(ThermostatSettableState(HEAT, presetMode = preset))
 
 suspend fun Thermostat.setTargetTemperature(temperature: Temperature) =
-    setDesiredState(ThermostatState(ThermostatStateValue.HEAT, temperature = temperature))
+    setDesiredState(ThermostatSettableState(HEAT, temperature = temperature))
 
 suspend fun Thermostat.turnOnBoost() = setPreset("boost".presetMode)
 
 fun Thermostat.onTurnedOn(f: Thermostat.(Switchable) -> Unit) =
-    onStateValueChangedFrom(ThermostatStateValue.OFF to ThermostatStateValue.HEAT, f)
+    onStateValueChangedFrom(OFF to HEAT, f)
 
 fun Thermostat.onTurnedOff(f: Thermostat.(Switchable) -> Unit) =
-    onStateValueChangedFrom(ThermostatStateValue.HEAT to ThermostatStateValue.OFF, f)
+    onStateValueChangedFrom(HEAT to OFF, f)

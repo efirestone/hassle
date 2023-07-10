@@ -2,8 +2,6 @@ package com.codellyrandom.hassle.extending.entities.actuators.mediaplayer
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.*
-import com.codellyrandom.hassle.communicating.MuteVolumeServiceCommand
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.extending.entities.Actuator
 import com.codellyrandom.hassle.extending.entities.actuators.mediaplayer.MediaReceiverStateValue.*
@@ -15,7 +13,7 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias MediaReceiver = MediaPlayer<MediaReceiverState, MediaReceiverAttributes>
+typealias MediaReceiver = MediaPlayer<MediaReceiverState, MediaReceiverSettableState>
 
 fun HomeAssistantApiClient.MediaReceiver(objectId: ObjectId): MediaReceiver =
     MediaReceiver(EntityId(Domain("media_player"), objectId))
@@ -51,7 +49,7 @@ fun HomeAssistantApiClient.MediaReceiver(entityId: EntityId): MediaReceiver =
     )
 
 @Serializable
-data class MediaReceiverState(
+class MediaReceiverState(
     override val value: MediaReceiverStateValue,
     @SerialName("volume_level")
     val volumeLevel: VolumeLevel? = null,
@@ -59,7 +57,42 @@ data class MediaReceiverState(
     val isVolumeMuted: Mute? = null,
     @SerialName("media_position")
     val mediaPosition: MediaPosition? = null,
+    @SerialName("media_content_id")
+    val mediaContentId: MediaContentId? = null,
+    @SerialName("media_title")
+    val mediaTitle: MediaTitle? = null,
+    @SerialName("media_artist")
+    val mediaArtist: Artist? = null,
+    @SerialName("album_name")
+    val mediaAlbumName: AlbumName? = null,
+    @SerialName("media_content_type")
+    val mediaContentType: MediaContentType? = null,
+    @SerialName("media_duration")
+    val mediaDuration: MediaDuration? = null,
+    @SerialName("media_position_updated_at")
+    val mediaPositionUpdatedAt: Instant? = null,
+    @SerialName("app_id")
+    val appId: AppId? = null,
+    @SerialName("app_name")
+    val appName: AppName? = null,
+    @SerialName("entity_picture")
+    val entityPicture: EntityPicture? = null,
+    @SerialName("user_id")
+    val userId: UserId?,
+    @SerialName("friendly_name")
+    val friendlyName: FriendlyName,
+    @SerialName("last_changed")
+    val lastChanged: Instant,
+    @SerialName("last_updated")
+    val lastUpdated: Instant,
 ) : State<MediaReceiverStateValue>
+
+data class MediaReceiverSettableState(
+    val value: MediaReceiverStateValue,
+    val volumeLevel: VolumeLevel? = null,
+    val isVolumeMuted: Mute? = null,
+    val mediaPosition: MediaPosition? = null,
+)
 
 @Serializable
 enum class MediaReceiverStateValue {
@@ -82,77 +115,45 @@ enum class MediaReceiverStateValue {
     PAUSED,
 }
 
-@Serializable
-data class MediaReceiverAttributes(
-    @SerialName("media_content_id")
-    val mediaContentId: MediaContentId? = null,
-    @SerialName("media_title")
-    val mediaTitle: MediaTitle? = null,
-    @SerialName("media_artist")
-    val mediaArtist: Artist? = null,
-    @SerialName("album_name")
-    val mediaAlbumName: AlbumName? = null,
-    @SerialName("media_content_type")
-    val mediaContentType: MediaContentType? = null,
-    @SerialName("media_duration")
-    val mediaDuration: MediaDuration? = null,
-    @SerialName("media_position_updated_at")
-    val mediaPositionUpdatedAt: Instant? = null,
-    @SerialName("app_id")
-    val appId: AppId? = null,
-    @SerialName("app_name")
-    val appName: AppName? = null,
-    @SerialName("entity_picture")
-    val entityPicture: EntityPicture? = null,
-    @SerialName("user_id")
-    override val userId: UserId?,
-    @SerialName("friendly_name")
-    override val friendlyName: FriendlyName,
-    @SerialName("last_changed")
-    override val lastChanged: Instant,
-    @SerialName("last_updated")
-    override val lastUpdated: Instant,
-) : Attributes
-
 val MediaReceiver.isOff
-    get() = actualState.value == OFF
+    get() = state.value == OFF
 
 val MediaReceiver.isIdle
-    get() = actualState.value == IDLE
+    get() = state.value == IDLE
 
 val MediaReceiver.isPlaying
-    get() = actualState.value == PLAYING
+    get() = state.value == PLAYING
 
 val MediaReceiver.isOn
-    get() = actualState.value != OFF || actualState.value != UNAVAILABLE
+    get() = state.value != OFF || state.value != UNAVAILABLE
 
 val MediaReceiver.isPaused
-    get() = actualState.value == PAUSED
+    get() = state.value == PAUSED
 
-suspend fun MediaReceiver.turnOn() = setDesiredState(MediaReceiverState(value = IDLE))
+suspend fun MediaReceiver.turnOn() = setDesiredState(MediaReceiverSettableState(value = IDLE))
 
-suspend fun MediaReceiver.turnOff() = setDesiredState(MediaReceiverState(value = OFF))
+suspend fun MediaReceiver.turnOff() = setDesiredState(MediaReceiverSettableState(value = OFF))
 
-suspend fun MediaReceiver.play() = setDesiredState(MediaReceiverState(value = PLAYING))
+suspend fun MediaReceiver.play() = setDesiredState(MediaReceiverSettableState(value = PLAYING))
 
 suspend fun MediaReceiver.play(contentType: MediaContentType, contentId: MediaContentId) =
     send(PlayMediaServiceCommand(entityId, contentType, contentId))
 
-suspend fun MediaReceiver.pause() = setDesiredState(MediaReceiverState(value = PAUSED))
+suspend fun MediaReceiver.pause() = setDesiredState(MediaReceiverSettableState(value = PAUSED))
 
 suspend fun MediaReceiver.setVolumeTo(level: VolumeLevel) {
-    if (actualState.value == UNAVAILABLE || actualState.value == OFF) {
-        throw RuntimeException("Volume can not be set when MediaReceiver is ${actualState.value}")
+    if (state.value == UNAVAILABLE || state.value == OFF) {
+        throw RuntimeException("Volume can not be set when MediaReceiver is ${state.value}")
     }
 
-    setDesiredState(MediaReceiverState(value = actualState.value, volumeLevel = level))
+    setDesiredState(MediaReceiverSettableState(value = state.value, volumeLevel = level))
 }
 
 suspend fun MediaReceiver.muteVolume() =
-    setDesiredState(MediaReceiverState(value = actualState.value, isVolumeMuted = Mute.TRUE))
+    setDesiredState(MediaReceiverSettableState(value = state.value, isVolumeMuted = Mute.TRUE))
 
 suspend fun MediaReceiver.unMuteVolume() =
-    setDesiredState(MediaReceiverState(value = actualState.value, isVolumeMuted = Mute.FALSE))
+    setDesiredState(MediaReceiverSettableState(value = state.value, isVolumeMuted = Mute.FALSE))
 
 fun MediaReceiver.onPlaybackStarted(f: MediaReceiver.(Switchable) -> Unit) =
     onStateValueChangedFrom(IDLE to PLAYING, f)

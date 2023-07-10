@@ -57,7 +57,6 @@ class ObjectMapper(
     }
 
     inline fun <reified Target : Any> fromJson(json: String): Target = fromJson(json, typeOf<Target>())
-    inline fun <reified Target : Any> fromJson(json: JsonElement): Target = fromJson(json, Target::class)
 
     inline fun <reified Destination : Any> toJson(value: Destination): String =
         toJson(value, type = typeOf<Destination>())

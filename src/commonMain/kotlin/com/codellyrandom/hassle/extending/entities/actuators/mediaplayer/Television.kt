@@ -2,7 +2,6 @@ package com.codellyrandom.hassle.extending.entities.actuators.mediaplayer
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.*
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.extending.entities.SwitchableValue
 import com.codellyrandom.hassle.extending.entities.actuators.onStateValueChangedFrom
@@ -12,7 +11,7 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias Television = MediaPlayer<TelevisionState, TelevisionAttributes>
+typealias Television = MediaPlayer<TelevisionState, TelevisionSettableState>
 
 fun HomeAssistantApiClient.Television(objectId: ObjectId): Television =
     MediaPlayer(
@@ -37,17 +36,13 @@ fun HomeAssistantApiClient.Television(objectId: ObjectId): Television =
     )
 
 @Serializable
-data class TelevisionState(
+class TelevisionState(
     override val value: SwitchableValue,
     @SerialName("volume_level")
     val volumeLevel: VolumeLevel? = null,
     @SerialName("is_volume_muted")
     val isVolumeMuted: Mute? = null,
     val source: MediaSource? = null,
-) : State<SwitchableValue>
-
-@Serializable
-data class TelevisionAttributes(
     @SerialName("media_content_id")
     val mediaContentId: MediaContentId,
     @SerialName("media_title")
@@ -55,46 +50,53 @@ data class TelevisionAttributes(
     @SerialName("media_content_type")
     val mediaContentType: MediaContentType,
     @SerialName("user_id")
-    override val userId: UserId?,
+    val userId: UserId?,
     @SerialName("friendly_name")
-    override val friendlyName: FriendlyName,
+    val friendlyName: FriendlyName,
     @SerialName("last_changed")
-    override val lastChanged: Instant,
+    val lastChanged: Instant,
     @SerialName("last_updated")
-    override val lastUpdated: Instant,
-) : Attributes
+    val lastUpdated: Instant,
+) : State<SwitchableValue>
+
+data class TelevisionSettableState(
+    val value: SwitchableValue,
+    val volumeLevel: VolumeLevel? = null,
+    val isVolumeMuted: Mute? = null,
+    val source: MediaSource? = null,
+)
 
 val Television.isOn
-    get() = actualState.value == SwitchableValue.ON
+    get() = state.value == SwitchableValue.ON
 
 val Television.isOff
-    get() = actualState.value == SwitchableValue.OFF
+    get() = state.value == SwitchableValue.OFF
 
 val Television.isMuted
-    get() = actualState.isVolumeMuted == Mute.TRUE
+    get() = state.isVolumeMuted == Mute.TRUE
 
 suspend fun Television.turnOn() {
-    setDesiredState(TelevisionState(value = SwitchableValue.ON))
+    setDesiredState(TelevisionSettableState(value = SwitchableValue.ON))
 }
 
 suspend fun Television.turnOff() {
-    setDesiredState(TelevisionState(value = SwitchableValue.OFF))
+    setDesiredState(TelevisionSettableState(value = SwitchableValue.OFF))
 }
 
 suspend fun Television.setVolumeTo(level: VolumeLevel) {
-    setDesiredState(TelevisionState(value = SwitchableValue.ON, volumeLevel = level))
+    setDesiredState(TelevisionSettableState(value = SwitchableValue.ON, volumeLevel = level))
 }
 
 suspend fun Television.muteVolume() {
-    setDesiredState(TelevisionState(value = SwitchableValue.ON, isVolumeMuted = Mute.TRUE))
+    setDesiredState(TelevisionSettableState(value = SwitchableValue.ON, isVolumeMuted = Mute.TRUE))
 }
 
 suspend fun Television.unMuteVolume() {
-    setDesiredState(TelevisionState(value = SwitchableValue.ON, isVolumeMuted = Mute.FALSE))
+    setDesiredState(TelevisionSettableState(value = SwitchableValue.ON, isVolumeMuted = Mute.FALSE))
 }
 
 suspend fun Television.setSource(source: MediaSource) {
-    setDesiredState(TelevisionState(value = SwitchableValue.ON, source = source))
+    setDesiredState(TelevisionSettableState(value = SwitchableValue.ON, source = source))
 }
 
 fun Television.onTurnedOn(f: Television.(Switchable) -> Unit) =

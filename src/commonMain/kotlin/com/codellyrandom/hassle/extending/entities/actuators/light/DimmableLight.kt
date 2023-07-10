@@ -1,16 +1,23 @@
 package com.codellyrandom.hassle.extending.entities.actuators.light
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
-import com.codellyrandom.hassle.communicating.*
+import com.codellyrandom.hassle.communicating.ServiceCommandResolver
+import com.codellyrandom.hassle.communicating.TurnOffServiceCommand
+import com.codellyrandom.hassle.communicating.TurnOnLightServiceCommand
+import com.codellyrandom.hassle.communicating.TurnOnServiceCommand
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.SwitchableValue
-import com.codellyrandom.hassle.extending.entities.actuators.stateValueChangedFrom
-import com.codellyrandom.hassle.observability.Switchable
+import com.codellyrandom.hassle.extending.entities.SwitchableValue.*
 import com.codellyrandom.hassle.values.Brightness
+import com.codellyrandom.hassle.values.FriendlyName
 import com.codellyrandom.hassle.values.ObjectId
+import com.codellyrandom.hassle.values.UserId
+import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-typealias DimmableLight = Actuator<DimmableLightState, LightAttributes>
+typealias DimmableLight = Actuator<DimmableLightState, DimmableLightSettableState>
 
 fun HomeAssistantApiClient.DimmableLight(objectId: ObjectId): DimmableLight =
     Light(
@@ -22,44 +29,44 @@ fun HomeAssistantApiClient.DimmableLight(objectId: ObjectId): DimmableLight =
                     TurnOnLightServiceCommand.ServiceData(brightness = brightness),
                 )
             } ?: when (desiredState.value) {
-                SwitchableValue.OFF -> TurnOffServiceCommand(entityId)
-                SwitchableValue.ON -> TurnOnServiceCommand(entityId)
+                OFF -> TurnOffServiceCommand(entityId)
+                ON -> TurnOnServiceCommand(entityId)
 
-                SwitchableValue.UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
+                UNAVAILABLE -> throw IllegalStateException("State cannot be changed to UNAVAILABLE")
             }
         },
     )
 
-data class DimmableLightState(override val value: SwitchableValue, val brightness: Brightness? = null) : State<SwitchableValue>
+@Serializable
+class DimmableLightState(
+    override val value: SwitchableValue,
+    val brightness: Brightness? = null,
 
-val DimmableLight.isOn
-    get() = actualState.value == SwitchableValue.ON
+    @SerialName("supported_features")
+    val supportedFeatures: Int,
+    @SerialName("user_id")
+    val userId: UserId?,
+    @SerialName("friendly_name")
+    val friendlyName: FriendlyName,
+    @SerialName("last_changed")
+    val lastChanged: Instant,
+    @SerialName("last_updated")
+    val lastUpdated: Instant,
+) : State<SwitchableValue>
 
-val DimmableLight.isOff
-    get() = actualState.value == SwitchableValue.OFF
+data class DimmableLightSettableState(
+    val value: SwitchableValue,
+    val brightness: Brightness? = null,
+)
 
 suspend fun DimmableLight.turnOn() {
-    setDesiredState(DimmableLightState(SwitchableValue.ON))
+    setDesiredState(DimmableLightSettableState(ON))
 }
 
 suspend fun DimmableLight.turnOff() {
-    setDesiredState(DimmableLightState(SwitchableValue.OFF))
+    setDesiredState(DimmableLightSettableState(OFF))
 }
 
 suspend fun DimmableLight.setBrightness(level: Brightness) {
-    setDesiredState(DimmableLightState(SwitchableValue.ON, level))
+    setDesiredState(DimmableLightSettableState(ON, level))
 }
-
-fun DimmableLight.onTurnedOn(f: DimmableLight.(Switchable) -> Unit) =
-    attachObserver {
-        if (stateValueChangedFrom(SwitchableValue.OFF to SwitchableValue.ON)) {
-            f(this, it)
-        }
-    }
-
-fun DimmableLight.onTurnedOff(f: DimmableLight.(Switchable) -> Unit) =
-    attachObserver {
-        if (stateValueChangedFrom(SwitchableValue.ON to SwitchableValue.OFF)) {
-            f(this, it)
-        }
-    }

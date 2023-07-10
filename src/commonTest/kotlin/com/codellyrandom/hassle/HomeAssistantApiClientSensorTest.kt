@@ -1,6 +1,5 @@
 package com.codellyrandom.hassle
 
-import com.codellyrandom.hassle.entities.Attributes
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.values.*
@@ -9,14 +8,13 @@ import kotlin.test.Test
 
 internal class HomeAssistantApiClientSensorTest {
 
-    data class SensorState(override val value: String) : State<String>
-
-    data class SensorAttributes(
-        override val userId: UserId?,
-        override val lastChanged: Instant,
-        override val lastUpdated: Instant,
-        override val friendlyName: FriendlyName,
-    ) : Attributes
+    data class SensorState(
+        override val value: String,
+        val userId: UserId?,
+        val lastChanged: Instant,
+        val lastUpdated: Instant,
+        val friendlyName: FriendlyName,
+    ) : State<String>
 
     @Test
     fun `assert sensor factory creates new Sensor instance`() {
@@ -25,7 +23,6 @@ internal class HomeAssistantApiClientSensorTest {
                 Sensor(
                     EntityId.fromPair("sensor".domain to "some_sensor".objectId),
                     SensorState::class,
-                    SensorAttributes::class,
                 )
 
             assert(sensor is Sensor)

@@ -2,23 +2,21 @@ package com.codellyrandom.hassle.extending.entities.actuators
 
 import com.codellyrandom.hassle.HomeAssistantApiClient
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
-import com.codellyrandom.hassle.entities.Attributes
+import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.Actuator
-import com.codellyrandom.hassle.extending.entities.SwitchableState
+import com.codellyrandom.hassle.extending.entities.SwitchableSettableState
+import com.codellyrandom.hassle.extending.entities.SwitchableValue
 import com.codellyrandom.hassle.extending.entities.mapSwitchable
-import com.codellyrandom.hassle.values.EntityId
-import com.codellyrandom.hassle.values.FriendlyName
-import com.codellyrandom.hassle.values.ObjectId
-import com.codellyrandom.hassle.values.PowerConsumption
-import com.codellyrandom.hassle.values.UserId
-import com.codellyrandom.hassle.values.domain
+import com.codellyrandom.hassle.values.*
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-typealias Switch<reified A> = Actuator<SwitchableState, A>
-typealias PowerSwitch = Switch<PowerSwitchAttributes>
+typealias Switch<S> = Actuator<S, SwitchableSettableState>
+typealias PowerSwitch = Actuator<PowerSwitchState, SwitchableSettableState>
 
-internal inline fun <reified A : Attributes> HomeAssistantApiClient.Switch(objectId: ObjectId): Switch<A> =
+internal inline fun <reified S : State<SwitchableValue>> HomeAssistantApiClient.Switch(objectId: ObjectId): Switch<S> =
     Actuator(
         EntityId.fromPair("switch".domain to objectId),
         ServiceCommandResolver { entityId, switchableState ->
@@ -29,10 +27,18 @@ internal inline fun <reified A : Attributes> HomeAssistantApiClient.Switch(objec
 @Suppress("FunctionName")
 fun HomeAssistantApiClient.PowerMeasuringSwitch(objectId: ObjectId): PowerSwitch = Switch(objectId)
 
-data class PowerSwitchAttributes(
+@Serializable
+class PowerSwitchState(
+    override val value: SwitchableValue,
+
+    @SerialName("power_consumption")
     val powerConsumption: PowerConsumption,
-    override val userId: UserId?,
-    override val friendlyName: FriendlyName,
-    override val lastChanged: Instant,
-    override val lastUpdated: Instant,
-) : Attributes
+    @SerialName("user_id")
+    val userId: UserId?,
+    @SerialName("friendly_name")
+    val friendlyName: FriendlyName,
+    @SerialName("last_changed")
+    val lastChanged: Instant,
+    @SerialName("last_updated")
+    val lastUpdated: Instant,
+) : State<SwitchableValue>

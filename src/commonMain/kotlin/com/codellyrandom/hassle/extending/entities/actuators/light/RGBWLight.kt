@@ -8,11 +8,12 @@ import com.codellyrandom.hassle.communicating.TurnOnServiceCommand
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.SwitchableValue
-import com.codellyrandom.hassle.extending.entities.actuators.onStateValueChangedFrom
-import com.codellyrandom.hassle.observability.Switchable
 import com.codellyrandom.hassle.values.*
+import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-typealias RGBWLight = Actuator<RGBWLightState, LightAttributes>
+typealias RGBWLight = Actuator<RGBWLightState, RGBWLightSettableState>
 
 fun HomeAssistantApiClient.RGBWLight(objectId: ObjectId): RGBWLight =
     Light(
@@ -47,38 +48,57 @@ fun HomeAssistantApiClient.RGBWLight(objectId: ObjectId): RGBWLight =
         },
     )
 
+@Serializable
 data class RGBWLightState(
     override val value: SwitchableValue,
+    val brightness: Brightness? = null,
+    @SerialName("hs_color")
+    val hsColor: HSColor? = null,
+    @SerialName("rgb_color")
+    val rgbColor: RGBColor? = null,
+    @SerialName("xy_color")
+    val xyColor: XYColor? = null,
+    @SerialName("color_temp")
+    val colorTemp: ColorTemperature? = null,
+
+    @SerialName("supported_features")
+    val supportedFeatures: Int,
+    @SerialName("user_id")
+    val userId: UserId?,
+    @SerialName("friendly_name")
+    val friendlyName: FriendlyName,
+    @SerialName("last_changed")
+    val lastChanged: Instant,
+    @SerialName("last_updated")
+    val lastUpdated: Instant,
+) : State<SwitchableValue>
+
+data class RGBWLightSettableState(
+    val value: SwitchableValue,
     val brightness: Brightness? = null,
     val hsColor: HSColor? = null,
     val rgbColor: RGBColor? = null,
     val xyColor: XYColor? = null,
     val colorTemp: ColorTemperature? = null,
-) : State<SwitchableValue>
+)
 
-val RGBWLight.isOn
-    get() = actualState.value == SwitchableValue.ON
+suspend fun RGBWLight.turnOn() = setDesiredState(RGBWLightSettableState(SwitchableValue.ON))
 
-val RGBWLight.isOff
-    get() = actualState.value == SwitchableValue.OFF
+suspend fun RGBWLight.turnOff() = setDesiredState(RGBWLightSettableState(SwitchableValue.OFF))
 
-suspend fun RGBWLight.turnOn() = setDesiredState(RGBWLightState(SwitchableValue.ON))
-
-suspend fun RGBWLight.turnOff() = setDesiredState(RGBWLightState(SwitchableValue.OFF))
-
-suspend fun RGBWLight.setBrightness(level: Brightness) = setDesiredState(RGBWLightState(SwitchableValue.ON, level))
+suspend fun RGBWLight.setBrightness(level: Brightness) = setDesiredState(RGBWLightSettableState(SwitchableValue.ON, level))
 
 suspend fun RGBWLight.setRGB(red: Int, green: Int, blue: Int) =
-    setDesiredState(RGBWLightState(SwitchableValue.ON, rgbColor = RGBColor(red, green, blue)))
+    setDesiredState(RGBWLightSettableState(SwitchableValue.ON, rgbColor = RGBColor(red, green, blue)))
 
 suspend fun RGBWLight.setHS(hue: Double, saturation: Double) =
-    setDesiredState(RGBWLightState(SwitchableValue.ON, hsColor = HSColor(hue, saturation)))
+    setDesiredState(RGBWLightSettableState(SwitchableValue.ON, hsColor = HSColor(hue, saturation)))
 
 suspend fun RGBWLight.setXY(x: Double, y: Double) =
-    setDesiredState(RGBWLightState(SwitchableValue.ON, xyColor = XYColor(x, y)))
+    setDesiredState(RGBWLightSettableState(SwitchableValue.ON, xyColor = XYColor(x, y)))
 
 suspend fun RGBWLight.setColorTemperature(temperature: ColorTemperature) =
-    setDesiredState(RGBWLightState(SwitchableValue.ON, colorTemp = temperature))
+    setDesiredState(RGBWLightSettableState(SwitchableValue.ON, colorTemp = temperature))
 
 suspend fun RGBWLight.setColor(name: ColorName) =
     send(
@@ -87,9 +107,3 @@ suspend fun RGBWLight.setColor(name: ColorName) =
             TurnOnLightServiceCommand.ServiceData(colorName = name),
         ),
     )
-
-fun RGBWLight.onTurnedOn(f: RGBWLight.(Switchable) -> Unit) =
-    onStateValueChangedFrom(SwitchableValue.OFF to SwitchableValue.ON, f)
-
-fun RGBWLight.onTurnedOff(f: RGBWLight.(Switchable) -> Unit) =
-    onStateValueChangedFrom(SwitchableValue.ON to SwitchableValue.OFF, f)
