@@ -17,8 +17,9 @@ internal class HassEventSubscriber(
 
     suspend fun subscribe() {
         subscriptions.forEach { entry ->
-            SubscribeEventsCommand(eventType = entry.key).also { command -> apiClient.send(command) }
-            session.consumeSingleMessage<ResultResponse>()
+            val id = SubscribeEventsCommand(eventType = entry.key)
+                .let { command -> apiClient.send(command) }
+            session.consumeSingleMessage<ResultResponse>(id)
                 .takeIf { resultResponse -> resultResponse.success }
                 ?.let { logger.i { "Subscribed to event: ${entry.key}" } }
         }

@@ -25,14 +25,14 @@ internal class EntityStateInitializer(
     private val statesRequest = GetStatesCommand()
 
     suspend fun initialize() {
-        sendStatesRequest()
+        val id = sendStatesRequest()
         logger.i { "Requested initial entity states" }
-        setInitialEntityState(consumeStatesResponse())
+        setInitialEntityState(consumeStatesResponse(id))
     }
 
     private suspend fun sendStatesRequest() = apiClient.send(statesRequest)
 
-    private suspend fun consumeStatesResponse() = session.consumeSingleMessage<StatesResponse>()
+    private suspend fun consumeStatesResponse(id: Int) = session.consumeSingleMessage<StatesResponse>(id)
 
     private fun setInitialEntityState(stateResponse: StatesResponse) {
         if (stateResponse.success) {

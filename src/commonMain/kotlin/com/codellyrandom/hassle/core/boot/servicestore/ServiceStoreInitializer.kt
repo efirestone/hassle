@@ -15,13 +15,13 @@ internal class ServiceStoreInitializer(
     private val getServicesCommand = GetServicesCommand()
 
     suspend fun initialize() {
-        sendServicesRequest()
+        val id = sendServicesRequest()
         logger.i { "Requested registered Home Assistant services" }
-        storeServices(consumeServicesResponse())
+        storeServices(consumeServicesResponse(id))
     }
 
-    private suspend fun consumeServicesResponse() =
-        session.consumeSingleMessage<ServicesResponse>()
+    private suspend fun consumeServicesResponse(id: Int) =
+        session.consumeSingleMessage<ServicesResponse>(id)
 
     private suspend fun sendServicesRequest() =
         apiClient.send(getServicesCommand)

@@ -16,8 +16,8 @@ internal class StateChangeEventSubscriber(
     private val logger = Logger(config = LoggerConfig.default)
 
     suspend fun subscribe() {
-        sendEventListenerRequest()
-        consumeResultResponse().let { resultResponse ->
+        val id = sendEventListenerRequest()
+        consumeResultResponse(id).let { resultResponse ->
             when (resultResponse.success) {
                 false -> logger.e { "Could not subscribe to state change events" }
                 true -> logger.i { "Successfully started listening to state changes" }
@@ -30,6 +30,6 @@ internal class StateChangeEventSubscriber(
     private suspend fun sendEventListenerRequest() =
         apiClient.send(subscribeEventsCommand)
 
-    private suspend fun consumeResultResponse() =
-        session.consumeSingleMessage<ResultResponse>()
+    private suspend fun consumeResultResponse(id: Int) =
+        session.consumeSingleMessage<ResultResponse>(id)
 }
