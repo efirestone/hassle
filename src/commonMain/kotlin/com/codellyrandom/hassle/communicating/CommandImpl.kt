@@ -56,6 +56,14 @@ internal class GetServicesCommand(
     override fun copy(id: Int?) = GetServicesCommand(id = id, type = type)
 }
 
+@Serializable
+internal class ListEntityRegistryCommand(
+    override var id: Int? = null,
+    val type: String = "config/entity_registry/list",
+) : CommandImpl(id) {
+    override fun copy(id: Int?) = ListEntityRegistryCommand(id = id, type = type)
+}
+
 // - Service Command
 
 @Serializable
