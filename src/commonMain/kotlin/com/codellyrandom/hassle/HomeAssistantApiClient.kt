@@ -55,6 +55,14 @@ interface HomeAssistantApiClient {
     suspend fun emitEvent(eventType: String, eventData: Any? = null)
 
     /**
+     * Sends a JSON command over the Home Assistant websocket and
+     * awaits the response.
+     *
+     * @return The JSON text of the response.
+     */
+    suspend fun <T : Any> await(command: Command, resultType: KClass<T>): T
+
+    /**
      * Attaches an error response handler to the API client.
      *
      * @param errorResponseHandler the handler to be attached.
@@ -67,3 +75,5 @@ interface HomeAssistantApiClient {
         stateType: KType,
     ): Sensor<S>
 }
+
+suspend inline fun <reified T : Any> HomeAssistantApiClient.await(command: Command): T = await(command, T::class)

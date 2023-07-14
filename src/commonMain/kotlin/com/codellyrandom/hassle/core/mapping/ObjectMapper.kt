@@ -28,6 +28,19 @@ class ObjectMapper(
         }
     }
 
+    @OptIn(InternalSerializationApi::class)
+    fun <Target : Any> fromJson(json: String, type: KClass<Target>): Target {
+        try {
+            return delegate.decodeFromString(
+                deserializer = type.serializer(),
+                string = json,
+            )
+        } catch (e: Throwable) {
+            logger.e(e) { "Exception converting from JSON" }
+            throw e
+        }
+    }
+
     @Suppress("UNCHECKED_CAST")
     fun <Target : Any> fromJson(json: String, type: KType): Target {
         try {

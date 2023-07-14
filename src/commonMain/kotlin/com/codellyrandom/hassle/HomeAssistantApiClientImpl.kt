@@ -2,7 +2,7 @@ package com.codellyrandom.hassle
 
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.LoggerConfig
-import com.codellyrandom.hassle.communicating.Command
+import com.codellyrandom.hassle.communicating.CommandImpl
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.core.Credentials
 import com.codellyrandom.hassle.core.boot.EventResponseConsumer
@@ -42,7 +42,7 @@ internal typealias SensorsByApiName = MutableMap<EntityId, Sensor<*>>
 internal typealias ActuatorsByApiName = MutableMap<EntityId, Actuator<*, *>>
 internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
-internal typealias HassApiCommandHistory = MutableMap<EntityId, Command>
+internal typealias HassApiCommandHistory = MutableMap<EntityId, CommandImpl>
 
 fun homeAssistantApiClient(credentials: Credentials, coroutineScope: CoroutineScope): HomeAssistantApiClient =
     HomeAssistantApiClientImpl(credentials, coroutineScope)
@@ -168,6 +168,11 @@ internal class HomeAssistantApiClientImpl(
             url.encodedPath = "/api/events/$eventType"
             setBody(eventData ?: EmptyContent)
         }
+    }
+
+    override suspend fun <T : Any> await(command: Command, resultType: KClass<T>): T {
+        val id = send(command)
+        return session!!.consumeSingleMessage(id, resultType)
     }
 
     override fun setErrorResponseHandler(errorResponseHandler: (ErrorResponseData) -> Unit) {
