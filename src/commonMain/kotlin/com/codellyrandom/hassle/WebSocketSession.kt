@@ -9,6 +9,8 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+import kotlin.reflect.KType
+import kotlin.reflect.typeOf
 
 internal class WebSocketSession(
     delegate: DefaultClientWebSocketSession,
@@ -21,14 +23,18 @@ internal class WebSocketSession(
 
     suspend inline fun <reified M : Any> consumeInitialMessage(): M = incoming.receive().asObject()
 
-    suspend inline fun <reified M : Any> consumeSingleMessage(id: Int): M = incoming.receiveAsFlow()
+    suspend inline fun <reified M : Any> consumeSingleMessage(id: Int): M =
+        consumeSingleMessage(id, typeOf<M>())
+
+    suspend fun <M : Any> consumeSingleMessage(id: Int, resultType: KType): M = incoming.receiveAsFlow()
         .first {
             val commandId = (it as? Frame.Text)
                 ?.let { textFrame -> Json.parseToJsonElement(textFrame.readText()) }
                 ?.let { json -> json.jsonObject["id"]?.jsonPrimitive?.intOrNull }
             return@first commandId == id
         }.let {
-            (it as Frame.Text).toObject()
+            val textFrame = (it as Frame.Text)
+            return objectMapper.fromJson(textFrame.readText(), resultType)
         }
 
     inline fun <reified M : Any> Frame.asObject(): M = (this as Frame.Text).toObject()
