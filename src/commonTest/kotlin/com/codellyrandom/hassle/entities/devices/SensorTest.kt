@@ -9,6 +9,7 @@ import com.codellyrandom.hassle.values.*
 import com.codellyrandom.hassle.withConnection
 import kotlinx.datetime.Instant
 import kotlinx.serialization.json.JsonObject
+import kotlin.reflect.typeOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -185,10 +186,10 @@ internal class SensorTest {
         json: String,
         crossinline block: (Sensor<S>) -> Unit,
     ) = withConnection {
-        val sut = Sensor(
+        val sut = Sensor<S>(
             connection = this,
             mapper = mapper,
-            stateType = S::class,
+            stateType = typeOf<S>(),
         )
 
         val stateAsJsonObject = mapper.fromJson<JsonObject>(json)

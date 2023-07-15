@@ -9,7 +9,7 @@ import com.codellyrandom.hassle.errorHandling.ObserverExceptionHandler
 import com.codellyrandom.hassle.observability.*
 import com.codellyrandom.hassle.values.EntityId
 import kotlinx.serialization.json.JsonObject
-import kotlin.reflect.KClass
+import kotlin.reflect.KType
 
 /**
  * An Actuator holding entity state and attributes
@@ -24,7 +24,7 @@ class Actuator<S : State<*>, Settable : Any> internal constructor(
     private val connection: HomeAssistantApiClientImpl,
     private val mapper: ObjectMapper,
     private val resolver: ServiceCommandResolver<Settable>,
-    private val stateType: KClass<S>,
+    private val stateType: KType,
 ) : Observable<Actuator<S, Settable>> {
     private val observers: MutableList<Observer<Actuator<S, Settable>>> = mutableListOf()
     private val stateWithHistory = History<S>()

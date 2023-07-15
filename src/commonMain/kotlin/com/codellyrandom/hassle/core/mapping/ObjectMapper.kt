@@ -2,14 +2,12 @@ package com.codellyrandom.hassle.core.mapping
 
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.LoggerConfig
-import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.SerializersModuleBuilder
 import kotlinx.serialization.serializer
-import kotlin.reflect.KClass
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
@@ -17,11 +15,11 @@ class ObjectMapper(
     private val delegate: Json = makeJson(),
     private val logger: Logger = Logger(config = LoggerConfig.default),
 ) {
-    @OptIn(InternalSerializationApi::class)
-    fun <Target : Any> fromJson(json: JsonElement, type: KClass<Target>): Target {
+    @Suppress("UNCHECKED_CAST")
+    fun <Target : Any> fromJson(json: JsonElement, type: KType): Target {
         try {
             return delegate.decodeFromJsonElement(
-                deserializer = type.serializer(),
+                deserializer = delegate.serializersModule.serializer(type) as KSerializer<Target>,
                 element = json,
             )
         } catch (e: Throwable) {

@@ -11,6 +11,7 @@ import com.codellyrandom.hassle.entities.SensorStateUpdater
 import com.codellyrandom.hassle.values.EntityId
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
+import kotlin.reflect.typeOf
 
 internal class EntityStateInitializer(
     private val apiClient: HomeAssistantApiClientImpl,
@@ -36,8 +37,8 @@ internal class EntityStateInitializer(
 
     private fun setInitialEntityState(stateResponse: StatesResponse) {
         if (stateResponse.success) {
-            val statesByEntityId = stateResponse.result.associateBy { state ->
-                session.objectMapper.fromJson(state["entity_id"]!!, EntityId::class)
+            val statesByEntityId: Map<EntityId, JsonObject> = stateResponse.result.associateBy { state ->
+                session.objectMapper.fromJson(state["entity_id"]!!, typeOf<EntityId>())
             }
             entityRegistrationValidation.validate(statesByEntityId.map { it.key })
             for (state in statesByEntityId) {

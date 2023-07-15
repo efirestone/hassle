@@ -13,7 +13,10 @@ import com.codellyrandom.hassle.core.boot.servicestore.ServiceStoreInitializer
 import com.codellyrandom.hassle.core.boot.statehandling.EntityStateInitializer
 import com.codellyrandom.hassle.core.boot.subscribing.HassEventSubscriber
 import com.codellyrandom.hassle.core.mapping.ObjectMapper
-import com.codellyrandom.hassle.entities.*
+import com.codellyrandom.hassle.entities.ActuatorStateUpdater
+import com.codellyrandom.hassle.entities.EntityRegistrationValidation
+import com.codellyrandom.hassle.entities.SensorStateUpdater
+import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.errorHandling.ErrorResponseData
@@ -32,7 +35,7 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.CoroutineScope
 import kotlin.collections.set
-import kotlin.reflect.KClass
+import kotlin.reflect.KType
 import kotlinx.serialization.json.Json as SerializationJson
 
 internal typealias SensorsByApiName = MutableMap<EntityId, Sensor<*>>
@@ -109,15 +112,15 @@ internal class HomeAssistantApiClientImpl(
      *
      * @param S the type of the state that represents all state values of the entity. Has to implement the [State] interface.
      * @param id the corresponding [EntityId] for the sensor.
-     * @param stateType the type param [S] as [KClass].
+     * @param stateType the type param [S] as [KType].
      *
      * @return [Sensor]
      */
     override fun <S : State<*>> Sensor(
         id: EntityId,
-        stateType: KClass<S>,
+        stateType: KType,
     ): Sensor<S> =
-        Sensor(this, mapper, stateType)
+        Sensor<S>(this, mapper, stateType)
             .also { registerSensor(id, it) }
 
     /**
@@ -127,17 +130,17 @@ internal class HomeAssistantApiClientImpl(
      *
      * @param S the type of the state that represents all state values of the entity. Has to implement the [State] interface.
      * @param id the corresponding [EntityId] for the sensor.
-     * @param stateType the type param [S] as [KClass].
+     * @param stateType the type param [S] as [KType].
      * @param serviceCommandResolver the serviceCommandResolver instance. @See [ServiceCommandResolver] for more.
      *
      * @return [Actuator]
      */
     fun <S : State<*>, Settable : Any> Actuator(
         id: EntityId,
-        stateType: KClass<S>,
+        stateType: KType,
         serviceCommandResolver: ServiceCommandResolver<Settable>,
     ): Actuator<S, Settable> =
-        Actuator(
+        Actuator<S, Settable>(
             id,
             this,
             mapper,
@@ -148,7 +151,7 @@ internal class HomeAssistantApiClientImpl(
     @Suppress("UNCHECKED_CAST")
     override fun <ED> attachEventHandler(
         eventType: EventType,
-        eventDataType: KClass<*>,
+        eventDataType: KType,
         eventHandler: EventHandlerFunction<ED>,
     ): Switchable =
         eventSubscriptionsByEventType[eventType]?.attachEventHandler(
@@ -201,7 +204,7 @@ internal class HomeAssistantApiClientImpl(
         logger.i { "Registered Actuator with id: $entityId" }
     }
 
-    private fun <ED> registerEventSubscription(eventType: EventType, eventDataType: KClass<*>) =
+    private fun <ED> registerEventSubscription(eventType: EventType, eventDataType: KType) =
         EventSubscription<ED>(this, mapper, eventDataType).also { eventSubscriptionsByEventType[eventType] = it }
 
     override fun connect() =

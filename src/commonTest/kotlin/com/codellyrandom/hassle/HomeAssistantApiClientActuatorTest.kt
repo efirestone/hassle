@@ -6,6 +6,7 @@ import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.values.*
 import kotlinx.datetime.Instant
+import kotlin.reflect.typeOf
 import kotlin.test.Test
 
 internal class HomeAssistantApiClientActuatorTest {
@@ -23,10 +24,10 @@ internal class HomeAssistantApiClientActuatorTest {
     @Test
     fun `assert actuator factory creates new Actuator instance`() = withConnection {
         val actuator =
-            Actuator(
+            Actuator<ActuatorState, ActuatorSettableState>(
                 EntityId.fromString("light.some_light"),
-                ActuatorState::class,
-                ServiceCommandResolver<ActuatorSettableState> { entityId, _ ->
+                typeOf<ActuatorState>(),
+                ServiceCommandResolver { entityId, _ ->
                     TurnOnServiceCommand(entityId)
                 },
             )

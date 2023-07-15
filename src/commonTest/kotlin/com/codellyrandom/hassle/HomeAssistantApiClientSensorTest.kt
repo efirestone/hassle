@@ -4,6 +4,7 @@ import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.values.*
 import kotlinx.datetime.Instant
+import kotlin.reflect.typeOf
 import kotlin.test.Test
 
 internal class HomeAssistantApiClientSensorTest {
@@ -20,9 +21,9 @@ internal class HomeAssistantApiClientSensorTest {
     fun `assert sensor factory creates new Sensor instance`() {
         withConnection {
             val sensor =
-                Sensor(
+                Sensor<SensorState>(
                     EntityId.fromPair("sensor".domain to "some_sensor".objectId),
-                    SensorState::class,
+                    typeOf<SensorState>(),
                 )
 
             assert(sensor is Sensor)
