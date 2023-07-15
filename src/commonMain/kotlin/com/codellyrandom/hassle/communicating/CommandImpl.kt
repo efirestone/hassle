@@ -1,5 +1,6 @@
 package com.codellyrandom.hassle.communicating
 
+import com.codellyrandom.hassle.Command
 import com.codellyrandom.hassle.extending.serviceCalls.notifications.MobileNotificationData
 import com.codellyrandom.hassle.values.*
 import kotlinx.serialization.DeserializationStrategy
@@ -10,14 +11,14 @@ import kotlinx.serialization.json.JsonElement
 
 // - Base Command
 
-@Serializable(Command.Companion::class)
-internal sealed class Command(
+@Serializable(CommandImpl.Companion::class)
+internal sealed class CommandImpl(
     // The generated serializer won't include this ID unless we also include it
     // in our subclasses, hence the "open" modifier.
-    open var id: Int? = null,
-) {
-    companion object : JsonContentPolymorphicSerializer<Command>(Command::class) {
-        override fun selectDeserializer(element: JsonElement): DeserializationStrategy<Command> {
+    override var id: Int? = null,
+) : Command {
+    companion object : JsonContentPolymorphicSerializer<CommandImpl>(CommandImpl::class) {
+        override fun selectDeserializer(element: JsonElement): DeserializationStrategy<CommandImpl> {
             // We don't support deserializing commands (only serializing them),
             // so we don't care about mapping JSON elements back to deserializers.
             throw IllegalStateException("Commands do not support deserialization")
@@ -25,8 +26,6 @@ internal sealed class Command(
     }
 
     constructor() : this(null)
-
-    abstract fun copy(id: Int? = this.id): Command
 }
 
 // - Basic Commands
@@ -37,7 +36,7 @@ internal class SubscribeEventsCommand(
     @SerialName("event_type")
     val eventType: EventType,
     val type: String = "subscribe_events",
-) : Command(id) {
+) : CommandImpl(id) {
     override fun copy(id: Int?) = SubscribeEventsCommand(id = id, eventType = eventType, type = type)
 }
 
@@ -45,7 +44,7 @@ internal class SubscribeEventsCommand(
 internal class GetStatesCommand(
     override var id: Int? = null,
     val type: String = "get_states",
-) : Command(id) {
+) : CommandImpl(id) {
     override fun copy(id: Int?) = GetStatesCommand(id = id, type = type)
 }
 
@@ -53,7 +52,7 @@ internal class GetStatesCommand(
 internal class GetServicesCommand(
     override var id: Int? = null,
     val type: String = "get_services",
-) : Command(id) {
+) : CommandImpl(id) {
     override fun copy(id: Int?) = GetServicesCommand(id = id, type = type)
 }
 
@@ -65,7 +64,7 @@ internal sealed class ServiceCommand(
     var domain: Domain,
     var service: Service,
     val type: String = "call_service",
-) : Command(id) {
+) : CommandImpl(id) {
     @Serializable
     class Target(
         @SerialName("entity_id")

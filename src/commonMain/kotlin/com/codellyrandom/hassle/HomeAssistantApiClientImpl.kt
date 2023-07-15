@@ -2,7 +2,7 @@ package com.codellyrandom.hassle
 
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.LoggerConfig
-import com.codellyrandom.hassle.communicating.Command
+import com.codellyrandom.hassle.communicating.CommandImpl
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.core.Credentials
 import com.codellyrandom.hassle.core.boot.EventResponseConsumer
@@ -42,7 +42,7 @@ internal typealias SensorsByApiName = MutableMap<EntityId, Sensor<*>>
 internal typealias ActuatorsByApiName = MutableMap<EntityId, Actuator<*, *>>
 internal typealias ActuatorsByEntity = MutableMap<Actuator<*, *>, EntityId>
 internal typealias EventHandlerByEventType = MutableMap<EventType, EventSubscription<*>>
-internal typealias HassApiCommandHistory = MutableMap<EntityId, Command>
+internal typealias HassApiCommandHistory = MutableMap<EntityId, CommandImpl>
 
 fun homeAssistantApiClient(credentials: Credentials, coroutineScope: CoroutineScope): HomeAssistantApiClient =
     HomeAssistantApiClientImpl(credentials, coroutineScope)
@@ -170,6 +170,11 @@ internal class HomeAssistantApiClientImpl(
         }
     }
 
+    override suspend fun <C : Command, T : Any> await(command: C, commandType: KType, resultType: KType): T {
+        val id = send(command)
+        return session!!.consumeSingleMessage(id, resultType)
+    }
+
     override fun setErrorResponseHandler(errorResponseHandler: (ErrorResponseData) -> Unit) {
         errorResponseHandlerFunction = errorResponseHandler
     }
@@ -180,7 +185,7 @@ internal class HomeAssistantApiClientImpl(
      * @param command the command to send
      * @return The ID of the command that was sent.
      */
-    internal suspend fun send(command: Command): Int {
+    internal suspend fun <C : Command> send(command: C): Int {
         val id = commandId.incrementAndGet()
         val commandWithId = command.copy(id) // has to be called within single thread to prevent race conditions
         mapper.toJson(commandWithId).let { serializedCommand ->
