@@ -7,7 +7,7 @@ import com.codellyrandom.hassle.events.EventHandlerFunction
 import com.codellyrandom.hassle.observability.Switchable
 import com.codellyrandom.hassle.values.EntityId
 import com.codellyrandom.hassle.values.EventType
-import kotlin.reflect.KClass
+import kotlin.reflect.KType
 
 /**
  * The client object for interacting with the Home Assistant WebSocket API.
@@ -33,7 +33,7 @@ interface HomeAssistantApiClient {
      */
     fun <ED> attachEventHandler(
         eventType: EventType,
-        eventDataType: KClass<*>,
+        eventDataType: KType,
         eventHandler: EventHandlerFunction<ED>,
     ): Switchable
 
@@ -64,6 +64,6 @@ interface HomeAssistantApiClient {
     // A non-reified interface that external callers can use to create their own custom sensor implementations.
     fun <S : State<*>> Sensor(
         id: EntityId,
-        stateType: KClass<S>,
+        stateType: KType,
     ): Sensor<S>
 }

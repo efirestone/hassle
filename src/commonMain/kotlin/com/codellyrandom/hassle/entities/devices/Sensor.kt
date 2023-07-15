@@ -6,7 +6,7 @@ import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.errorHandling.ObserverExceptionHandler
 import com.codellyrandom.hassle.observability.*
 import kotlinx.serialization.json.JsonObject
-import kotlin.reflect.KClass
+import kotlin.reflect.KType
 
 /**
  * A Sensor holding entity state and attributes
@@ -18,7 +18,7 @@ import kotlin.reflect.KClass
 class Sensor<S : State<*>>(
     private val connection: HomeAssistantApiClient,
     private val mapper: ObjectMapper,
-    private val stateType: KClass<S>,
+    private val stateType: KType,
 ) : Observable<Sensor<S>> {
     private val observers: MutableList<Observer<Sensor<S>>> = mutableListOf()
     private val stateWithHistory = History<S>()

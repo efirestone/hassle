@@ -21,6 +21,7 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
+import kotlin.reflect.typeOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -64,7 +65,7 @@ internal class ActuatorTest {
             resolver = ServiceCommandResolver { entityId, _ ->
                 TurnOnServiceCommand(entityId)
             },
-            stateType = ActuatorTestState::class,
+            stateType = typeOf<ActuatorTestState>(),
         )
 
         assertFailsWith<IllegalStateException> {
@@ -113,7 +114,7 @@ internal class ActuatorTest {
             resolver = ServiceCommandResolver { entityId, _ ->
                 TurnOnServiceCommand(entityId)
             },
-            stateType = ActuatorTestState::class,
+            stateType = typeOf<ActuatorTestState>(),
         )
 
         val firstTestState =
@@ -606,7 +607,7 @@ internal class ActuatorTest {
             resolver = ServiceCommandResolver { entityId, _ ->
                 TurnOnServiceCommand(entityId)
             },
-            stateType = S::class,
+            stateType = typeOf<S>(),
         )
 
         val stateAsJsonObject = mapper.fromJson<JsonObject>(json)
