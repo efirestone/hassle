@@ -28,18 +28,31 @@ class ObjectMapper(
         }
     }
 
-    @OptIn(InternalSerializationApi::class)
-    fun <Target : Any> fromJson(json: String, type: KClass<Target>): Target {
+    @Suppress("UNCHECKED_CAST")
+    fun <Target : Any> fromJson(json: JsonElement, type: KType): Target {
         try {
-            return delegate.decodeFromString(
-                deserializer = type.serializer(),
-                string = json,
+            return delegate.decodeFromJsonElement(
+                deserializer = delegate.serializersModule.serializer(type) as KSerializer<Target>,
+                element = json,
             )
         } catch (e: Throwable) {
             logger.e(e) { "Exception converting from JSON" }
             throw e
         }
     }
+
+//    @OptIn(InternalSerializationApi::class)
+//    fun <Target : Any> fromJson(json: String, type: KClass<Target>): Target {
+//        try {
+//            return delegate.decodeFromString(
+//                deserializer = type.serializer(),
+//                string = json,
+//            )
+//        } catch (e: Throwable) {
+//            logger.e(e) { "Exception converting from JSON" }
+//            throw e
+//        }
+//    }
 
     @Suppress("UNCHECKED_CAST")
     fun <Target : Any> fromJson(json: String, type: KType): Target {
@@ -50,6 +63,19 @@ class ObjectMapper(
             )
         } catch (e: Throwable) {
             logger.e(e) { "Exception converting from JSON" }
+            throw e
+        }
+    }
+
+    @OptIn(InternalSerializationApi::class)
+    fun <Destination : Any> toJson(from: Destination, type: KClass<Destination>): String {
+        try {
+            return delegate.encodeToString(
+                serializer = type.serializer(),
+                value = from,
+            )
+        } catch (e: Throwable) {
+            logger.e(e) { "Exception converting to JSON" }
             throw e
         }
     }

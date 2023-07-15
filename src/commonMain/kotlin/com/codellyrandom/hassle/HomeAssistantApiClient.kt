@@ -7,7 +7,9 @@ import com.codellyrandom.hassle.events.EventHandlerFunction
 import com.codellyrandom.hassle.observability.Switchable
 import com.codellyrandom.hassle.values.EntityId
 import com.codellyrandom.hassle.values.EventType
+import kotlin.reflect.KClass
 import kotlin.reflect.KType
+import kotlin.reflect.typeOf
 
 /**
  * The client object for interacting with the Home Assistant WebSocket API.
@@ -60,7 +62,7 @@ interface HomeAssistantApiClient {
      *
      * @return The JSON text of the response.
      */
-    suspend fun <T : Any> await(command: Command, resultType: KClass<T>): T
+    suspend fun <C : Command, T : Any> await(command: C, commandType: KClass<C>, resultType: KType): T
 
     /**
      * Attaches an error response handler to the API client.
@@ -76,4 +78,5 @@ interface HomeAssistantApiClient {
     ): Sensor<S>
 }
 
-suspend inline fun <reified T : Any> HomeAssistantApiClient.await(command: Command): T = await(command, T::class)
+suspend inline fun <reified C : Command, reified T : Any> HomeAssistantApiClient.await(command: C): T =
+    await(command, C::class, typeOf<T>())

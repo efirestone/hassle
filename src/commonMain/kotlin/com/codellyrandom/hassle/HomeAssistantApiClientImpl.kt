@@ -35,6 +35,7 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.CoroutineScope
 import kotlin.collections.set
+import kotlin.reflect.KClass
 import kotlin.reflect.KType
 import kotlinx.serialization.json.Json as SerializationJson
 
@@ -170,7 +171,7 @@ internal class HomeAssistantApiClientImpl(
         }
     }
 
-    override suspend fun <T : Any> await(command: Command, resultType: KClass<T>): T {
+    override suspend fun <C : Command, T : Any> await(command: C, commandType: KClass<C>, resultType: KType): T {
         val id = send(command)
         return session!!.consumeSingleMessage(id, resultType)
     }
