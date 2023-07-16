@@ -9,3 +9,11 @@ internal class ConfigEntityRegistrationListCommand(
 ) : CommandImpl(id) {
     override fun copy(id: Int?) = ConfigEntityRegistrationListCommand(id = id)
 }
+
+@Serializable
+internal class GetConfigEntriesCommand(
+    override var id: Int? = null,
+    private val type: String = "config_entries/get",
+) : CommandImpl(id) {
+    override fun copy(id: Int?) = GetConfigEntriesCommand(id = id)
+}

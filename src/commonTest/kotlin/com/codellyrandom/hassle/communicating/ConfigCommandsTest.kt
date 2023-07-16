@@ -2,13 +2,90 @@ package com.codellyrandom.hassle.communicating
 
 import DeviceId
 import com.codellyrandom.hassle.TestHomeAssistantApiClient
+import com.codellyrandom.hassle.extending.commands.getConfigEntries
 import com.codellyrandom.hassle.extending.commands.getEntityRegistrations
 import com.codellyrandom.hassle.values.*
+import com.codellyrandom.hassle.values.ConfigEntry.Source.IMPORT
+import com.codellyrandom.hassle.values.ConfigEntry.Source.ONBOARDING
+import com.codellyrandom.hassle.values.ConfigEntry.State.LOADED
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ConfigCommandTest {
+class ConfigCommandsTest {
+    @Test
+    fun parseGetConfigEntriesCommand() = runBlocking {
+        val client = TestHomeAssistantApiClient()
+        client.setResponse(
+            """
+            [
+                {
+                    "id": 1,
+                    "type": "result",
+                    "success": true,
+                    "result":
+                    [
+                        {
+                            "entry_id": "541e0e1b4dac48d9aff5a07dd3076983",
+                            "domain": "sun",
+                            "title": "Sun",
+                            "source": "import",
+                            "state": "loaded",
+                            "supports_options": false,
+                            "supports_remove_device": false,
+                            "supports_unload": true,
+                            "pref_disable_new_entities": false,
+                            "pref_disable_polling": false,
+                            "disabled_by": null,
+                            "reason": null
+                        },
+                        {
+                            "entry_id": "133ca90f35a92d2b54626a23ef7783e7",
+                            "domain": "radio_browser",
+                            "title": "Radio Browser",
+                            "source": "onboarding",
+                            "state": "loaded",
+                            "supports_options": true,
+                            "supports_remove_device": true,
+                            "supports_unload": false,
+                            "pref_disable_new_entities": false,
+                            "pref_disable_polling": false,
+                            "disabled_by": null,
+                            "reason": null
+                        }
+                    ]
+                }
+            ]
+            """.trimIndent(),
+            forCommandType = "config_entries/get",
+        )
+
+        val entries = client.getConfigEntries()
+        val expectedEntries = listOf(
+            ConfigEntry(
+                entryId = ConfigEntryId("541e0e1b4dac48d9aff5a07dd3076983"),
+                domain = Domain("sun"),
+                title = "Sun",
+                source = IMPORT,
+                state = LOADED,
+                supportsOptions = false,
+                supportsRemoveDevice = false,
+                supportsUnload = true,
+            ),
+            ConfigEntry(
+                entryId = ConfigEntryId("133ca90f35a92d2b54626a23ef7783e7"),
+                domain = Domain("radio_browser"),
+                title = "Radio Browser",
+                source = ONBOARDING,
+                state = LOADED,
+                supportsOptions = true,
+                supportsRemoveDevice = true,
+                supportsUnload = false,
+            ),
+        )
+        assertEquals(expectedEntries, entries)
+    }
+
     @Test
     fun parseListEntityRegistrationCommand() = runBlocking {
         val client = TestHomeAssistantApiClient()
@@ -16,7 +93,7 @@ class ConfigCommandTest {
             """
             [
                 {
-                    "id": 38,
+                    "id": 1,
                     "type": "result",
                     "success": true,
                     "result":
