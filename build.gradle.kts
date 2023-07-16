@@ -62,12 +62,12 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-websockets:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:atomicfu:0.17.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
-                implementation("org.slf4j:slf4j-simple:1.7.32")
+                implementation("org.jetbrains.kotlinx:atomicfu:0.21.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("org.slf4j:slf4j-simple:2.0.7")
                 api("co.touchlab:kermit:$kermitVersion")
-                api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+                api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
             }
         }
         val commonTest by getting {
