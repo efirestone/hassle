@@ -23,7 +23,7 @@ class ObjectMapper(
                 element = json,
             )
         } catch (e: Throwable) {
-            logger.e(e) { "Exception converting from JSON" }
+            logger.e(e) { "Exception converting $type from JSON" }
             throw e
         }
     }
@@ -36,7 +36,7 @@ class ObjectMapper(
                 string = json,
             )
         } catch (e: Throwable) {
-            logger.e(e) { "Exception converting from JSON" }
+            logger.e(e) { "Exception converting $type from JSON" }
             throw e
         }
     }
@@ -49,7 +49,7 @@ class ObjectMapper(
                 value = from,
             )
         } catch (e: Throwable) {
-            logger.e(e) { "Exception converting to JSON" }
+            logger.e(e) { "Exception converting $type to JSON" }
             throw e
         }
     }
