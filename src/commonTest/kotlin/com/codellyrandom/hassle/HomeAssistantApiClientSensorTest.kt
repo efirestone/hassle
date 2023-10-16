@@ -1,11 +1,11 @@
 package com.codellyrandom.hassle
 
 import com.codellyrandom.hassle.entities.State
-import com.codellyrandom.hassle.entities.devices.Sensor
 import com.codellyrandom.hassle.values.*
 import kotlinx.datetime.Instant
 import kotlin.reflect.typeOf
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 internal class HomeAssistantApiClientSensorTest {
 
@@ -26,7 +26,7 @@ internal class HomeAssistantApiClientSensorTest {
                     typeOf<SensorState>(),
                 )
 
-            assert(sensor is Sensor)
+            assertEquals(sensor.entityId, EntityId.fromString("sensor.some_sensor"))
         }
     }
 }

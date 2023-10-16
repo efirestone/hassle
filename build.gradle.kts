@@ -11,8 +11,8 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version "1.9.0"
-    kotlin("plugin.serialization") version "1.9.0"
+    kotlin("multiplatform") version "1.9.10"
+    kotlin("plugin.serialization") version "1.9.10"
     id("com.github.dawnwords.jacoco.badge") version "0.2.4"
     id("de.jansauer.printcoverage") version "2.0.0"
     id("com.vanniktech.maven.publish") version "0.25.3"
@@ -62,9 +62,9 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-websockets:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:atomicfu:0.21.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("org.jetbrains.kotlinx:atomicfu:0.22.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
                 implementation("org.slf4j:slf4j-simple:2.0.7")
                 api("co.touchlab:kermit:$kermitVersion")
                 api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")

@@ -3,11 +3,13 @@ package com.codellyrandom.hassle
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.communicating.TurnOnServiceCommand
 import com.codellyrandom.hassle.entities.State
-import com.codellyrandom.hassle.entities.devices.Actuator
-import com.codellyrandom.hassle.values.*
+import com.codellyrandom.hassle.values.EntityId
+import com.codellyrandom.hassle.values.FriendlyName
+import com.codellyrandom.hassle.values.UserId
 import kotlinx.datetime.Instant
 import kotlin.reflect.typeOf
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 internal class HomeAssistantApiClientActuatorTest {
     class ActuatorState(
@@ -32,6 +34,6 @@ internal class HomeAssistantApiClientActuatorTest {
                 },
             )
 
-        assert(actuator is Actuator<ActuatorState, ActuatorSettableState>)
+        assertEquals(actuator.entityId, EntityId.fromString("light.some_light"))
     }
 }

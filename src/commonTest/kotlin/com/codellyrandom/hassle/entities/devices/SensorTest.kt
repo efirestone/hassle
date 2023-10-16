@@ -187,6 +187,7 @@ internal class SensorTest {
         crossinline block: (Sensor<S>) -> Unit,
     ) = withConnection {
         val sut = Sensor<S>(
+            entityId = EntityId.fromString("sensor.foo"),
             connection = this,
             mapper = mapper,
             stateType = typeOf<S>(),

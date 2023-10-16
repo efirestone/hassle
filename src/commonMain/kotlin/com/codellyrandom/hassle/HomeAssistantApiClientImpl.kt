@@ -1,7 +1,6 @@
 package com.codellyrandom.hassle
 
 import co.touchlab.kermit.Logger
-import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.communicating.CommandImpl
 import com.codellyrandom.hassle.communicating.ServiceCommandResolver
 import com.codellyrandom.hassle.core.Credentials
@@ -52,7 +51,7 @@ internal class HomeAssistantApiClientImpl(
     coroutineScope: CoroutineScope,
 ) : HomeAssistantApiClient {
 
-    private val logger = Logger(config = LoggerConfig.default)
+    private val logger = Logger
     val mapper: ObjectMapper = ObjectMapper()
     private val connection: Connection = Connection(
         credentials,
@@ -120,7 +119,7 @@ internal class HomeAssistantApiClientImpl(
         id: EntityId,
         stateType: KType,
     ): Sensor<S> =
-        Sensor<S>(this, mapper, stateType)
+        Sensor<S>(id, this, mapper, stateType)
             .also { registerSensor(id, it) }
 
     /**
