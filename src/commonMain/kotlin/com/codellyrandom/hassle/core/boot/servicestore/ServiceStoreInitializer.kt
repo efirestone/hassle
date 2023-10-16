@@ -1,7 +1,6 @@
 package com.codellyrandom.hassle.core.boot.servicestore
 
 import co.touchlab.kermit.Logger
-import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.WebSocketSession
 import com.codellyrandom.hassle.communicating.GetServicesCommand
@@ -11,7 +10,7 @@ internal class ServiceStoreInitializer(
     private val session: WebSocketSession,
     private val serviceStore: ServiceStore,
 ) {
-    private val logger = Logger(config = LoggerConfig.default)
+    private val logger = Logger
     private val getServicesCommand = GetServicesCommand()
 
     suspend fun initialize() {

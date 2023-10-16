@@ -1,7 +1,6 @@
 package com.codellyrandom.hassle.core.boot.subscribing
 
 import co.touchlab.kermit.Logger
-import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.EventHandlerByEventType
 import com.codellyrandom.hassle.HomeAssistantApiClientImpl
 import com.codellyrandom.hassle.WebSocketSession
@@ -13,7 +12,7 @@ internal class HassEventSubscriber(
     private val subscriptions: EventHandlerByEventType,
     private val apiClient: HomeAssistantApiClientImpl,
 ) {
-    private val logger = Logger(config = LoggerConfig.default)
+    private val logger = Logger
 
     suspend fun subscribe() {
         subscriptions.forEach { entry ->

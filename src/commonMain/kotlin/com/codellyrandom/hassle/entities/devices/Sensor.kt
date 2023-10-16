@@ -5,6 +5,7 @@ import com.codellyrandom.hassle.core.mapping.ObjectMapper
 import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.errorHandling.ObserverExceptionHandler
 import com.codellyrandom.hassle.observability.*
+import com.codellyrandom.hassle.values.EntityId
 import kotlinx.serialization.json.JsonObject
 import kotlin.reflect.KType
 
@@ -16,6 +17,7 @@ import kotlin.reflect.KType
  * @param S the type of the state object that represents all state values of the entity. Has to implement the [State] interface.
  */
 class Sensor<S : State<*>>(
+    val entityId: EntityId,
     private val connection: HomeAssistantApiClient,
     private val mapper: ObjectMapper,
     private val stateType: KType,

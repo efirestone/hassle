@@ -1,7 +1,6 @@
 package com.codellyrandom.hassle.core.mapping
 
 import co.touchlab.kermit.Logger
-import co.touchlab.kermit.LoggerConfig
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
@@ -13,7 +12,7 @@ import kotlin.reflect.typeOf
 
 class ObjectMapper(
     private val delegate: Json = makeJson(),
-    private val logger: Logger = Logger(config = LoggerConfig.default),
+    private val logger: Logger = Logger,
 ) {
     @Suppress("UNCHECKED_CAST")
     fun <Target : Any> fromJson(json: JsonElement, type: KType): Target {
@@ -23,7 +22,7 @@ class ObjectMapper(
                 element = json,
             )
         } catch (e: Throwable) {
-            logger.e(e) { "Exception converting from JSON" }
+            logger.e(e) { "Exception converting $type from JSON" }
             throw e
         }
     }
@@ -36,7 +35,7 @@ class ObjectMapper(
                 string = json,
             )
         } catch (e: Throwable) {
-            logger.e(e) { "Exception converting from JSON" }
+            logger.e(e) { "Exception converting $type from JSON" }
             throw e
         }
     }
@@ -49,7 +48,7 @@ class ObjectMapper(
                 value = from,
             )
         } catch (e: Throwable) {
-            logger.e(e) { "Exception converting to JSON" }
+            logger.e(e) { "Exception converting $type to JSON" }
             throw e
         }
     }

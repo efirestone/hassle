@@ -37,4 +37,18 @@ class CommandTest {
         """.trimIndent()
         assertEquals(expectedJson, json)
     }
+
+    @Test
+    fun getServices() {
+        val command = GetServicesCommand(id = 1)
+        val json = ObjectMapper().toJson(command)
+
+        val expectedJson = """
+        {
+            "id": 1,
+            "type": "get_services"
+        }
+        """.trimIndent()
+        assertEquals(expectedJson, json)
+    }
 }

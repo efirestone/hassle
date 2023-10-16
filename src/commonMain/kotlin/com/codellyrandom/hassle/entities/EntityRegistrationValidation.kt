@@ -1,7 +1,6 @@
 package com.codellyrandom.hassle.entities
 
 import co.touchlab.kermit.Logger
-import co.touchlab.kermit.LoggerConfig
 import com.codellyrandom.hassle.ActuatorsByApiName
 import com.codellyrandom.hassle.SensorsByApiName
 import com.codellyrandom.hassle.values.EntityId
@@ -10,7 +9,7 @@ internal class EntityRegistrationValidation(
     private val actuatorsByApiName: ActuatorsByApiName,
     private val sensorsByApiName: SensorsByApiName,
 ) {
-    private val logger = Logger(config = LoggerConfig.default)
+    private val logger = Logger
 
     private val failedIds = mutableListOf<EntityId>()
 
