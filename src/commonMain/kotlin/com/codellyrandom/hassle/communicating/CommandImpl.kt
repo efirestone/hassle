@@ -35,25 +35,28 @@ internal class SubscribeEventsCommand(
     override var id: Int? = null,
     @SerialName("event_type")
     val eventType: EventType,
-    val type: String = "subscribe_events",
 ) : CommandImpl(id) {
-    override fun copy(id: Int?) = SubscribeEventsCommand(id = id, eventType = eventType, type = type)
+    val type: String = "subscribe_events"
+
+    override fun copy(id: Int?) = SubscribeEventsCommand(id = id, eventType = eventType)
 }
 
 @Serializable
 internal class GetStatesCommand(
     override var id: Int? = null,
-    val type: String = "get_states",
 ) : CommandImpl(id) {
-    override fun copy(id: Int?) = GetStatesCommand(id = id, type = type)
+    val type: String = "get_states"
+
+    override fun copy(id: Int?) = GetStatesCommand(id = id)
 }
 
 @Serializable
 internal class GetServicesCommand(
     override var id: Int? = null,
-    val type: String = "get_services",
 ) : CommandImpl(id) {
-    override fun copy(id: Int?) = GetServicesCommand(id = id, type = type)
+    val type: String = "get_services"
+
+    override fun copy(id: Int?) = GetServicesCommand(id = id)
 }
 
 // - Service Command
@@ -63,8 +66,9 @@ internal sealed class ServiceCommand(
     override var id: Int? = null,
     var domain: Domain,
     var service: Service,
-    val type: String = "call_service",
 ) : CommandImpl(id) {
+    val type: String = "call_service"
+
     @Serializable
     class Target(
         @SerialName("entity_id")

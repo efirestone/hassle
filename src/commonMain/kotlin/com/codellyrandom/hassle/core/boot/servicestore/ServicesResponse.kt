@@ -8,5 +8,5 @@ data class ServicesResponse(
     val id: Int,
     val type: String,
     val success: Boolean,
-    val result: Map<String, JsonObject>,
+    val result: Map<String, JsonObject> = mapOf(),
 )
