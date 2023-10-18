@@ -31,7 +31,6 @@ suspend fun HomeAssistantApiClient.requestLocationUpdate(vararg devices: Device)
 
 @Serializable
 class MobileNotificationData {
-    lateinit var subtitle: String
     private val push: PushData = PushData()
     var apnsHeaders: ApnsHeaders? = null
     var presentationOptions: List<PresentationOptions>? = null

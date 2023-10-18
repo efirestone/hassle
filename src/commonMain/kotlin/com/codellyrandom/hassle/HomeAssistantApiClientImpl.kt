@@ -35,6 +35,7 @@ import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.CoroutineScope
 import kotlin.collections.set
 import kotlin.reflect.KType
+import kotlin.reflect.typeOf
 import kotlinx.serialization.json.Json as SerializationJson
 
 internal typealias SensorsByApiName = MutableMap<EntityId, Sensor<*>>
@@ -170,7 +171,7 @@ internal class HomeAssistantApiClientImpl(
     }
 
     override suspend fun <C : Command, T : Any> await(command: C, commandType: KType, resultType: KType): T {
-        val id = send(command)
+        val id = send(command, commandType)
         return session!!.consumeSingleMessage(id, resultType)
     }
 
@@ -184,10 +185,14 @@ internal class HomeAssistantApiClientImpl(
      * @param command the command to send
      * @return The ID of the command that was sent.
      */
-    internal suspend fun <C : Command> send(command: C): Int {
+    internal suspend inline fun <reified C : Command> send(command: C): Int {
+        return send(command, typeOf<C>())
+    }
+
+    internal suspend fun <C : Command> send(command: C, commandType: KType): Int {
         val id = commandId.incrementAndGet()
         val commandWithId = command.copy(id) // has to be called within single thread to prevent race conditions
-        mapper.toJson(commandWithId).let { serializedCommand ->
+        mapper.toJson(commandWithId, commandType).let { serializedCommand ->
             // TODO: Reconnect if session is missing
             session!!.callWebSocketApi(serializedCommand)
                 .also { logger.i { "Called hass api with message: $serializedCommand" } }
