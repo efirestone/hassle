@@ -94,7 +94,9 @@ kotlin {
 }
 
 tasks.create<Delete>("cleanDokka") {
-    delete = setOf("$buildDir/dokka")
+    delete = setOf(
+        layout.buildDirectory.dir("dokka"),
+    )
 }
 
 tasks.withType<DokkaTask>().configureEach {
@@ -106,9 +108,9 @@ tasks.register("printLineCoverage") {
     group = "verification" // Put into the same group as the `kover` tasks
     dependsOn("koverXmlReport")
     doLast {
-        val report = file("$buildDir/reports/kover/report.xml")
+        val report = layout.buildDirectory.file("/reports/kover/report.xml")
 
-        val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(report)
+        val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(report.get().asFile)
         val rootNode = doc.firstChild
         var childNode = rootNode.firstChild
 
