@@ -1,5 +1,6 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
+import javax.xml.parsers.DocumentBuilderFactory
 
 val kermitVersion: String by project
 val ktorVersion: String by project
@@ -13,12 +14,10 @@ buildscript {
 plugins {
     kotlin("multiplatform") version "1.9.10"
     kotlin("plugin.serialization") version "1.9.10"
-    id("com.github.dawnwords.jacoco.badge") version "0.2.4"
-    id("de.jansauer.printcoverage") version "2.0.0"
     id("com.vanniktech.maven.publish") version "0.25.3"
     id("io.gitlab.arturbosch.detekt") version "1.23.0"
+    id("org.jetbrains.kotlinx.kover") version "0.7.4"
     id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
-    jacoco
     `java-library`
 }
 
@@ -102,35 +101,47 @@ tasks.withType<DokkaTask>().configureEach {
     dependsOn("cleanDokka")
 }
 
+// Taken from https://bitspittle.dev/blog/2022/koverbadge
+tasks.register("printLineCoverage") {
+    group = "verification" // Put into the same group as the `kover` tasks
+    dependsOn("koverXmlReport")
+    doLast {
+        val report = file("$buildDir/reports/kover/report.xml")
+
+        val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(report)
+        val rootNode = doc.firstChild
+        var childNode = rootNode.firstChild
+
+        var coveragePercent = 0.0
+
+        while (childNode != null) {
+            if (childNode.nodeName == "counter") {
+                val typeAttr = childNode.attributes.getNamedItem("type")
+                if (typeAttr.textContent == "LINE") {
+                    val missedAttr = childNode.attributes.getNamedItem("missed")
+                    val coveredAttr = childNode.attributes.getNamedItem("covered")
+
+                    val missed = missedAttr.textContent.toLong()
+                    val covered = coveredAttr.textContent.toLong()
+
+                    coveragePercent = (covered * 100.0) / (missed + covered)
+
+                    break
+                }
+            }
+            childNode = childNode.nextSibling
+        }
+
+        println("%.1f".format(coveragePercent))
+    }
+}
+
 tasks {
     check {
         dependsOn(test)
         finalizedBy(
-            jacocoTestReport,
-            jacocoTestCoverageVerification,
-            printCoverage,
-            generateJacocoBadge,
+            koverHtmlReport,
         )
-    }
-    jacocoTestReport {
-        val coverageSourceDirs = arrayOf(
-            "$rootDir/src/commonMain",
-            "$rootDir/src/jvmMain",
-        )
-
-        val classFiles = "$buildDir/classes/kotlin/jvm/"
-
-        classDirectories.setFrom(files(classFiles))
-        sourceDirectories.setFrom(files(coverageSourceDirs))
-
-        executionData
-            .setFrom(files("$buildDir/jacoco/jvmTest.exec"))
-
-        reports {
-            xml.required.set(true)
-            csv.required.set(false)
-            html.required.set(true)
-        }
     }
 }
 
@@ -146,17 +157,9 @@ detekt {
     config.setFrom("$projectDir/config/detekt-config.yml")
 }
 
-jacoco {
-    toolVersion = "0.8.10"
-}
-
 ktlint {
     version.set("0.50.0")
     ignoreFailures.set(false)
-}
-
-printcoverage {
-    coverageType.set("LINE")
 }
 
 val compileKotlinNative: KotlinNativeCompile by tasks
