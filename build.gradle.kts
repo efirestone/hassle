@@ -18,7 +18,6 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.23.0"
     id("org.jetbrains.kotlinx.kover") version "0.7.4"
     id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
-    `java-library`
 }
 
 // The vanniktech publishing plugin depends on Dokka being in the classpath
@@ -140,7 +139,6 @@ tasks.register("printLineCoverage") {
 
 tasks {
     check {
-        dependsOn(test)
         finalizedBy(
             koverHtmlReport,
         )
