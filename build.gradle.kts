@@ -5,12 +5,6 @@ import javax.xml.parsers.DocumentBuilderFactory
 val kermitVersion: String by project
 val ktorVersion: String by project
 
-buildscript {
-    dependencies {
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.8.20")
-    }
-}
-
 plugins {
     kotlin("multiplatform") version "1.9.10"
     kotlin("plugin.serialization") version "1.9.10"
@@ -18,13 +12,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.23.0"
     id("org.jetbrains.kotlinx.kover") version "0.7.4"
     id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
+    id("org.jetbrains.dokka") version "1.8.20"
 }
-
-// The vanniktech publishing plugin depends on Dokka being in the classpath
-// and that doesn't seem to be possible with the `plugins` block, so we need
-// to use the older-style `buildscript.dependencies.classpath` and `apply` method.
-apply(plugin = "com.vanniktech.maven.publish")
-apply(plugin = "org.jetbrains.dokka")
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
