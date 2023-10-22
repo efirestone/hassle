@@ -8,8 +8,8 @@ import com.codellyrandom.hassle.entities.State
 import com.codellyrandom.hassle.entities.devices.Actuator
 import com.codellyrandom.hassle.extending.entities.Actuator
 import com.codellyrandom.hassle.values.*
-import io.fluidsonic.time.LocalTime
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

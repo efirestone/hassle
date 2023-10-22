@@ -1,6 +1,6 @@
 package com.codellyrandom.hassle.core.mapping.serializers.default
 
-import io.fluidsonic.time.LocalTime
+import kotlinx.datetime.LocalTime
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor

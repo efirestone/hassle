@@ -42,9 +42,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-common"))
-                // kotlinx.datetime doesn't include LocalTime yet, so supplement it
-                // https://github.com/Kotlin/kotlinx-datetime/issues/57
-                implementation("io.fluidsonic.time:fluid-time:0.15.0")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-websockets:$ktorVersion")
