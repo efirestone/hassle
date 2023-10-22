@@ -1,5 +1,5 @@
 import org.jetbrains.dokka.gradle.DokkaTask
-import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import javax.xml.parsers.DocumentBuilderFactory
 
 val kermitVersion: String by project
@@ -22,6 +22,7 @@ repositories {
     mavenCentral()
 }
 
+@OptIn(ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     jvm {
         compilations.all {
@@ -31,12 +32,12 @@ kotlin {
             }
         }
     }
-    val hostOs = System.getProperty("os.name")
-    val nativeTarget = when (hostOs) {
-        "Mac OS X" -> macosX64("native")
-        "Linux" -> linuxX64("native")
-        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
-    }
+
+    targetHierarchy.default()
+
+    linuxX64()
+    macosX64()
+    macosArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -68,10 +69,7 @@ kotlin {
         val jvmTest by getting
         val nativeMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-macosx64:1.6.0-native-mt") {
-                    // https://youtrack.jetbrains.com/issue/KT-41378
-                    version { strictly("1.6.0-native-mt") }
-                }
+                implementation("io.ktor:ktor-client-cio:$ktorVersion")
             }
         }
         val nativeTest by getting
@@ -146,13 +144,4 @@ detekt {
 ktlint {
     version.set("0.50.0")
     ignoreFailures.set(false)
-}
-
-val compileKotlinNative: KotlinNativeCompile by tasks
-compileKotlinNative.apply {
-    kotlinOptions.freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
-}
-val compileTestKotlinNative: KotlinNativeCompile by tasks
-compileTestKotlinNative.apply {
-    kotlinOptions.freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
 }
