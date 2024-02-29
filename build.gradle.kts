@@ -36,6 +36,7 @@ kotlin {
     targetHierarchy.default()
 
     linuxX64()
+    linuxArm64()
     macosX64()
     macosArm64()
 
